@@ -10,7 +10,7 @@ public class BasecampPlayerControl : MonoBehaviour
 {
     [SerializeField] PlayerInput playerInput;
     [SerializeField] Transform interactPose;
-    [SerializeField] float interactRadius = 2f;
+    [SerializeField] float interactRadius = 3f;
 
     private InputAction interactAction;
     private Collider[] overlapResults = new Collider[4];
@@ -27,7 +27,6 @@ public class BasecampPlayerControl : MonoBehaviour
 
         interactAction = playerInput.actions["Interact"];
 
-        // TODO: 상호작용 대상 레이어 확정시 갱신
         interactableLayer = LayerMask.GetMask("Interactable");
     }
 
@@ -61,7 +60,6 @@ public class BasecampPlayerControl : MonoBehaviour
             }
         }
 
-        // TODO: 상호작용 인터페이스 구현 후 해당 내용 호출
         Debug.Log($"{overlapResults[minDistanceIndex].name}에 대한 상호작용 시도");
 
         if(overlapResults[minDistanceIndex].TryGetComponent(out IInteractable interactable))

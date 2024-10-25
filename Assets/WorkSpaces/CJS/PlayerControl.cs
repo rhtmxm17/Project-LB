@@ -19,7 +19,6 @@ public class PlayerControl : MonoBehaviour, IDamageable
 
     private InputAction moveAction;
     private InputAction lookAction;
-    private InputAction fireAction;
     private PlayerModel model;
     private NavMeshAgent agent;
     private float MoveSpeed => model.MoveSpeed;
@@ -32,7 +31,6 @@ public class PlayerControl : MonoBehaviour, IDamageable
         agent = GetComponent<NavMeshAgent>();
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
-        fireAction = playerInput.actions["Fire"];
     }
 
     private void OnEnable()
