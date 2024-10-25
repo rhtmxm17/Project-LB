@@ -10,7 +10,7 @@ public class BasecampPlayerControl : MonoBehaviour
 {
     [SerializeField] PlayerInput playerInput;
     [SerializeField] Transform interactPose;
-    [SerializeField] float interactRadius = 1f;
+    [SerializeField] float interactRadius = 2f;
 
     private InputAction interactAction;
     private Collider[] overlapResults = new Collider[4];
@@ -18,13 +18,17 @@ public class BasecampPlayerControl : MonoBehaviour
 
     private void Awake()
     {
-        interactAction = playerInput.actions["Interact"];
         if (interactPose == null)
         {
             interactPose = new GameObject("Interact Pose").transform;
             interactPose.parent = this.transform;
             interactPose.localPosition = 0.5f * interactRadius * Vector3.forward;
         }
+
+        interactAction = playerInput.actions["Interact"];
+
+        // TODO: 상호작용 대상 레이어 확정시 갱신
+        interactableLayer = LayerMask.GetMask("Item");
     }
 
     private void OnEnable()
@@ -39,7 +43,7 @@ public class BasecampPlayerControl : MonoBehaviour
 
     private void TryInteract(InputAction.CallbackContext _)
     {
-        int count = Physics.OverlapSphereNonAlloc(interactPose.position, interactRadius, overlapResults, );
+        int count = Physics.OverlapSphereNonAlloc(interactPose.position, interactRadius, overlapResults, interactableLayer);
         if (count == 0)
             return;
 
