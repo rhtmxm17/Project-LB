@@ -549,9 +549,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterAgent: {fileID: 984511072}
   player: {fileID: 1858717737}
-  maxDistance: 10
+  maxDistance: 5
   distanceStopping: 1.5
-  chaseSpeed: 2
+  chaseSpeed: 1
 --- !u!1 &1063071729
 GameObject:
   m_ObjectHideFlags: 0
