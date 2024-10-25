@@ -9,15 +9,21 @@ using UnityEngine;
 public class Blueprint : Collection
 {
 
+    // 아이디
+    [SerializeField] private int itemID;
+
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            Pickup("설계도");
+            PickupSound();
+
+            PaPer();
         }
 
     }
-
 
 
 }
