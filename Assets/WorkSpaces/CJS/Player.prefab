@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 0}
   interactPose: {fileID: 0}
-  interactRadius: 2
+  interactRadius: 3
 --- !u!1 &6907338289916534169
 GameObject:
   m_ObjectHideFlags: 0
