@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -8,16 +6,27 @@ using UnityEngine;
 /// </summary>
 public class HealPack : Consumption
 {
+    [SerializeField] private PlayerModel player;
+
+    private void Start()
+    {
+        player = FindAnyObjectByType<PlayerModel>();
+    }
 
     private void OnTriggerEnter(Collider other)
-    {        
+    {
         if (other.tag == "Player")
         {
-            Pickup("힐팩(체력회복)");
+            player.Hp += 100;
+            Pickup("HealPack");
+
         }
+
+
 
     }
 
-    
+
+
 
 }
