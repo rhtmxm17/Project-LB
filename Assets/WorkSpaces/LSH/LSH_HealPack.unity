@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 178114302}
   - component: {fileID: 178114301}
   - component: {fileID: 178114303}
+  - component: {fileID: 178114304}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -475,7 +476,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 172218987}
-  moveSpeed: 5
+  head: {fileID: 0}
+  maxVerticalCameraAngle: 0
+  cameraSensitivity: {x: 0, y: 0}
+  meleeImmunityTime: 1
+--- !u!114 &178114304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178114300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354adcf93dd31de48bb0d1f2037baa32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  hp: 0
 --- !u!1 &241395459
 GameObject:
   m_ObjectHideFlags: 0
