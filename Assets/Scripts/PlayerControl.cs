@@ -7,10 +7,15 @@ using UnityEngine.InputSystem;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] PlayerInput playerInput;
+    [SerializeField] Transform head;
+    [SerializeField] float maxVerticalCameraAngle;
+    [SerializeField] Vector2 cameraSensitivity;
     [SerializeField] float moveSpeed;
 
     private NavMeshAgent agent;
     private InputAction moveAction;
+    private InputAction lookAction;
+    private float verticalCameraAngle;
 
     private void Awake()
     {
@@ -20,8 +25,24 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         moveAction = playerInput.actions["Move"];
+        lookAction = playerInput.actions["Look"];
 
         StartCoroutine(MovementRoutine());
+
+        lookAction.performed += LookAction_performed;
+    }
+
+    private void LookAction_performed(InputAction.CallbackContext context)
+    {
+        Vector2 inputValue = context.ReadValue<Vector2>();
+
+        // 수평 회전
+        transform.Rotate(Vector3.up, inputValue.x * cameraSensitivity.x);
+
+        // 수직 회전
+        verticalCameraAngle += inputValue.y * cameraSensitivity.y;
+        verticalCameraAngle = Mathf.Clamp(verticalCameraAngle, -maxVerticalCameraAngle, maxVerticalCameraAngle);
+        head.localRotation = Quaternion.AngleAxis(verticalCameraAngle, Vector3.left);
     }
 
     private IEnumerator MovementRoutine()
