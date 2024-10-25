@@ -10,13 +10,12 @@ using UnityEngine.InputSystem;
  */
 
 [RequireComponent(typeof(PlayerModel))]
-public class PlayerControl : MonoBehaviour
+public class PlayerControl : MonoBehaviour, IDamageable
 {
     [SerializeField] PlayerInput playerInput;
     [SerializeField] Transform head;
     [SerializeField] float maxVerticalCameraAngle;
     [SerializeField] Vector2 cameraSensitivity;
-    [SerializeField, Tooltip("근접 공격에 대한 무적시간")] float meleeImmunityTime = 1f;
 
     private InputAction moveAction;
     private InputAction lookAction;
@@ -25,7 +24,6 @@ public class PlayerControl : MonoBehaviour
     private NavMeshAgent agent;
     private float MoveSpeed => model.MoveSpeed;
     private float verticalCameraAngle;
-    private bool meleeImmunity;
     private Coroutine moveRoutine;
 
     private void Awake()
@@ -94,18 +92,6 @@ public class PlayerControl : MonoBehaviour
 
     public void Damaged(int damage, DamageType type = 0)
     {
-        if (false == meleeImmunity || type == DamageType.IGNORE_MELEE_IMMUNITY)
-        {
-            // 근접공격 면역 상태가 아니거나 특수 공격(원거리 등)일 경우에만 데미지 처리
-            model.Hp -= damage;
-            StartCoroutine(StartMeleeImmunity(meleeImmunityTime));
-        }
-    }
-
-    private IEnumerator StartMeleeImmunity(float time)
-    {
-        meleeImmunity = true;
-        yield return new WaitForSeconds(time);
-        meleeImmunity = false;
+        model.Hp -= damage;
     }
 }
