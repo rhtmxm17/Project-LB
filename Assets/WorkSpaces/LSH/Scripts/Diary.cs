@@ -9,15 +9,21 @@ using UnityEngine;
 public class Diary : Collection
 {
 
+    // 아이디
+    [SerializeField] private int itemID;
+
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            Pickup("일지");
+            PickupSound();
+
+            PaPer();
         }
 
     }
-
 
 
 }
