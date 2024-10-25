@@ -11,6 +11,8 @@ public class AttackMonster : MonoBehaviour
     [Header("Property")]
     [SerializeField] float rayDistance;
 
+    private IDamageable player;
+
     private void OnTriggerEnter(Collider other)
     {
         // 코루틴이 null 이라면
@@ -20,6 +22,7 @@ public class AttackMonster : MonoBehaviour
             if (other.gameObject.CompareTag("Player"))
             {
                 // 몬스터의 근접공격 코루틴을 시작시켜라
+                player = other.attachedRigidbody.GetComponent<IDamageable>();
                 startMonsterAttackRoutine = StartCoroutine(MonsterAutoAttack());
             }
         }
@@ -47,7 +50,7 @@ public class AttackMonster : MonoBehaviour
         Debug.Log($"{monsterModel.MonsterAP}만큼의 몬스터 공격력으로 플레이어를 공격했다");
 
         // playerModel의 Hp를 monsterModel의 공격력만큼 감소
-        playerModel.Hp -= monsterModel.MonsterAP;
+        player.Damaged(monsterModel.MonsterAP, DamageType.DEFAULT_MELEE_ATTACK);
 
         // 개발도중 Debug.Log 확인
         Debug.Log($"플레이어는 {playerModel.Hp}만큼 HP가 남았다");

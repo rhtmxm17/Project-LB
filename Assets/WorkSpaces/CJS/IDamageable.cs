@@ -13,5 +13,5 @@ public enum DamageType
 public interface IDamageable
 {
     public Transform transform { get; }
-    public void Damaged(int damagem, DamageType type);
+    public void Damaged(int damage, DamageType type);
 }
