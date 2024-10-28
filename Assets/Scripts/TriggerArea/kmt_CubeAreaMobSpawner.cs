@@ -9,6 +9,7 @@ public class kmt_CubeAreaMobSpawner : kmt_MobSpawner
 
     Vector3 halfSize;
 
+    [Header("Spawn Random Position In Area")]
     [SerializeField]
     bool isRandomSpawn;
 

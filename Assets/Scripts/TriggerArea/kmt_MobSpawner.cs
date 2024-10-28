@@ -7,20 +7,25 @@ using UnityEngine.Events;
 public class kmt_MobSpawner : MonoBehaviour
 {
 
+    [Header("Wave Monsters Parent")]
     [SerializeField]
     Transform waveMonsterParent;
 
+    [Header("Spawn Delay and Count")]
     [SerializeField]
     protected float spawnDelay;
     [SerializeField]
     protected int spawnCount;
 
+    [Header("Monster Types")]
     [SerializeField]
     protected TestMonster[] spawnType;
 
+    [Header("Spawn Random Monster Type In Arr")]
     [SerializeField]
     protected bool randomTypeSpawn;
 
+    [Header("End Spawning Callback Event")]
     [SerializeField]
     protected UnityEvent EndSpawnEvent;
 
