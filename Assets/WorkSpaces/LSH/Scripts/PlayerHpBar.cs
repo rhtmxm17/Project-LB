@@ -18,52 +18,73 @@ public class PlayerHpBar : MonoBehaviour
     [SerializeField] private float HpPercent; //체력바 퍼센트
     [SerializeField] private Image HpFillImg; //체력바 색상
 
+    /// <summary>
+    /// "느려져 디버프" 테스트용 bool 변수입니다. 추후 삭제 예정입니다.
+    /// </summary>
+    [SerializeField] public bool isSlow;
+
+    /// <summary>
+    /// "느려져 디버프" 테스트용 Vector4 변수입니다. 추후 삭제 예정입니다.
+    /// </summary>
+    Vector4 hpColor;
+
     private void Awake()
     {
         slider = GetComponent<Slider>();
+        hpColor = new Vector4(HpFillImg.color.r, HpFillImg.color.g, HpFillImg.color.b, HpFillImg.color.a);
     }
 
     private void Start()
     {
         player = GameManager.Instance.GetPlayerModel();
-        player.OnHpChange += HpBarColor;
-        HpBarColor();
+        player.OnHpChange += ChangeHpBarColor;
+        ChangeHpBarColor();
+        isSlow = false;
+        hpColor = HpFillImg.color; //원래색 저장  
+    }
+
+
+    /// <summary>
+    /// 현재는 디버프에 대한 이벤트가 없어서, 색상변경 테스트를 위해 작성된 Update문입니다. 추후 삭제 예정입니다.
+    /// </summary>
+    private void Update()
+    {
+        ChangeHpBarColor();
+
     }
 
 
 
-    
-
-    protected void HpBarColor()
+    protected void ChangeHpBarColor()
     {
         ViewGraph();
 
-        //if (true/* "느려져 버프" 해당될 경우 */)
-        //{
-        //    Debug.Log(3);
-        //    HpFillImg.color = Color.blue;
-        //    //속도도 느려짐
+        if (isSlow)
+        {
+            HpFillImg.color = Color.blue;
+            //속도도 느려짐
+            //.
 
-        //}
-        //else
-        //{
+        }
+        else
+        {
             if (HpPercent < 0.4f)// 체력 40퍼 미만일때
             {
-            Debug.Log(1);
                 HpFillImg.color = Color.red;
                 //속도도 느려짐
+                //.
 
             }
             else//체력 40퍼 이상일때
             {
-            Debug.Log(2);
                 HpFillImg.color = Color.green;
-                //속도 정상임
-            }
-        
-        //}
+                //속도 정상됨
+                //.
 
-        
+            }
+
+        }
+
 
     }
 
@@ -74,4 +95,6 @@ public class PlayerHpBar : MonoBehaviour
         slider.value = HpPercent;
     }
 
+
 }
+
