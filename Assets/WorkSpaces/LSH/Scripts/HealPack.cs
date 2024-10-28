@@ -14,7 +14,7 @@ public class HealPack : Collection
 
 
     // 플레이어에게 영향줄 수 있도록, 플레이어와 연결
-    [SerializeField] private PlayerModel player;
+    PlayerModel player;
     // 체력 상승수치를 직렬화
     [SerializeField] private int healValue;
 
@@ -22,7 +22,7 @@ public class HealPack : Collection
 
     private void Start()
     {
-        player = FindAnyObjectByType<PlayerModel>();
+        player = GameManager.Instance.GetPlayerModel();
 
     }
 
@@ -34,6 +34,10 @@ public class HealPack : Collection
             PickupSound();
 
             Heal();
+
+            /* Test - 체력상승 테스트를 위해 일단 줍자마자 사용됨 */ 
+            UseItem();
+
 
         }
 
