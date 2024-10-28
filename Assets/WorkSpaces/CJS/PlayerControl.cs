@@ -4,15 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
-/*
- * 플레이어 피격 처리 또한 플레이어 조작에서 담당하고 있음
- * 전투 관련 스크립트가 많아진다면 분리하자
- */
-
 [RequireComponent(typeof(PlayerModel))]
-public class PlayerControl : MonoBehaviour, IDamageable
+public class PlayerControl : MonoBehaviour
 {
-    [SerializeField] PlayerInput playerInput;
     [SerializeField] Transform head;
     [SerializeField] float maxVerticalCameraAngle;
     [SerializeField] Vector2 cameraSensitivity;
@@ -29,6 +23,12 @@ public class PlayerControl : MonoBehaviour, IDamageable
     {
         model = GetComponent<PlayerModel>();
         agent = GetComponent<NavMeshAgent>();
+
+        PlayerInput playerInput = PlayerInput.GetPlayerByIndex(0);
+        if (playerInput == null)
+        {
+            Debug.LogWarning("씬에서 PlayerInput을 찾지 못함");
+        }
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
     }
@@ -86,10 +86,5 @@ public class PlayerControl : MonoBehaviour, IDamageable
         verticalCameraAngle += inputValue.y * cameraSensitivity.y;
         verticalCameraAngle = Mathf.Clamp(verticalCameraAngle, -maxVerticalCameraAngle, maxVerticalCameraAngle);
         head.localRotation = Quaternion.AngleAxis(verticalCameraAngle, Vector3.left);
-    }
-
-    public void Damaged(int damage, DamageType type = 0)
-    {
-        model.Hp -= damage;
     }
 }
