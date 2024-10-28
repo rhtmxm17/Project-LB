@@ -8,6 +8,7 @@ public enum DamageType
 {
     DEFAULT_MELEE_ATTACK = 0,
     IGNORE_MELEE_IMMUNITY = 1,
+    FRENDLY_GROUP_0,
 }
 
 public interface IDamageable

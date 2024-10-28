@@ -18,6 +18,11 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     private bool isHurt = false;
 
     /// <summary>
+    /// 자해 데미지 계수(수류탄)
+    /// </summary>
+    [SerializeField] float SelfDamageMultiplier = 0.1f;
+
+    /// <summary>
     /// 장비 슬롯 개수
     /// </summary>
     public const int MaxSlot = 5;
@@ -103,6 +108,11 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
     public void Damaged(int damage, DamageType type = 0)
     {
+        if (type == DamageType.FRENDLY_GROUP_0)
+        {
+            damage = (int)(damage * SelfDamageMultiflier);
+        }
+
         model.Hp -= damage;
     }
 
