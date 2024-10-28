@@ -110,7 +110,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     {
         if (type == DamageType.FRENDLY_GROUP_0)
         {
-            damage = (int)(damage * SelfDamageMultiflier);
+            damage = (int)(damage * SelfDamageMultiplier);
         }
 
         model.Hp -= damage;
