@@ -1,3 +1,4 @@
+using Michsky.UI.Dark;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,20 +11,19 @@ using UnityEngine.UI;
 public class PlayerHpBar : MonoBehaviour
 {
 
+    PlayerModel player; //현재체력
 
-    PlayerModel player;
-
-    float playerHpPercent;
-
-    Image playerHpImg;
+    float playerHpPercent; //퍼센트
+    Image playerHpImg; //이미지
 
     private void Awake()
     {
-
+        
     }
 
     private void Start()
     {
+        player = GameManager.Instance.GetPlayerModel();
         player.OnHpChange += ViewHp;
     }
 
@@ -31,8 +31,9 @@ public class PlayerHpBar : MonoBehaviour
 
     protected void ViewHp()
     {
-        playerHpPercent = (player.Hp / player.Hp);
-        player.OnHpChange -= ViewHp;
+
+        playerHpPercent = (player.Hp / player.Hp/*이후에 모델쪽 최대체력 생기면 maxHp로 바꿔주기*/);
+        
     }
 
 
