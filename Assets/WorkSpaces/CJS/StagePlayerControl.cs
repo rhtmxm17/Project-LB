@@ -63,11 +63,8 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         {
             selectActions[i].started += OnSelectInput;
         }
-    }
 
-    private void OnSelectInput(InputAction.CallbackContext context)
-    {
-        SelectSlot(selectActionDict[context.action.name]);
+        model.OnHpChange += HurtCheck;
     }
 
     private void OnDisable()
@@ -79,6 +76,13 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         {
             selectActions[i].started -= OnSelectInput;
         }
+
+        model.OnHpChange -= HurtCheck;
+    }
+
+    private void OnSelectInput(InputAction.CallbackContext context)
+    {
+        SelectSlot(selectActionDict[context.action.name]);
     }
 
     private void FireStarted(InputAction.CallbackContext _) => SelectedUseable?.UseBegin();
