@@ -13,6 +13,16 @@ public class AttackMonster : MonoBehaviour
 
     private IDamageable player;
 
+    private void Awake()
+    {
+        monsterModel = GetComponent<MonsterModel>();
+    }
+
+    private void Start()
+    {
+        playerModel = GameManager.Instance.GetPlayerModel();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         // 코루틴이 null 이라면
@@ -67,6 +77,5 @@ public class AttackMonster : MonoBehaviour
             // 몬스터 공격시작
             AttackToPlayer();
         }
-       
     }
 }

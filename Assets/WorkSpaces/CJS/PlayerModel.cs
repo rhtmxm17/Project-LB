@@ -20,7 +20,7 @@ public class PlayerModel : MonoBehaviour
     {
         if (hp > MaxHp)
             hp = MaxHp;
-
+        
         OnHpChange?.Invoke();
     }
 
