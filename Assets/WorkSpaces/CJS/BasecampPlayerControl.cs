@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class BasecampPlayerControl : MonoBehaviour
 {
-    [SerializeField] PlayerInput playerInput;
     [SerializeField] Transform interactPose;
     [SerializeField] float interactRadius = 3f;
 
@@ -23,6 +22,12 @@ public class BasecampPlayerControl : MonoBehaviour
             interactPose = new GameObject("Interact Pose").transform;
             interactPose.parent = this.transform;
             interactPose.localPosition = 0.5f * interactRadius * Vector3.forward;
+        }
+
+        PlayerInput playerInput = PlayerInput.GetPlayerByIndex(0);
+        if (playerInput == null)
+        {
+            Debug.LogWarning("씬에서 PlayerInput을 찾지 못함");
         }
 
         interactAction = playerInput.actions["Interact"];
