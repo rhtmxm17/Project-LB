@@ -1,37 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class kmt_MobSpawner : MonoBehaviour
 {
-    [SerializeField]
-    float spawnDelay;
-    [SerializeField]
-    int spawnCount;
 
     [SerializeField]
-    TestMonster spawnType;
+    Transform waveMonsterParent;
+
+    [SerializeField]
+    protected float spawnDelay;
+    [SerializeField]
+    protected int spawnCount;
+
+    [SerializeField]
+    protected TestMonster[] spawnType;
+
+    [SerializeField]
+    protected bool randomTypeSpawn;
+
+    [SerializeField]
+    protected UnityEvent EndSpawnEvent;
 
     //todo : 작성중이신 몬스터 타입으로 바꿔 작성하기.
-    TestMonster[] monsterPool;
-    WaitForSeconds spawnTime;
+    protected TestMonster[] monsterPool;
+    protected WaitForSeconds spawnTime;
 
-    private void Awake()
+    protected virtual void Awake()
     {
 
         spawnTime = new WaitForSeconds(spawnDelay);
-
         monsterPool = new TestMonster[spawnCount];
 
     }
 
-    private void Start()
+    protected virtual void Start()
     {
+        int spawnIdx;
+
         for (int i = 0; i < monsterPool.Length; i++)
         {
-            monsterPool[i] = Instantiate(spawnType, transform.position, Quaternion.identity);
+            spawnIdx = randomTypeSpawn ? Random.Range(0, spawnType.Length) : 0;
+
+            monsterPool[i] = Instantiate(spawnType[spawnIdx], transform.position, Quaternion.identity);
             monsterPool[i].gameObject.SetActive(false);
-            monsterPool[i].transform.SetParent(transform);
+            monsterPool[i].transform.SetParent(waveMonsterParent);
         }
     }
 
@@ -41,7 +56,7 @@ public class kmt_MobSpawner : MonoBehaviour
 
     }
 
-    IEnumerator SpawningCo() {
+    protected virtual IEnumerator SpawningCo() {
 
         foreach (TestMonster monster in monsterPool) { 
         
@@ -53,6 +68,8 @@ public class kmt_MobSpawner : MonoBehaviour
             yield return spawnTime;
 
         }
+
+        EndSpawnEvent?.Invoke();
 
     }
 
