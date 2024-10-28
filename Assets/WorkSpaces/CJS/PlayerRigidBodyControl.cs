@@ -4,25 +4,26 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerModel))]
-public class PlayerControl : MonoBehaviour
+[RequireComponent(typeof(PlayerModel), typeof(Rigidbody))]
+public class PlayerRigidBodyControl : MonoBehaviour
 {
     [SerializeField] Transform head;
-    [SerializeField] float maxVerticalCameraAngle;
-    [SerializeField] Vector2 cameraSensitivity;
+    [SerializeField] float maxVerticalCameraAngle = 70f;
+    [SerializeField] Vector2 cameraSensitivity = Vector2.one;
+    [SerializeField] float moveAccel = 15f; // 가속도
 
     private InputAction moveAction;
     private InputAction lookAction;
     private PlayerModel model;
-    private NavMeshAgent agent;
-    private float MoveSpeed => model.MoveSpeed;
+    private new Rigidbody rigidbody;
+    private float MoveSpeed => model.MoveSpeed; // 최대속도
     private float verticalCameraAngle;
     private Coroutine moveRoutine;
 
     private void Awake()
     {
         model = GetComponent<PlayerModel>();
-        agent = GetComponent<NavMeshAgent>();
+        rigidbody = GetComponent<Rigidbody>();
 
         PlayerInput playerInput = PlayerInput.GetPlayerByIndex(0);
         if (playerInput == null)
@@ -53,8 +54,12 @@ public class PlayerControl : MonoBehaviour
 
     private IEnumerator MovementRoutine()
     {
+        YieldInstruction waitFixedUpdate = new WaitForFixedUpdate();
+
         while (true)
         {
+            yield return waitFixedUpdate;
+
             Vector2 moveInput = moveAction.ReadValue<Vector2>();
 
             // 카메라의 up, forward를 xz평면에서의 이동 방향으로 변환
@@ -67,11 +72,15 @@ public class PlayerControl : MonoBehaviour
             moveAxisX.Normalize();
             moveAxisY.Normalize();
 
-            // 입력 방향과 속도 능력치를 적용
-            Vector3 velocity = MoveSpeed * (moveAxisX * moveInput.x + moveAxisY * moveInput.y);
-            agent.Move(Time.deltaTime * velocity);
+            // 입력 방향으로 가속도를 적용
+            Vector3 accel = moveAccel * (moveAxisX * moveInput.x + moveAxisY * moveInput.y);
+            rigidbody.AddForce(accel, ForceMode.Force);
 
-            yield return null;
+            // 속도 상한(속도 능력치) 적용
+            if (rigidbody.velocity.sqrMagnitude > model.MoveSpeed)
+            {
+                rigidbody.velocity = rigidbody.velocity.normalized * model.MoveSpeed;
+            }
         }
     }
 
