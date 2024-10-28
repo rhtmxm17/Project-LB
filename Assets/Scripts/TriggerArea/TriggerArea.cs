@@ -9,12 +9,14 @@ public class TriggerArea : MonoBehaviour
     [SerializeField]
     UnityEvent onTriggerEvent;
 
+    bool isTriggered = false;
 
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.tag == "Player")
+        if (!isTriggered && other.gameObject.tag == "Player")
         {
+            isTriggered = true;
             onTriggerEvent?.Invoke();
         }
 

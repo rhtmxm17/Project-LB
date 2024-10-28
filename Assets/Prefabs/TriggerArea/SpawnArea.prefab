@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &903799021819341968
+--- !u!1 &1172433927338020151
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 903799021819341973}
-  - component: {fileID: 903799021819341972}
-  - component: {fileID: 903799021819341975}
-  - component: {fileID: 903799021819341974}
-  - component: {fileID: 903799021819341969}
+  - component: {fileID: 1172433927338020147}
+  - component: {fileID: 1172433927338020146}
+  - component: {fileID: 1172433927338020145}
+  - component: {fileID: 1172433927338020144}
+  - component: {fileID: 1172433927338020140}
   m_Layer: 0
-  m_Name: kmt_TriggerArea
+  m_Name: SpawnArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &903799021819341973
+--- !u!4 &1172433927338020147
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903799021819341968}
+  m_GameObject: {fileID: 1172433927338020151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.4, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 15.2, y: 0.93, z: -25.068342}
+  m_LocalScale: {x: 19.18, y: 1, z: 4.08}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &903799021819341972
+--- !u!33 &1172433927338020146
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903799021819341968}
+  m_GameObject: {fileID: 1172433927338020151}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &903799021819341975
+--- !u!23 &1172433927338020145
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903799021819341968}
+  m_GameObject: {fileID: 1172433927338020151}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,43 +85,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &903799021819341974
+--- !u!65 &1172433927338020144
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903799021819341968}
+  m_GameObject: {fileID: 1172433927338020151}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &903799021819341969
+--- !u!114 &1172433927338020140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903799021819341968}
+  m_GameObject: {fileID: 1172433927338020151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21ce45679a30aa4b87ee827b4865519, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f57847e6ea122043b332795a75b2afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onTriggerEvent:
+  waveMonsterParent: {fileID: 0}
+  spawnDelay: 0.5
+  spawnCount: 30
+  spawnType:
+  - {fileID: 8091382462958813417, guid: 90aca03a8bfe5c34ebb8690e2228b125, type: 3}
+  randomTypeSpawn: 0
+  EndSpawnEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: kmt_MobSpawner, Assembly-CSharp
-        m_MethodName: StartSpawning
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  isRandomSpawn: 1
