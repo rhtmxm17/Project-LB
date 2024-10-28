@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class MosnterLookAt : MonoBehaviour
 {
-    [SerializeField] Transform playerPosition;
+    [SerializeField] GameObject playerPosition;
+
+    private void Awake()
+    {
+        playerPosition = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            transform.LookAt(playerPosition);
+            transform.LookAt(playerPosition.transform.position);
         }
     }
 }
