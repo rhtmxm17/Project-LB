@@ -15,7 +15,7 @@ public class PlayerModel : MonoBehaviour
     private void OnHpChanged()
     {
         
-
+    
         OnHpChange?.Invoke();
     }
 }
