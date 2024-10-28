@@ -152,11 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295e234bf038f0741945d443193b5841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 0}
   head: {fileID: 0}
   maxVerticalCameraAngle: 0
   cameraSensitivity: {x: 0, y: 0}
-  meleeImmunityTime: 1
 --- !u!114 &33184017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33184015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.1021788, y: -0.86789405, z: 7.657687}
+  m_LocalPosition: {x: 3.29, y: -0.86789405, z: 7.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -891,7 +889,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.03, y: -2.98, z: 7.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1051,7 +1049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694193552}
   m_LocalRotation: {x: -0, y: 0.029827503, z: -0, w: 0.9995551}
-  m_LocalPosition: {x: 1.21, y: 1.19, z: 0.75}
+  m_LocalPosition: {x: 1.37, y: 1.19, z: 1.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

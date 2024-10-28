@@ -7,7 +7,7 @@ public class GunData : MonoBehaviour
     public AudioClip shotClip; // 발사 소리
     public AudioClip reloadClip; // 재장전 소리
 
-    public float damage = 25; // 공격력
+    public int damage = 25; // 공격력
 
     public int startAmmoRemain = 100; // 처음에 주어질 전체 탄알
     public int magCapacity = 25; // 탄창용량
@@ -16,4 +16,4 @@ public class GunData : MonoBehaviour
     public float reloadTime = 1.8f; //재장전 소요 시간
 }
 
-// 계수 수정 해야함
+// 총기 종류별로 수동으로 수정해야 될 예정

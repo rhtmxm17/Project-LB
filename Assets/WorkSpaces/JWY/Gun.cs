@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-/*public class Gun : MonoBehaviour
+public class Gun : MonoBehaviour
 {
     // 총의 상태를 표현하는 데 사용할 타입을 선언
     public enum State
@@ -29,7 +29,7 @@ using UnityEngine;
 
     private float fireDistance = 50f; // 사정거리
 
-    public int ammoRemain = 100;    // 남은 전체 탄알
+    public int ammoRemain = 30;    // 남은 전체 탄알
     public int magAmmo;             // 현재 탄창에 남아 있는 탄알
 
     private float lastFireTime; // 총을 마지막으로 발사한 시점
@@ -86,14 +86,13 @@ using UnityEngine;
             // 레이가 어떤 물체와 충돌한 경우
 
             // 충돌한 상대방으로부터 IDamageable 오브젝트 가져오기 시도
-            IDamageable   <------  여기이거 오류 고쳐야 함
-                //target = hit.collider.GetComponent<IGraphData>();
+            IDamageable target = hit.collider.GetComponent<IDamageable>();
 
             // 상대방으로부터 IDamageable 오브젝트를 가져오는 데 성공했다면
             if (target != null)
             {
                 // 상대방의 OnDamage 함수를 싱행시켜 상대방에 데미지 주기
-                target.OnDamage(gunData.damage, hit.point, hit.normal);
+                target.Damaged(gunData.damage, 0);
                 // 레이가 충돌한 위치 저장
                 hitPosition = hit.point;
             }
@@ -186,4 +185,4 @@ using UnityEngine;
         state = State.Ready;
     }
 
-}*/
+}
