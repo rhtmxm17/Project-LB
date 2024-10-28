@@ -31,7 +31,8 @@ public class HealPack : Collection
     {
         if (other.tag == "Player")
         {
-            PickupSound();
+            if(player.Hp != player.MaxHp)
+                PickupSound();
 
             Heal();
 
@@ -46,8 +47,10 @@ public class HealPack : Collection
 
     private void UseItem()
     {
-        
-        player.Hp += healValue;
+        if (player.Hp + healValue >= player.MaxHp)
+            player.Hp = player.MaxHp;
+        else
+            player.Hp += healValue;
         
     }
 

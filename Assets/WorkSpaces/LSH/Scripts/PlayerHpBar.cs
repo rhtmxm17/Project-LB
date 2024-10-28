@@ -1,7 +1,7 @@
 using Michsky.UI.Dark;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +14,8 @@ public class PlayerHpBar : MonoBehaviour
     PlayerModel player; //현재체력
 
     private Slider slider;
-    [SerializeField] private int HpPercent; //체력바 퍼센트
+    [SerializeField] private TMP_Text curHp;  //체력바 숫자 표기
+    [SerializeField] private float HpPercent; //체력바 퍼센트
     [SerializeField] private Image HpFillImg; //체력바 색상
 
     private void Awake()
@@ -25,8 +26,8 @@ public class PlayerHpBar : MonoBehaviour
     private void Start()
     {
         player = GameManager.Instance.GetPlayerModel();
-        HpBarColor();
         player.OnHpChange += HpBarColor;
+        HpBarColor();
     }
 
 
@@ -46,17 +47,20 @@ public class PlayerHpBar : MonoBehaviour
         //}
         //else
         //{
-            if (HpPercent >= 40.0f) //체력 40퍼 이상일때
+            if (HpPercent < 0.4f)// 체력 40퍼 미만일때
             {
-                HpFillImg.color = Color.green;
-                //속도 정상임
-            }
-            else if(HpPercent < 40.0f)// 체력 40퍼 미만일때
-            {
+            Debug.Log(1);
                 HpFillImg.color = Color.red;
                 //속도도 느려짐
 
             }
+            else//체력 40퍼 이상일때
+            {
+            Debug.Log(2);
+                HpFillImg.color = Color.green;
+                //속도 정상임
+            }
+        
         //}
 
         
@@ -65,8 +69,8 @@ public class PlayerHpBar : MonoBehaviour
 
     protected void ViewGraph()
     {
-
-        HpPercent = player.Hp/*이후 모델쪽에 최대체력 생기면 Hp를 maxHp로 바꿔주기 or MaxValue를 건드리기*/;
+        curHp.text = ($"{player.Hp} / {player.MaxHp}").ToString();
+        HpPercent = ((float)player.Hp / player.MaxHp);
         slider.value = HpPercent;
     }
 
