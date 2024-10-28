@@ -6,11 +6,11 @@ using UnityEngine.Events;
 public class PlayerModel : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
-    private float moveSpeedMultifier = 1f; // 디버프 수치 계수, 최소값(가장 강한 디버프)만 적용
+    private float moveSpeedMultiplier = 1f; // 디버프 수치 계수, 최소값(가장 강한 디버프)만 적용
     [SerializeField] int maxHp = 100;
     [SerializeField] int hp = 100;
 
-    public float MoveSpeed { get => moveSpeed * moveSpeedMultifier; set => moveSpeed = value; }
+    public float MoveSpeed { get => moveSpeed * moveSpeedMultiplier; set => moveSpeed = value; }
     public int MaxHp { get => maxHp; set => maxHp = value; }
     public int Hp { get => hp; set { hp = value; OnHpChanged(); } }
 
@@ -75,8 +75,8 @@ public class PlayerModel : MonoBehaviour
         }
 
         // 기존 디버프보다 수치가 낮다면(강력하다면) 디버프 갱신
-        if (moveSpeedMultifier > debuff.EffectMultiplier)
-            moveSpeedMultifier = debuff.EffectMultiplier;
+        if (moveSpeedMultiplier > debuff.EffectMultiplier)
+            moveSpeedMultiplier = debuff.EffectMultiplier;
 
         Debug.Log($"디버프 적용 이동속도: {MoveSpeed}");
     }
@@ -105,7 +105,7 @@ public class PlayerModel : MonoBehaviour
         debuffs.RemoveAt(result);
 
         // 가장 수치가 낮은(강력한) 디버프였을 경우 디버프 상태 갱신
-        if (moveSpeedMultifier >= debuff.EffectMultiplier)
+        if (moveSpeedMultiplier >= debuff.EffectMultiplier)
         {
             UpdateDebuffState();
         }
@@ -113,11 +113,11 @@ public class PlayerModel : MonoBehaviour
 
     private void UpdateDebuffState()
     {
-        moveSpeedMultifier = 1f;
+        moveSpeedMultiplier = 1f;
         foreach (var info in debuffs)
         {
-            if (moveSpeedMultifier > info.debuff.EffectMultiplier)
-                moveSpeedMultifier = info.debuff.EffectMultiplier;
+            if (moveSpeedMultiplier > info.debuff.EffectMultiplier)
+                moveSpeedMultiplier = info.debuff.EffectMultiplier;
         }
     }
 

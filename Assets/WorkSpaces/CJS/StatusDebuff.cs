@@ -7,7 +7,7 @@ using UnityEngine;
 /// 일반적으로 디버프 지속시간을 가진다.
 /// 디버프 지속시간이 0 이하일 경우 디버프 부여시 별도의 해제 조건을 UnityAction으로 추가한다.
 /// </summary>
-[CreateAssetMenu(menuName = "ScriptableObject/StatusDebuff")]
+[CreateAssetMenu(menuName = "ScriptableObjects/StatusDebuff")]
 public class StatusDebuff : ScriptableObject
 {
     //public enum Status
