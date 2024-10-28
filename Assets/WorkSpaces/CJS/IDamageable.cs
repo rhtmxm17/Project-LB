@@ -13,5 +13,11 @@ public enum DamageType
 public interface IDamageable
 {
     public Transform transform { get; }
+
+    /// <summary>
+    /// 데미지 발생시 공격자측에서 피격자의 Damaged를 호출한다
+    /// </summary>
+    /// <param name="damage">데미지 수치</param>
+    /// <param name="type"></param>
     public void Damaged(int damage, DamageType type);
 }
