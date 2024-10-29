@@ -41,13 +41,13 @@ public class MonsterTraceToPlayer : MonoBehaviour
 
         if (isChecked == true)
         {
+            monsterAni.SetBool("isChaseOn", true);
             monsterAgent.destination = player.transform.position;
         }
     }
 
     public void ChaseOn()
     {
-        monsterAni.SetBool("isChaseOn", true);
         // RaycastAll로 레이를 발사해서 벽에 가로막혀도 플레이어를 찾을 수 있게 함
         RaycastHit[] hit;
         hit = Physics.RaycastAll(transform.position, transform.forward, maxDistance);
@@ -55,6 +55,7 @@ public class MonsterTraceToPlayer : MonoBehaviour
         {
             if (hit[i].collider.CompareTag("Player"))
             {
+                monsterAni.SetBool("isChaseOn", true);
                 // 플레이어를 시야에서 놓치지 않게 플레이어를 계속 쳐다보게
                 transform.LookAt(player.transform.position);
                 // 그러면 몬스터는 플레이어 위치로 NaviMesh로 이동한다
