@@ -16,6 +16,8 @@ public class GunBase : MonoBehaviour, IUseable
     [SerializeField] Transform muzzleTransform;
     [field: SerializeField] public GunData DataTable { get; set; }
 
+    [field: SerializeField] public int GunLevel { get; set; } = 0;
+
     public int MagazineCapacity => DataTable.magCapacity;
     public int MagazineRemain => magazineRemain;
 
@@ -37,13 +39,11 @@ public class GunBase : MonoBehaviour, IUseable
 
     public void UseBegin()
     {
-        Debug.Log("Gun UseBegin");
         fireRoutine = StartCoroutine(Fire());
     }
 
     public void UseEnd()
     {
-        Debug.Log("Gun UseEnd");
         if (fireRoutine != null)
         {
             StopCoroutine(fireRoutine);
@@ -74,9 +74,10 @@ public class GunBase : MonoBehaviour, IUseable
 
     private void Shot()
     {
+        Debug.DrawRay(muzzleTransform.position, DataTable.range * muzzleTransform.forward, Color.yellow, 0.1f);
+
         // 트레일 등 이펙트를 그리기 위해 탄알이 맞은 곳을 저장
         Vector3 hitPosition = Vector3.zero;
-        Debug.DrawRay(muzzleTransform.position, DataTable.range * muzzleTransform.forward, Color.yellow, 0.1f);
 
         // 레이캐스트(시작 지점, 방향, 충돌 정보 컨테이너, 사정거리)
         if (Physics.Raycast(muzzleTransform.position, muzzleTransform.forward, out RaycastHit hit, DataTable.range, DataTable.layerMask))
@@ -86,12 +87,10 @@ public class GunBase : MonoBehaviour, IUseable
             // 충돌한 상대방으로부터 IDamageable 오브젝트 가져오기 시도
             if (hit.rigidbody != null && hit.rigidbody.TryGetComponent(out IDamageable target))
             {
-                target.Damaged(DataTable.damage, 0);
+                target.Damaged(DataTable.damage + DataTable.damageGrowth * GunLevel, 0);
                 // 레이가 충돌한 위치 저장
                 hitPosition = hit.point;
             }
-
-            Debug.Log($"적중 대상: {hit.collider.name}");
         }
         else
         {
@@ -99,7 +98,6 @@ public class GunBase : MonoBehaviour, IUseable
             // 탄알이 최대 사정거리까지 날아갔을 때의 위치를 충돌 위치로 사용
             hitPosition = muzzleTransform.position + muzzleTransform.forward * DataTable.range;
 
-            Debug.Log($"적중 대상 없음");
         }
 
         // 적중 여부와 무관히 발생하는 처리
@@ -113,7 +111,6 @@ public class GunBase : MonoBehaviour, IUseable
         {
             state = State.Empty;
         }
-
     }
 
     private IEnumerator ShotEffect(Vector3 hitPosition)
