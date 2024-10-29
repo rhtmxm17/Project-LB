@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a662b195c7225248bb9e3326088711b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slot0Gun: {fileID: 920991510862000043}
+  slot1Granade: {fileID: 0}
   hurtDebuffAsset: {fileID: 11400000, guid: 29b338d0001195f42a0a0e4428a9fc58, type: 2}
   hurtReferenceValue: 0.4
   SelfDamageMultiplier: 0.1

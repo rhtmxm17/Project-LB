@@ -8504,7 +8504,7 @@ GameObject:
   - component: {fileID: 870172903}
   - component: {fileID: 870172902}
   - component: {fileID: 870172901}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8539,7 +8539,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterModel: {fileID: 870172903}
-  playerModel: {fileID: 1745776914}
 --- !u!114 &870172903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10932,7 +10931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1092963790}
   - component: {fileID: 1092963791}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BodyCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19680,7 +19679,7 @@ GameObject:
   - component: {fileID: 2080144938}
   - component: {fileID: 2080144940}
   - component: {fileID: 2080144939}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}

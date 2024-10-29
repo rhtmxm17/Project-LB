@@ -31,16 +31,23 @@ public class GunBase : MonoBehaviour, IUseable
     private void Awake()
     {
         firePeriod = new WaitForSeconds(DataTable.timeBetFire);
+        lastFireTime = Time.time;
+        magazineRemain = DataTable.magCapacity;
     }
 
     public void UseBegin()
     {
+        Debug.Log("Gun UseBegin");
         fireRoutine = StartCoroutine(Fire());
     }
 
     public void UseEnd()
     {
-        StopCoroutine(fireRoutine);
+        Debug.Log("Gun UseEnd");
+        if (fireRoutine != null)
+        {
+            StopCoroutine(fireRoutine);
+        }
     }
 
     private IEnumerator Fire()
@@ -83,15 +90,18 @@ public class GunBase : MonoBehaviour, IUseable
                 hitPosition = hit.point;
             }
 
+            Debug.Log($"적중 대상: {hit.collider.name}");
         }
         else
         {
             // 레이가 다른 물체와 충돌하지 않았다면
             // 탄알이 최대 사정거리까지 날아갔을 때의 위치를 충돌 위치로 사용
             hitPosition = muzzleTransform.position + muzzleTransform.forward * DataTable.range;
+
+            Debug.Log($"적중 대상 없음");
         }
 
-        // 적중 여부와 무관한 처리
+        // 적중 여부와 무관히 발생하는 처리
 
         // 발사 이펙트 재생 시작
         StartCoroutine(ShotEffect(hitPosition));
