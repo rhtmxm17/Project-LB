@@ -6577,6 +6577,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe9a19d4f0d796c40bf4fc6b69dd7b81, type: 3}
+--- !u!1 &621793626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2461543858847743954, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+  m_PrefabInstance: {fileID: 1333973813}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &621793627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621793626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2622700d48ff01049813d364809b6bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterModel: {fileID: 0}
+  playerModel: {fileID: 0}
 --- !u!1001 &622808824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10980,7 +10999,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7365981767186575905, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7365981767186575905, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13051,6 +13070,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000011066351628, guid: 36b4cee33c5a95b4fa7f0ae6bdb49564, type: 3}
   m_PrefabInstance: {fileID: 584988547}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1333973813
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2461543858847743954, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+      propertyPath: m_Name
+      value: Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461543858847743958, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461543858847743958, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.465621
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461543858847743958, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461543858847743958, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.484949
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461543858847743958, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461543858847743958, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461543858847743958, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461543858847743958, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461543858847743958, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461543858847743958, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461543858847743958, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 13eaa4e33eae77049ae273b72419e8e2, type: 3}
 --- !u!1001 &1343697568
 PrefabInstance:
   m_ObjectHideFlags: 0
