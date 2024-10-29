@@ -13,12 +13,14 @@ public class MonsterControll : MonoBehaviour
     private void Awake()
     {
         monsterModel = GetComponent<MonsterModel>();
-        
+
     }
 
     private void Start()
     {
         PlayerModel playerModel = GameManager.Instance.GetPlayerModel();
+        monsterModel.MonsterCurHP = 100;
+        monsterModel.MonsterAP = 10;
     }
 
     private void OnEnable()
@@ -33,6 +35,7 @@ public class MonsterControll : MonoBehaviour
 
     public void UpdateMonsterHP(int monsterHp)
     {
+
         // UI 부분: 몬스터의 HP체력바의 수치 변경
     }
 }

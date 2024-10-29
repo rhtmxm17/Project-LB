@@ -6,20 +6,19 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
 {
     [Header("Model")]
     [SerializeField] MonsterModel monsterModel;
-    [SerializeField] PlayerModel playerModel;
-
-    // [Header("Property")]
-    
+    [SerializeField] Animator monsterAni;
 
     private void Awake()
     {
         monsterModel = GetComponent<MonsterModel>();
+        monsterAni = GetComponent<Animator>();
     }
 
     public void Damaged(int damage, DamageType type)
     {
+        monsterAni.SetTrigger("TakenDamage");
         // 몬스터 HP가 damage만큼 감소
-        monsterModel.MonsterHP -= damage;
+        monsterModel.MonsterCurHP -= damage;
         MonsterDead();
     }
 
@@ -27,8 +26,9 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
     {
         if (monsterModel.MonsterHP <= 0)
         {
+            monsterAni.SetTrigger("DeadTrigger");
             // 몬스터 사망시
-            Destroy(gameObject);
+            Destroy(gameObject, 1.5f);
         }
     }
 }
