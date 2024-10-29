@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class InventoryInteractableItemSlot : InventoryItemSlot
 {
 
-    [SerializeField]
     HotKeySystem hotKeySystem;
 
     ClickCallback clickCallback;
@@ -22,6 +21,7 @@ public class InventoryInteractableItemSlot : InventoryItemSlot
         clickCallback.DoubleClickEvent.AddListener(OnDoubleClickEvent);
         clickCallback.DragEvent.AddListener(OnDragEvent);
 
+        hotKeySystem = GameObject.FindWithTag("QuickSlot").GetComponent<HotKeySystem>();
     }
 
     void OnClickEvent(PointerEventData eventData)

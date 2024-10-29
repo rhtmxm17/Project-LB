@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b133c16b5c92df4ebeab3458f6d581b, type: 3}
   m_Name: New Inventory Equable Item SO 2
   m_EditorClassIdentifier: 
-  <ImgSprite>k__BackingField: {fileID: 21300000, guid: 83b320494251cd2438c2604fd91886b0, type: 3}
+  <ImgSprite>k__BackingField: {fileID: 21300000, guid: 821cd8ab7d78f284f8df70922be5e7ff, type: 3}
   <ItemName>k__BackingField: b
   maxCnt: 0
   <slotType>k__BackingField: 1

@@ -41,13 +41,16 @@ public class HotKeySystem : MonoBehaviour
             hotSlots[slotIdx].SetItem(curItem);//아이템 이미지를 설정.
 
         }
-        else if (prv.Item == curItem)
+        else if (prv.Item == curItem && prv == itemSlot)
         {//이전에 장착되어있던 슬롯의 아이템과 장착하려는 아이템이 같은 경우
+         //&& 같은 아이템 슬롯으로부터 온 아이템인 경우
+         // => 완전히 같은 슬롯인 경우.
 
-            hotSlots[slotIdx].PrvItemSlot.SetImageDefault();//인벤토리 이미지를 활성화.
+                hotSlots[slotIdx].PrvItemSlot.SetImageDefault();//인벤토리 이미지를 활성화.
 
-            hotSlots[slotIdx].SetItem(null);//핫키를 비우고.
-            hotSlots[slotIdx].PrvItemSlot = null;//장착을 해제.
+                hotSlots[slotIdx].SetItem(null);//핫키를 비우고.
+                hotSlots[slotIdx].PrvItemSlot = null;//장착을 해제.
+
         }
         else
         {//다른 아이템이 장착되어있었던 경우 
