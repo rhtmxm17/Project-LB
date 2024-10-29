@@ -15,8 +15,6 @@ public class GunBase : MonoBehaviour, IUseable
 
     [SerializeField] Transform muzzleTransform;
     [field: SerializeField] public GunData DataTable { get; set; }
-    [SerializeField] float range; // TODO: 스크립터블 오브젝트로 이동
-    [SerializeField] LayerMask layerMask; // TODO: 스크립터블 오브젝트로 이동
 
     public int MagazineCapacity => DataTable.magCapacity;
     public int MagazineRemain => magazineRemain;
@@ -73,7 +71,7 @@ public class GunBase : MonoBehaviour, IUseable
         Vector3 hitPosition = Vector3.zero;
 
         // 레이캐스트(시작 지점, 방향, 충돌 정보 컨테이너, 사정거리)
-        if (Physics.Raycast(muzzleTransform.position, muzzleTransform.forward, out RaycastHit hit, range, layerMask))
+        if (Physics.Raycast(muzzleTransform.position, muzzleTransform.forward, out RaycastHit hit, DataTable.range, DataTable.layerMask))
         {
             // 레이 적중시
 
@@ -90,7 +88,7 @@ public class GunBase : MonoBehaviour, IUseable
         {
             // 레이가 다른 물체와 충돌하지 않았다면
             // 탄알이 최대 사정거리까지 날아갔을 때의 위치를 충돌 위치로 사용
-            hitPosition = muzzleTransform.position + muzzleTransform.forward * range;
+            hitPosition = muzzleTransform.position + muzzleTransform.forward * DataTable.range;
         }
 
         // 적중 여부와 무관한 처리
