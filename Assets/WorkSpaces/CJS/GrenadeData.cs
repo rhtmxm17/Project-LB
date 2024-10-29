@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// 스테이지별로 구분될 수류탄 정보
 /// </summary>
 [CreateAssetMenu(menuName = "ScriptableObjects/GrenadeData")]
 public class GrenadeData : ScriptableObject
@@ -26,7 +26,12 @@ public class GrenadeData : ScriptableObject
     public int Damage => damage;
     [SerializeField] int damage = 300;
 
+    public float MaxChargeTime => maxChargeTime;
     [SerializeField] float maxChargeTime;
-    [SerializeField] float minChargePower;
-    [SerializeField] float maxChargePower;
+
+    public float MinThrowForce => minThrowForce;
+    [SerializeField] float minThrowForce;
+
+    public float MaxThrowForce => maxThrowForce;
+    [SerializeField] float maxThrowForce;
 }

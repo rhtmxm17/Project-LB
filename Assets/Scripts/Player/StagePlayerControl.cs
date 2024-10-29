@@ -14,6 +14,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 {
     [Header("테스트 셋팅 필드")]
     [SerializeField] GunBase sampleGun;
+    [SerializeField] GrenadeThrower thrower;
 
     [Space(5)]
     [SerializeField] StatusDebuff hurtDebuffAsset;
@@ -64,6 +65,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
         // 테스트 코드
         quickSlot[0] = sampleGun;
+        quickSlot[1] = thrower;
     }
 
     private void OnEnable()

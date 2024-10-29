@@ -18,5 +18,5 @@ MonoBehaviour:
   explosionRange: 3
   damage: 300
   maxChargeTime: 1
-  minChargePower: 1
-  maxChargePower: 10
+  minThrowForce: 1
+  maxThrowForce: 15
