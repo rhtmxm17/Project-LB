@@ -9,6 +9,7 @@ public class MonsterTraceToPlayer : MonoBehaviour
     [Header("GameObject")]
     [SerializeField] NavMeshAgent monsterAgent;
     [SerializeField] GameObject player;
+    [SerializeField] Animator monsterAni;
 
     [Header("Property")]
     [SerializeField] float maxDistance;
@@ -16,10 +17,9 @@ public class MonsterTraceToPlayer : MonoBehaviour
     [SerializeField] float chaseSpeed;
     private bool isChecked;
 
-    bool isTracked;
-
     private void Awake()
     {
+        monsterAni = GetComponent<Animator>();
         monsterAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         isChecked = false;
@@ -28,12 +28,9 @@ public class MonsterTraceToPlayer : MonoBehaviour
     private void Start()
     {
         PlayerModel playerModel = GameManager.Instance.GetPlayerModel();
-        // 몬스터가 쫓아가는 속도 조정
-        monsterAgent.speed = chaseSpeed;
 
         // 몬스터가 플레이어에게 가까이 다가갈때 어느 정도에서 멈출것인가
         monsterAgent.stoppingDistance = distanceStopping;
-
         maxDistance = 100;
     }
 
@@ -50,6 +47,7 @@ public class MonsterTraceToPlayer : MonoBehaviour
 
     public void ChaseOn()
     {
+        monsterAni.SetBool("isChaseOn", true);
         // RaycastAll로 레이를 발사해서 벽에 가로막혀도 플레이어를 찾을 수 있게 함
         RaycastHit[] hit;
         hit = Physics.RaycastAll(transform.position, transform.forward, maxDistance);

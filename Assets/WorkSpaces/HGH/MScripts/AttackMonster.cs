@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AttackMonster : MonoBehaviour
 {
     [Header("Model")]
     [SerializeField] PlayerModel playerModel;
     [SerializeField] MonsterModel monsterModel;
+    [SerializeField] Animator monsterAni;
+    [SerializeField] NavMeshAgent monsterAgent;
 
     [Header("Property")]
     [SerializeField] float rayDistance;
@@ -21,6 +24,8 @@ public class AttackMonster : MonoBehaviour
     private void Start()
     {
         playerModel = GameManager.Instance.GetPlayerModel();
+        monsterAni = GetComponent<Animator>();
+        monsterAgent = GetComponent<NavMeshAgent>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,6 +61,7 @@ public class AttackMonster : MonoBehaviour
 
     public void AttackToPlayer()
     {
+        monsterAni.SetTrigger("StartAttack");
         // 개발도중 Debug.Log 확인
         Debug.Log($"{monsterModel.MonsterAP}만큼의 몬스터 공격력으로 플레이어를 공격했다");
 
@@ -73,7 +79,8 @@ public class AttackMonster : MonoBehaviour
         while (true)
         {
             // 몬스터 공격 딜레이 1초
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
+            
             // 몬스터 공격시작
             AttackToPlayer();
         }
