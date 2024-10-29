@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum EquipSlot { SLOT1, SLOT2, SLOT3, SLOT4, SLOT5, SIZE }
@@ -7,38 +5,62 @@ public enum EquipSlot { SLOT1, SLOT2, SLOT3, SLOT4, SLOT5, SIZE }
 public class HotKeySystem : MonoBehaviour
 {
     [SerializeField]
-    InventoryItemSlot[] hotSlots;
+    InventoryHotKeySlot[] hotSlots;
 
     /// <summary>
-    /// 아이템SO를 전달받아 대응되는 핫키슬롯에 장착.
-    /// [슬롯 범위가 잘못된경우 에러 출력]
+    /// 아이템 슬롯을 받아서 아이템을 장착
     /// </summary>
-    /// <param name="item">장착할 아이템</param>
-    /// <returns>이전에 장착되어있던 아이템SO, 아이템이 없었다면 null반환.</returns>
-    public InventoryItemSO SetItem(InventoryEquableItemSO item) 
+    /// <param name="itemSlot">장착할 아이템이 있는 아이템 슬롯</param>
+    public void EquipItem(InventoryItemSlot itemSlot) 
     {
-        int slotIdx = (int)item.slotType;
+
+        if (!(itemSlot.Item is InventoryEquableItemSO))
+        {
+            Debug.LogError("장착할 수 없는 아이템 장착이 요청됨.");
+            return;
+        }
+
+        //현재 장착하려는 아이템
+        InventoryEquableItemSO curItem = (InventoryEquableItemSO)itemSlot.Item;
+        int slotIdx = (int)curItem.slotType;
 
         if (slotIdx < 0 || slotIdx >= hotSlots.Length)
         {
             Debug.LogError("잘못된 핫 키 타입이 입력됨");
-            return null;
+            return;
         }
 
-        InventoryItemSO prv = hotSlots[slotIdx].Item;
+        //이전에 장착되어있던 슬롯.
+        InventoryInteractableItemSlot prv = hotSlots[slotIdx].PrvItemSlot;
 
-        //장착 취소
-        if (prv == item)
-        {
-            hotSlots[slotIdx].SetItem();
-        }
-        else//장착 교체
-        {
-            hotSlots[slotIdx].SetItem(item);
-        }
+        if (prv == null)
+        {//이전에 장착했었던 슬롯(아이템)이 없는경우
 
-        //같은거면 본인 반환, 다른거면 이전것 반환, 없었다면 null반환.
-        return prv;
+            hotSlots[slotIdx].PrvItemSlot = (InventoryInteractableItemSlot)itemSlot;//장착중인 슬롯을 갱신하고.
+            hotSlots[slotIdx].PrvItemSlot.SetImageUsing();//원본 슬롯에 사용중임을 표시한 뒤
+            hotSlots[slotIdx].SetItem(curItem);//아이템 이미지를 설정.
+
+        }
+        else if (prv.Item == curItem && prv == itemSlot)
+        {//이전에 장착되어있던 슬롯의 아이템과 장착하려는 아이템이 같은 경우
+         //&& 같은 아이템 슬롯으로부터 온 아이템인 경우
+         // => 완전히 같은 슬롯인 경우.
+
+                hotSlots[slotIdx].PrvItemSlot.SetImageDefault();//인벤토리 이미지를 활성화.
+
+                hotSlots[slotIdx].SetItem(null);//핫키를 비우고.
+                hotSlots[slotIdx].PrvItemSlot = null;//장착을 해제.
+
+        }
+        else
+        {//다른 아이템이 장착되어있었던 경우 
+
+            itemSlot.SetImageUsing();//장착할 슬롯은 비활성화하고.
+            hotSlots[slotIdx].PrvItemSlot.SetImageDefault();//이전 아이템을 다시 활성화하고.
+            hotSlots[slotIdx].PrvItemSlot = (InventoryInteractableItemSlot)itemSlot;//장착할 슬롯을 설정한 뒤.
+            hotSlots[slotIdx].SetItem(curItem);//아이템 이미지를 설정.
+
+        }
 
     }
 
