@@ -10,7 +10,6 @@ public class GunData : ScriptableObject
 
     public int damage = 25; // 공격력
 
-    public int startAmmoRemain = 100; // 처음에 주어질 전체 탄알
     public int magCapacity = 25; // 탄창용량
 
     public float timeBetFire = 0.12f; // 탄알 발사 간격
@@ -19,5 +18,3 @@ public class GunData : ScriptableObject
     public float range; // 총기 사거리
     public LayerMask layerMask; // 사격 가능한 대상(지형지물 고려할것)
 }
-
-// 총기 종류별로 수동으로 수정해야 될 예정

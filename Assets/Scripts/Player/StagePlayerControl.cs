@@ -12,6 +12,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerModel))]
 public class StagePlayerControl : MonoBehaviour, IDamageable
 {
+    [Header("테스트 셋팅 필드")]
+    [SerializeField] GunBase sampleGun;
+
+    [Space(5)]
     [SerializeField] StatusDebuff hurtDebuffAsset;
     [SerializeField, Tooltip("그로기 기준 체력 비율")] float hurtReferenceValue = 0.4f;
     private float invHurtReference;
@@ -57,6 +61,9 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         }
 
         invHurtReference = 1f / hurtReferenceValue;
+
+        // 테스트 코드
+        quickSlot[0] = sampleGun;
     }
 
     private void OnEnable()
