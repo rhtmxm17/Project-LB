@@ -17,8 +17,12 @@ public class MonsterControll : MonoBehaviour
     private void Awake()
     {
         monsterModel = GetComponent<MonsterModel>();
+        // 몬스터의 최대HP
         monsterModel.MonsterHP = 100;
+        // 몬스터의 현재HP, 공격받고 HP가 줄어드는건 이 항목이며
+        // 죽는 것도 MonsterCurHP 가 0이 되어야 죽는다
         monsterModel.MonsterCurHP = 100;
+        // 몬스터의 AP
         monsterModel.MonsterAP = 10;
     }
 
