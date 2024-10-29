@@ -49,7 +49,7 @@ public class Gun : MonoBehaviour
     private void OnEnable()
     {
         // 전체 예비 탄알 양을 초기화
-        ammoRemain = gunData.startAmmoRemain;
+        //ammoRemain = gunData.startAmmoRemain;
         // 현재 탄창을 가득 채우기
         magAmmo = gunData.magCapacity;
         // 총의 현재 상태를 총을 쏠 준비가 된 상태로 변경
