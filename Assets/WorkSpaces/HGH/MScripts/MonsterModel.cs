@@ -9,7 +9,7 @@ public class MonsterModel : MonoBehaviour
     [SerializeField] int monsterCurHp;
     [SerializeField] int monsterAp;
 
-    public int MonsterHP { get => monsterHp;}
+    public int MonsterHP { get => monsterHp; set { monsterHp = value; } }
     public int MonsterCurHP { get => monsterCurHp; set { monsterCurHp = value; OnMonsterHPChanged?.Invoke(monsterCurHp); } }
     public int MonsterAP { get { return monsterAp; } set { monsterAp = value; } }
 
