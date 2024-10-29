@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - QucikSlot
+  - PlayerCollider
   layers:
   - Default
   - TransparentFX

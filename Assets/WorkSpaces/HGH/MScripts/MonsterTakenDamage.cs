@@ -16,7 +16,7 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
 
     public void Damaged(int damage, DamageType type)
     {
-        monsterAni.SetTrigger("TakenDamage");
+        monsterAni.SetTrigger("TakenDamaged");
         // 몬스터 HP가 damage만큼 감소
         monsterModel.MonsterCurHP -= damage;
         MonsterDead();
@@ -24,7 +24,7 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
 
     private void MonsterDead()
     {
-        if (monsterModel.MonsterHP <= 0)
+        if (monsterModel.MonsterCurHP <= 0)
         {
             monsterAni.SetTrigger("DeadTrigger");
             // 몬스터 사망시

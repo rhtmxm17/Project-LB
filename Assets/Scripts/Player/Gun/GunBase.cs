@@ -76,6 +76,7 @@ public class GunBase : MonoBehaviour, IUseable
     {
         // 트레일 등 이펙트를 그리기 위해 탄알이 맞은 곳을 저장
         Vector3 hitPosition = Vector3.zero;
+        Debug.DrawRay(muzzleTransform.position, DataTable.range * muzzleTransform.forward, Color.yellow, 0.1f);
 
         // 레이캐스트(시작 지점, 방향, 충돌 정보 컨테이너, 사정거리)
         if (Physics.Raycast(muzzleTransform.position, muzzleTransform.forward, out RaycastHit hit, DataTable.range, DataTable.layerMask))

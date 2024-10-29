@@ -34,10 +34,11 @@ public class AttackMonster : MonoBehaviour
         if (startMonsterAttackRoutine == null)
         {
             // 충돌체와 부딪힌 오브젝트의 태그가 Player라면
-            if (other.gameObject.CompareTag("Player"))
+            if (other.gameObject.CompareTag("PlayerCollider"))
             {
                 // 몬스터의 근접공격 코루틴을 시작시켜라
                 player = other.attachedRigidbody.GetComponent<IDamageable>();
+                
                 startMonsterAttackRoutine = StartCoroutine(MonsterAutoAttack());
             }
         }

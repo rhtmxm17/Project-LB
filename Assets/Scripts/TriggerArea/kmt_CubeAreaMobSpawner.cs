@@ -36,7 +36,7 @@ public class kmt_CubeAreaMobSpawner : kmt_MobSpawner
 
         Vector3 pos;
 
-        foreach (TestMonster monster in monsterPool)
+        foreach (MonsterTraceToPlayer monster in monsterPool)
         {
 
             if (isRandomSpawn)
@@ -57,7 +57,7 @@ public class kmt_CubeAreaMobSpawner : kmt_MobSpawner
             monster.transform.position = transform.TransformPoint(pos);
 
             //todo : 몬스터 추적모드로 바꾸는 함수를 받아서 사용.
-            monster.ChangeToActive();
+            monster.ChaseOn();
 
             yield return spawnTime;
 

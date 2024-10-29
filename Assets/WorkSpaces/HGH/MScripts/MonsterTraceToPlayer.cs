@@ -17,6 +17,8 @@ public class MonsterTraceToPlayer : MonoBehaviour
     [SerializeField] float chaseSpeed;
     private bool isChecked;
 
+    [field: SerializeField] public bool IsSpawnerBased { get; set; } = false;
+
     private void Awake()
     {
         monsterAni = GetComponent<Animator>();
@@ -48,6 +50,19 @@ public class MonsterTraceToPlayer : MonoBehaviour
 
     public void ChaseOn()
     {
+        if (IsSpawnerBased || // 조건1: 스포너에서 생성되었거나
+            ((this.transform.position - player.transform.position).sqrMagnitude < maxDistance * maxDistance)) // 조건2: 플레이어와 거리가 maxDistance 미만이거나
+        {
+            monsterAni.SetBool("isChaseOn", true);
+            // 플레이어를 시야에서 놓치지 않게 플레이어를 계속 쳐다보게
+            transform.LookAt(player.transform.position);
+            // 그러면 몬스터는 플레이어 위치로 NaviMesh로 이동한다
+            monsterAgent.destination = player.transform.position;
+
+            isChecked = true;
+        }
+
+        /*
         // RaycastAll로 레이를 발사해서 벽에 가로막혀도 플레이어를 찾을 수 있게 함
         RaycastHit[] hit;
         hit = Physics.RaycastAll(transform.position, transform.forward, maxDistance);
@@ -64,5 +79,6 @@ public class MonsterTraceToPlayer : MonoBehaviour
                 isChecked = true;
             }
         }
+        */
     }
 }

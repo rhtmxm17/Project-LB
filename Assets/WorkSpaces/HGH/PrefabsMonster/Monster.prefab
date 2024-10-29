@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2461543858847743980}
   - component: {fileID: 2461543858847743982}
   - component: {fileID: 3838887756751021404}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterHp: 100
+  monsterCurHp: 0
   monsterAp: 10
 --- !u!114 &2461543858847743980
 MonoBehaviour:
@@ -199,6 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerModel: {fileID: 0}
   monsterModel: {fileID: 2461543858847743983}
+  monsterAni: {fileID: 0}
+  monsterAgent: {fileID: 0}
   rayDistance: 100
 --- !u!54 &3838887756751021404
 Rigidbody:

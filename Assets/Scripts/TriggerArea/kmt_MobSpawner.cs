@@ -19,7 +19,7 @@ public class kmt_MobSpawner : MonoBehaviour
 
     [Header("Monster Types")]
     [SerializeField]
-    protected TestMonster[] spawnType;
+    protected MonsterTraceToPlayer[] spawnType;
 
     [Header("Spawn Random Monster Type In Arr")]
     [SerializeField]
@@ -30,14 +30,14 @@ public class kmt_MobSpawner : MonoBehaviour
     protected UnityEvent EndSpawnEvent;
 
     //todo : 작성중이신 몬스터 타입으로 바꿔 작성하기.
-    protected TestMonster[] monsterPool;
+    protected MonsterTraceToPlayer[] monsterPool;
     protected WaitForSeconds spawnTime;
 
     protected virtual void Awake()
     {
 
         spawnTime = new WaitForSeconds(spawnDelay);
-        monsterPool = new TestMonster[spawnCount];
+        monsterPool = new MonsterTraceToPlayer[spawnCount];
 
     }
 
@@ -63,12 +63,12 @@ public class kmt_MobSpawner : MonoBehaviour
 
     protected virtual IEnumerator SpawningCo() {
 
-        foreach (TestMonster monster in monsterPool) { 
+        foreach (MonsterTraceToPlayer monster in monsterPool) { 
         
             monster.gameObject.SetActive(true);
 
             //todo : 몬스터 추적모드로 바꾸는 함수를 받아서 사용.
-            monster.ChangeToActive();
+            monster.ChaseOn();
 
             yield return spawnTime;
 
