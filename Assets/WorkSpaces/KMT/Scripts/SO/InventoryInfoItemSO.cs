@@ -14,6 +14,7 @@ public class InventoryInfoItemSO : InventoryItemSO, IClickable
     public void OnClickEvent(PointerEventData eventData)
     {
         //todo : 설명 ui 띄우기.
+        //todo : 이미 설명이 나와있으면 중복호출 막기(깜빡거리는 현상 방지)
     }
 
 }

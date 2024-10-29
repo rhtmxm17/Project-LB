@@ -29,6 +29,7 @@ public class InventoryInteractableItemSlot : InventoryItemSlot
         if (Item is IClickable)
         {
             Debug.Log("설명(클릭 대응 이벤트)이 있는 아이템입니다.");
+            ((IClickable)Item).OnClickEvent(eventData);
         }
         Debug.Log("click");
     }
@@ -38,7 +39,9 @@ public class InventoryInteractableItemSlot : InventoryItemSlot
         if (Item is IDoubleClickable)
         {
             Debug.Log("장착이 가능(더블클릭 대응 이벤트)한 아이템입니다.");
-            hotKeySystem.SetItem((InventoryEquableItemSO)Item);
+            ((IDoubleClickable)Item).OnDoubleClickEvent(eventData);
+
+            hotKeySystem.EquipItem(this);
         }
         Debug.Log("doubleClick");
     }
