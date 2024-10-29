@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunData : MonoBehaviour
+[CreateAssetMenu(menuName = "ScriptableObjects/GunData")]
+public class GunData : ScriptableObject
 {
     public AudioClip shotClip; // 발사 소리
     public AudioClip reloadClip; // 재장전 소리
@@ -14,6 +15,9 @@ public class GunData : MonoBehaviour
 
     public float timeBetFire = 0.12f; // 탄알 발사 간격
     public float reloadTime = 1.8f; //재장전 소요 시간
+
+    public float range; // 총기 사거리
+    public LayerMask layerMask; // 사격 가능한 대상(지형지물 고려할것)
 }
 
 // 총기 종류별로 수동으로 수정해야 될 예정

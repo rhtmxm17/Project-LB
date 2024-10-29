@@ -57,6 +57,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
+--- !u!4 &4026061909029486988 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1026120367568372544, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
+  m_PrefabInstance: {fileID: 4171163317753856716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7365981765636108515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6907338288615748143, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
+  m_PrefabInstance: {fileID: 4171163317753856716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &920991510862000043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7365981765636108515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7da806f50c7224485e005a1097179f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzleTransform: {fileID: 4026061909029486988}
+  <DataTable>k__BackingField: {fileID: 11400000, guid: 837bb5029ad680541b2974e13688e6b3, type: 2}
 --- !u!1 &7365981767186575910 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6907338289782665450, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
@@ -74,5 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a662b195c7225248bb9e3326088711b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slot0Gun: {fileID: 920991510862000043}
+  slot1Granade: {fileID: 0}
   hurtDebuffAsset: {fileID: 11400000, guid: 29b338d0001195f42a0a0e4428a9fc58, type: 2}
   hurtReferenceValue: 0.4
+  SelfDamageMultiplier: 0.1
