@@ -1,62 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class InventoryItemSlot : ClickCallback
+public class InventoryItemSlot : MonoBehaviour
 {
     //todo : 테스트용
     public InventoryItemSO Item;
-/*    public InventoryItemSO Item 
-    { 
-        get { return Item; }
-        set 
+    /*    public InventoryItemSO Item 
         { 
-            Item = value;
-            //if(Item != null)
-            //img = Item.img;
-            //todo : 스프라이트 타입 이미지.
-        } 
-    }*/
+            get { return Item; }
+            set 
+            { 
+                Item = value;
+                //if(Item != null)
+                //img = Item.img;
+                //todo : 스프라이트 타입 이미지.
+            } 
+        }*/
 
-    Image img;
+    protected Image img;
 
-    protected override void Awake()
+    protected virtual void Awake()
     {
-        base.Awake();
-
-        ClickEvent += OnClickEvent;
-        DoubleClickEvent += OnDoubleClickEvent;
-        DragEvent += OnDragEvent;
-
         img = GetComponent<Image>();
-    }
 
-    void OnClickEvent(PointerEventData eventData)
-    {
-        if (Item is IClickable)
+        if (Item != null)
         {
-            Debug.Log("설명(클릭 대응 이벤트)이 있는 아이템입니다.");
+            img.sprite = Item.ImgSprite;
         }
-        Debug.Log("click");
+
     }
 
-    void OnDoubleClickEvent(PointerEventData eventData)
+    /// <summary>
+    /// 슬롯이 차지할 아이템을 바꿈.
+    /// null인 경우(기본) 아이템 창을 비움.
+    /// </summary>
+    /// <param name="item"></param>
+    public void SetItem(InventoryItemSO item = null)
     {
-        if (Item is IDoubleClickable)
+        if (item == null)
         {
-            Debug.Log("장착이 가능(더블클릭 대응 이벤트)한 아이템입니다.");
+            img.sprite = null;
         }
-        Debug.Log("doubleClick");
-    }
+        else
+        {
+            img.sprite = item.ImgSprite;
+        }
 
-    void OnDragEvent(PointerEventData eventData)
-    {
-        //todo? : 확장성 여지.
-        //Debug.Log("draging");
+        Item = item;
     }
 
 }
-

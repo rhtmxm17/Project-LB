@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
@@ -9,18 +10,18 @@ public class ClickCallback : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
 {
 
     [SerializeField]
-    protected bool useDoubleClick;
+    bool useDoubleClick;
     [SerializeField]
-    protected float doubleClickThreshold;
+    float doubleClickThreshold;
 
     Coroutine doubleClickCoroutine = null;
     WaitForSeconds doubleClickWait;
 
-    protected event Action<PointerEventData> ClickEvent;
-    protected event Action<PointerEventData> DoubleClickEvent;
-    protected event Action<PointerEventData> DragEvent;
+    public UnityEvent<PointerEventData> ClickEvent;
+    public UnityEvent<PointerEventData> DoubleClickEvent;
+    public UnityEvent<PointerEventData> DragEvent;
 
-    protected virtual void Awake()
+    private void Awake()
     {
         doubleClickWait = new WaitForSeconds(doubleClickThreshold);
     }
@@ -58,7 +59,6 @@ public class ClickCallback : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
             doubleClickCoroutine = null;
         }
     }
-
 
     public void OnDrag(PointerEventData eventData)
     {
