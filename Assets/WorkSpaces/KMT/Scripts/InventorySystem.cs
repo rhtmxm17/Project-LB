@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
+using TMPro;
 using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
@@ -17,6 +15,12 @@ public class InventorySystem : MonoBehaviour
 
     InventoryItemSlot[] itemSlotArr;
 
+    [Header("Lower UI Text")]
+    [SerializeField]
+    TextMeshProUGUI foodText;
+    [SerializeField]
+    TextMeshProUGUI gearText;
+
     PlayerData playerData;
     ItemDataTableSO dataTable;
 
@@ -25,8 +29,8 @@ public class InventorySystem : MonoBehaviour
         itemSlotArr = new InventoryItemSlot[slotCount];
 
         for (int i = 0; i < slotCount; i++)
-        { 
-            itemSlotArr[i] = 
+        {
+            itemSlotArr[i] =
                 Instantiate(ItemSlotPrefab, itemSlotParent)
                 .GetComponentInChildren<InventoryItemSlot>();
 
@@ -47,6 +51,8 @@ public class InventorySystem : MonoBehaviour
             InitItemSlot(dataTable.GetItemDataSO(tmpData.itemType), tmpData.invenIdx);
 
         }
+
+        RefreshText();
 
     }
 
@@ -72,7 +78,7 @@ public class InventorySystem : MonoBehaviour
         }
 
         itemSlotArr[idx].SetItem(item);
-        
+
 
     }
 
@@ -137,6 +143,63 @@ public class InventorySystem : MonoBehaviour
 
         itemSlotArr[idx].SetItem();
 
+    }
+
+
+    /// <summary>
+    /// 하단 아이템 텍스트 정보 갱신
+    /// </summary>
+    private void RefreshText()
+    {
+        foodText.text = playerData.Food.ToString();
+        gearText.text = playerData.Gear.ToString();
+    }
+
+    public int CurrentFood()
+    {
+        return playerData.Food;
+    }
+
+    public bool UseFood(int amount)
+    {
+        if (playerData.UseFood(amount))
+        {
+            RefreshText();
+            return true;
+        }
+
+        //음식 부족
+        return false;
+    }
+
+    public void AddFood(int amount)
+    {
+        RefreshText();
+        playerData.AddFood(amount);
+    }
+
+
+    public int CurrentGear()
+    {
+        return playerData.Food;
+    }
+
+    public bool UseGear(int amount)
+    {
+        if (playerData.UseGear(amount))
+        {
+            RefreshText();
+            return true;
+        }
+
+        //기어 부족
+        return false;
+    }
+
+    public void AddGear(int amount)
+    {
+        RefreshText();
+        playerData.AddGear(amount);
     }
 
 }

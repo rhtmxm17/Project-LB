@@ -4,17 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [CreateAssetMenu(menuName = "Inventory/Items/InfoItem")]
-public class InventoryInfoItemSO : InventoryItemSO, IClickable
+public class InventoryInfoItemSO : InventoryItemSO
 {
 
-    //[SerializeField]
-    //int uiobj or infoSO;
-    //todo : 설명 데이터, ui구조 정의하기.
+    [field: SerializeField]
+    [field: TextArea]
+    public string Description {  get; private set; }
 
-    public void OnClickEvent(PointerEventData eventData)
-    {
-        //todo : 설명 ui 띄우기.
-        //todo : 이미 설명이 나와있으면 중복호출 막기(깜빡거리는 현상 방지)
-    }
+    [field: SerializeField]
+    public DetailDescriptionSO DetailInfoSO { get; private set; } = null;
 
 }

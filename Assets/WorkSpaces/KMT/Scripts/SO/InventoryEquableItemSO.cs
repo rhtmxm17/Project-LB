@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [CreateAssetMenu(menuName = "Inventory/Items/EquableItem")]
-public class InventoryEquableItemSO : InventoryInfoItemSO, IDoubleClickable
+public class InventoryEquableItemSO : InventoryInfoItemSO
 {
     //todo : 인터페이스 제거
     [field: Header("Equip Type")]
@@ -13,10 +13,10 @@ public class InventoryEquableItemSO : InventoryInfoItemSO, IDoubleClickable
 
     public bool IsEquip {  get; private set; }
 
-    public void OnDoubleClickEvent(PointerEventData eventData)
-    {
-        //todo : 무기 타입에 따라서 장★착 하기.
-    }
-
+    [field: Header("Param")]
+    [field: SerializeField]
+    public int AttackPoint { get; private set; }
+    [field: SerializeField]
+    public int AdditiveAttackPoint { get; private set; }
 
 }

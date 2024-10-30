@@ -6,6 +6,7 @@ TagManager:
   tags:
   - QuickSlot
   - PlayerCollider
+  - InfoWindow
   layers:
   - Default
   - TransparentFX

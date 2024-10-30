@@ -13,6 +13,10 @@ public class Tester : MonoBehaviour
     [SerializeField]
     InventorySystem inven;
 
+
+    [SerializeField]
+    int foodAmount;
+
     public void AddButton()
     { 
         inven.AddItem(itemSO, idx);
@@ -21,5 +25,15 @@ public class Tester : MonoBehaviour
     public void RemoveButton()
     {
         inven.RemoveItem(idx);
+    }
+
+    public void AddFood()
+    { 
+        inven.AddFood(foodAmount);
+    }
+
+    public void UseFood()
+    { 
+        inven.UseFood(foodAmount);
     }
 }
