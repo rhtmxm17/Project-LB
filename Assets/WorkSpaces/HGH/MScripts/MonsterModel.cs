@@ -42,5 +42,7 @@ public class MonsterModel : MonoBehaviour
 
         if (DataTable != null)
             Init();
+        else
+            Debug.LogWarning("몬스터 데이터가 비어있음");
     }
 }
