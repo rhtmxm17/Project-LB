@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class InventorySystem : MonoBehaviour
 
     private void Awake()
     {
+        
         itemSlotArr = new InventoryItemSlot[slotCount];
 
         for (int i = 0; i < slotCount; i++)
@@ -55,6 +57,12 @@ public class InventorySystem : MonoBehaviour
         RefreshText();
 
     }
+
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
 
     //todo : 아이템을 추가할 때 playerdata에 갯수 추가하는 작업 필요(max보다 많으면 기각)
 
@@ -174,8 +182,8 @@ public class InventorySystem : MonoBehaviour
 
     public void AddFood(int amount)
     {
-        RefreshText();
         playerData.AddFood(amount);
+        RefreshText();
     }
 
 
@@ -198,8 +206,8 @@ public class InventorySystem : MonoBehaviour
 
     public void AddGear(int amount)
     {
-        RefreshText();
         playerData.AddGear(amount);
+        RefreshText();
     }
 
 }
