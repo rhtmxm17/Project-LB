@@ -33,38 +33,9 @@ public class InGameUiManager : MonoBehaviour
         //스테이지 클리어시 넘어올 이벤트함수
 
         //강조 이미지를 퀵슬롯 1번칸 위치로 초기화
-        SetChoiceSlot(1);
+        SetChoiceSlot(0);
     }
 
-    /// <summary>
-    /// 테스트용 Update
-    /// </summary>
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetChoiceSlot(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetChoiceSlot(2);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SetChoiceSlot(3);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            SetChoiceSlot(4);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            SetChoiceSlot(5);
-        }
-
-
-
-    }
 
     ///----------------------------------------------------
     ///----------------------------------------------------
@@ -88,8 +59,8 @@ public class InGameUiManager : MonoBehaviour
     /// <summary>
     /// 퀵슬롯의 n번째 칸을 선택했을때 호출될 함수입니다. 선택된 번호 n번째 칸의 슬롯을 강조 표시합니다.
     /// </summary>
-    /// /// <param name="num">지정할 퀵슬롯의 번호를 의미합니다. (범위: 1~5)</param>
-    private void SetChoiceSlot(int num)
+    /// /// <param name="num">지정할 퀵슬롯의 번호를 의미합니다. (범위: 0~4)</param>
+    public void SetChoiceSlot(int num)
     {
         /// 퀵슬롯에 등록된 내용이 변경될 때가 아닌,
         /// 퀵슬롯 1번 선택중인데 n번으로 선택할래 <--의 경우 호출되는 함수
@@ -105,12 +76,12 @@ public class InGameUiManager : MonoBehaviour
         {
             ChoiceSlot[i].enabled = false;
         }
-        ChoiceSlot[num - 1].enabled = true;
+        ChoiceSlot[num].enabled = true;
 
         //선택한 총기의 이미지를 오른쪽 하단에도 띄움 (CurGun)
         /// 인게임에 진입 후, 1 2 5번 슬롯이 선택됐다면
         /// 해당 총기 이미지를 CurGun에 띄우는 기능도 추가.
-        curGunImg.sprite = SlotImage[num - 1].sprite;
+        curGunImg.sprite = SlotImage[num].sprite;
         
 
     }
@@ -124,7 +95,6 @@ public class InGameUiManager : MonoBehaviour
     {
         gameOverUI.SetActive(true);
         Time.timeScale = 0f;
-        Debug.LogError("집었던 설계도와 일지 다시 잃어버리게 하는것 여기서 진행하면 될까요?");
 
     }
 
@@ -137,7 +107,6 @@ public class InGameUiManager : MonoBehaviour
     {
         gameClearUI.SetActive(true);
         Time.timeScale = 0f;
-        Debug.LogError("집었던 설계도와 일지 데이터 세이브하는것 여기서 진행하면 될까요?");
 
     }
 
