@@ -14,7 +14,7 @@ public class AttackMonster : MonoBehaviour
     [Header("Property")]
     [SerializeField] float rayDistance;
 
-    private IDamageable player;
+    public IDamageable player;
 
     private void Awake()
     {
@@ -26,6 +26,12 @@ public class AttackMonster : MonoBehaviour
         playerModel = GameManager.Instance.GetPlayerModel();
         monsterAni = GetComponent<Animator>();
         monsterAgent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Update()
+    {
+        // 몬스터 이동속도를 1로 만들기
+        monsterAgent.speed = 1;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,11 +68,9 @@ public class AttackMonster : MonoBehaviour
 
     public void AttackToPlayer()
     {
-        // 몬스터 이동속도를 0으로
-        monsterAgent.speed = 0;
-
         // 몬스터 애니메이션에서 공격모션 재생 트리거
         monsterAni.SetTrigger("StartAttack");
+
         // 개발도중 Debug.Log 확인
         Debug.Log($"{monsterModel.MonsterAP}만큼의 몬스터 공격력으로 플레이어를 공격했다");
 
@@ -84,14 +88,12 @@ public class AttackMonster : MonoBehaviour
         while (true)
         {
             // 몬스터 공격 딜레이 1초
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             
             // 몬스터 공격시작
             AttackToPlayer();
+            
             yield return new WaitForSeconds(0.2f);
-
-            // 몬스터 이동속도를 1로 만들기
-            monsterAgent.speed = 1;
         }
     }
 }

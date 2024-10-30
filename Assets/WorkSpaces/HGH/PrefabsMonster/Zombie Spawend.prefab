@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: <IsSpawnerBased>k__BackingField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2944405916143816254, guid: 3573384d065e67e4fa827c9d30bda218, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8450804305950685866, guid: 3573384d065e67e4fa827c9d30bda218, type: 3}
       propertyPath: m_RootOrder
       value: 0
