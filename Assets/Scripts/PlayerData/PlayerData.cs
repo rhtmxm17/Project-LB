@@ -3,6 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using static StageConditionDialogueSO;
+using JetBrains.Annotations;
+using Unity.VisualScripting.FullSerializer;
+
+[Serializable]
+public class ItemData 
+{
+
+    [SerializeField]
+    public int invenIdx;
+    [SerializeField]
+    public ItemType itemType;
+    [SerializeField]
+    public int count;
+
+    [SerializeField]
+    public int WeaponLevel;
+
+}
+
+//todo : 아이템 데이터테이블 작성 필요. => 다른곳에 static dic형식으로 작성하면 될 듯.
 
 [Serializable]
 public class PlayerData
@@ -20,15 +40,19 @@ public class PlayerData
     public bool[] hiddenArr;
     public bool[] storyArr;
 
+    public List<ItemData> inventoryData;
+
     [SerializeField] int food;
     [SerializeField] int gear;
 
     public int MaxHP { get { return maxHP; } private set { } }
     public int Level { get { return level; } private set { } }
     public int Exp { get { return exp; } private set { } }
+    public List<ItemData> InventoryData {  get { return inventoryData; } private set { } }
     public int Food { get { return food; } private set { } }
     public int Gear { get { return gear; } private set { } }
 
+    //불러올 데이터가 없을 때 또는 새로 데이터를 만들 때 호출
     public PlayerData() {
 
         maxHP = 100;
@@ -37,27 +61,56 @@ public class PlayerData
         level = 1;
         exp = 0;
 
-        //todo : 벨런스 조정
-        reqExpArr = new int[] { 100, 200, 300, 400, 500, 600 };
+        reqExpArr = new int[] { 50, 100, 150, 200, 300, 300 };
 
         stageClearCntArr = new int[] { 0, 0, 0, 0 };
         hiddenArr = new bool[] { false, false, false };
         storyArr = new bool[] { false, false, false, false, false };
+
+        inventoryData = new List<ItemData>(21);
+        InitInventory();
 
         food = 0;
         gear = 0;
 
     }
 
+    void InitInventory() 
+    {
+        int itemTypeCnt = (int)ItemType.SIZE;
+
+        for (int i = 0; i < itemTypeCnt; i++)
+        {
+
+            ItemData tmp;
+
+            tmp = new ItemData()
+            {
+                itemType = (ItemType)i,
+                invenIdx = 0,
+                count = 0,
+
+                //필요한 경우에만 사용하기.
+                WeaponLevel = 1
+            };
+
+            inventoryData.Add(tmp);
+        }
+
+    }
+
+
+
     /// <summary>
     /// 경험치 추가
     /// </summary>
-    /// <param name="amount">추가할 양</param>
-    public void AddExp(int amount) {
+    /// <param name="amount">획득할 경험치</param>
+    /// <returns>레벨업을 한 경우 true반환, 아닌경우 false반환</returns>
+    public bool AddExp(int amount) {
 
         //만랩인경우
         if (level >= reqExpArr.Length)
-            return;
+            return false;
 
         exp += amount;
 
@@ -67,7 +120,10 @@ public class PlayerData
             exp -= reqExpArr[level - 1];
             level++;
             maxHP += hpIncreaseAmount;
+            return true;
         }
+
+        return false;
 
     }
 

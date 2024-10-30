@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
 
@@ -12,11 +13,14 @@ public class PlayerCharacterControllerControl : MonoBehaviour
     [SerializeField] float maxVerticalCameraAngle = 70f;
     [SerializeField] Vector2 cameraSensitivity = Vector2.one * 0.5f;
 
+    public bool IsMoving { get; private set; }
+    public Vector3 Velocity => controller.velocity; // 실시간 이동중인 속도
+
     private InputAction moveAction;
     private InputAction lookAction;
     private PlayerModel model;
     private CharacterController controller;
-    private float MoveSpeed => model.MoveSpeed;
+    private float MoveSpeed => model.MoveSpeed; // 능력치로서의 이동 속도
     private float verticalCameraAngle;
     private Coroutine moveRoutine;
 
@@ -60,21 +64,24 @@ public class PlayerCharacterControllerControl : MonoBehaviour
         {
             Vector2 moveInput = moveAction.ReadValue<Vector2>();
 
-            // 카메라의 up, forward를 xz평면에서의 이동 방향으로 변환
-            Vector3 moveAxisX = Camera.main.transform.right;
-            Vector3 moveAxisY = Camera.main.transform.forward;
+            IsMoving = (moveInput != Vector2.zero);
+            if (IsMoving)
+            {
+                // 카메라의 up, forward를 xz평면에서의 이동 방향으로 변환
+                Vector3 moveAxisX = Camera.main.transform.right;
+                Vector3 moveAxisY = Camera.main.transform.forward;
 
-            moveAxisX.y = 0f;
-            moveAxisY.y = 0f;
+                moveAxisX.y = 0f;
+                moveAxisY.y = 0f;
 
-            moveAxisX.Normalize();
-            moveAxisY.Normalize();
+                moveAxisX.Normalize();
+                moveAxisY.Normalize();
 
-            // 입력 방향과 속도 능력치를 적용
-            Vector3 velocity = MoveSpeed * (moveAxisX * moveInput.x + moveAxisY * moveInput.y);
+                // 입력 방향과 속도 능력치를 적용
+                Vector3 velocity = MoveSpeed * (moveAxisX * moveInput.x + moveAxisY * moveInput.y);
 
-            controller.SimpleMove(velocity);
-
+                controller.SimpleMove(velocity);
+            }
             yield return null;
         }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -15,8 +16,8 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     [Header("테스트 셋팅 필드")]
     [SerializeField] GunBase sampleGun;
     [SerializeField] GrenadeThrower thrower;
-
     [Space(5)]
+
     [SerializeField] StatusDebuff hurtDebuffAsset;
     [SerializeField, Tooltip("그로기 기준 체력 비율")] float hurtReferenceValue = 0.4f;
     private float invHurtReference;
@@ -34,6 +35,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
     [SerializeField] IUseable[] quickSlot = new IUseable[MaxSlot];
 
+    public event UnityAction OnAttack;
     private InputAction fireAction;
     private InputAction[] selectActions = new InputAction[MaxSlot];
     private Dictionary<string, int> selectActionDict = new Dictionary<string, int>(10);
@@ -65,6 +67,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
         // 테스트 코드
         quickSlot[0] = sampleGun;
+        sampleGun.OnShot += InvokeAttack;
         quickSlot[1] = thrower;
     }
 
@@ -99,9 +102,15 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         SelectSlot(selectActionDict[context.action.name]);
     }
 
-    private void FireStarted(InputAction.CallbackContext _) => SelectedUseable?.UseBegin();
+    private void FireStarted(InputAction.CallbackContext _)
+    {
+        SelectedUseable?.UseBegin();
+    } 
 
-    private void FireCanceled(InputAction.CallbackContext _) => SelectedUseable?.UseEnd();
+    private void FireCanceled(InputAction.CallbackContext _)
+    {
+        SelectedUseable?.UseEnd();
+    }
 
     private void SelectSlot(int index)
     {
@@ -114,6 +123,8 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         }
         curSlotIndex = index;
     }
+
+    private void InvokeAttack() => OnAttack?.Invoke();
 
     public void Damaged(int damage, DamageType type = 0)
     {

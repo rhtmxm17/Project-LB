@@ -2101,7 +2101,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8450804305950685866}
   - component: {fileID: 8360677893861217942}
-  - component: {fileID: 8970129804556774323}
   - component: {fileID: 2437329891260381116}
   - component: {fileID: 2944405916143816254}
   - component: {fileID: 6595108604664090800}
@@ -2111,6 +2110,7 @@ GameObject:
   - component: {fileID: 6718467465038737159}
   - component: {fileID: 5270065431756562885}
   - component: {fileID: 1261936005182774351}
+  - component: {fileID: 6478164651878404997}
   m_Layer: 2
   m_Name: Zombie
   m_TagString: Untagged
@@ -2158,20 +2158,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &8970129804556774323
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8453821858244195410}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 10
-  m_Height: 1.9079896
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.93115383, z: 0}
 --- !u!195 &2437329891260381116
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2256,6 +2242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterModel: {fileID: 0}
   monsterAni: {fileID: 0}
+  rigid: {fileID: 0}
+  monsterAgent: {fileID: 0}
 --- !u!114 &2402829140540979405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2268,9 +2256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc11461a5e3a00546bd1c55b83c32368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <DataTable>k__BackingField: {fileID: 11400000, guid: c35ac25cfae659848b53338941ea153a, type: 2}
   monsterHp: 100
   monsterCurHp: 0
-  monsterAp: 0
 --- !u!114 &6718467465038737159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2284,8 +2272,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterModel: {fileID: 0}
-  variableHP: 0
-  variableAP: 0
 --- !u!114 &5270065431756562885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2301,7 +2287,6 @@ MonoBehaviour:
   playerModel: {fileID: 0}
   monsterModel: {fileID: 0}
   monsterAni: {fileID: 0}
-  monsterAgent: {fileID: 0}
   rayDistance: 0
 --- !u!114 &1261936005182774351
 MonoBehaviour:
@@ -2317,6 +2302,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterModel: {fileID: 0}
   monsterAni: {fileID: 0}
+  rigid: {fileID: 0}
+  monsterAgent: {fileID: 0}
+--- !u!135 &6478164651878404997
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8453821858244195410}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8453823426835237044
 GameObject:
   m_ObjectHideFlags: 0
