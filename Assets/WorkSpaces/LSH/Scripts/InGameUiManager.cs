@@ -95,7 +95,7 @@ public class InGameUiManager : MonoBehaviour
         /// 퀵슬롯 1번 선택중인데 n번으로 선택할래 <--의 경우 호출되는 함수
 
         //벙커에서 인게임 들어오기 전에 선택한 총기 정보를 받아옴
-        /// 스테이지 들어갈때, 1 2 5번의 무기를 이미 정하고 들어가기 때문에
+        /// 스테이지 들어갈때, 1 2 5번의 무기를 미리 선택한 후, 이미 정하고 들어가기 때문에
         /// 1 2 5번에 들어갈 이미지를 스테이지 매니저한테 넣어달라고 요청한 후에 
         /// 설정된 채로 인게임 진입하는게 맞는 순서라고 판단했습니다.
 
@@ -110,10 +110,8 @@ public class InGameUiManager : MonoBehaviour
         //선택한 총기의 이미지를 오른쪽 하단에도 띄움 (CurGun)
         /// 인게임에 진입 후, 1 2 5번 슬롯이 선택됐다면
         /// 해당 총기 이미지를 CurGun에 띄우는 기능도 추가.
-        if (num == 1 || num == 2 || num == 5)
-        {
-            curGunImg = SlotImage[num - 1];
-        }
+        curGunImg.sprite = SlotImage[num - 1].sprite;
+        
 
     }
 
