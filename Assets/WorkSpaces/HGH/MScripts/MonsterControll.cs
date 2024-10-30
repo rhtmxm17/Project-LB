@@ -24,6 +24,11 @@ public class MonsterControll : MonoBehaviour
         monsterModel.MonsterCurHP = 100;
         // 몬스터의 AP
         monsterModel.MonsterAP = 10;
+
+        // 바꿀 수 있는 몬스터 HP와 AP 변수
+        // 초기값으로 기본몬스터 값으로 설정
+        variableHP = 100;
+        variableAP = 10;
     }
 
     private void Start()
@@ -39,7 +44,7 @@ public class MonsterControll : MonoBehaviour
     public void MonsterStatus()
     {
         // 몬스터의 HP를 variableHP를 조정하여 변동 가능
-        monsterModel.MonsterCurHP = variableHP;
+        monsterModel.MonsterHP = variableHP;
 
         // 몬스터의 AP를 variableAP를 조정하여 변동 가능
         monsterModel.MonsterAP = variableAP;
