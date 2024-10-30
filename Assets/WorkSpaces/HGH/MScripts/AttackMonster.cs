@@ -9,29 +9,34 @@ public class AttackMonster : MonoBehaviour
     [SerializeField] PlayerModel playerModel;
     [SerializeField] MonsterModel monsterModel;
     [SerializeField] Animator monsterAni;
-    [SerializeField] NavMeshAgent monsterAgent;
 
     [Header("Property")]
     [SerializeField] float rayDistance;
 
     public IDamageable player;
+    private SphereCollider attackTrigger;
 
     private void Awake()
     {
         monsterModel = GetComponent<MonsterModel>();
+        attackTrigger = GetComponent<SphereCollider>();
     }
 
     private void Start()
     {
         playerModel = GameManager.Instance.GetPlayerModel();
         monsterAni = GetComponent<Animator>();
-        monsterAgent = GetComponent<NavMeshAgent>();
+        monsterModel.OnInit += Init;
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        // 몬스터 이동속도를 1로 만들기
-        monsterAgent.speed = 1;
+        monsterModel.OnInit -= Init;
+    }
+
+    private void Init()
+    {
+        attackTrigger.radius = monsterModel.DataTable.AttackRange;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -85,15 +90,15 @@ public class AttackMonster : MonoBehaviour
 
     IEnumerator MonsterAutoAttack()
     {
+        WaitForSeconds period = new WaitForSeconds(monsterModel.DataTable.AttackPeriod);
         while (true)
         {
-            // 몬스터 공격 딜레이 1초
-            yield return new WaitForSeconds(1f);
+            // 몬스터 공격 딜레이 1초 -> 테이블에서 가져오기
+            yield return period;
             
             // 몬스터 공격시작
             AttackToPlayer();
             
-            yield return new WaitForSeconds(0.2f);
         }
     }
 }
