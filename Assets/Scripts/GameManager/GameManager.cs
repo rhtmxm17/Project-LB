@@ -1,3 +1,5 @@
+using System;
+using System.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +13,10 @@ public class GameManager : MonoBehaviour
     SceneChanger sceneChanger = null;
 
     PlayerModel playerModel = null;
-    
+
+    [SerializeField]
+    ItemDataTableSO dataTable;
+
 
     private void Awake()
     {
@@ -21,6 +26,8 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(Instance);
             playerData = FileIOSystem.LoadPlayerData();
             sceneChanger = GetComponent<SceneChanger>();
+
+            dataTable.InitDataTable();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -62,6 +69,15 @@ public class GameManager : MonoBehaviour
     public PlayerModel GetPlayerModel() 
     {
         return playerModel;
+    }
+
+    /// <summary>
+    /// 데이터 테이블을 반환
+    /// </summary>
+    /// <returns></returns>
+    public ItemDataTableSO GetItemDataTable()
+    {
+        return dataTable;
     }
 
 }

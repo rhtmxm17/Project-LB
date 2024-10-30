@@ -22,7 +22,7 @@ public class HotKeySystem : MonoBehaviour
 
         //현재 장착하려는 아이템
         InventoryEquableItemSO curItem = (InventoryEquableItemSO)itemSlot.Item;
-        int slotIdx = (int)curItem.slotType;
+        int slotIdx = (int)curItem.equipQuickSlotType;
 
         if (slotIdx < 0 || slotIdx >= hotSlots.Length)
         {

@@ -9,7 +9,7 @@ public class InventoryEquableItemSO : InventoryInfoItemSO, IDoubleClickable
     //todo : 인터페이스 제거
     [field: Header("Equip Type")]
     [field: SerializeField]
-    public EquipSlot slotType {  get; private set; }
+    public EquipSlot equipQuickSlotType {  get; private set; }
 
     public bool IsEquip {  get; private set; }
 
