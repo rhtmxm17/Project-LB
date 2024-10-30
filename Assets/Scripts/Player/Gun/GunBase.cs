@@ -11,9 +11,10 @@ public class GunBase : MonoBehaviour, IUseable
         Reloading // 재장전 중
     }
 
-    public State state { get; private set; } // 현재 총의 상태
+    public State CurrentState { get; private set; } // 현재 총의 상태
 
     [SerializeField] Transform muzzleTransform;
+    [SerializeField] Transform weaponCamera;
     [field: SerializeField] public GunData DataTable { get; set; }
 
     public int MagazineCapacity => DataTable.magCapacity;
@@ -37,13 +38,11 @@ public class GunBase : MonoBehaviour, IUseable
 
     public void UseBegin()
     {
-        Debug.Log("Gun UseBegin");
         fireRoutine = StartCoroutine(Fire());
     }
 
     public void UseEnd()
     {
-        Debug.Log("Gun UseEnd");
         if (fireRoutine != null)
         {
             StopCoroutine(fireRoutine);
@@ -59,14 +58,14 @@ public class GunBase : MonoBehaviour, IUseable
             yield return new WaitForSeconds(canFireTime - Time.time);
         }
 
-        while (state == State.Ready)
+        while (CurrentState == State.Ready)
         {
             lastFireTime = Time.time;
             Shot();
             yield return firePeriod;
         }
 
-        if (state == State.Empty)
+        if (CurrentState == State.Empty)
         {
             reloadRoutine = StartCoroutine(ReloadRoutine());
         }
@@ -76,10 +75,24 @@ public class GunBase : MonoBehaviour, IUseable
     {
         // 트레일 등 이펙트를 그리기 위해 탄알이 맞은 곳을 저장
         Vector3 hitPosition = Vector3.zero;
-        Debug.DrawRay(muzzleTransform.position, DataTable.range * muzzleTransform.forward, Color.yellow, 0.1f);
+
+        Vector3 shotPosition;
+        Vector3 shotDirection;
+        if (weaponCamera == null)
+        {
+            shotPosition = muzzleTransform.position;
+            shotDirection = muzzleTransform.forward;
+        }
+        else
+        {
+            // 무기 전용 카메라 사용시 실제 총구 대신 플레이어 눈에 보이는 총기 위치에서 발사
+            shotPosition = Camera.main.transform.TransformPoint(weaponCamera.InverseTransformPoint(muzzleTransform.position));
+            shotDirection = Camera.main.transform.TransformDirection(weaponCamera.InverseTransformDirection(muzzleTransform.forward));
+        }
+        Debug.DrawRay(shotPosition, DataTable.range * shotDirection, Color.yellow, 0.1f);
 
         // 레이캐스트(시작 지점, 방향, 충돌 정보 컨테이너, 사정거리)
-        if (Physics.Raycast(muzzleTransform.position, muzzleTransform.forward, out RaycastHit hit, DataTable.range, DataTable.layerMask))
+        if (Physics.Raycast(shotPosition, shotDirection, out RaycastHit hit, DataTable.range, DataTable.layerMask))
         {
             // 레이 적중시
 
@@ -96,8 +109,8 @@ public class GunBase : MonoBehaviour, IUseable
         else
         {
             // 레이가 다른 물체와 충돌하지 않았다면
-            // 탄알이 최대 사정거리까지 날아갔을 때의 위치를 충돌 위치로 사용
-            hitPosition = muzzleTransform.position + muzzleTransform.forward * DataTable.range;
+            // 탄알이 최대 사정거리까지 날아갔을 때의 위치를 line 출력 종료 위치로 사용
+            hitPosition = shotPosition + shotDirection * DataTable.range;
 
             Debug.Log($"적중 대상 없음");
         }
@@ -111,7 +124,7 @@ public class GunBase : MonoBehaviour, IUseable
         magazineRemain--;
         if (magazineRemain <= 0)
         {
-            state = State.Empty;
+            CurrentState = State.Empty;
         }
 
     }
@@ -119,6 +132,7 @@ public class GunBase : MonoBehaviour, IUseable
     private IEnumerator ShotEffect(Vector3 hitPosition)
     {
         // TODO: 이펙트 처리
+        Debug.Log("발사 이펙트 출력 필요");
         yield break;
     }
 
@@ -129,7 +143,7 @@ public class GunBase : MonoBehaviour, IUseable
     /// <returns>재장전 시작이 가능한 상태였는지 여부</returns>
     public bool Reload()
     {
-        if (state == State.Reloading || magazineRemain >= DataTable.magCapacity)
+        if (CurrentState == State.Reloading || magazineRemain >= DataTable.magCapacity)
         {
             // 이미 재장전 중이거나 남은 탄알이 없거나
             // 탄창에 탄알이 이미 가득 찬 경우  재장전할 수 없음
@@ -144,9 +158,10 @@ public class GunBase : MonoBehaviour, IUseable
     private IEnumerator ReloadRoutine()
     {
         // 현재 상태를 재장전 중 장태로 전환
-        state = State.Reloading;
+        CurrentState = State.Reloading;
 
         // TODO: 재장전 소리 재생
+        Debug.Log("재장전 사운드 출력 필요");
 
         // 재장전 소요 시간만큼 처리 쉬기
         yield return new WaitForSeconds(DataTable.reloadTime);
@@ -154,6 +169,6 @@ public class GunBase : MonoBehaviour, IUseable
         magazineRemain = DataTable.magCapacity;
 
         // 총의 현재 상태를 발사 준비된 상태로 변경
-        state = State.Ready;
+        CurrentState = State.Ready;
     }
 }
