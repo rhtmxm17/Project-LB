@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GunBase : MonoBehaviour, IUseable
 {
@@ -17,6 +18,7 @@ public class GunBase : MonoBehaviour, IUseable
     [SerializeField] Transform weaponCamera;
     [field: SerializeField] public GunData DataTable { get; set; }
 
+    public event UnityAction OnShot;
     public int MagazineCapacity => DataTable.magCapacity;
     public int MagazineRemain => magazineRemain;
 
@@ -73,6 +75,8 @@ public class GunBase : MonoBehaviour, IUseable
 
     private void Shot()
     {
+        OnShot?.Invoke();
+
         // 트레일 등 이펙트를 그리기 위해 탄알이 맞은 곳을 저장
         Vector3 hitPosition = Vector3.zero;
 

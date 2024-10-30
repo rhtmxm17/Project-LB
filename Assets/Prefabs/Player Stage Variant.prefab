@@ -133,14 +133,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 75c01c90ab36c8040a2967e65ea8ef1c, type: 2}
-    - target: {fileID: 4932317945172534461, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
-      propertyPath: m_CastShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4932317945172534461, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3cba75b800207024cbf4fcee7d9e1ef2, type: 2}
     - target: {fileID: 5400939480846005083, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
       propertyPath: weaponCamera
       value: 

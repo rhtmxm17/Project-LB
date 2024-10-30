@@ -9,8 +9,11 @@ public class PlayerAnimationManager : MonoBehaviour
     [SerializeField] Renderer meshRender;
 
     private PlayerCharacterControllerControl locomotionControl;
+    private StagePlayerControl attackControl;
+
     private int hashMoveSpeed;
     private int hashIsMoving;
+    private int hashOnAttack;
 
     public bool ShadowOnly
     {
@@ -23,8 +26,19 @@ public class PlayerAnimationManager : MonoBehaviour
     private void Awake()
     {
         locomotionControl = GetComponent<PlayerCharacterControllerControl>();
+        if (TryGetComponent(out attackControl))
+        {
+            attackControl.OnAttack += TriggerAttackAnimation;
+        }
         hashMoveSpeed = Animator.StringToHash("MoveSpeed");
         hashIsMoving = Animator.StringToHash("IsMoving");
+        hashOnAttack = Animator.StringToHash("OnAttack");
+    }
+
+    private void TriggerAttackAnimation()
+    {
+        Debug.Log("TriggerAttackAnimation");
+        animator.SetTrigger(hashOnAttack);
     }
 
     private void Update()
