@@ -19,4 +19,6 @@ public class InventoryEquableItemSO : InventoryInfoItemSO
     [field: SerializeField]
     public int AdditiveAttackPoint { get; private set; }
 
+    [field: SerializeField]
+    public int MaxUpgradeLevel { get; private set; }
 }

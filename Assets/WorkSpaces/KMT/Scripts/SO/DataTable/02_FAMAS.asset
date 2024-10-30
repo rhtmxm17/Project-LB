@@ -17,6 +17,8 @@ MonoBehaviour:
   <ItemName>k__BackingField: FAMAS
   <MaxCnt>k__BackingField: 1
   <Description>k__BackingField: "\uD30C\uB9C8\uD30C\uB9C8\uC4F0~~"
+  <DetailInfoSO>k__BackingField: {fileID: 0}
   <equipQuickSlotType>k__BackingField: 0
   <AttackPoint>k__BackingField: 20
   <AdditiveAttackPoint>k__BackingField: 10
+  <MaxUpgradeLevel>k__BackingField: 7
