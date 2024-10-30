@@ -43,6 +43,9 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
     {
         // 몬스터가 power 방향+힘으로 밀려남
         monsterAgent.Move(power);
+        // 피격모션 등장, 피격모션 이 부분은 Damaged 함수에 있으니까
+        // 중복된다고 생각하여 주석처리 했습니다.
+        // monsterAni.SetTrigger("TakenDamaged");
         Debug.Log("몬스터가 뒤로 밀려납니다");
     }
 }
