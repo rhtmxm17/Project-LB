@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908d624db3f80f741abb48185e1ac1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataTable: {fileID: 11400000, guid: 50cdc36911188a84290e1822bbe46554, type: 2}
 --- !u!114 &8864941385367341536
 MonoBehaviour:
   m_ObjectHideFlags: 0

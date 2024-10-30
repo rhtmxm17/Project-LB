@@ -10,6 +10,8 @@ public class InventoryItemSlot : MonoBehaviour
     public InventoryItemSO Item;
     protected Image img;
 
+    protected int itemCount;
+
     protected virtual void Awake()
     {
         img = GetComponent<Image>();
