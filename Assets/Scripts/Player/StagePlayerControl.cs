@@ -23,6 +23,10 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     private float invHurtReference;
     private bool isHurt = false;
 
+    public UnityEvent<int> OnMagazineUpdated; // 내용물 미구현
+    public UnityEvent<int> OnSlotSeleted;
+    public UnityEvent OnDead;
+
     /// <summary>
     /// 자해 데미지 계수(수류탄)
     /// </summary>
@@ -114,7 +118,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
     private void SelectSlot(int index)
     {
-        Debug.Log($"Selected {index}");
+        OnSlotSeleted?.Invoke(index);
 
         if (fireAction.inProgress)
         {
@@ -134,6 +138,11 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         }
 
         model.Hp -= damage;
+
+        if (model.Hp < 0)
+        {
+            OnDead?.Invoke();
+        }
     }
 
     private void HurtCheck()
