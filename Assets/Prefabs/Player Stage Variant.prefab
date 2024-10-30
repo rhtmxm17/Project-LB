@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7365981766204085413}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
 --- !u!114 &3941861055701554458
 MonoBehaviour:
@@ -47,6 +47,81 @@ MonoBehaviour:
   explosinTimer: 2.5
   <Data>k__BackingField: {fileID: 11400000, guid: 746ad11de71c42147904916de5e4f8aa, type: 2}
   <Prefab>k__BackingField: {fileID: 5405940737381054613, guid: 5279aec816c182949baa05128a5a1cb7, type: 3}
+--- !u!1 &6670160987631193341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517707064326819839}
+  - component: {fileID: 9217011562098562762}
+  m_Layer: 0
+  m_Name: WeaponCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1517707064326819839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6670160987631193341}
+  m_LocalRotation: {x: 0.49999994, y: -0.5, z: -0.5000001, w: 0.49999988}
+  m_LocalPosition: {x: -0.097000785, y: 0.12979855, z: 0.30979922}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9048276983104403327}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &9217011562098562762
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6670160987631193341}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 4
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.1
+  far clip plane: 2
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1001 &4171163317753856716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,6 +129,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4932317945168321149, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 75c01c90ab36c8040a2967e65ea8ef1c, type: 2}
+    - target: {fileID: 5400939480846005083, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
+      propertyPath: weaponCamera
+      value: 
+      objectReference: {fileID: 1517707064326819839}
     - target: {fileID: 6907338289782665450, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
       propertyPath: m_Name
       value: Player Stage Variant
@@ -142,3 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7da806f50c7224485e005a1097179f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &9048276983104403327 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4932317945177847219, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
+  m_PrefabInstance: {fileID: 4171163317753856716}
+  m_PrefabAsset: {fileID: 0}
