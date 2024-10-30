@@ -2105,6 +2105,8 @@ MonoBehaviour:
   itemSlotParent: {fileID: 6844830105284517483}
   slotCount: 21
   ItemSlotPrefab: {fileID: 7426417270097742638, guid: ceee9bd09d571964b95662cff106e822, type: 3}
+  foodText: {fileID: 1207660489}
+  gearText: {fileID: 777719849}
 --- !u!1 &6844830106107104084
 GameObject:
   m_ObjectHideFlags: 0
