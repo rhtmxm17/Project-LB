@@ -2256,10 +2256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc11461a5e3a00546bd1c55b83c32368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DataTable>k__BackingField: {fileID: 0}
+  <DataTable>k__BackingField: {fileID: 11400000, guid: c35ac25cfae659848b53338941ea153a, type: 2}
   monsterHp: 100
   monsterCurHp: 0
-  monsterAp: 0
 --- !u!114 &6718467465038737159
 MonoBehaviour:
   m_ObjectHideFlags: 0
