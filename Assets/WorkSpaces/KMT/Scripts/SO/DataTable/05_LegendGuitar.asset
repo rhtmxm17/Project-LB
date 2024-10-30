@@ -16,4 +16,7 @@ MonoBehaviour:
   <ImgSprite>k__BackingField: {fileID: 21300000, guid: b25cbf97b294e464085280ed0e777e16, type: 3}
   <ItemName>k__BackingField: "\uC804\uC124\uC758 \uAE30\uD0C0"
   <MaxCnt>k__BackingField: 1
+  <Description>k__BackingField: 
   <equipQuickSlotType>k__BackingField: 4
+  <AttackPoint>k__BackingField: 150
+  <AdditiveAttackPoint>k__BackingField: 0
