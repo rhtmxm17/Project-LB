@@ -28,7 +28,7 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
         {
             monsterAni.SetTrigger("DeadTrigger");
             // 몬스터 사망시
-            Destroy(gameObject, 1.5f);
+            Destroy(gameObject, 1.1f);
         }
     }
 }

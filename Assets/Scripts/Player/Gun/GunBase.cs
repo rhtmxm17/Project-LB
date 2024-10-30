@@ -19,6 +19,8 @@ public class GunBase : MonoBehaviour, IUseable
     [field: SerializeField] public GunData DataTable { get; set; }
 
     public event UnityAction OnShot;
+    [field: SerializeField] public int GunLevel { get; set; } = 0;
+
     public int MagazineCapacity => DataTable.magCapacity;
     public int MagazineRemain => magazineRemain;
 
@@ -103,12 +105,10 @@ public class GunBase : MonoBehaviour, IUseable
             // 충돌한 상대방으로부터 IDamageable 오브젝트 가져오기 시도
             if (hit.rigidbody != null && hit.rigidbody.TryGetComponent(out IDamageable target))
             {
-                target.Damaged(DataTable.damage, 0);
+                target.Damaged(DataTable.damage + DataTable.damageGrowth * GunLevel, 0);
                 // 레이가 충돌한 위치 저장
                 hitPosition = hit.point;
             }
-
-            Debug.Log($"적중 대상: {hit.collider.name}");
         }
         else
         {
@@ -116,7 +116,6 @@ public class GunBase : MonoBehaviour, IUseable
             // 탄알이 최대 사정거리까지 날아갔을 때의 위치를 line 출력 종료 위치로 사용
             hitPosition = shotPosition + shotDirection * DataTable.range;
 
-            Debug.Log($"적중 대상 없음");
         }
 
         // 적중 여부와 무관히 발생하는 처리
@@ -130,7 +129,6 @@ public class GunBase : MonoBehaviour, IUseable
         {
             CurrentState = State.Empty;
         }
-
     }
 
     private IEnumerator ShotEffect(Vector3 hitPosition)

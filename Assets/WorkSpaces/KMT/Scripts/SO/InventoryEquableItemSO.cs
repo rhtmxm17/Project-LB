@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 [CreateAssetMenu(menuName = "Inventory/Items/EquableItem")]
 public class InventoryEquableItemSO : InventoryInfoItemSO, IDoubleClickable
 {
-
+    //todo : 인터페이스 제거
     [field: Header("Equip Type")]
     [field: SerializeField]
     public EquipSlot slotType {  get; private set; }

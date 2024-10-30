@@ -8,18 +8,6 @@ public class InventoryItemSlot : MonoBehaviour
 {
     //todo : 테스트용
     public InventoryItemSO Item;
-    /*    public InventoryItemSO Item 
-        { 
-            get { return Item; }
-            set 
-            { 
-                Item = value;
-                //if(Item != null)
-                //img = Item.img;
-                //todo : 스프라이트 타입 이미지.
-            } 
-        }*/
-
     protected Image img;
 
     protected virtual void Awake()
@@ -30,6 +18,7 @@ public class InventoryItemSlot : MonoBehaviour
         {
             img.sprite = Item.ImgSprite;
         }
+
 
     }
 
@@ -50,6 +39,17 @@ public class InventoryItemSlot : MonoBehaviour
         }
 
         Item = item;
+    }
+
+    public void SetImageDefault()
+    {
+        img.color = InventoryItemSO.ORIGIN_COLOR;
+    }
+
+    public void SetImageUsing()
+    {
+        img.color = InventoryItemSO.USING_COLOR;
+
     }
 
 }
