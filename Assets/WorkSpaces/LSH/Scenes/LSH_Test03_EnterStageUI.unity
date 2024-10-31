@@ -1440,6 +1440,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 403417956279603297, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 403417956279603297, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 403417956279603297, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3726709837132246430}
+    - target: {fileID: 403417956279603297, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 403417956279603297, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenSaveLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 403417956279603297, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ScrollViewCtrl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 403417956279603297, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2036737326445105687, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1724,6 +1752,34 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4460471942410196080, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460471942410196080, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460471942410196080, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3726709837132246430}
+    - target: {fileID: 4460471942410196080, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460471942410196080, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenStageList
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460471942410196080, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ScrollViewCtrl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460471942410196080, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6857912722322324294, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1752,6 +1808,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7616875662758576676, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: saveLoad
+      value: 
+      objectReference: {fileID: 6680558463634906817}
+    - target: {fileID: 7616875662758576676, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+      propertyPath: stageList
+      value: 
+      objectReference: {fileID: 3726709837132246429}
     - target: {fileID: 8203198358703351556, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1786,6 +1850,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+--- !u!1 &3726709837132246429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 99716723950623106, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+  m_PrefabInstance: {fileID: 3726709837132246428}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3726709837132246430 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7616875662758576676, guid: 0a63d1a3763ca3f4090556ce6972e2d2, type: 3}
+  m_PrefabInstance: {fileID: 3726709837132246428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa721b2a7158934cbc195ecd3529569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4988850170612148604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1985,3 +2065,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6b65df6b1e44824095b1dd974d2b6bd, type: 3}
+--- !u!1 &6680558463634906817 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1394663882735173912, guid: f6b65df6b1e44824095b1dd974d2b6bd, type: 3}
+  m_PrefabInstance: {fileID: 6680558463634906816}
+  m_PrefabAsset: {fileID: 0}

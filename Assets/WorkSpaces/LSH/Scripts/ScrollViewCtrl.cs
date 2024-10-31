@@ -11,17 +11,19 @@ public class ScrollViewCtrl : MonoBehaviour
 
     private void Start()
     {
-        stageList.SetActive(false);
+        OpenStageList();
     }
 
 
-    public void StageListOpen()
+    public void OpenStageList()
     {
         stageList.SetActive(true);
+        saveLoad.SetActive(false);
     }
 
-    public void SaveLoadOpen()
+    public void OpenSaveLoad()
     {
+        stageList.SetActive(false);
         saveLoad.SetActive(true);
     }
 
