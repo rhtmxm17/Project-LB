@@ -48,12 +48,12 @@ public class StageSceneManager : MonoBehaviour
     /// <summary>
     /// 해당 스테이지 씬으로 진입
     /// </summary>
+    [ContextMenu("EnterStage Test")]
     public void EnterStage()
     {
         SceneChanger sceneChanger = GameManager.Instance.GetSceneChanger();
+        sceneChanger.OnLoadSceneComplete.AddListener(InitStage);
         sceneChanger.ChangeToMultiScene(StageDataTable.MapScene, StageDataTable.LevelScene);
-        // TODO: 씬 로드 완료 이벤트에 InitStage(스테이지 초기화 함수) 구독 붙이기
-        sceneChanger.StartMuiltiLoading(InitStage);
     }
 
     /// <summary>
@@ -84,6 +84,11 @@ public class StageSceneManager : MonoBehaviour
         // TODO: 클리어 UI 출력, UI 버튼에 씬 전환 메서드 추가
     }
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     private void InitStage()
     {
         PlayerModel player = GameManager.Instance.GetPlayerModel();
@@ -93,7 +98,7 @@ public class StageSceneManager : MonoBehaviour
             return;
         }
 
-        if (player.TryGetComponent(out StagePlayerControl playerControl))
+        if (! player.TryGetComponent(out StagePlayerControl playerControl))
         {
             Debug.LogError("스테이지용 플레이어 캐릭터가 아님");
             return;
