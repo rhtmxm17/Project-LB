@@ -56,11 +56,11 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     {
         public int maxHp;
         public int mainWeaponLevel;
-        public GunData mainWeapon;
-        public GunData meleeWeapon;
+        public InventoryEquableItemSO mainWeapon;
+        public InventoryEquableItemSO meleeWeapon;
         public GrenadeData grenadeData;
 
-        public GunData specialWeapon;
+        public InventoryEquableItemSO specialWeapon;
     }
 
     /// <summary>
@@ -69,6 +69,8 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     /// <param name="attr">매개변수 세트</param>
     public void StageInit(StageInitAttribute attr)
     {
+        sampleGun.DataTable = attr.mainWeapon;
+        sampleGun.GunLevel = attr.mainWeaponLevel;
         grenadeThrow.Data = attr.grenadeData;
     }
 
