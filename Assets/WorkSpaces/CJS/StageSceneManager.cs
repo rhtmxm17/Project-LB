@@ -41,6 +41,10 @@ public class StageSceneManager : MonoBehaviour
     }
 
 
+    public bool GetJournal { get; set; }
+
+    public bool GetBlueprint { get; set; }
+
     /// <summary>
     /// 해당 스테이지 씬으로 진입
     /// </summary>
@@ -58,7 +62,26 @@ public class StageSceneManager : MonoBehaviour
     /// </summary>
     public void StageCleared()
     {
+        PlayerData playerData = GameManager.Instance.GetPlayerData();
 
+        // 수집품 획득 처리
+        if (GetJournal)
+        {
+            ItemData journal = playerData.GetItemData(StageDataTable.Journal);
+            journal.count = 1;
+        }
+
+        if (GetBlueprint)
+        {
+            ItemData blueprint = playerData.GetItemData(StageDataTable.BluePrint);
+            blueprint.count = 1;
+        }
+
+        // 재화 획득 처리
+        playerData.AddExp(StageDataTable.RewardExp);
+        playerData.AddFood(StageDataTable.RewardRation);
+
+        // TODO: 클리어 UI 출력, UI 버튼에 씬 전환 메서드 추가
     }
 
     private void InitStage()
@@ -86,9 +109,9 @@ public class StageSceneManager : MonoBehaviour
         StagePlayerControl.StageInitAttribute playerInitAttr = new()
         {
             maxHp = playerData.MaxHP,
-            //mainWeapon = (InventoryEquableItemSO)itemTable.GetItemDataSO(mainWeaponType),
-            //meleeWeapon = (InventoryEquableItemSO)itemTable.GetItemDataSO(meleeWeaponType),
-            //specialWeapon = (InventoryEquableItemSO)itemTable.GetItemDataSO(specialWeaponType),
+            mainWeapon = InitWeapon(mainWeaponType),
+            meleeWeapon = InitWeapon(meleeWeaponType),
+            specialWeapon = InitWeapon(specialWeaponType),
             grenadeData = StageDataTable.Grenade,
         };
 

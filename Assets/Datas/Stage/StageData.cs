@@ -23,6 +23,13 @@ public class StageData : ScriptableObject
     public int RewardRation => rewardRation;
     [SerializeField, Tooltip("클리어 보상 식량")] int rewardRation;
 
+    public ItemType Journal => journal;
+    [SerializeField] ItemType journal;
+
+    public ItemType BluePrint => bluePrint;
+    [SerializeField] ItemType bluePrint;
+
+
     public GrenadeData Grenade => grenadeData;
     [SerializeField, Tooltip("해당 스테이지 수류탄 스펙")] GrenadeData grenadeData;
 }
