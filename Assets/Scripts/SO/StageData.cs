@@ -32,7 +32,6 @@ public class StageData : ScriptableObject
     public ItemType BluePrint => bluePrint;
     [SerializeField] ItemType bluePrint;
 
-
     public GrenadeData Grenade => grenadeData;
     [SerializeField, Tooltip("해당 스테이지 수류탄 스펙")] GrenadeData grenadeData;
 }
