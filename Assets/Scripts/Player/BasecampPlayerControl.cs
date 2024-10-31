@@ -65,9 +65,10 @@ public class BasecampPlayerControl : MonoBehaviour
             }
         }
 
-        Debug.Log($"{overlapResults[minDistanceIndex].name}에 대한 상호작용 시도");
+        GameObject target = overlapResults[minDistanceIndex].attachedRigidbody?.gameObject ?? overlapResults[minDistanceIndex].gameObject;
+        Debug.Log($"{target.name}에 대한 상호작용 시도");
 
-        if(overlapResults[minDistanceIndex].TryGetComponent(out IInteractable interactable))
+        if(target.TryGetComponent(out IInteractable interactable))
         {
             interactable.OnInteracted();
         }

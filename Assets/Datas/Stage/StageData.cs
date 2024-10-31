@@ -14,8 +14,11 @@ public class StageData : ScriptableObject
     public SceneChanger.Scenes MapScene => mapScene;
     [SerializeField] SceneChanger.Scenes mapScene;
 
-    public SceneChanger.Scenes LevelScene => levelScene; //
-    [SerializeField] SceneChanger.Scenes levelScene;     // TODO: 레벨디자인 씬을 지정하는 자료형으로 변경
+    public SceneChanger.Scenes LevelScene => levelScene;
+    [SerializeField] SceneChanger.Scenes levelScene;
+
+    public int StageIndex => stageIndex;
+    [SerializeField, Range(0, 3), Tooltip("해당 레벨의 스테이지 클리어 카운트 번호")] int stageIndex; // PlayerData.stageClearCntArr 참고
 
     public int RewardExp => rewardExp;
     [SerializeField, Tooltip("클리어 보상 경험치")] int rewardExp;
