@@ -20,12 +20,15 @@ public class AttackMonster : MonoBehaviour
     {
         monsterModel = GetComponent<MonsterModel>();
         attackTrigger = GetComponent<SphereCollider>();
+        if (monsterAni == null)
+        {
+            monsterAni = GetComponent<Animator>();
+        }
     }
 
     private void Start()
     {
         playerModel = GameManager.Instance.GetPlayerModel();
-        monsterAni = GetComponent<Animator>();
         monsterModel.OnInit += Init;
     }
 
