@@ -6,7 +6,12 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class ClickCallback : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler
+public class ClickCallback : MonoBehaviour,
+    IPointerDownHandler,
+    IBeginDragHandler,
+    IDragHandler,
+    IPointerEnterHandler,
+    IPointerExitHandler
 {
 
     [SerializeField]
@@ -20,6 +25,9 @@ public class ClickCallback : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     public UnityEvent<PointerEventData> ClickEvent;
     public UnityEvent<PointerEventData> DoubleClickEvent;
     public UnityEvent<PointerEventData> DragEvent;
+
+    public UnityEvent<PointerEventData> EnterEvent;
+    public UnityEvent<PointerEventData> ExitEvent;
 
     private void Awake()
     {
@@ -63,5 +71,15 @@ public class ClickCallback : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     public void OnDrag(PointerEventData eventData)
     {
         DragEvent?.Invoke(eventData);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        EnterEvent?.Invoke(eventData);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ExitEvent?.Invoke(eventData);
     }
 }

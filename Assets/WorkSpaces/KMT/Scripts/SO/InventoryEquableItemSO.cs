@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [CreateAssetMenu(menuName = "Inventory/Items/EquableItem")]
-public class InventoryEquableItemSO : InventoryInfoItemSO, IDoubleClickable
+public class InventoryEquableItemSO : InventoryInfoItemSO
 {
     //todo : 인터페이스 제거
     [field: Header("Equip Type")]
@@ -13,10 +13,31 @@ public class InventoryEquableItemSO : InventoryInfoItemSO, IDoubleClickable
 
     public bool IsEquip {  get; private set; }
 
-    public void OnDoubleClickEvent(PointerEventData eventData)
-    {
-        //todo : 무기 타입에 따라서 장★착 하기.
-    }
+    [field: Header("Param")]
+    [field: SerializeField]
+    public int AttackPoint { get; private set; }
+    [field: SerializeField]
+    public int AdditiveAttackPoint { get; private set; }
 
+    [field: SerializeField]
+    public int MaxUpgradeLevel { get; private set; }
+
+    [field: SerializeField]
+    public int[] UpgradeReqGears { get; private set; }
+
+
+    public AudioClip shotClip; // 발사 소리
+    public AudioClip reloadClip; // 재장전 소리
+
+    public int damage = 50; // 공격력
+    public int damageGrowth = 20; // 레벨별 피해량 증가
+
+    public int magCapacity = 25; // 탄창용량
+
+    public float timeBetFire = 0.12f; // 탄알 발사 간격
+    public float reloadTime = 1.8f; //재장전 소요 시간
+
+    public float range = 10; // 총기 사거리
+    public LayerMask layerMask; // 사격 가능한 대상(지형지물 고려할것)
 
 }

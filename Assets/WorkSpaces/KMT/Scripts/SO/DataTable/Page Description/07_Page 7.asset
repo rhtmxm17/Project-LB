@@ -9,14 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eb32345e5a8f9a4f83dad0e1660969d, type: 3}
-  m_Name: Grenade Data Sample
+  m_Script: {fileID: 11500000, guid: 31f57dc582b7d9345b87aff8df5bc30a, type: 3}
+  m_Name: 07_Page 7
   m_EditorClassIdentifier: 
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 192
-  explosionRange: 3
-  damage: 300
-  maxChargeTime: 1
-  minThrowForce: 1
-  maxThrowForce: 15
+  <DetailDescription>k__BackingField: 7

@@ -7,16 +7,28 @@ public class GrenadeThrower : MonoBehaviour, IUseable
     // (기획 확인 필요)폭발 대기시간
     [SerializeField] float explosinTimer = 2.5f;
 
-    [field: SerializeField] public GrenadeData Data { get; set; }
+    [SerializeField] GrenadeData data;
+    public GrenadeData Data
+    {
+        get => data;
+        set
+        {
+            data = value;
+            invMaxChargeTime = 1f / value.MaxChargeTime;
+        }
+    }
 
     [field: SerializeField] public Grenade Prefab { get; set; }
 
     private float chargeBeginTime;
-    private float invMexChargeTime;
+    private float invMaxChargeTime;
 
     private void Awake()
     {
-        invMexChargeTime = 1f / Data.MaxChargeTime;
+        if (Data != null)
+        {
+            invMaxChargeTime = 1f / Data.MaxChargeTime;
+        }
     }
 
     public void UseBegin()
@@ -32,7 +44,7 @@ public class GrenadeThrower : MonoBehaviour, IUseable
             chargedTime = Data.MaxChargeTime;
 
         // 최종 던지는 힘
-        float throwForce = Mathf.Lerp(Data.MinThrowForce, Data.MaxThrowForce, chargedTime * invMexChargeTime);
+        float throwForce = Mathf.Lerp(Data.MinThrowForce, Data.MaxThrowForce, chargedTime * invMaxChargeTime);
 
         Grenade instance = Instantiate(Prefab, this.transform.position, this.transform.rotation);
         instance.Data = this.Data;

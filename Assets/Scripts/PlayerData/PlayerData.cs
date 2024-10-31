@@ -91,7 +91,7 @@ public class PlayerData
                 count = 0,
 
                 //필요한 경우에만 사용하기.
-                WeaponLevel = 1
+                WeaponLevel = 0
             };
 
             inventoryData.Add(tmp);
@@ -99,6 +99,28 @@ public class PlayerData
 
     }
 
+
+    /// <summary>
+    /// 아이템 타입을 받아 플레이어가 가지고있는 해당 아이템 정보를 반환.
+    /// </summary>
+    /// <param name="type">찾을 아이템 타입</param>
+    /// <returns>찾은 아이템 정보, 없으면 null 반환.</returns>
+    public ItemData GetItemData(ItemType type)
+    {
+        ItemData ret = null;
+
+        foreach (ItemData item in inventoryData)
+        {
+            if (item.itemType == type)
+            {
+                ret = item;
+                break;
+            }
+        }
+
+        return ret;
+
+    }
 
 
     /// <summary>
