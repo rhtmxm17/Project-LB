@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -61,6 +60,12 @@ public class StageSceneManager : MonoBehaviour
         sceneChanger.ChangeToMultiScene(StageDataTable.MapScene, StageDataTable.LevelScene);
     }
 
+    public void EnterStage(StageData stageData)
+    {
+        StageDataTable = stageData;
+        EnterStage();
+    }
+
     /// <summary>
     /// 스테이지 클리어시 호출될 함수<br/>
     /// 예시)일반 스테이지의 최종 도착 위치 트리거 박스에 구독
@@ -68,6 +73,9 @@ public class StageSceneManager : MonoBehaviour
     public void StageCleared()
     {
         PlayerData playerData = GameManager.Instance.GetPlayerData();
+
+        // 클리어 카운트 증가
+        playerData.stageClearCntArr[stageDataTable.StageIndex]++;
 
         // 수집품 획득 처리
         if (HasJournal)
