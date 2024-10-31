@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) 
     {
         playerModel = null;
-        playerModel = GameObject.FindWithTag("Player").GetComponent<PlayerModel>();
+        playerModel = GameObject.FindWithTag("Player")?.GetComponent<PlayerModel>();
     }
 
     public PlayerData GetPlayerData()
