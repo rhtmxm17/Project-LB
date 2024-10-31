@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StageSceneManager : MonoBehaviour
@@ -45,10 +46,9 @@ public class StageSceneManager : MonoBehaviour
     /// </summary>
     public void EnterStage()
     {
-        // TODO:
-        //  지형 데이터, 유닛 데이터 불러오기
-        //  씬 로드 완료 이벤트에 InitStage(스테이지 초기화 함수) 구독 붙이기
-
+        SceneChanger sceneChanger = GameManager.Instance.GetSceneChanger();
+        sceneChanger.ChangeToMultiScene(StageDataTable.MapScene, StageDataTable.LevelScene);
+        // TODO: 씬 로드 완료 이벤트에 InitStage(스테이지 초기화 함수) 구독 붙이기
 
     }
 
@@ -82,12 +82,13 @@ public class StageSceneManager : MonoBehaviour
         ItemType meleeWeaponType = ItemType.KNIFE;        //
         ItemType specialWeaponType = ItemType.SP_WEAPON1; // TODO: 실제로 선택된 아이템 가져오기
 
+
         StagePlayerControl.StageInitAttribute playerInitAttr = new()
         {
             maxHp = playerData.MaxHP,
-            mainWeapon = (InventoryEquableItemSO)GameManager.Instance.GetItemDataTable().GetItemDataSO(mainWeaponType),
-            meleeWeapon = (InventoryEquableItemSO)GameManager.Instance.GetItemDataTable().GetItemDataSO(meleeWeaponType),
-            specialWeapon = (InventoryEquableItemSO)GameManager.Instance.GetItemDataTable().GetItemDataSO(specialWeaponType),
+            //mainWeapon = (InventoryEquableItemSO)itemTable.GetItemDataSO(mainWeaponType),
+            //meleeWeapon = (InventoryEquableItemSO)itemTable.GetItemDataSO(meleeWeaponType),
+            //specialWeapon = (InventoryEquableItemSO)itemTable.GetItemDataSO(specialWeaponType),
             grenadeData = StageDataTable.Grenade,
         };
 
@@ -95,5 +96,14 @@ public class StageSceneManager : MonoBehaviour
 
         // TODO: 클리어 이벤트를 찾아서 StageCleared 구독
         //  태그 등록 + 인터페이스 구현 또는 TriggerArea 타입 참조 사용
+    }
+
+    private GunBase InitWeapon(ItemType type)
+    {
+        InventoryEquableItemSO gunTable = (InventoryEquableItemSO)GameManager.Instance.GetItemDataTable().GetItemDataSO(type);
+        GunBase weapon = Instantiate(gunTable.GunPrefab);
+        weapon.DataTable = gunTable;
+        weapon.GunLevel = GameManager.Instance.GetPlayerData().GetItemData(type).WeaponLevel;
+        return weapon;
     }
 }
