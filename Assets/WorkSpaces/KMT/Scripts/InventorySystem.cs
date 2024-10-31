@@ -189,7 +189,7 @@ public class InventorySystem : MonoBehaviour
 
     public int CurrentGear()
     {
-        return playerData.Food;
+        return playerData.Gear;
     }
 
     public bool UseGear(int amount)

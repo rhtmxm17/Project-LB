@@ -22,6 +22,7 @@ MonoBehaviour:
   <AttackPoint>k__BackingField: 10
   <AdditiveAttackPoint>k__BackingField: 10
   <MaxUpgradeLevel>k__BackingField: 7
+  <UpgradeReqGears>k__BackingField: 01000000020000000300000004000000050000000600000007000000
   shotClip: {fileID: 0}
   reloadClip: {fileID: 0}
   damage: 50

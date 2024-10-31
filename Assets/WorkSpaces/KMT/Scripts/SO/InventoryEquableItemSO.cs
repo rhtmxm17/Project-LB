@@ -22,6 +22,9 @@ public class InventoryEquableItemSO : InventoryInfoItemSO
     [field: SerializeField]
     public int MaxUpgradeLevel { get; private set; }
 
+    [field: SerializeField]
+    public int[] UpgradeReqGears { get; private set; }
+
 
     public AudioClip shotClip; // 발사 소리
     public AudioClip reloadClip; // 재장전 소리
