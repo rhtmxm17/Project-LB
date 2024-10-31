@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ExchangeSystem : MonoBehaviour
 {
-
+    [SerializeField]
     InventorySystem inventory;
     PlayerData playerData;
 
@@ -16,7 +16,6 @@ public class ExchangeSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventory = GameObject.FindWithTag("Inventory").GetComponent<InventorySystem>();
         playerData = GameManager.Instance.GetPlayerData();
         CloseWindow();
     }
