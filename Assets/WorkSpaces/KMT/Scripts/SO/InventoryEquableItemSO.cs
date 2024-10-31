@@ -21,6 +21,9 @@ public class InventoryEquableItemSO : InventoryInfoItemSO
 
     [field: SerializeField]
     public int MaxUpgradeLevel { get; private set; }
+    
+    [field: SerializeField]
+    public int[] UpgradeReqGears { get; private set; }
 
     public GunBase GunPrefab => gunPrefab;
     [SerializeField] GunBase gunPrefab;

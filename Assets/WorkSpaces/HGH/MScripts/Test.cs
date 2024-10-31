@@ -20,7 +20,7 @@ public class Test : MonoBehaviour
         {
             if (hit.collider.gameObject.name == "Zombie")
             {
-                monsterTakenDamage.MosterTakenKnockBack(transform.forward * 0.5f);
+                monsterTakenDamage.MosterTakenKnockBack(transform.forward * 10f);
             }
         }
     }
