@@ -17,6 +17,19 @@ MonoBehaviour:
   <ItemName>k__BackingField: "\uB9C8\uCCB4\uD14C"
   <MaxCnt>k__BackingField: 1
   <Description>k__BackingField: "\uB9C8\uD14C\uCC28? \uB9C8\uD0DC\uCCB4?"
+  <DetailInfoSO>k__BackingField: {fileID: 0}
   <equipQuickSlotType>k__BackingField: 1
   <AttackPoint>k__BackingField: 100
   <AdditiveAttackPoint>k__BackingField: 0
+  <MaxUpgradeLevel>k__BackingField: 0
+  shotClip: {fileID: 0}
+  reloadClip: {fileID: 0}
+  damage: 50
+  damageGrowth: 20
+  magCapacity: 25
+  timeBetFire: 0.12
+  reloadTime: 1.8
+  range: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128

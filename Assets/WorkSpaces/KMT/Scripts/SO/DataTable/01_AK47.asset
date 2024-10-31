@@ -22,3 +22,14 @@ MonoBehaviour:
   <AttackPoint>k__BackingField: 50
   <AdditiveAttackPoint>k__BackingField: 20
   <MaxUpgradeLevel>k__BackingField: 7
+  shotClip: {fileID: 0}
+  reloadClip: {fileID: 0}
+  damage: 50
+  damageGrowth: 20
+  magCapacity: 25
+  timeBetFire: 0.12
+  reloadTime: 1.8
+  range: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 129

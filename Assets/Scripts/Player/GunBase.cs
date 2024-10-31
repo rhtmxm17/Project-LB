@@ -5,6 +5,14 @@ using UnityEngine.Events;
 
 public class GunBase : MonoBehaviour, IUseable
 {
+
+    //todo : 추가 코드
+    public void SetGun(ItemType type) {
+
+        DataTable = (InventoryEquableItemSO)GameManager.Instance.GetItemDataTable().GetItemDataSO(type);
+
+    }
+
     public enum State
     {
         Ready, // 발사 준비됨
@@ -16,7 +24,7 @@ public class GunBase : MonoBehaviour, IUseable
 
     [SerializeField] Transform muzzleTransform;
     [SerializeField] Transform weaponCamera;
-    [field: SerializeField] public GunData DataTable { get; set; }
+    [field: SerializeField] public InventoryEquableItemSO DataTable { get; set; }
 
     public event UnityAction OnShot;
     [field: SerializeField] public int GunLevel { get; set; } = 0;
@@ -35,6 +43,9 @@ public class GunBase : MonoBehaviour, IUseable
 
     private void Awake()
     {
+        //todo : 테스트 코드, 제거 필요.
+        SetGun(ItemType.FAMAS);
+
         firePeriod = new WaitForSeconds(DataTable.timeBetFire);
         lastFireTime = Time.time;
         magazineRemain = DataTable.magCapacity;
