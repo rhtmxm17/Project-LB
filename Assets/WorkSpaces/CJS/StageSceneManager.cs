@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// 스테이지 매니저는 StageData를 기반으로 스테이지 씬을 불러오고 초기화합니다<br/>
+/// 일지, 설계도, 클리어 트리거는 태그로 검색해서 초기화합니다...
+/// </summary>
 public class StageSceneManager : MonoBehaviour
 {
     /*
@@ -26,6 +30,8 @@ public class StageSceneManager : MonoBehaviour
 
     스테이지 진입 방식
     벙커 씬에서 StageSceneManager 준비 -> StageData 등록 -> EnterStage 호출
+
+
 
      */
 
@@ -81,6 +87,7 @@ public class StageSceneManager : MonoBehaviour
         playerData.AddFood(StageDataTable.RewardRation);
 
         // TODO: 클리어 UI 출력, UI 버튼에 씬 전환 메서드 추가
+        Debug.Log($"스테이지 클리어 UI 출력 요함");
     }
 
     private void Awake()
@@ -120,11 +127,57 @@ public class StageSceneManager : MonoBehaviour
 
         playerControl.StageInit(playerInitAttr);
 
-        // TODO: 클리어 이벤트를 찾아서 StageCleared 구독
-        // TODO: 설계도와 저널 아이템을 찾아서 이미 획득했다면 삭제, 획득 못했다면 구독
+
+        // 설계도와 저널 아이템을 찾아서 이미 획득했다면 삭제, 획득 못했다면 구독
+        Collection jounal = GameObject.FindWithTag("Journal")?.GetComponent<Collection>();
+        if (jounal == null)
+        {
+            Debug.Log("스테이지에 저널이 존재하지 않음");
+        }
+        else
+        {
+            // 플레이어가 해당 저널을 소지중인지 검사
+            if (0 < playerData.GetItemData(StageDataTable.Journal).count)
+            {
+                Destroy(jounal.gameObject);
+            }
+            else
+            {
+                jounal.OnPickup.AddListener(() => { HasJournal = true; });
+            }
+        }
+
+        Collection blueprint = GameObject.FindWithTag("Blueprint")?.GetComponent<Collection>();
+        if (blueprint == null)
+        {
+            Debug.Log("스테이지에 설계도가 존재하지 않음");
+        }
+        else
+        {
+            // 플레이어가 해당 설계도를 소지중인지 검사
+            if (0 < playerData.GetItemData(StageDataTable.BluePrint).count)
+            {
+                Destroy(blueprint.gameObject);
+            }
+            else
+            {
+                blueprint.OnPickup.AddListener(() => { HasBlueprint = true; });
+            }
+        }
+
+        // 클리어 이벤트를 찾아서 StageCleared 구독
+        TriggerArea ClearTrigger = GameObject.FindWithTag("ClearTrigger")?.GetComponent<TriggerArea>();
+        if (ClearTrigger == null)
+        {
+            Debug.Log("스테이지에 클리어 조건이 존재하지 않음");
+        }
+        else
+        {
+            ClearTrigger.onTriggerEvent.AddListener(StageCleared);
+        }
+
         // TODO: HUD에 플레이어 정보 등록
         //  태그 등록 + 인터페이스 구현 또는 TriggerArea 타입 참조 사용
-
     }
 
     private GunBase InitWeapon(ItemType type)
