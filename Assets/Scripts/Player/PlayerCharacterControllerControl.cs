@@ -12,17 +12,20 @@ public class PlayerCharacterControllerControl : MonoBehaviour
     [SerializeField] Transform head;
     [SerializeField] float maxVerticalCameraAngle = 70f;
     [SerializeField] Vector2 cameraSensitivity = Vector2.one * 0.5f;
+    [SerializeField, Tooltip("달리기 배율")] float runPow = 2f;
 
     public bool IsMoving { get; private set; }
     public Vector3 Velocity => controller.velocity; // 실시간 이동중인 속도
 
     private InputAction moveAction;
     private InputAction lookAction;
+    private InputAction runAction;
     private PlayerModel model;
     private CharacterController controller;
     private float MoveSpeed => model.MoveSpeed; // 능력치로서의 이동 속도
     private float verticalCameraAngle;
     private Coroutine moveRoutine;
+    private bool isRunning = false;
 
     private void Awake()
     {
@@ -36,6 +39,7 @@ public class PlayerCharacterControllerControl : MonoBehaviour
         }
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
+        runAction = playerInput.actions["Run"];
     }
 
     private void OnEnable()
@@ -44,6 +48,8 @@ public class PlayerCharacterControllerControl : MonoBehaviour
         //moveAction.started += MoveActionStarted;
         //moveAction.canceled += MoveActionCanceled;
         lookAction.performed += RotatePlayerLook;
+        runAction.started += RunActionUpdate;
+        runAction.canceled += RunActionUpdate;
     }
 
     private void OnDisable()
@@ -52,6 +58,13 @@ public class PlayerCharacterControllerControl : MonoBehaviour
         //moveAction.started -= MoveActionStarted;
         //moveAction.canceled -= MoveActionCanceled;
         lookAction.performed -= RotatePlayerLook;
+        runAction.started -= RunActionUpdate;
+        runAction.canceled -= RunActionUpdate;
+    }
+
+    private void RunActionUpdate(InputAction.CallbackContext context)
+    {
+        isRunning = context.started;
     }
 
     private void MoveActionStarted(InputAction.CallbackContext _) => moveRoutine = StartCoroutine(MovementRoutine());
@@ -78,7 +91,10 @@ public class PlayerCharacterControllerControl : MonoBehaviour
                 moveAxisY.Normalize();
 
                 // 입력 방향과 속도 능력치를 적용
-                Vector3 velocity = MoveSpeed * (moveAxisX * moveInput.x + moveAxisY * moveInput.y);
+                float speed = MoveSpeed;
+                if (isRunning)
+                    speed *= runPow;
+                Vector3 velocity = speed * (moveAxisX * moveInput.x + moveAxisY * moveInput.y);
 
                 controller.SimpleMove(velocity);
             }

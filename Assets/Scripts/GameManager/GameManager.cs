@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
             dataTable.InitDataTable();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
+            Cursor.lockState = CursorLockMode.Locked;
 
             if (playerData == null)
                 playerData = new PlayerData();
