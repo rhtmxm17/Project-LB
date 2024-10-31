@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,7 +18,7 @@ public class kmt_MobSpawner : MonoBehaviour
 
     [Header("Monster Types")]
     [SerializeField]
-    protected MonsterTraceToPlayer[] spawnType;
+    protected MonsterData[] spawnType;
 
     [Header("Spawn Random Monster Type In Arr")]
     [SerializeField]
@@ -49,9 +48,13 @@ public class kmt_MobSpawner : MonoBehaviour
         {
             spawnIdx = randomTypeSpawn ? Random.Range(0, spawnType.Length) : 0;
 
-            monsterPool[i] = Instantiate(spawnType[spawnIdx], transform.position, Quaternion.identity);
-            monsterPool[i].gameObject.SetActive(false);
-            monsterPool[i].transform.SetParent(waveMonsterParent);
+            MonsterModel instance = Instantiate(spawnType[spawnIdx].MonsterPrefab, transform.position, Quaternion.identity);
+            instance.DataTable = spawnType[spawnIdx];
+            instance.Init();
+            instance.gameObject.SetActive(false);
+            instance.transform.SetParent(waveMonsterParent);
+
+            monsterPool[i] = instance.GetComponent<MonsterTraceToPlayer>();
         }
     }
 
