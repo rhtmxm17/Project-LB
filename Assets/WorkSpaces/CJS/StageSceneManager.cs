@@ -53,7 +53,7 @@ public class StageSceneManager : MonoBehaviour
         SceneChanger sceneChanger = GameManager.Instance.GetSceneChanger();
         sceneChanger.ChangeToMultiScene(StageDataTable.MapScene, StageDataTable.LevelScene);
         // TODO: 씬 로드 완료 이벤트에 InitStage(스테이지 초기화 함수) 구독 붙이기
-
+        sceneChanger.StartMuiltiLoading(InitStage);
     }
 
     /// <summary>
