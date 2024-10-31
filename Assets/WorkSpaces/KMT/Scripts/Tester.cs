@@ -13,6 +13,8 @@ public class Tester : MonoBehaviour
     [SerializeField]
     InventorySystem inven;
 
+    [SerializeField]
+    UpgradeSystem upgradeSystem;
 
     [SerializeField]
     int foodAmount;
@@ -24,9 +26,14 @@ public class Tester : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.I))
         { 
             inven.gameObject.SetActive(!inven.gameObject.activeSelf);
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            upgradeSystem.OpenWindow();
         }
     }
 
@@ -37,7 +44,7 @@ public class Tester : MonoBehaviour
 
     public void AddFood()
     { 
-        inven.AddFood(foodAmount);
+        inven.AddGear(foodAmount);
     }
 
     public void UseFood()
