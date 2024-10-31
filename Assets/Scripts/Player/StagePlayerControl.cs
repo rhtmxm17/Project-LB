@@ -13,9 +13,11 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerModel))]
 public class StagePlayerControl : MonoBehaviour, IDamageable
 {
-    [Header("테스트 셋팅 필드")]
+    [Header("테스트 필드")]
     [SerializeField] GunBase sampleGun;
-    [SerializeField] GrenadeThrower thrower;
+
+    [Header("고정 사용 아이템")]
+    [SerializeField] GrenadeThrower grenadeThrow; // 3번 키, 수류탄 투척
     [Space(5)]
 
     [SerializeField] StatusDebuff hurtDebuffAsset;
@@ -23,6 +25,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     private float invHurtReference;
     private bool isHurt = false;
 
+    [Header("Events")]
     public UnityEvent<int> OnMagazineUpdated; // 내용물 미구현
     public UnityEvent<int> OnSlotSeleted;
     public UnityEvent OnDead;
@@ -48,6 +51,27 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
     private PlayerModel model;
 
+
+    public struct StageInitAttribute
+    {
+        public int maxHp;
+        public int mainWeaponLevel;
+        public GunData mainWeapon;
+        public GunData meleeWeapon;
+        public GrenadeData grenadeData;
+
+        public GunData specialWeapon;
+    }
+
+    /// <summary>
+    /// 스테이지 시작시 초기화 함수
+    /// </summary>
+    /// <param name="attr">매개변수 세트</param>
+    public void StageInit(StageInitAttribute attr)
+    {
+        grenadeThrow.Data = attr.grenadeData;
+    }
+
     private void Awake()
     {
         model = GetComponent<PlayerModel>();
@@ -72,7 +96,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         // 테스트 코드
         quickSlot[0] = sampleGun;
         sampleGun.OnShot += InvokeAttack;
-        quickSlot[1] = thrower;
+        quickSlot[2] = grenadeThrow;
     }
 
     private void OnEnable()

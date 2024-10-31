@@ -40,6 +40,19 @@ public class StageSceneManager : MonoBehaviour
     private void InitStage()
     {
         PlayerModel player = GameManager.Instance.GetPlayerModel();
+        if (player == null)
+        {
+            Debug.LogError("플레이어 캐릭터를 찾을 수 없음");
+            return;
+        }
+
+        if (player.TryGetComponent(out StagePlayerControl playerControl))
+        {
+            Debug.LogError("스테이지용 플레이어 캐릭터가 아님");
+            return;
+        }
+
         // 플레이어 초기화
+        //playerControl.StageInit()
     }
 }
