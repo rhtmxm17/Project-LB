@@ -159,8 +159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingPanel: {fileID: 6345149472558556299}
-  slider: {fileID: 0}
   fader: {fileID: 6345149472565165972}
+  OnLoadSceneComplete:
+    m_PersistentCalls:
+      m_Calls: []
   sceneInfoArr:
   - sceneType: 1
     sceneName: Scene_A
@@ -168,6 +170,10 @@ MonoBehaviour:
     sceneName: Stage 1
   - sceneType: 0
     sceneName: KMT_MultiSceneLoading
+  - sceneType: 4
+    sceneName: LoadTestMap
+  - sceneType: 5
+    sceneName: LoadTestLevel
 --- !u!114 &4363799952622237563
 MonoBehaviour:
   m_ObjectHideFlags: 0

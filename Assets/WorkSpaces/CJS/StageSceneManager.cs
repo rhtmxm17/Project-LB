@@ -40,20 +40,19 @@ public class StageSceneManager : MonoBehaviour
         }
     }
 
+    public bool HasJournal { get; private set; }
 
-    public bool GetJournal { get; set; }
-
-    public bool GetBlueprint { get; set; }
+    public bool HasBlueprint { get; private set; }
 
     /// <summary>
     /// 해당 스테이지 씬으로 진입
     /// </summary>
+    [ContextMenu("EnterStage Test")]
     public void EnterStage()
     {
         SceneChanger sceneChanger = GameManager.Instance.GetSceneChanger();
+        sceneChanger.OnLoadSceneComplete.AddListener(InitStage);
         sceneChanger.ChangeToMultiScene(StageDataTable.MapScene, StageDataTable.LevelScene);
-        // TODO: 씬 로드 완료 이벤트에 InitStage(스테이지 초기화 함수) 구독 붙이기
-        sceneChanger.StartMuiltiLoading(InitStage);
     }
 
     /// <summary>
@@ -65,13 +64,13 @@ public class StageSceneManager : MonoBehaviour
         PlayerData playerData = GameManager.Instance.GetPlayerData();
 
         // 수집품 획득 처리
-        if (GetJournal)
+        if (HasJournal)
         {
             ItemData journal = playerData.GetItemData(StageDataTable.Journal);
             journal.count = 1;
         }
 
-        if (GetBlueprint)
+        if (HasBlueprint)
         {
             ItemData blueprint = playerData.GetItemData(StageDataTable.BluePrint);
             blueprint.count = 1;
@@ -84,6 +83,11 @@ public class StageSceneManager : MonoBehaviour
         // TODO: 클리어 UI 출력, UI 버튼에 씬 전환 메서드 추가
     }
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     private void InitStage()
     {
         PlayerModel player = GameManager.Instance.GetPlayerModel();
@@ -93,7 +97,7 @@ public class StageSceneManager : MonoBehaviour
             return;
         }
 
-        if (player.TryGetComponent(out StagePlayerControl playerControl))
+        if (! player.TryGetComponent(out StagePlayerControl playerControl))
         {
             Debug.LogError("스테이지용 플레이어 캐릭터가 아님");
             return;
@@ -102,7 +106,6 @@ public class StageSceneManager : MonoBehaviour
         // 플레이어 초기화
         PlayerData playerData = GameManager.Instance.GetPlayerData();
         ItemType mainWeaponType = ItemType.AK47;          //
-        ItemType meleeWeaponType = ItemType.KNIFE;        //
         ItemType specialWeaponType = ItemType.SP_WEAPON1; // TODO: 실제로 선택된 아이템 가져오기
 
 
@@ -110,7 +113,7 @@ public class StageSceneManager : MonoBehaviour
         {
             maxHp = playerData.MaxHP,
             mainWeapon = InitWeapon(mainWeaponType),
-            meleeWeapon = InitWeapon(meleeWeaponType),
+            meleeWeapon = InitWeapon(ItemType.KNIFE),
             specialWeapon = InitWeapon(specialWeaponType),
             grenadeData = StageDataTable.Grenade,
         };
@@ -118,7 +121,10 @@ public class StageSceneManager : MonoBehaviour
         playerControl.StageInit(playerInitAttr);
 
         // TODO: 클리어 이벤트를 찾아서 StageCleared 구독
+        // TODO: 설계도와 저널 아이템을 찾아서 이미 획득했다면 삭제, 획득 못했다면 구독
+        // TODO: HUD에 플레이어 정보 등록
         //  태그 등록 + 인터페이스 구현 또는 TriggerArea 타입 참조 사용
+
     }
 
     private GunBase InitWeapon(ItemType type)

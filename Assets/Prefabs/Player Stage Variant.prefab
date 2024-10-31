@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosinTimer: 2.5
-  <Data>k__BackingField: {fileID: 11400000, guid: 746ad11de71c42147904916de5e4f8aa, type: 2}
+  data: {fileID: 0}
   <Prefab>k__BackingField: {fileID: 5405940737381054613, guid: 5279aec816c182949baa05128a5a1cb7, type: 3}
 --- !u!1 &6670160987631193341
 GameObject:
@@ -129,10 +129,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4932317945168321149, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 75c01c90ab36c8040a2967e65ea8ef1c, type: 2}
     - target: {fileID: 5400939480846005083, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
       propertyPath: weaponCamera
       value: 
@@ -210,9 +206,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sampleGun: {fileID: 8291425051961373079}
-  thrower: {fileID: 3941861055701554458}
+  grenadeThrow: {fileID: 3941861055701554458}
   hurtDebuffAsset: {fileID: 11400000, guid: 29b338d0001195f42a0a0e4428a9fc58, type: 2}
   hurtReferenceValue: 0.4
+  OnMagazineUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSlotSeleted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
   SelfDamageMultiplier: 0.1
 --- !u!114 &8291425051961373079 stripped
 MonoBehaviour:

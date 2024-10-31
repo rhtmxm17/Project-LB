@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Stage1 Data
   m_EditorClassIdentifier: 
   stageName: Stage1
+  mapScene: 4
+  levelScene: 5
   rewardExp: 50
   rewardRation: 50
-  grenadeDatas: {fileID: 11400000, guid: 746ad11de71c42147904916de5e4f8aa, type: 2}
+  journal: 6
+  bluePrint: 14
+  grenadeData: {fileID: 11400000, guid: 746ad11de71c42147904916de5e4f8aa, type: 2}

@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(Instance);
             playerData = FileIOSystem.LoadPlayerData();
             sceneChanger = GetComponent<SceneChanger>();
-
+            
             dataTable.InitDataTable();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     //Resources 폴더에서 불러옴. / Resources/Singletons/Manager 프리팹 가져옴
     public static void Create() 
     {
@@ -48,8 +49,10 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) 
     {
-        playerModel = null;
-        playerModel = GameObject.FindWithTag("Player")?.GetComponent<PlayerModel>();
+        if (mode == LoadSceneMode.Single)
+            playerModel = null;
+
+        playerModel ??= GameObject.FindWithTag("Player")?.GetComponent<PlayerModel>();
     }
 
     public PlayerData GetPlayerData()
