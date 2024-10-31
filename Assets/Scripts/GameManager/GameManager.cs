@@ -41,6 +41,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ReLoadData()
+    {
+        playerData = FileIOSystem.LoadPlayerData();
+        if (playerData == null)
+            playerData = new PlayerData();
+
+    }
+
 
     //Resources 폴더에서 불러옴. / Resources/Singletons/Manager 프리팹 가져옴
     public static void Create() 
