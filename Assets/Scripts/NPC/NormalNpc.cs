@@ -8,10 +8,10 @@ public class NormalNpc : NpcBase
     DialogueSO dialogueArr;
 
     [SerializeField]
-    TextMeshProUGUI tmp;
-    Animator animator;
+    protected TextMeshProUGUI tmp;
+    protected Animator animator;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         animator = tmp.transform.gameObject.GetComponent<Animator>();
     }
@@ -26,7 +26,7 @@ public class NormalNpc : NpcBase
         HideDialogue();
     }
 
-    void ShowDialogue()
+    protected virtual void ShowDialogue()
     {
 
         int idx = Random.Range(0, dialogueArr.Texts.Length);
@@ -35,7 +35,7 @@ public class NormalNpc : NpcBase
 
     }
 
-    void HideDialogue()
+    protected virtual void HideDialogue()
     {
         animator.Play("FadeOut");
     }

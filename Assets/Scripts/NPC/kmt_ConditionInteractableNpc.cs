@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static StageConditionDialogueSO;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class kmt_ConditionInteractableNpc : InteractableNpc
 {
@@ -11,8 +12,10 @@ public class kmt_ConditionInteractableNpc : InteractableNpc
 
     string conditionText = null;
 
-    private void Awake()
+    protected override void Awake()
     {
+
+        base.Awake();
         //GameData data = DataManager.GetData();
         //int lastCleared = data.lastClearedStage;
         //int[] clearArr = data.clearedArr;
@@ -38,28 +41,19 @@ public class kmt_ConditionInteractableNpc : InteractableNpc
 
     }
 
-
-    public override void OnInteracted() {
-
-        string text;
+    protected override void ShowDialogue()
+    {
 
         if (conditionText != null)
         {
-            //1회성으로 출력할 조건부 대사
-            text = conditionText;
+            tmp.text = conditionText;
+            animator.Play("FadeIn");
             conditionText = null;
         }
         else
         {
-            //출력한 대사
-            text = GetNormalText();
+            base.ShowDialogue();
         }
-
-        Debug.Log(text);
-
-        //todo : 창 띄우기. => 대사를 매개변수로 전달하기? || 내가 ui객체를 가지고있기?
-        OnInteractedEvent?.Invoke();
-
     }
 
 }

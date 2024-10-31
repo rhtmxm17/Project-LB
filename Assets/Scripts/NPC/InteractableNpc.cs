@@ -1,48 +1,37 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class InteractableNpc : NpcBase, IInteractable
+public class InteractableNpc : NormalNpc　, IInteractable
 {
 
     [SerializeField]
     protected UnityEvent OnInteractedEvent;
 
-    [Header("NormalDialogue")]
-    [SerializeField]
-    protected DialogueSO normalDialogue;
-
-    [Header("Is Randomized Text")]
-    [SerializeField]
-    protected bool isRadomize;
-
-    protected int textIdx = 0;
+    bool isInteracted = false;
 
     public virtual void OnInteracted()
     {
-
-        //출력할 대사.
-        string text = GetNormalText();
-
+        isInteracted = true;
+        animator.Play("Hide");
         //todo : 창 띄우기. => 대사를 매개변수로 전달하기? || 내가 ui객체를 가지고있기?
         OnInteractedEvent?.Invoke();
 
     }
 
+    protected override void OnTriggerExitCallback()
+    {
 
-    protected string GetNormalText() {
-
-        if (isRadomize)
+        if (isInteracted)
         {
-            textIdx = Random.Range(0, normalDialogue.Texts.Length);
+            isInteracted = false;
         }
         else
         {
-            textIdx++;
-            textIdx %= normalDialogue.Texts.Length;
+            base.OnTriggerExitCallback();
         }
 
-        return normalDialogue.Texts[textIdx];
 
     }
+
 
 }
