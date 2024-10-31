@@ -20,4 +20,9 @@ public class Fader : MonoBehaviour
     {
         changer.StartLoading();
     }
+
+    public void StartMultiLoading()
+    {
+        changer.StartMuiltiLoading();
+    }
 }
