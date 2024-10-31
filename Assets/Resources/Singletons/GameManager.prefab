@@ -215,7 +215,13 @@ MonoBehaviour:
   loadingPanel: {fileID: 8864941385972960040}
   slider: {fileID: 8864941385447895751}
   fader: {fileID: 8864941385947484215}
-  sceneInfoArr: []
+  sceneInfoArr:
+  - sceneType: 1
+    sceneName: Scene_A
+  - sceneType: 2
+    sceneName: Stage 1
+  - sceneType: 0
+    sceneName: KMT_MultiSceneLoading
 --- !u!114 &-6951391766857262888
 MonoBehaviour:
   m_ObjectHideFlags: 0
