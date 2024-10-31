@@ -98,11 +98,8 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(Load(destStr));
     }
 
-    public void StartMuiltiLoading(UnityAction onLoadSceneCompleteCallback = null)
+    public void StartMuiltiLoading()
     {
-        if (onLoadSceneCompleteCallback != null)
-            OnLoadSceneComplete.AddListener(onLoadSceneCompleteCallback);
-
         StartCoroutine(MultiLoad(destSceneTypes));
     }
 
