@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/WorkSpaces/KMT/KMT_TestScene.unity
     guid: 60a7490a3946c5146a6348799048af49
-  - enabled: 0
-    path: Assets/WorkSpaces/KMT/Test.unity
-    guid: f837ba29b5bc5d74cb77f16594a714d0
   - enabled: 1
     path: Assets/WorkSpaces/KMT/KMT_MultiSceneLoading.unity
     guid: 2a8c82907cd0707408e14681dc3c27c4
@@ -20,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene_A.unity
     guid: aa4481bd9b8812f46bfa7f221a8a8003
+  - enabled: 1
+    path: Assets/WorkSpaces/CJS/LoadTestMap.unity
+    guid: bedba962f7b6fc546aeb342899698ecf
+  - enabled: 1
+    path: Assets/WorkSpaces/CJS/LoadTestLevel.unity
+    guid: 0dd52dfdac4f4134b9ae989eb0b7c30a
   m_configObjects: {}

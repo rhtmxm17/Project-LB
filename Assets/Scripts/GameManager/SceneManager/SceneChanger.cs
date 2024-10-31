@@ -4,11 +4,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class SceneChanger : MonoBehaviour
 {
-    public enum Scenes { BUNCKER, STAGE1, STAGE2, STAGE3, STAGE4 }
+    public enum Scenes { BUNCKER, STAGE1, STAGE2, STAGE3, STAGE4, LEVEL1, }
 
     [Header("Panel")]
     [SerializeField]
@@ -99,19 +98,17 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(Load(destStr));
     }
 
-    public void StartMuiltiLoading(UnityAction onLoadSceneCompleteCallback = null)
+    public void StartMuiltiLoading()
     {
-        OnLoadSceneComplete.RemoveAllListeners();
-        if (onLoadSceneCompleteCallback != null)
-            OnLoadSceneComplete.AddListener(onLoadSceneCompleteCallback);
-
         StartCoroutine(MultiLoad(destSceneTypes));
     }
 
     //후처리
-    void EndLoadScene() { 
-    
-
+    void EndLoadScene(Scene scene, LoadSceneMode mode)
+    {
+        OnLoadSceneComplete?.Invoke();
+        OnLoadSceneComplete.RemoveAllListeners();
+        SceneManager.sceneLoaded -= EndLoadScene;
     }
 
     IEnumerator MultiLoad(List<Scenes> destSceneTypes)
@@ -181,10 +178,10 @@ public class SceneChanger : MonoBehaviour
                 state.allowSceneActivation = true;
             }
 
+            SceneManager.sceneLoaded += EndLoadScene;
         }
 
         //로딩 완료시 접근할 수 있는 코드 영역
-        OnLoadSceneComplete?.Invoke();
 
         //todo : 로딩바 확인용 더미. 나중에 제거 (로딩완료씬 더미딜레이, 제거됨)                 
         yield return new WaitForSeconds(3f);

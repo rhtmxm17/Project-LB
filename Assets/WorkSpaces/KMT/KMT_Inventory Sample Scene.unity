@@ -1536,6 +1536,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1342499010}
     m_Modifications:
+    - target: {fileID: 615407532, guid: aa99b85148eb88a4abc37a3512a86ae5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -5.772003
+      objectReference: {fileID: 0}
+    - target: {fileID: 615407532, guid: aa99b85148eb88a4abc37a3512a86ae5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.4913292
+      objectReference: {fileID: 0}
+    - target: {fileID: 777719848, guid: aa99b85148eb88a4abc37a3512a86ae5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.4913292
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207660488, guid: aa99b85148eb88a4abc37a3512a86ae5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.4913292
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448032095, guid: aa99b85148eb88a4abc37a3512a86ae5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -5.772003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448032095, guid: aa99b85148eb88a4abc37a3512a86ae5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.4913292
+      objectReference: {fileID: 0}
     - target: {fileID: 1308469514995342912, guid: aa99b85148eb88a4abc37a3512a86ae5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1635,6 +1659,10 @@ PrefabInstance:
     - target: {fileID: 6466242379424321998, guid: aa99b85148eb88a4abc37a3512a86ae5, type: 3}
       propertyPath: m_Name
       value: InventoryQuickSlotSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466242379424321998, guid: aa99b85148eb88a4abc37a3512a86ae5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6844830106107104087, guid: aa99b85148eb88a4abc37a3512a86ae5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3690,6 +3718,10 @@ PrefabInstance:
     - target: {fileID: 2702079291389420760, guid: cefb3059a98926e488874306c12fabab, type: 3}
       propertyPath: m_Name
       value: FoodExchangeWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2702079291389420760, guid: cefb3059a98926e488874306c12fabab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2702079291389420772, guid: cefb3059a98926e488874306c12fabab, type: 3}
       propertyPath: m_Pivot.x
