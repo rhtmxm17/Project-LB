@@ -22,6 +22,14 @@ public class Tester : MonoBehaviour
         inven.AddItem(itemSO, idx);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        { 
+            inven.gameObject.SetActive(!inven.gameObject.activeSelf);
+        }
+    }
+
     public void RemoveButton()
     {
         inven.RemoveItem(idx);
@@ -35,5 +43,22 @@ public class Tester : MonoBehaviour
     public void UseFood()
     { 
         inven.UseFood(foodAmount);
+
+        PlayerData da = GameManager.Instance.GetPlayerData();
+
+        ItemData gundata = da.GetItemData(ItemType.FAMAS);
+
+        InventoryItemSO d = GameManager.Instance.GetItemDataTable().GetItemDataSO(ItemType.FAMAS);
+
+        if (gundata.WeaponLevel >= ((InventoryEquableItemSO)d).MaxUpgradeLevel)
+        {
+            Debug.Log("풀강!");
+        }
+        else
+        {
+
+            gundata.WeaponLevel++;
+        }
+
     }
 }

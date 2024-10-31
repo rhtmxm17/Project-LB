@@ -33,13 +33,14 @@ public class InventoryInteractableItemSlot : InventoryItemSlot
 
         hotKeySystem = GameObject.FindWithTag("QuickSlot").GetComponent<HotKeySystem>();
 
-        infoPanelRect = GameObject.FindWithTag("InfoWindow").GetComponent<RectTransform>();
+        infoPanelRect = GameObject.Find("InfoWindow").GetComponent<RectTransform>();
         infoPanel = infoPanelRect.GetComponent<InfoPanel>();
 
         detailInfoPanelRect = GameObject.Find("PopupWindow").GetComponent<RectTransform>();
         detailInfoPanel = detailInfoPanelRect.GetComponent <InfoPanel>();
 
         playerData = GameManager.Instance.GetPlayerData();
+
     }
 
     void OnClickEvent(PointerEventData eventData)

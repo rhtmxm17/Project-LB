@@ -17,6 +17,8 @@ MonoBehaviour:
   <ItemName>k__BackingField: AK47
   <MaxCnt>k__BackingField: 1
   <Description>k__BackingField: "\uD06C\uC544\uC544\uC545! 47!"
+  <DetailInfoSO>k__BackingField: {fileID: 0}
   <equipQuickSlotType>k__BackingField: 0
   <AttackPoint>k__BackingField: 50
   <AdditiveAttackPoint>k__BackingField: 20
+  <MaxUpgradeLevel>k__BackingField: 7
