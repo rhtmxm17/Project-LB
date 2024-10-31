@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,6 +17,8 @@ public class SceneChanger : MonoBehaviour
     [Header("Fader")]
     [SerializeField]
     Animator fader;
+
+    public UnityEvent OnLoadSceneComplete;
 
     string destStr;
     List<Scenes> destSceneTypes = new List<Scenes>();
@@ -96,8 +99,12 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(Load(destStr));
     }
 
-    public void StartMuiltiLoading()
-    { 
+    public void StartMuiltiLoading(UnityAction onLoadSceneCompleteCallback = null)
+    {
+        OnLoadSceneComplete.RemoveAllListeners();
+        if (onLoadSceneCompleteCallback != null)
+            OnLoadSceneComplete.AddListener(onLoadSceneCompleteCallback);
+
         StartCoroutine(MultiLoad(destSceneTypes));
     }
 
@@ -109,6 +116,7 @@ public class SceneChanger : MonoBehaviour
 
     IEnumerator MultiLoad(List<Scenes> destSceneTypes)
     {
+
         //첫 씬은 넘어가야 함.
         AsyncOperation baseStatus = SceneManager.LoadSceneAsync(GetSceneName(destSceneTypes[0]));
         destSceneTypes.RemoveAt(0);
@@ -176,6 +184,7 @@ public class SceneChanger : MonoBehaviour
         }
 
         //로딩 완료시 접근할 수 있는 코드 영역
+        OnLoadSceneComplete?.Invoke();
 
         //todo : 로딩바 확인용 더미. 나중에 제거 (로딩완료씬 더미딜레이, 제거됨)                 
         yield return new WaitForSeconds(3f);

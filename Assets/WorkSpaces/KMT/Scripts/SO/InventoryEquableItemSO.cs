@@ -21,13 +21,18 @@ public class InventoryEquableItemSO : InventoryInfoItemSO
 
     [field: SerializeField]
     public int MaxUpgradeLevel { get; private set; }
-
+    
     [field: SerializeField]
     public int[] UpgradeReqGears { get; private set; }
 
+    public GunBase GunPrefab => gunPrefab;
+    [SerializeField] GunBase gunPrefab;
 
-    public AudioClip shotClip; // 발사 소리
-    public AudioClip reloadClip; // 재장전 소리
+    public AudioClip ShotClip => shotClip; // 발사 소리
+    [SerializeField] AudioClip shotClip;
+
+    public AudioClip ReloadClip => reloadClip; // 재장전 소리
+    [SerializeField] AudioClip reloadClip;
 
     public int damage = 50; // 공격력
     public int damageGrowth = 20; // 레벨별 피해량 증가
