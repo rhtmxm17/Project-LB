@@ -15,9 +15,13 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
     private void Awake()
     {
         monsterModel = GetComponent<MonsterModel>();
-        monsterAni = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
         monsterAgent = GetComponent<NavMeshAgent>();
+
+        if (monsterAni == null)
+        {
+            monsterAni = GetComponent<Animator>();
+        }
     }
 
 

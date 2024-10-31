@@ -792,6 +792,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6478164651878404997, guid: 838b8dbde682b814dabdbb263ab0bb16, type: 3}
+      propertyPath: m_Radius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478164651878404997, guid: 838b8dbde682b814dabdbb263ab0bb16, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6625724418132813343, guid: 838b8dbde682b814dabdbb263ab0bb16, type: 3}
       propertyPath: m_Controller
       value: 
@@ -844,7 +852,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scavenger
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9061234993451076044, guid: 838b8dbde682b814dabdbb263ab0bb16, type: 3}
+      propertyPath: monsterModel
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6020855016104984135, guid: 838b8dbde682b814dabdbb263ab0bb16, type: 3}
+    - {fileID: 8360677893861217942, guid: 838b8dbde682b814dabdbb263ab0bb16, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 838b8dbde682b814dabdbb263ab0bb16, type: 3}
 --- !u!1 &1952246858
 GameObject:

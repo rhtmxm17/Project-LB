@@ -22,12 +22,16 @@ public class MonsterTraceToPlayer : MonoBehaviour
 
     private void Awake()
     {
-        monsterAni = GetComponent<Animator>();
         monsterAgent = GetComponent<NavMeshAgent>();
         monsterModel = GetComponent<MonsterModel>();
         player = GameObject.FindGameObjectWithTag("Player");
         isChecked = false;
         distanceStopping = 1.5f;
+
+        if (monsterAni == null)
+        {
+            monsterAni = GetComponent<Animator>();
+        }
     }
 
     private void Start()
