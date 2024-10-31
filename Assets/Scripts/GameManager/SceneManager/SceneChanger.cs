@@ -12,8 +12,6 @@ public class SceneChanger : MonoBehaviour
     [Header("Panel")]
     [SerializeField]
     GameObject loadingPanel;
-    [SerializeField]
-    Slider slider;
 
     [Header("Fader")]
     [SerializeField]
@@ -70,7 +68,6 @@ public class SceneChanger : MonoBehaviour
 
         }
 
-        slider.value = 0f;
         //애니메이션 시작. ( 페이드 아웃 , 인 )
         fader.Play("LoadingIn");
 
@@ -90,7 +87,6 @@ public class SceneChanger : MonoBehaviour
 
         destSceneTypes = destScene.ToList();
 
-        slider.value = 0f;
         //애니메이션 시작. ( 페이드 아웃 , 인 )
         fader.Play("MultiLoadingIn");
     }
@@ -181,15 +177,8 @@ public class SceneChanger : MonoBehaviour
 
         //로딩 완료시 접근할 수 있는 코드 영역
 
-        //todo : 로딩바 확인용 더미. 나중에 제거
-        yield return new WaitForSeconds(0.5f);
-        slider.value = 0.2f;
-        yield return new WaitForSeconds(0.5f);
-        slider.value = 0.5f;
-        yield return new WaitForSeconds(0.5f);
-        slider.value = 0.75f;
-        yield return new WaitForSeconds(0.5f);
-        slider.value = 1f;
+        //todo : 로딩바 확인용 더미. 나중에 제거 (로딩완료씬 더미딜레이, 제거됨)                 
+        yield return new WaitForSeconds(3f);
 
         fader.Play("LoadingOut");
 
@@ -215,15 +204,8 @@ public class SceneChanger : MonoBehaviour
             else
             {
 
-                //todo : 로딩바 확인용 더미. 나중에 제거
-                yield return new WaitForSeconds(0.5f);
-                slider.value = 0.2f;
-                yield return new WaitForSeconds(0.5f);
-                slider.value = 0.5f;
-                yield return new WaitForSeconds(0.5f);
-                slider.value = 0.75f;
-                yield return new WaitForSeconds(0.5f);
-                slider.value = 1f;
+                //todo : 로딩바 확인용 더미. 나중에 제거 (로딩완료씬 더미딜레이, 제거됨)                 
+                yield return new WaitForSeconds(3f);                
 
                 //로딩 완료
                 //씬 전환
