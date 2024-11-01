@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
     [SerializeField] Animator monsterAni;
     [SerializeField] Rigidbody rigid;
     [SerializeField] NavMeshAgent monsterAgent;
+
+    public event Action OnDeadEvent = null;
         
 
     private void Awake()
@@ -39,6 +42,7 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
         {
             monsterAni.SetTrigger("DeadTrigger");
             // 몬스터 사망시
+            OnDeadEvent?.Invoke();
             Destroy(gameObject, 1f);
         }
     }
