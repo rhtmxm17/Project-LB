@@ -28,13 +28,12 @@ public class kmt_MobSpawner : MonoBehaviour
     [SerializeField]
     protected UnityEvent EndSpawnEvent;
 
-    //todo : 작성중이신 몬스터 타입으로 바꿔 작성하기.
     protected MonsterTraceToPlayer[] monsterPool;
     protected WaitForSeconds spawnTime;
 
     protected virtual void Awake()
     {
-
+        transform.SetParent(waveMonsterParent);
         spawnTime = new WaitForSeconds(spawnDelay);
         monsterPool = new MonsterTraceToPlayer[spawnCount];
 
@@ -78,6 +77,7 @@ public class kmt_MobSpawner : MonoBehaviour
         }
 
         EndSpawnEvent?.Invoke();
+        transform.SetParent(null);
 
     }
 
