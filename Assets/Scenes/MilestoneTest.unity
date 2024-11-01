@@ -11600,6 +11600,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5071554714509711474, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
+      propertyPath: dataTable
+      value: 
+      objectReference: {fileID: 11400000, guid: d8679f68b2caa2043a52cbfee597e7b2, type: 2}
     - target: {fileID: 7365981766938865459, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
       propertyPath: m_CastShadows
       value: 3

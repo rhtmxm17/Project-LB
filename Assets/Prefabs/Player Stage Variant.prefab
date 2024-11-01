@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosinTimer: 2.5
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 746ad11de71c42147904916de5e4f8aa, type: 2}
   <Prefab>k__BackingField: {fileID: 5405940737381054613, guid: 5279aec816c182949baa05128a5a1cb7, type: 3}
 --- !u!1 &6670160987631193341
 GameObject:
