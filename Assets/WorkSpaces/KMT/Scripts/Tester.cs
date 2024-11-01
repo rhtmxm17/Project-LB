@@ -20,6 +20,9 @@ public class Tester : MonoBehaviour
     ExchangeSystem exchangeSystem;
 
     [SerializeField]
+    PlayerInfoSystem playerInfoSystem;
+
+    [SerializeField]
     int foodAmount;
 
     public void AddButton()
@@ -42,6 +45,11 @@ public class Tester : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             exchangeSystem.OpenWindow();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            playerInfoSystem.OpenWindow();
         }
 
 
