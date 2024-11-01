@@ -179,5 +179,7 @@ public class UpgradeSystem : MonoBehaviour
         ReqGearNumText.text = "0";
         reqImg.sprite = gear;
         gameObject.SetActive(false);
+
+        GameManager.Instance.GetPlayerModel().GetComponent<PlayerCharacterControllerControl>().MouseLock(true);
     }
 }

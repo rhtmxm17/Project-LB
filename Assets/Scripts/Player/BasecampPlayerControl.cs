@@ -15,11 +15,12 @@ public class BasecampPlayerControl : MonoBehaviour
     private Collider[] overlapResults = new Collider[4];
     private int interactableLayer;
 
-    [SerializeField] InteractableNpc npcInfo;
-    string npcName;
+    //LSH: 교환창, 강화창 켜기 위한 스크립트들
+    [SerializeField] UpgradeSystem upgradeSystem;
+    [SerializeField] ExchangeSystem exchangeSystem;
+    [SerializeField] GameObject stageEnterUI;
+    PlayerCharacterControllerControl playerCursor;
 
-    [SerializeField] GameObject foodExchange;
-    [SerializeField] GameObject weaponUpgrade;
 
 
     private void Awake()
@@ -40,15 +41,17 @@ public class BasecampPlayerControl : MonoBehaviour
         interactAction = playerInput.actions["Interact"];
 
         interactableLayer = LayerMask.GetMask("Interactable");
+               
+
     }
 
 
     private void Start()
     {
-        npcName = "";
-        //npcInfo.OnCommunication += OpenNpcUI; // FIXME: 이벤트를 받아오고 싶은데 오류가 납니다
-
+        playerCursor = GetComponent<PlayerCharacterControllerControl>();
     }
+
+
     private void OnEnable()
     {
         interactAction.started += TryInteract;
@@ -82,9 +85,9 @@ public class BasecampPlayerControl : MonoBehaviour
 
         GameObject target = overlapResults[minDistanceIndex].attachedRigidbody?.gameObject ?? overlapResults[minDistanceIndex].gameObject;
         Debug.Log($"{target.name}에 대한 상호작용 시도");
-        npcName = target.name;
-        OpenNpcUI(npcName);
-        Debug.Log(2);
+
+        OpenNpcUI(target.name);
+
 
         if (target.TryGetComponent(out IInteractable interactable))
         {
@@ -92,19 +95,37 @@ public class BasecampPlayerControl : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// LSH: 감지된 NPC에 맞는 UI를 호출합니다.
+    /// </summary>
+    /// <param name="name">감지된 NPC의 이름</param>
     public void OpenNpcUI(string name)
     {
-        // FIXME : 이벤트 받아서 유아이 열기 (InteractableNpc에서 옴)
-        //.
-        if (name == "Upgrade Npc (Trump)")
+
+        if (name == "NPC_2") //스테이지 진입NPC Karl
         {
-            weaponUpgrade.SetActive(true);
+            stageEnterUI.SetActive(true);
+            playerCursor.MouseLock(false);
         }
-        else if (name == "Joe Trade Npc (Jessi)")
+        else if (name == "NPC_3") //강화NPC Trump
         {
-            foodExchange.SetActive(true);
+            upgradeSystem.OpenWindow();
+            playerCursor.MouseLock(false);
+        }
+        else if (name == "NPC_4") //상인NPC Jessi
+        {
+            exchangeSystem.OpenWindow();
+            playerCursor.MouseLock(false);
         }
     }
 
+    public void CloseNpcUI()
+    {
+        stageEnterUI.SetActive(false);
+        playerCursor.MouseLock(true);
+        upgradeSystem.CloseWindow();
+        exchangeSystem.CloseWindow();
+
+    }
 
 }
