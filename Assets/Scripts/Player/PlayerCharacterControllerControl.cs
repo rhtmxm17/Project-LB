@@ -17,15 +17,41 @@ public class PlayerCharacterControllerControl : MonoBehaviour
     public bool IsMoving { get; private set; }
     public Vector3 Velocity => controller.velocity; // 실시간 이동중인 속도
 
-    private InputAction moveAction;
-    private InputAction lookAction;
-    private InputAction runAction;
+    private InputAction moveAction; // 이동 입력
+    private InputAction lookAction; // 카메라 회전 입력
+    private InputAction runAction; // 달리기 입력
+    private InputAction cursorAction; // 커서 보이기/숨기기 입력
     private PlayerModel model;
     private CharacterController controller;
     private float MoveSpeed => model.MoveSpeed; // 능력치로서의 이동 속도
     private float verticalCameraAngle;
     private Coroutine moveRoutine;
     private bool isRunning = false;
+    private bool rotateLook = true;
+
+    /// <summary>
+    /// 마우스 잠금 및 카메라 회전 활성 상테를 설정합니다<br/>
+    /// </summary>
+    /// <param name="lockEnable">true일 경우 마우스를 잠그고 카메라 회전 적용</param>
+    public void MouseLock(bool lockEnable)
+    {
+        if (lockEnable)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            if (! rotateLook)
+                lookAction.performed += RotatePlayerLook;
+            rotateLook = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            if (rotateLook)
+                lookAction.performed -= RotatePlayerLook;
+            rotateLook = false;
+        }
+    }
 
     private void Awake()
     {
@@ -40,6 +66,7 @@ public class PlayerCharacterControllerControl : MonoBehaviour
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
         runAction = playerInput.actions["Run"];
+        cursorAction = playerInput.actions["ActiveCursor"];
     }
 
     private void OnEnable()
@@ -50,6 +77,7 @@ public class PlayerCharacterControllerControl : MonoBehaviour
         lookAction.performed += RotatePlayerLook;
         runAction.started += RunActionUpdate;
         runAction.canceled += RunActionUpdate;
+        cursorAction.started += ToggleActiveCursor;
     }
 
     private void OnDisable()
@@ -60,6 +88,7 @@ public class PlayerCharacterControllerControl : MonoBehaviour
         lookAction.performed -= RotatePlayerLook;
         runAction.started -= RunActionUpdate;
         runAction.canceled -= RunActionUpdate;
+        cursorAction.started -= ToggleActiveCursor;
     }
 
     private void RunActionUpdate(InputAction.CallbackContext context)
@@ -70,6 +99,8 @@ public class PlayerCharacterControllerControl : MonoBehaviour
     private void MoveActionStarted(InputAction.CallbackContext _) => moveRoutine = StartCoroutine(MovementRoutine());
 
     private void MoveActionCanceled(InputAction.CallbackContext _) => StopCoroutine(moveRoutine);
+
+    private void ToggleActiveCursor(InputAction.CallbackContext _) => MouseLock(! rotateLook);
 
     private IEnumerator MovementRoutine()
     {
