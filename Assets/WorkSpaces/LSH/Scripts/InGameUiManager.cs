@@ -9,7 +9,7 @@ public class InGameUiManager : MonoBehaviour
 {
     
     // 스크립트 가져오기
-    [SerializeField] PlayerModel playerHP;
+    [SerializeField] PlayerModel playerModel;
 
     // 유아이 캔버스
     [SerializeField] GameObject gameOverUI; // 게임오버 UI
@@ -27,10 +27,21 @@ public class InGameUiManager : MonoBehaviour
         gameOverUI.SetActive(false);
         gameClearUI.SetActive(false);
 
+        playerModel = GameManager.Instance.GetPlayerModel();
+        var playerStage = playerModel.GetComponent<StagePlayerControl>();
+
         //총알 갯수가 바뀔때마다 호출될 함수
+        playerStage.OnMagazineUpdated.AddListener(ChangeNumOfBullet);
+
         //퀵슬롯 선택변경시 호출될 이벤트함수
+        playerStage.OnSlotSeleted.AddListener(SetChoiceSlot);
+
         //플레이어 사망시 넘어올 이벤트함수
+        playerStage.OnDead.AddListener(PlayerDead);
+
         //스테이지 클리어시 넘어올 이벤트함수
+        StageSceneManager stageManager = GameManager.Instance.GetStageSceneManager();
+        stageManager.OnStageClear.AddListener(StageClear);
 
         //강조 이미지를 퀵슬롯 1번칸 위치로 초기화
         SetChoiceSlot(0);
@@ -103,7 +114,7 @@ public class InGameUiManager : MonoBehaviour
     /// <summary>
     /// 스테이지를 무사히 클리어하면 호출되는 함수입니다. 클리어 UI를 Active해줍니다.
     /// </summary>
-    public void StageClear()
+    public void StageClear(bool levelUp)
     {
         gameClearUI.SetActive(true);
         Time.timeScale = 0f;
