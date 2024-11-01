@@ -17,6 +17,9 @@ public class Tester : MonoBehaviour
     UpgradeSystem upgradeSystem;
 
     [SerializeField]
+    ExchangeSystem exchangeSystem;
+
+    [SerializeField]
     int foodAmount;
 
     public void AddButton()
@@ -27,14 +30,27 @@ public class Tester : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
-        { 
-            inven.gameObject.SetActive(!inven.gameObject.activeSelf);
+        {
+            inven.OpenWindow();
         }
 
         if (Input.GetKeyDown(KeyCode.U))
         {
             upgradeSystem.OpenWindow();
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            exchangeSystem.OpenWindow();
+        }
+
+
+    }
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+
     }
 
     public void RemoveButton()
@@ -44,7 +60,7 @@ public class Tester : MonoBehaviour
 
     public void AddFood()
     { 
-        inven.AddGear(foodAmount);
+        inven.AddFood(foodAmount);
     }
 
     public void UseFood()

@@ -20,5 +20,6 @@ public enum ItemType
     BLUEPRINT_SP1,
     BLUEPRINT_SP2,
     BLUEPRINT_SP3,
+    NONE,
     SIZE
 }

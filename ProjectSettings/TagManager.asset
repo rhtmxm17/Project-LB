@@ -7,6 +7,10 @@ TagManager:
   - QuickSlot
   - PlayerCollider
   - Inventory
+  - Journal
+  - Blueprint
+  - ClearTrigger
+  - GrenadeItem
   layers:
   - Default
   - TransparentFX

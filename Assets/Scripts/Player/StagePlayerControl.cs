@@ -40,6 +40,10 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     /// </summary>
     public const int MaxSlot = 5;
 
+    public const int MainWeaponSlot = 0;
+    public const int MeleeWeaponSlot = 1;
+    public const int SpecialWeaponSlot = 4;
+
     [SerializeField] IUseable[] quickSlot = new IUseable[MaxSlot];
 
     public event UnityAction OnAttack;
@@ -56,11 +60,10 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     {
         public int maxHp;
         public int mainWeaponLevel;
-        public GunData mainWeapon;
-        public GunData meleeWeapon;
+        public GunBase mainWeapon;
+        public GunBase meleeWeapon;
+        public GunBase specialWeapon;
         public GrenadeData grenadeData;
-
-        public GunData specialWeapon;
     }
 
     /// <summary>
@@ -69,6 +72,10 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     /// <param name="attr">매개변수 세트</param>
     public void StageInit(StageInitAttribute attr)
     {
+        quickSlot[MainWeaponSlot] = attr.mainWeapon;
+        quickSlot[MeleeWeaponSlot] = attr.meleeWeapon;
+        quickSlot[SpecialWeaponSlot] = attr.specialWeapon;
+
         grenadeThrow.Data = attr.grenadeData;
     }
 

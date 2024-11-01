@@ -7,7 +7,7 @@ public class TriggerArea : MonoBehaviour
 {
 
     [SerializeField]
-    UnityEvent onTriggerEvent;
+    public UnityEvent onTriggerEvent;
 
     bool isTriggered = false;
 
