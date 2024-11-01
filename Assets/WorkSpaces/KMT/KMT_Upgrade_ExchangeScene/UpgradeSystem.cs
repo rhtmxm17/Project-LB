@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class UpgradeSystem : MonoBehaviour
 {
 
-    InventorySystem inventory;
     PlayerData playerData;
     ItemDataTableSO dataTable;
 
@@ -30,10 +29,14 @@ public class UpgradeSystem : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI ReqGearNumText;
 
+    [Header("Inventory")]
+    [SerializeField]
+    InventorySystem inventory;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        inventory = GameObject.FindWithTag("Inventory").GetComponent<InventorySystem>();
         playerData = GameManager.Instance.GetPlayerData();
         dataTable = GameManager.Instance.GetItemDataTable();
         CloseWindow();
