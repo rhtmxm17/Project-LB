@@ -11,6 +11,9 @@ public class StageData : ScriptableObject
     public string StageName => stageName;
     [SerializeField] string stageName;
 
+    public AudioClip BgmClip;
+    [SerializeField] AudioClip bgmClip;
+
     public SceneChanger.Scenes MapScene => mapScene;
     [SerializeField] SceneChanger.Scenes mapScene;
 

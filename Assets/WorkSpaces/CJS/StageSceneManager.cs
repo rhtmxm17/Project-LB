@@ -38,12 +38,14 @@ public class StageSceneManager : MonoBehaviour
     public StageData StageDataTable
     {
         get => stageDataTable;
-        set
+        private set
         {
             Debug.Log($"[StageSceneManager] 새로운 스테이지 데이터가 설정됨: {stageDataTable.StageName}->{value.StageName}");
             stageDataTable = value;
         }
     }
+
+    public readonly ItemType[] weaponEquip = new ItemType[3] { ItemType.AK47, ItemType.KNIFE, ItemType.SP_WEAPON1 };
 
     public bool HasJournal { get; private set; }
 
@@ -53,7 +55,7 @@ public class StageSceneManager : MonoBehaviour
     /// 해당 스테이지 씬으로 진입
     /// </summary>
     [ContextMenu("EnterStage Test")]
-    public void EnterStage()
+    private void EnterStage()
     {
         SceneChanger sceneChanger = GameManager.Instance.GetSceneChanger();
         sceneChanger.OnLoadSceneComplete.AddListener(InitStage);
@@ -65,6 +67,16 @@ public class StageSceneManager : MonoBehaviour
         StageDataTable = stageData;
         EnterStage();
     }
+
+    public void EnterStage(ItemType mainWeapon, ItemType meleeWeapon, ItemType specialWeapon, StageData stageData)
+    {
+        weaponEquip[0] = mainWeapon;
+        weaponEquip[1] = meleeWeapon;
+        weaponEquip[2] = specialWeapon;
+        StageDataTable = stageData;
+        EnterStage();
+    }
+
 
     /// <summary>
     /// 스테이지 클리어시 호출될 함수<br/>
@@ -105,6 +117,8 @@ public class StageSceneManager : MonoBehaviour
 
     private void InitStage()
     {
+        // TODO: BGM 재생
+
         PlayerModel player = GameManager.Instance.GetPlayerModel();
         if (player == null)
         {
@@ -120,16 +134,14 @@ public class StageSceneManager : MonoBehaviour
 
         // 플레이어 초기화
         PlayerData playerData = GameManager.Instance.GetPlayerData();
-        ItemType mainWeaponType = ItemType.AK47;          //
-        ItemType specialWeaponType = ItemType.SP_WEAPON1; // TODO: 실제로 선택된 아이템 가져오기
 
 
         StagePlayerControl.StageInitAttribute playerInitAttr = new()
         {
             maxHp = playerData.MaxHP,
-            mainWeapon = InitWeapon(mainWeaponType),
-            meleeWeapon = InitWeapon(ItemType.KNIFE),
-            specialWeapon = InitWeapon(specialWeaponType),
+            mainWeapon = InitWeapon(weaponEquip[0]),
+            meleeWeapon = InitWeapon(weaponEquip[1]),
+            specialWeapon = InitWeapon(weaponEquip[2]),
             grenadeData = StageDataTable.Grenade,
         };
 

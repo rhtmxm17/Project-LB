@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     PlayerData playerData = null;
     SceneChanger sceneChanger = null;
+    StageSceneManager stageSceneManager = null;
 
     PlayerModel playerModel = null;
 
@@ -26,7 +27,9 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(Instance);
             playerData = FileIOSystem.LoadPlayerData();
             sceneChanger = GetComponent<SceneChanger>();
-            
+            stageSceneManager = GetComponent<StageSceneManager>();
+
+
             dataTable.InitDataTable();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -73,6 +76,8 @@ public class GameManager : MonoBehaviour
     {
         return sceneChanger;
     }
+
+    public StageSceneManager GetStageSceneManager() => stageSceneManager;
 
     /// <summary>
     /// 플레이어의 모델 컴포넌트를 가져옴
