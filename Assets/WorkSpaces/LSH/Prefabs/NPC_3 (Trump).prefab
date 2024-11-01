@@ -1169,8 +1169,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: E
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c40a85cb174e91245b88c8a383da2298, type: 2}
+  m_sharedMaterial: {fileID: -5133356096829066625, guid: c40a85cb174e91245b88c8a383da2298, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3743,15 +3743,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e02a4148814a746ace39df367485a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueArr: {fileID: 11400000, guid: b76549566983ce743ab5ae63c8deae26, type: 2}
+  dialogueArr: {fileID: 11400000, guid: 68b2754ada919b1408d991bb94e199de, type: 2}
   tmp: {fileID: 3701703902411299392}
   OnInteractedEvent:
     m_PersistentCalls:
       m_Calls: []
   InteractionButton: {fileID: 4611667951442496001}
-  OnCommunication:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &3701703902411299397
 GameObject:
   m_ObjectHideFlags: 0

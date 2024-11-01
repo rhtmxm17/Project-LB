@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 223094911e405d041a6f423b5606a243, type: 3}
-  m_Name: NPC_567
+  m_Name: NPC_7
   m_EditorClassIdentifier: 
   <Texts>k__BackingField:
   - NPC5

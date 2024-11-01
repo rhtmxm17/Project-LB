@@ -2708,7 +2708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d40dc8264d8034ba8ee435f9b623bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueArr: {fileID: 11400000, guid: 51d79f61bc5e4544cbfcab1e1a001b2c, type: 2}
+  dialogueArr: {fileID: 11400000, guid: b3f860197e0ba6f48af06c6af5265077, type: 2}
   tmp: {fileID: 7164532019647175650}
 --- !u!135 &7164532020775091380
 SphereCollider:
