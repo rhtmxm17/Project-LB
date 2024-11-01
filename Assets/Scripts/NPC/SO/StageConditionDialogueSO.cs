@@ -16,6 +16,7 @@ public class StageConditionDialogueSO : ScriptableObject
         [SerializeField]
         public Stages stage;
         [SerializeField]
+        [field: TextArea(10,50)]
         public string text;
 
     }
