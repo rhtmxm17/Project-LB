@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Animator))]
 public class GunBase : MonoBehaviour, IUseable
 {
     public enum State
@@ -62,6 +63,9 @@ public class GunBase : MonoBehaviour, IUseable
     private Coroutine fireRoutine;
     private Coroutine reloadRoutine;
 
+    private Animator animator;
+    private int hashShow;
+
     // 총알이 마지막으로 발사된 시간을 기록한다(연타 가속 방지)
     private float lastFireTime;
 
@@ -83,6 +87,21 @@ public class GunBase : MonoBehaviour, IUseable
         {
             StopCoroutine(fireRoutine);
         }
+    }
+
+    /// <summary>
+    /// 총을 드러내고 숨기는 애니메이션을 재생합니다
+    /// </summary>
+    /// <param name="show">드러낸다면 true</param>
+    public void ShowAnimation(bool show)
+    {
+        animator.SetBool(hashShow, show);
+    }
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        hashShow = Animator.StringToHash("Show");
     }
 
     private IEnumerator Fire()
@@ -166,8 +185,9 @@ public class GunBase : MonoBehaviour, IUseable
     /// <returns>재장전 시작이 가능한 상태였는지 여부</returns>
     public bool Reload()
     {
-        if (CurrentState == State.Reloading || magazineRemain >= DataTable.magCapacity)
+        if (DataTable.magCapacity <= 0 || CurrentState == State.Reloading || magazineRemain >= DataTable.magCapacity)
         {
+            // 탄창 크기 제한이 없거나
             // 이미 재장전 중이거나 남은 탄알이 없거나
             // 탄창에 탄알이 이미 가득 찬 경우  재장전할 수 없음
             return false;
@@ -183,6 +203,8 @@ public class GunBase : MonoBehaviour, IUseable
         // 현재 상태를 재장전 중 장태로 전환
         CurrentState = State.Reloading;
 
+        ShowAnimation(false);
+
         // TODO: 재장전 소리 재생
         Debug.Log("재장전 사운드 출력 필요");
 
@@ -190,6 +212,8 @@ public class GunBase : MonoBehaviour, IUseable
         yield return new WaitForSeconds(DataTable.reloadTime);
 
         magazineRemain = DataTable.magCapacity;
+
+        ShowAnimation(true);
 
         // 총의 현재 상태를 발사 준비된 상태로 변경
         CurrentState = State.Ready;

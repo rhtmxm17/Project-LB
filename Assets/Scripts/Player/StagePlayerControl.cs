@@ -18,8 +18,11 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
     [Header("고정 사용 아이템")]
     [SerializeField] GrenadeThrower grenadeThrow; // 3번 키, 수류탄 투척
-    [Space(5)]
 
+    [Space(5)]
+    [SerializeField] Transform rightHandPose;
+
+    [Space(5)]
     [SerializeField] StatusDebuff hurtDebuffAsset;
     [SerializeField, Tooltip("그로기 기준 체력 비율")] float hurtReferenceValue = 0.4f;
     private float invHurtReference;
@@ -29,6 +32,8 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     public UnityEvent<int> OnMagazineUpdated; // 내용물 미구현
     public UnityEvent<int> OnSlotSeleted;
     public UnityEvent OnDead;
+
+    public event UnityAction OnAttack;
 
     /// <summary>
     /// 자해 데미지 계수(수류탄)
@@ -44,17 +49,20 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     public const int MeleeWeaponSlot = 1;
     public const int SpecialWeaponSlot = 4;
 
-    [SerializeField] IUseable[] quickSlot = new IUseable[MaxSlot];
+    private readonly int[] WeaponSlots = new int[3] { MainWeaponSlot, MeleeWeaponSlot, SpecialWeaponSlot };
 
-    public event UnityAction OnAttack;
+    private IUseable[] quickSlot = new IUseable[MaxSlot];
+    private GunBase[] quickSlotGun = new GunBase[MaxSlot];
+
     private InputAction fireAction;
     private InputAction[] selectActions = new InputAction[MaxSlot];
+    private InputAction reloadAction;
     private Dictionary<string, int> selectActionDict = new Dictionary<string, int>(10);
     private IUseable SelectedUseable => quickSlot[curSlotIndex];
     private int curSlotIndex;
+    private Coroutine swapEquipRoutine;
 
     private PlayerModel model;
-
 
     public struct StageInitAttribute
     {
@@ -72,11 +80,44 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     /// <param name="attr">매개변수 세트</param>
     public void StageInit(StageInitAttribute attr)
     {
-        quickSlot[MainWeaponSlot] = attr.mainWeapon;
-        quickSlot[MeleeWeaponSlot] = attr.meleeWeapon;
-        quickSlot[SpecialWeaponSlot] = attr.specialWeapon;
+        if (sampleGun != null)
+        {
+            Destroy(sampleGun);
+            sampleGun = null;
+        }
+
+        quickSlotGun[MainWeaponSlot] = attr.mainWeapon;
+        quickSlotGun[MeleeWeaponSlot] = attr.meleeWeapon;
+        quickSlotGun[SpecialWeaponSlot] = attr.specialWeapon;
+
+        for (int i = 0; i < WeaponSlots.Length; i++)
+        {
+            int index = WeaponSlots[i];
+            if (quickSlotGun[index] == null)
+                continue;
+
+            quickSlot[index] = quickSlotGun[index];
+
+            quickSlotGun[index].OnShot += InvokeAttack;
+            quickSlotGun[index].transform.SetParent(rightHandPose, false);
+        }
+
+        for (int i = 0; i < MaxSlot; i++)
+        {
+            if (quickSlot[i] == null)
+                continue;
+
+            quickSlot[i].gameObject.SetActive(false);
+        }
 
         grenadeThrow.Data = attr.grenadeData;
+
+        SelectedUseable.gameObject.SetActive(true);
+
+        if (quickSlotGun[curSlotIndex] != null)
+        {
+            quickSlotGun[curSlotIndex].ShowAnimation(true);
+        }
     }
 
     private void Awake()
@@ -91,6 +132,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         }
 
         fireAction = playerInput.actions["Fire"];
+        reloadAction = playerInput.actions["Reload"];
 
         for (int i = 0; i < quickSlot.Length; i++)
         {
@@ -100,16 +142,20 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
         invHurtReference = 1f / hurtReferenceValue;
 
+        quickSlot[2] = grenadeThrow;
+
         // 테스트 코드
         quickSlot[0] = sampleGun;
+        quickSlotGun[0] = sampleGun;
+        quickSlotGun[0]?.ShowAnimation(true);
         sampleGun.OnShot += InvokeAttack;
-        quickSlot[2] = grenadeThrow;
     }
 
     private void OnEnable()
     {
         fireAction.started += FireStarted;
         fireAction.canceled += FireCanceled;
+        reloadAction.started += Reload;
 
         for (int i = 0; i < quickSlot.Length; i++)
         {
@@ -123,6 +169,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     {
         fireAction.started -= FireStarted;
         fireAction.canceled -= FireCanceled;
+        reloadAction.started -= Reload;
 
         for (int i = 0; i < quickSlot.Length; i++)
         {
@@ -147,16 +194,48 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         SelectedUseable?.UseEnd();
     }
 
+    private void Reload(InputAction.CallbackContext _)
+    {
+        if (quickSlotGun[curSlotIndex] != null)
+        {
+            quickSlotGun[curSlotIndex].Reload();
+        }
+    }
+
     private void SelectSlot(int index)
     {
-        OnSlotSeleted?.Invoke(index);
-
         if (fireAction.inProgress)
         {
             Debug.Log("클릭 중인 상태로 교체 시도될 경우의 처리 필요");
             return;
         }
+
+        OnSlotSeleted?.Invoke(index);
+
+        if (swapEquipRoutine != null)
+        {
+            StopCoroutine(swapEquipRoutine);
+        }
+        swapEquipRoutine = StartCoroutine(SwapEquipAnimation(curSlotIndex, index));
+
         curSlotIndex = index;
+
+    }
+
+    private IEnumerator SwapEquipAnimation(int indexFrom, int indexTo)
+    {
+        quickSlotGun[indexFrom]?.ShowAnimation(false);
+
+        if (quickSlot[indexTo] != null)
+        {
+            quickSlot[indexTo].gameObject.SetActive(true);
+            quickSlotGun[indexTo]?.ShowAnimation(true);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        quickSlot[indexFrom]?.gameObject.SetActive(false);
+        swapEquipRoutine = null;
     }
 
     private void InvokeAttack() => OnAttack?.Invoke();

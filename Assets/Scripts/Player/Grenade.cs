@@ -32,6 +32,11 @@ public class Grenade : MonoBehaviour
 
         for (int i = 0; i < hitted; i++)
         {
+            // 플레이어의 CharacterController가 감지된 경우 무시
+            // 자해피해는 PlayerCollider 태그
+            if (explosionResults[i].CompareTag("Player"))
+                continue;
+
             // 피격 판정을 포함하는 유닛은 Rigidbody 필수
             // 자해 판정 허용(Data.TargetLayer를 통함)시 FRENDLY_GROUP_0을 통해 분류
             explosionResults[i].attachedRigidbody.GetComponent<IDamageable>().Damaged(Data.Damage, DamageType.FRENDLY_GROUP_0);
