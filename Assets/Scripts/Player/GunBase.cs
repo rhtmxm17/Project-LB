@@ -59,8 +59,8 @@ public class GunBase : MonoBehaviour, IUseable
     public int MagazineCapacity => DataTable.MagCapacity;
     public int MagazineRemain { get => magazineRemain; protected set => magazineRemain = value; }
 
-    private int magazineRemain;
-    private int bulletStock;
+    private int magazineRemain; // 장전된 탄약, 발사시 소비
+    private int bulletStock; // 남은 소지 탄약, 재장전시 소비
     private YieldInstruction firePeriod;
 
     private Coroutine fireRoutine;
@@ -209,7 +209,7 @@ public class GunBase : MonoBehaviour, IUseable
         }
 
         // 재장전 처리 시작
-        StartCoroutine(ReloadRoutine());
+        reloadRoutine = StartCoroutine(ReloadRoutine());
         return true;
     }
 
