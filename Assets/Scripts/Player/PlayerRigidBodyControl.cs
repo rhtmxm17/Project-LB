@@ -15,7 +15,7 @@ public class PlayerRigidBodyControl : MonoBehaviour
     private InputAction moveAction;
     private InputAction lookAction;
     private PlayerModel model;
-    private new Rigidbody rigidbody;
+    private Rigidbody rigidbody;
     private float MoveSpeed => model.MoveSpeed; // 최대속도
     private float verticalCameraAngle;
     private Coroutine moveRoutine;
