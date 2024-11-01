@@ -41,6 +41,12 @@ public class kmt_MobSpawner : MonoBehaviour
     {
         int spawnIdx;
 
+        if(waveMonsterParent == null)
+        {
+            Debug.LogError("웨이브 매니져가 연결되어있지 않습니다.");
+            return;
+        }
+
         for (int i = 0; i < monsterPool.Length; i++)
         {
             spawnIdx = randomTypeSpawn ? Random.Range(0, spawnType.Length) : 0;
