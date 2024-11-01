@@ -13,7 +13,7 @@ public class GunBase : MonoBehaviour, IUseable
         Reloading // 재장전 중
     }
 
-    public State CurrentState { get; private set; } // 현재 총의 상태
+    public State CurrentState { get; protected set; } // 현재 총의 상태
 
     [SerializeField] Transform muzzleTransform;
     [field: SerializeField] public Transform WeaponCamera { get; set; }
@@ -57,9 +57,10 @@ public class GunBase : MonoBehaviour, IUseable
     [field: SerializeField] public int GunLevel { get; set; } = 0;
 
     public int MagazineCapacity => DataTable.MagCapacity;
-    public int MagazineRemain => magazineRemain;
+    public int MagazineRemain { get => magazineRemain; protected set => magazineRemain = value; }
 
-    private int magazineRemain;
+    private int magazineRemain; // 장전된 탄약, 발사시 소비
+    private int bulletStock; // 남은 소지 탄약, 재장전시 소비
     private YieldInstruction firePeriod;
 
     private Coroutine fireRoutine;
@@ -76,6 +77,7 @@ public class GunBase : MonoBehaviour, IUseable
         firePeriod = new WaitForSeconds(DataTable.TimeBetFire);
         lastFireTime = Time.time;
         magazineRemain = DataTable.MagCapacity;
+        bulletStock = DataTable.BulletStock;
     }
 
     public void UseBegin()
@@ -164,6 +166,10 @@ public class GunBase : MonoBehaviour, IUseable
         // 발사 이펙트 재생 시작
         StartCoroutine(ShotEffect(hitPosition));
 
+        // 탄창 크기가 음수(무한 탄창)이라면 잔탄 검사 생략
+        if (MagazineCapacity < 0)
+            return;
+
         // 탄창 처리
         magazineRemain--;
         if (magazineRemain <= 0)
@@ -191,7 +197,10 @@ public class GunBase : MonoBehaviour, IUseable
     /// <returns>재장전 시작이 가능한 상태였는지 여부</returns>
     public bool Reload()
     {
-        if (DataTable.MagCapacity <= 0 || CurrentState == State.Reloading || magazineRemain >= DataTable.MagCapacity)
+        if (DataTable.MagCapacity <= 0
+            || CurrentState == State.Reloading
+            || magazineRemain >= DataTable.MagCapacity
+            || bulletStock <= 0)
         {
             // 탄창 크기 제한이 없거나
             // 이미 재장전 중이거나 남은 탄알이 없거나
@@ -200,7 +209,7 @@ public class GunBase : MonoBehaviour, IUseable
         }
 
         // 재장전 처리 시작
-        StartCoroutine(ReloadRoutine());
+        reloadRoutine = StartCoroutine(ReloadRoutine());
         return true;
     }
 
@@ -217,7 +226,21 @@ public class GunBase : MonoBehaviour, IUseable
         // 재장전 소요 시간만큼 처리 쉬기
         yield return new WaitForSeconds(DataTable.ReloadTime);
 
-        magazineRemain = DataTable.MagCapacity;
+        if (DataTable.BulletStock < 0)
+        {
+            magazineRemain = DataTable.MagCapacity;
+        }
+        else
+        {
+            // fillBullet: 실제로 장전될 양
+            int fillBullet = DataTable.MagCapacity - magazineRemain;
+            if (fillBullet > bulletStock)
+                fillBullet = bulletStock;
+
+            magazineRemain += fillBullet;
+            bulletStock -= fillBullet;
+        }
+
 
         ShowAnimation(true);
 
