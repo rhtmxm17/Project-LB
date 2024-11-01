@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
             dataTable.InitDataTable();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
-            Cursor.lockState = CursorLockMode.Locked;
+
+            CursorOffSetting();
 
             if (playerData == null)
                 playerData = new PlayerData();
@@ -43,6 +44,27 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+
+    /// <summary>
+    /// LSH: 커서 Hide하고, 커서 영역을 센터로 잠급니다. 상점/강화 제외한 모든 인게임 전용 마우스 설정입니다.
+    /// </summary>
+    public void CursorOffSetting()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    /// <summary>
+    /// LSH: 커서 Hide 풀고, 커서 영역을 외곽으로 풀어줍니다. 상점/강화 전용 마우스 설정입니다.
+    /// </summary>
+    public void CursorOnSetting()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+
+
 
     public void ReLoadData()
     {

@@ -17,7 +17,7 @@ public class InGameUiManager : MonoBehaviour
 
     // 버튼, 이미지, 텍스트들
     [SerializeField] Image[] SlotImage; // 퀵슬롯 이미지들
-    [SerializeField] Image[] ChoiceSlot; //선택중인 퀵슬롯에 표시될 강조이미지emf
+    [SerializeField] Image[] ChoiceSlot; //선택중인 퀵슬롯에 표시될 강조이미지들
     [SerializeField] Image curGunImg;
     [SerializeField] TMP_Text remainBullet;
 
