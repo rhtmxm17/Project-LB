@@ -10,6 +10,10 @@ public class InventoryItemSO : ScriptableObject
     [field: SerializeField]
     public ItemType ItemType {  get; private set; }
 
+    [field: Header("Inventory Index")]
+    [field: SerializeField]
+    public int InventoryIdx { get; private set; }
+
     [field: Header("UI")]
     [field: SerializeField]
     public Sprite ImgSprite {  get; private set; }

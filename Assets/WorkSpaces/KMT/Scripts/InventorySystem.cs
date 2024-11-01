@@ -22,6 +22,12 @@ public class InventorySystem : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI gearText;
 
+    [Header("Info Windows")]
+    [SerializeField]
+    GameObject InfoWindow;
+    [SerializeField]
+    GameObject DetailInfoWindow;
+
     PlayerData playerData;
     ItemDataTableSO dataTable;
 
@@ -208,6 +214,17 @@ public class InventorySystem : MonoBehaviour
     {
         playerData.AddGear(amount);
         RefreshText();
+    }
+
+    public void OpenWindow()
+    {
+        gameObject.SetActive(true);
+    }
+    public void CloseWindow()
+    {
+        gameObject.SetActive(false);
+        InfoWindow.SetActive(false);
+        DetailInfoWindow.SetActive(false);
     }
 
 }

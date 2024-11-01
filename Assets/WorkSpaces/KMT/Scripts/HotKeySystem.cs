@@ -64,4 +64,20 @@ public class HotKeySystem : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 인덱스를 입력받아 대응되는 퀵슬롯을 반환
+    /// </summary>
+    /// <param name="idx">가져올 슬롯의 인덱스</param>
+    /// <returns>에러인 경우 null반환</returns>
+    public InventoryHotKeySlot GetHotkeySlot(int idx)
+    {
+        if (idx >= hotSlots.Length)
+        {
+            Debug.LogError("퀵슬롯 크기보다 큰 수가 입력됨");
+            return null;
+        }
+
+        return hotSlots[idx];
+    }
+
 }

@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class StageConformWindow : MonoBehaviour
 {
-
+    [SerializeField]
+    HotKeySystem hotKeySystem;
     [SerializeField]
     TextMeshProUGUI text;
 
@@ -29,7 +27,31 @@ public class StageConformWindow : MonoBehaviour
 
     public void ConformButton()
     {
-        stageSceneManager.EnterStage(curData);
+        ItemType baseWeapon = ItemType.NONE;
+        ItemType meeleWeapon = ItemType.NONE;
+        ItemType specialWeapon = ItemType.NONE;
+
+        InventoryHotKeySlot slot = hotKeySystem.GetHotkeySlot(0);
+        if (slot.Item != null)
+        {
+            baseWeapon = slot.Item.ItemType;
+        }
+
+        slot = hotKeySystem.GetHotkeySlot(1);
+        if (slot.Item != null)
+        {
+            meeleWeapon = slot.Item.ItemType;
+        }
+
+        slot = hotKeySystem.GetHotkeySlot(4);
+        if (slot.Item != null)
+        {
+            specialWeapon = slot.Item.ItemType;
+        }
+
+        //Debug.Log(baseWeapon + "/" + meeleWeapon + "/" + specialWeapon);
+
+        stageSceneManager.EnterStage(baseWeapon, meeleWeapon, specialWeapon, curData);
     }
 
 }

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: 16_Blueprint_LegendGuitar
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 15
+  <InventoryIdx>k__BackingField: 15
   <ImgSprite>k__BackingField: {fileID: 21300000, guid: 0932f5ddbc330b14388f765b6de46926, type: 3}
   <ItemName>k__BackingField: "\uC804\uC124\uC758 \uAE30\uD0C0 \uC124\uACC4\uB3C4"
   <MaxCnt>k__BackingField: 1
+  <Description>k__BackingField: 
+  <DetailInfoSO>k__BackingField: {fileID: 0}

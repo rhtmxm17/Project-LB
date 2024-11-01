@@ -4,6 +4,7 @@ using System.Data;
 using System.Timers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeSystem : MonoBehaviour
 {
@@ -13,6 +14,16 @@ public class UpgradeSystem : MonoBehaviour
     ItemDataTableSO dataTable;
 
     InventoryEquableItemSO curItem = null;
+
+    [Header("Sprites")]
+    [SerializeField]
+    Sprite gear;
+    [SerializeField]
+    Sprite bluePrint;
+
+    [Header("Req Item Img")]
+    [SerializeField]
+    Image reqImg;
 
     [SerializeField]
     InventoryItemSlot slot;
@@ -28,15 +39,6 @@ public class UpgradeSystem : MonoBehaviour
         CloseWindow();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            inventory.AddFood(20);
-            inventory.AddGear(20);
-        }
-    }
 
     /// <summary>
     /// 현재 선택된 아이템을 교체
@@ -45,6 +47,16 @@ public class UpgradeSystem : MonoBehaviour
     public void SetFocusedItem(InventoryItemSO newItem)
     {
 
+        if (newItem.ItemType == ItemType.SP_WEAPON1 ||
+           newItem.ItemType == ItemType.SP_WEAPON2 ||
+           newItem.ItemType == ItemType.SP_WEAPON3)
+        {
+            Debug.Log("레시피");
+            ReqGearNumText.text = "1";
+            reqImg.sprite = bluePrint;
+            curItem = (InventoryEquableItemSO)newItem;
+            return;
+        }
 
         if (!(newItem is InventoryEquableItemSO))
         {
@@ -52,6 +64,7 @@ public class UpgradeSystem : MonoBehaviour
             return;
         }
 
+        reqImg.sprite = gear;
         curItem = (InventoryEquableItemSO)newItem;
 
         ItemData data = playerData.GetItemData(newItem.ItemType);
@@ -81,6 +94,42 @@ public class UpgradeSystem : MonoBehaviour
         ItemData data = playerData.GetItemData(curItem.ItemType);
         InventoryEquableItemSO item = (InventoryEquableItemSO)dataTable.GetItemDataSO(curItem.ItemType);
 
+        if (item.ItemType == ItemType.SP_WEAPON1 ||
+           item.ItemType == ItemType.SP_WEAPON2 ||
+           item.ItemType == ItemType.SP_WEAPON3)
+        {
+
+            if (data.count > 0)
+            {
+                Debug.Log("이미 소지하고 있는 히든 아이템");
+                return;
+            }
+
+            if (item.ItemType == ItemType.SP_WEAPON1 && 
+                playerData.GetItemData(ItemType.BLUEPRINT_SP1).count > 0)
+            {
+                playerData.GetItemData(ItemType.SP_WEAPON1).count = 1;
+                playerData.GetItemData(ItemType.SP_WEAPON1).invenIdx = item.InventoryIdx;
+                inventory.AddItem(item, item.InventoryIdx);
+            }
+            else if(item.ItemType == ItemType.SP_WEAPON2 &&
+                playerData.GetItemData(ItemType.BLUEPRINT_SP2).count > 0)
+            {
+                playerData.GetItemData(ItemType.SP_WEAPON2).count = 1;
+                playerData.GetItemData(ItemType.SP_WEAPON2).invenIdx = item.InventoryIdx;
+                inventory.AddItem(item, item.InventoryIdx);
+
+            }
+            else if (item.ItemType == ItemType.SP_WEAPON3 &&
+                playerData.GetItemData(ItemType.BLUEPRINT_SP3).count > 0)
+            {
+                playerData.GetItemData(ItemType.SP_WEAPON3).count = 1;
+                playerData.GetItemData(ItemType.SP_WEAPON3).invenIdx = item.InventoryIdx;
+                inventory.AddItem(item, item.InventoryIdx);
+            }
+            return;
+
+        }
 
         if (curItem != null)
         {//강화 시도 가능 
@@ -125,6 +174,7 @@ public class UpgradeSystem : MonoBehaviour
         curItem = null;
         slot.SetItem();
         ReqGearNumText.text = "0";
+        reqImg.sprite = gear;
         gameObject.SetActive(false);
     }
 }

@@ -14,7 +14,7 @@ public class MonsterTraceToPlayer : MonoBehaviour
     [Header("Property")]
     [SerializeField] float maxDistance;
     [SerializeField] float distanceStopping;
-    [SerializeField] float chaseSpeed;
+    // [SerializeField] float chaseSpeed;
     private bool isChecked;
 
     [field: SerializeField] public bool IsSpawnerBased { get; set; } = false;
@@ -26,7 +26,7 @@ public class MonsterTraceToPlayer : MonoBehaviour
         monsterModel = GetComponent<MonsterModel>();
         player = GameObject.FindGameObjectWithTag("Player");
         isChecked = false;
-        distanceStopping = 1.5f;
+        distanceStopping = 1f;
 
         if (monsterAni == null)
         {
