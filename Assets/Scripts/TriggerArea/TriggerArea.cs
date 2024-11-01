@@ -7,7 +7,12 @@ public class TriggerArea : MonoBehaviour
 {
 
     [SerializeField]
+    WaveManager waveManager;
+
+    [SerializeField]
     public UnityEvent onTriggerEvent;
+
+
 
     bool isTriggered = false;
 
@@ -17,6 +22,7 @@ public class TriggerArea : MonoBehaviour
         if (!isTriggered && other.gameObject.tag == "Player")
         {
             isTriggered = true;
+            waveManager.StartWaveTrigger();
             onTriggerEvent?.Invoke();
         }
 

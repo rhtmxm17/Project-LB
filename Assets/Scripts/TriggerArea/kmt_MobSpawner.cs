@@ -8,7 +8,7 @@ public class kmt_MobSpawner : MonoBehaviour
 
     [Header("Wave Monsters Parent")]
     [SerializeField]
-    Transform waveMonsterParent;
+    WaveManager waveMonsterParent;
 
     [Header("Spawn Delay and Count")]
     [SerializeField]
@@ -33,10 +33,8 @@ public class kmt_MobSpawner : MonoBehaviour
 
     protected virtual void Awake()
     {
-        transform.SetParent(waveMonsterParent);
         spawnTime = new WaitForSeconds(spawnDelay);
         monsterPool = new MonsterTraceToPlayer[spawnCount];
-
     }
 
     protected virtual void Start()
@@ -51,9 +49,11 @@ public class kmt_MobSpawner : MonoBehaviour
             instance.DataTable = spawnType[spawnIdx];
             instance.Init();
             instance.gameObject.SetActive(false);
-            instance.transform.SetParent(waveMonsterParent);
+            instance.transform.SetParent(waveMonsterParent.transform);
 
             monsterPool[i] = instance.GetComponent<MonsterTraceToPlayer>();
+
+            instance.GetComponent<MonsterTakenDamage>().OnDeadEvent += waveMonsterParent.CheckWaveIsClear;
         }
     }
 
@@ -77,7 +77,6 @@ public class kmt_MobSpawner : MonoBehaviour
         }
 
         EndSpawnEvent?.Invoke();
-        transform.SetParent(null);
 
     }
 
