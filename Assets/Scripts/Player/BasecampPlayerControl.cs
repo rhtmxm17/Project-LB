@@ -15,6 +15,13 @@ public class BasecampPlayerControl : MonoBehaviour
     private Collider[] overlapResults = new Collider[4];
     private int interactableLayer;
 
+    [SerializeField] InteractableNpc npcInfo;
+    string npcName;
+
+    [SerializeField] GameObject foodExchange;
+    [SerializeField] GameObject weaponUpgrade;
+
+
     private void Awake()
     {
         if (interactPose == null)
@@ -35,6 +42,13 @@ public class BasecampPlayerControl : MonoBehaviour
         interactableLayer = LayerMask.GetMask("Interactable");
     }
 
+
+    private void Start()
+    {
+        npcName = "";
+        //npcInfo.OnCommunication += OpenNpcUI; // FIXME: 이벤트를 받아오고 싶은데 오류가 납니다
+
+    }
     private void OnEnable()
     {
         interactAction.started += TryInteract;
@@ -47,6 +61,7 @@ public class BasecampPlayerControl : MonoBehaviour
 
     private void TryInteract(InputAction.CallbackContext _)
     {
+
         int count = Physics.OverlapSphereNonAlloc(interactPose.position, interactRadius, overlapResults, interactableLayer);
         if (count == 0)
             return;
@@ -67,10 +82,29 @@ public class BasecampPlayerControl : MonoBehaviour
 
         GameObject target = overlapResults[minDistanceIndex].attachedRigidbody?.gameObject ?? overlapResults[minDistanceIndex].gameObject;
         Debug.Log($"{target.name}에 대한 상호작용 시도");
+        npcName = target.name;
+        OpenNpcUI(npcName);
+        Debug.Log(2);
 
-        if(target.TryGetComponent(out IInteractable interactable))
+        if (target.TryGetComponent(out IInteractable interactable))
         {
             interactable.OnInteracted();
         }
     }
+
+    public void OpenNpcUI(string name)
+    {
+        // FIXME : 이벤트 받아서 유아이 열기 (InteractableNpc에서 옴)
+        //.
+        if (name == "Upgrade Npc (Trump)")
+        {
+            weaponUpgrade.SetActive(true);
+        }
+        else if (name == "Joe Trade Npc (Jessi)")
+        {
+            foodExchange.SetActive(true);
+        }
+    }
+
+
 }
