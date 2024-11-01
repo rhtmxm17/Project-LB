@@ -10,13 +10,13 @@ public class MeleeWeapon : GunBase
         // 트레일 등 이펙트를 그리기 위해 피격대상이 맞은 곳을 저장
         Vector3 hitPosition = Vector3.zero;
 
-        Collider[] hitColliders = Physics.OverlapSphere(ShotPosition, DataTable.range); 
+        Collider[] hitColliders = Physics.OverlapSphere(ShotPosition, DataTable.Range); 
         int i = 0;
         while (i < hitColliders.Length) // hit Colliders(충돌체들) 의 Length(길이) 
         {
             if (hitColliders[i].attachedRigidbody != null && hitColliders[i].attachedRigidbody.TryGetComponent(out IDamageable target))
             {
-                target.Damaged(DataTable.damage + DataTable.damageGrowth * GunLevel, 0);
+                target.Damaged(AttackPoint, 0);
                 hitPosition = hitColliders[i].transform.position;
             }
 
