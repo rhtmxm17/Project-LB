@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollViewCtrl : MonoBehaviour
+public class StageListView : MonoBehaviour
 {
 
     [SerializeField] GameObject stageList;
