@@ -16,6 +16,29 @@ public class GunBase : MonoBehaviour, IUseable
 
     [SerializeField] Transform muzzleTransform;
     [SerializeField] Transform weaponCamera;
+
+    public Vector3 ShotPosition
+    {
+        get
+        {
+            if (weaponCamera == null)
+                return muzzleTransform.position;
+            else
+                return Camera.main.transform.TransformPoint(weaponCamera.InverseTransformPoint(muzzleTransform.position));
+        }
+    }
+
+    public Vector3 ShotDircetion
+    {
+        get
+        {
+            if (weaponCamera == null)
+                return muzzleTransform.forward;
+            else
+                return Camera.main.transform.TransformDirection(weaponCamera.InverseTransformDirection(muzzleTransform.forward));
+        }
+    }
+
     public InventoryEquableItemSO DataTable
     {
         get => dataTable;
@@ -75,6 +98,7 @@ public class GunBase : MonoBehaviour, IUseable
         {
             lastFireTime = Time.time;
             Shot();
+            OnShot?.Invoke();
             yield return firePeriod;
         }
 
@@ -84,30 +108,15 @@ public class GunBase : MonoBehaviour, IUseable
         }
     }
 
-    private void Shot()
+    protected virtual void Shot()
     {
-        OnShot?.Invoke();
-
         // 트레일 등 이펙트를 그리기 위해 탄알이 맞은 곳을 저장
         Vector3 hitPosition = Vector3.zero;
 
-        Vector3 shotPosition;
-        Vector3 shotDirection;
-        if (weaponCamera == null)
-        {
-            shotPosition = muzzleTransform.position;
-            shotDirection = muzzleTransform.forward;
-        }
-        else
-        {
-            // 무기 전용 카메라 사용시 실제 총구 대신 플레이어 눈에 보이는 총기 위치에서 발사
-            shotPosition = Camera.main.transform.TransformPoint(weaponCamera.InverseTransformPoint(muzzleTransform.position));
-            shotDirection = Camera.main.transform.TransformDirection(weaponCamera.InverseTransformDirection(muzzleTransform.forward));
-        }
-        Debug.DrawRay(shotPosition, DataTable.range * shotDirection, Color.yellow, 0.1f);
+        Debug.DrawRay(ShotPosition, DataTable.range * ShotDircetion, Color.yellow, 0.1f);
 
         // 레이캐스트(시작 지점, 방향, 충돌 정보 컨테이너, 사정거리)
-        if (Physics.Raycast(shotPosition, shotDirection, out RaycastHit hit, DataTable.range, DataTable.layerMask))
+        if (Physics.Raycast(ShotPosition, ShotDircetion, out RaycastHit hit, DataTable.range, DataTable.layerMask))
         {
             // 레이 적중시
 
@@ -123,7 +132,7 @@ public class GunBase : MonoBehaviour, IUseable
         {
             // 레이가 다른 물체와 충돌하지 않았다면
             // 탄알이 최대 사정거리까지 날아갔을 때의 위치를 line 출력 종료 위치로 사용
-            hitPosition = shotPosition + shotDirection * DataTable.range;
+            hitPosition = ShotPosition + ShotDircetion * DataTable.range;
 
         }
 
@@ -140,9 +149,12 @@ public class GunBase : MonoBehaviour, IUseable
         }
     }
 
+    protected void StartEffect(Vector3 hitPosition) => StartCoroutine(ShotEffect(hitPosition));
+
     private IEnumerator ShotEffect(Vector3 hitPosition)
     {
         // TODO: 이펙트 처리
+
         Debug.Log("발사 이펙트 출력 필요");
         yield break;
     }
