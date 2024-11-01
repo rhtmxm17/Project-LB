@@ -22,7 +22,7 @@ public class TriggerArea : MonoBehaviour
         if (!isTriggered && other.gameObject.tag == "Player")
         {
             isTriggered = true;
-            waveManager.StartWaveTrigger();
+            waveManager?.StartWaveTrigger();
             onTriggerEvent?.Invoke();
         }
 

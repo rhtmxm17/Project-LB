@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Zombie Debuff
   m_EditorClassIdentifier: 
   effectMultiplier: 0.5
-  duration: 0
+  duration: 2

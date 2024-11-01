@@ -50,5 +50,7 @@ public class ExchangeSystem : MonoBehaviour
     {
         inputChecker.InitField();
         gameObject.SetActive(false);
+
+        GameManager.Instance.GetPlayerModel().GetComponent<PlayerCharacterControllerControl>().MouseLock(true);
     }
 }
