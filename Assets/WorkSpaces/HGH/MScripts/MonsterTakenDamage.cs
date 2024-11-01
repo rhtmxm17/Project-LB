@@ -7,12 +7,12 @@ using UnityEngine.AI;
 public class MonsterTakenDamage : MonoBehaviour, IDamageable
 {
     [Header("Model")]
-    [SerializeField] MonsterModel monsterModel;
-    [SerializeField] Animator monsterAni;
+    [SerializeField] protected MonsterModel monsterModel;
+    [SerializeField] protected Animator monsterAni;
     [SerializeField] Rigidbody rigid;
     [SerializeField] NavMeshAgent monsterAgent;
 
-    public event Action OnDeadEvent = null;
+    public Action OnDeadEvent = null;
         
 
     private void Awake()
@@ -36,7 +36,7 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
         MonsterDead();
     }
 
-    private void MonsterDead()
+    protected virtual void MonsterDead()
     {
         if (monsterModel.MonsterCurHP <= 0)
         {
