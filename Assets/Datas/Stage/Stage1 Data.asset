@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Stage1 Data
   m_EditorClassIdentifier: 
   stageName: Stage1
+  BgmClip: {fileID: 0}
+  bgmClip: {fileID: 0}
   mapScene: 4
-  levelScene: 5
+  levelScene: 3
+  stageIndex: 0
   rewardExp: 50
   rewardRation: 50
   journal: 6

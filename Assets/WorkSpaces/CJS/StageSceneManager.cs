@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// 스테이지 매니저는 StageData를 기반으로 스테이지 씬을 불러오고 초기화합니다<br/>
@@ -50,6 +51,8 @@ public class StageSceneManager : MonoBehaviour
     public bool HasJournal { get; private set; }
 
     public bool HasBlueprint { get; private set; }
+
+    public UnityEvent<bool> OnStageClear;
 
     /// <summary>
     /// 해당 스테이지 씬으로 진입
@@ -103,11 +106,10 @@ public class StageSceneManager : MonoBehaviour
         }
 
         // 재화 획득 처리
-        playerData.AddExp(StageDataTable.RewardExp);
+        bool isLevelUp = playerData.AddExp(StageDataTable.RewardExp);
         playerData.AddFood(StageDataTable.RewardRation);
 
-        // TODO: 클리어 UI 출력, UI 버튼에 씬 전환 메서드 추가
-        Debug.Log($"스테이지 클리어 UI 출력 요함");
+        OnStageClear?.Invoke(isLevelUp);
     }
 
     private void Awake()
