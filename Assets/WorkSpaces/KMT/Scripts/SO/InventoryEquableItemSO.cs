@@ -35,7 +35,10 @@ public class InventoryEquableItemSO : InventoryInfoItemSO
     [SerializeField] AudioClip reloadClip;
 
     public int MagCapacity => magCapacity; // 탄창용량
-    [SerializeField] int magCapacity = 25;
+    [SerializeField, Tooltip("재장전 한번에 채워지는 최대 탄창수, 음수라면 탄창과 무관한 무기(예: 단검)")] int magCapacity = 25;
+
+    public int BulletStock => bulletStock;
+    [SerializeField, Tooltip("재장전에 사용될 탄약, 음수라면 재장전 제한 없음")] int bulletStock;
 
     public float TimeBetFire => timeBetFire; // 탄알 발사 간격
     [SerializeField] float timeBetFire = 0.12f;

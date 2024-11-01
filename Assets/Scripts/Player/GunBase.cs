@@ -104,6 +104,8 @@ public class GunBase : MonoBehaviour, IUseable
     {
         animator = GetComponent<Animator>();
         hashShow = Animator.StringToHash("Show");
+
+        InitTableData();
     }
 
     private IEnumerator Fire()
@@ -168,6 +170,8 @@ public class GunBase : MonoBehaviour, IUseable
         {
             CurrentState = State.Empty;
         }
+
+        Debug.Log($"잔탄 {magazineRemain}");
     }
 
     protected void StartEffect(Vector3 hitPosition) => StartCoroutine(ShotEffect(hitPosition));
