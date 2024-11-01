@@ -10,14 +10,13 @@ public class StageConformWindow : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI text;
 
-    //todo : 싱글톤 가정
     StageSceneManager stageSceneManager;
 
     StageData curData = null;
 
     private void Awake()
     {
-        //stageSceneManager = GameManager.Instance.GetStageSceneManager();
+        stageSceneManager = GameManager.Instance.GetStageSceneManager();
     }
 
     public void OpenWindow(StageData stageData)
@@ -25,13 +24,12 @@ public class StageConformWindow : MonoBehaviour
         gameObject.SetActive(true);
         curData = stageData;
         //todo : 이름으로 받아오기.
-        text.text = $"ARE YOU SURE YOU WANT TO PLAY {curData.ToString()}? ";
+        text.text = $"ARE YOU SURE YOU WANT TO PLAY {curData.StageName}? ";
     }
 
     public void ConformButton()
     {
-        stageSceneManager.StageDataTable = curData;
-        stageSceneManager.EnterStage();
+        stageSceneManager.EnterStage(curData);
     }
 
 }
