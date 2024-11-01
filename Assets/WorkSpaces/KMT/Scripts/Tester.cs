@@ -30,8 +30,8 @@ public class Tester : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
-        { 
-            inven.gameObject.SetActive(!inven.gameObject.activeSelf);
+        {
+            inven.OpenWindow();
         }
 
         if (Input.GetKeyDown(KeyCode.U))

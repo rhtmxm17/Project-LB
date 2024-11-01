@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class IOTest : MonoBehaviour
@@ -27,7 +28,7 @@ public class IOTest : MonoBehaviour
             if (data == null)
             {
                 Debug.LogWarning("불러올 데이터가 없습니다. 새로 만듭니다.");
-                data = new PlayerData();
+                data = new PlayerData(GameManager.Instance.GetItemDataTable());
             }
 
             d = data;

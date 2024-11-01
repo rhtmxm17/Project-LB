@@ -22,8 +22,6 @@ public class ItemData
 
 }
 
-//todo : 아이템 데이터테이블 작성 필요. => 다른곳에 static dic형식으로 작성하면 될 듯.
-
 [Serializable]
 public class PlayerData
 {
@@ -53,7 +51,7 @@ public class PlayerData
     public int Gear { get { return gear; } private set { } }
 
     //불러올 데이터가 없을 때 또는 새로 데이터를 만들 때 호출
-    public PlayerData() {
+    public PlayerData(ItemDataTableSO dataTable) {
 
         maxHP = 100;
         hpIncreaseAmount = 20;
@@ -68,14 +66,14 @@ public class PlayerData
         storyArr = new bool[] { false, false, false, false, false };
 
         inventoryData = new List<ItemData>(21);
-        InitInventory();
+        InitInventory(dataTable);
 
         food = 0;
         gear = 0;
 
     }
 
-    void InitInventory() 
+    void InitInventory(ItemDataTableSO dataTable) 
     {
         int itemTypeCnt = (int)ItemType.SIZE;
 
@@ -96,6 +94,16 @@ public class PlayerData
 
             inventoryData.Add(tmp);
         }
+
+
+        GetItemData(ItemType.AK47).count = 1;
+        GetItemData(ItemType.AK47).invenIdx = dataTable.GetItemDataSO(ItemType.AK47).InventoryIdx;
+
+        GetItemData(ItemType.FAMAS).count = 1;
+        GetItemData(ItemType.FAMAS).invenIdx = dataTable.GetItemDataSO(ItemType.FAMAS).InventoryIdx;
+
+        GetItemData(ItemType.KNIFE).count = 1;
+        GetItemData(ItemType.KNIFE).invenIdx = dataTable.GetItemDataSO(ItemType.KNIFE).InventoryIdx;
 
     }
 

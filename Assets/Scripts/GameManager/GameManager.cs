@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
 
             if (playerData == null)
-                playerData = new PlayerData();
+                playerData = new PlayerData(dataTable);
         }
         else
         {
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     {
         playerData = FileIOSystem.LoadPlayerData();
         if (playerData == null)
-            playerData = new PlayerData();
+            playerData = new PlayerData(dataTable);
 
     }
 
