@@ -17,6 +17,31 @@ public class GunBase : MonoBehaviour, IUseable
 
     [SerializeField] Transform muzzleTransform;
     [SerializeField] Transform weaponCamera;
+
+    public Vector3 ShotPosition
+    {
+        get
+        {
+            if (weaponCamera == null)
+                return muzzleTransform.position;
+            else
+                return Camera.main.transform.TransformPoint(weaponCamera.InverseTransformPoint(muzzleTransform.position));
+        }
+    }
+
+    public Vector3 ShotDircetion
+    {
+        get
+        {
+            if (weaponCamera == null)
+                return muzzleTransform.forward;
+            else
+                return Camera.main.transform.TransformDirection(weaponCamera.InverseTransformDirection(muzzleTransform.forward));
+        }
+    }
+
+    public int AttackPoint => GunLevel * DataTable.AdditiveAttackPoint + DataTable.AttackPoint;
+
     public InventoryEquableItemSO DataTable
     {
         get => dataTable;
@@ -31,7 +56,7 @@ public class GunBase : MonoBehaviour, IUseable
     public event UnityAction OnShot;
     [field: SerializeField] public int GunLevel { get; set; } = 0;
 
-    public int MagazineCapacity => DataTable.magCapacity;
+    public int MagazineCapacity => DataTable.MagCapacity;
     public int MagazineRemain => magazineRemain;
 
     private int magazineRemain;
@@ -48,9 +73,9 @@ public class GunBase : MonoBehaviour, IUseable
 
     private void InitTableData()
     {
-        firePeriod = new WaitForSeconds(DataTable.timeBetFire);
+        firePeriod = new WaitForSeconds(DataTable.TimeBetFire);
         lastFireTime = Time.time;
-        magazineRemain = DataTable.magCapacity;
+        magazineRemain = DataTable.MagCapacity;
     }
 
     public void UseBegin()
@@ -84,7 +109,7 @@ public class GunBase : MonoBehaviour, IUseable
     private IEnumerator Fire()
     {
         // 연타 가속 방지
-        float canFireTime = lastFireTime + DataTable.timeBetFire;
+        float canFireTime = lastFireTime + DataTable.TimeBetFire;
         if (canFireTime > Time.time)
         {
             yield return new WaitForSeconds(canFireTime - Time.time);
@@ -94,6 +119,7 @@ public class GunBase : MonoBehaviour, IUseable
         {
             lastFireTime = Time.time;
             Shot();
+            OnShot?.Invoke();
             yield return firePeriod;
         }
 
@@ -103,37 +129,22 @@ public class GunBase : MonoBehaviour, IUseable
         }
     }
 
-    private void Shot()
+    protected virtual void Shot()
     {
-        OnShot?.Invoke();
-
         // 트레일 등 이펙트를 그리기 위해 탄알이 맞은 곳을 저장
         Vector3 hitPosition = Vector3.zero;
 
-        Vector3 shotPosition;
-        Vector3 shotDirection;
-        if (weaponCamera == null)
-        {
-            shotPosition = muzzleTransform.position;
-            shotDirection = muzzleTransform.forward;
-        }
-        else
-        {
-            // 무기 전용 카메라 사용시 실제 총구 대신 플레이어 눈에 보이는 총기 위치에서 발사
-            shotPosition = Camera.main.transform.TransformPoint(weaponCamera.InverseTransformPoint(muzzleTransform.position));
-            shotDirection = Camera.main.transform.TransformDirection(weaponCamera.InverseTransformDirection(muzzleTransform.forward));
-        }
-        Debug.DrawRay(shotPosition, DataTable.range * shotDirection, Color.yellow, 0.1f);
+        Debug.DrawRay(ShotPosition, DataTable.Range * ShotDircetion, Color.yellow, 0.1f);
 
         // 레이캐스트(시작 지점, 방향, 충돌 정보 컨테이너, 사정거리)
-        if (Physics.Raycast(shotPosition, shotDirection, out RaycastHit hit, DataTable.range, DataTable.layerMask))
+        if (Physics.Raycast(ShotPosition, ShotDircetion, out RaycastHit hit, DataTable.Range, DataTable.layerMask))
         {
             // 레이 적중시
 
             // 충돌한 상대방으로부터 IDamageable 오브젝트 가져오기 시도
             if (hit.rigidbody != null && hit.rigidbody.TryGetComponent(out IDamageable target))
             {
-                target.Damaged(DataTable.damage + DataTable.damageGrowth * GunLevel, 0);
+                target.Damaged(AttackPoint, 0);
                 // 레이가 충돌한 위치 저장
                 hitPosition = hit.point;
             }
@@ -142,7 +153,7 @@ public class GunBase : MonoBehaviour, IUseable
         {
             // 레이가 다른 물체와 충돌하지 않았다면
             // 탄알이 최대 사정거리까지 날아갔을 때의 위치를 line 출력 종료 위치로 사용
-            hitPosition = shotPosition + shotDirection * DataTable.range;
+            hitPosition = ShotPosition + ShotDircetion * DataTable.Range;
 
         }
 
@@ -159,9 +170,12 @@ public class GunBase : MonoBehaviour, IUseable
         }
     }
 
+    protected void StartEffect(Vector3 hitPosition) => StartCoroutine(ShotEffect(hitPosition));
+
     private IEnumerator ShotEffect(Vector3 hitPosition)
     {
         // TODO: 이펙트 처리
+
         Debug.Log("발사 이펙트 출력 필요");
         yield break;
     }
@@ -173,7 +187,7 @@ public class GunBase : MonoBehaviour, IUseable
     /// <returns>재장전 시작이 가능한 상태였는지 여부</returns>
     public bool Reload()
     {
-        if (DataTable.magCapacity <= 0 || CurrentState == State.Reloading || magazineRemain >= DataTable.magCapacity)
+        if (DataTable.MagCapacity <= 0 || CurrentState == State.Reloading || magazineRemain >= DataTable.MagCapacity)
         {
             // 탄창 크기 제한이 없거나
             // 이미 재장전 중이거나 남은 탄알이 없거나
@@ -197,9 +211,9 @@ public class GunBase : MonoBehaviour, IUseable
         Debug.Log("재장전 사운드 출력 필요");
 
         // 재장전 소요 시간만큼 처리 쉬기
-        yield return new WaitForSeconds(DataTable.reloadTime);
+        yield return new WaitForSeconds(DataTable.ReloadTime);
 
-        magazineRemain = DataTable.magCapacity;
+        magazineRemain = DataTable.MagCapacity;
 
         ShowAnimation(true);
 

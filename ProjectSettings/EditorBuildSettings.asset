@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/WorkSpaces/KMT/KMT_Inventory Sample Scene.unity
     guid: 0bf1acca7056dda479921120b6bc08f7
+  - enabled: 1
+    path: Assets/WorkSpaces/CJS/LoadTestLevel.unity
+    guid: 0dd52dfdac4f4134b9ae989eb0b7c30a
+  - enabled: 1
+    path: Assets/WorkSpaces/CJS/LoadTestMap.unity
+    guid: bedba962f7b6fc546aeb342899698ecf
   m_configObjects: {}
