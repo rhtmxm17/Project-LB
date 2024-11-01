@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/WorkSpaces/CJS/LoadTestMap.unity
     guid: bedba962f7b6fc546aeb342899698ecf
+  - enabled: 1
+    path: Assets/Scenes/stage2.unity
+    guid: 69bc5c3a17de8544d8ffb317b6f962bd
+  - enabled: 1
+    path: Assets/WorkSpaces/JWY/Lv2.unity
+    guid: aaccbb4078f18b944a7c77c029cc12b3
   m_configObjects: {}

@@ -166,14 +166,16 @@ MonoBehaviour:
       m_Calls: []
   sceneInfoArr:
   - sceneType: 1
-    sceneName: Scene_A
+    sceneName: stage2
+  - sceneType: 5
+    sceneName: Lv2
   - sceneType: 2
     sceneName: Stage 1
   - sceneType: 0
     sceneName: KMT_Inventory Sample Scene
   - sceneType: 4
     sceneName: LoadTestMap
-  - sceneType: 5
+  - sceneType: 3
     sceneName: LoadTestLevel
 --- !u!114 &4363799952622237563
 MonoBehaviour:
