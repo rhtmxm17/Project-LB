@@ -35,6 +35,7 @@ public class PlayerData
     [SerializeField] int[] reqExpArr;
 
     public int[] stageClearCntArr;
+    public bool isStageCleared;
     public bool[] hiddenArr;
     public bool[] storyArr;
 
@@ -61,6 +62,7 @@ public class PlayerData
 
         reqExpArr = new int[] { 50, 100, 150, 200, 300, 300 };
 
+        isStageCleared = false;
         stageClearCntArr = new int[] { 0, 0, 0, 0 };
         hiddenArr = new bool[] { false, false, false };
         storyArr = new bool[] { false, false, false, false, false };

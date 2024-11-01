@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
 
             if (playerData == null)
                 playerData = new PlayerData(dataTable);
+
+            playerData.isStageCleared = false;
         }
         else
         {
@@ -71,6 +73,8 @@ public class GameManager : MonoBehaviour
         playerData = FileIOSystem.LoadPlayerData();
         if (playerData == null)
             playerData = new PlayerData(dataTable);
+
+        playerData.isStageCleared = false;
 
     }
 
