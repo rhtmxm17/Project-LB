@@ -305,6 +305,10 @@ PrefabInstance:
       propertyPath: monsterAni
       value: 
       objectReference: {fileID: 6625724418132813343}
+    - target: {fileID: 1961112487284148843, guid: 7fd8c2ea11339c0429e03055ae75b37b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 29bbd85fa1d261247b643be722de910b, type: 2}
     m_RemovedComponents:
     - {fileID: 5180062214429935757, guid: 7fd8c2ea11339c0429e03055ae75b37b, type: 3}
     - {fileID: 1390019740986462771, guid: 7fd8c2ea11339c0429e03055ae75b37b, type: 3}

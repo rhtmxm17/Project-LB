@@ -26,7 +26,7 @@ public class MonsterTraceToPlayer : MonoBehaviour
         monsterModel = GetComponent<MonsterModel>();
         player = GameObject.FindGameObjectWithTag("Player");
         isChecked = false;
-        distanceStopping = 1.0f;
+        distanceStopping = 1f;
 
         if (monsterAni == null)
         {

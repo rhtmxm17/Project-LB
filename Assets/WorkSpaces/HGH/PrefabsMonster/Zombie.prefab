@@ -2147,7 +2147,7 @@ Animator:
   m_GameObject: {fileID: 8453821858244195410}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9776c2c565280054689a67587800f1d9, type: 3}
-  m_Controller: {fileID: 9100000, guid: 6994d175e6a111647a2aedfdd0466319, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9342cfb16fc99634aa172e098dbe8126, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2226,7 +2226,6 @@ MonoBehaviour:
   monsterAni: {fileID: 0}
   maxDistance: 0
   distanceStopping: 0
-  chaseSpeed: 0
   <IsSpawnerBased>k__BackingField: 0
 --- !u!114 &869272962932454827
 MonoBehaviour:
