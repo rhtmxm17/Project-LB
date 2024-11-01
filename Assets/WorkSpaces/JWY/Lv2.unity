@@ -373,6 +373,10 @@ PrefabInstance:
       value: kmt_TriggerArea
       objectReference: {fileID: 0}
     - target: {fileID: 903799021819341969, guid: 046cc0df13cc8ab48a9ccd33028bb37a, type: 3}
+      propertyPath: waveManager
+      value: 
+      objectReference: {fileID: 6781525135500295812, guid: 73412af45b8ab1c43bc8782646eee4ff, type: 3}
+    - target: {fileID: 903799021819341969, guid: 046cc0df13cc8ab48a9ccd33028bb37a, type: 3}
       propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -721,19 +725,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7365981767186575905, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.41106707
       objectReference: {fileID: 0}
     - target: {fileID: 7365981767186575905, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7365981767186575905, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.9116051
       objectReference: {fileID: 0}
     - target: {fileID: 7365981767186575905, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7365981767186575905, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -741,7 +745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7365981767186575905, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -131.456
       objectReference: {fileID: 0}
     - target: {fileID: 7365981767186575905, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1290,6 +1294,10 @@ PrefabInstance:
       value: kmt_TriggerArea (4)
       objectReference: {fileID: 0}
     - target: {fileID: 903799021819341969, guid: 046cc0df13cc8ab48a9ccd33028bb37a, type: 3}
+      propertyPath: waveManager
+      value: 
+      objectReference: {fileID: 6781525135500295812, guid: 73412af45b8ab1c43bc8782646eee4ff, type: 3}
+    - target: {fileID: 903799021819341969, guid: 046cc0df13cc8ab48a9ccd33028bb37a, type: 3}
       propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1644,6 +1652,10 @@ PrefabInstance:
       value: kmt_TriggerArea (1)
       objectReference: {fileID: 0}
     - target: {fileID: 903799021819341969, guid: 046cc0df13cc8ab48a9ccd33028bb37a, type: 3}
+      propertyPath: waveManager
+      value: 
+      objectReference: {fileID: 6781525135500295812, guid: 73412af45b8ab1c43bc8782646eee4ff, type: 3}
+    - target: {fileID: 903799021819341969, guid: 046cc0df13cc8ab48a9ccd33028bb37a, type: 3}
       propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1761775191}
@@ -1724,6 +1736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: kmt_TriggerArea (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 903799021819341969, guid: 046cc0df13cc8ab48a9ccd33028bb37a, type: 3}
+      propertyPath: waveManager
+      value: 
+      objectReference: {fileID: 6781525135500295812, guid: 73412af45b8ab1c43bc8782646eee4ff, type: 3}
     - target: {fileID: 903799021819341969, guid: 046cc0df13cc8ab48a9ccd33028bb37a, type: 3}
       propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -1933,6 +1949,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: kmt_TriggerArea (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 903799021819341969, guid: 046cc0df13cc8ab48a9ccd33028bb37a, type: 3}
+      propertyPath: waveManager
+      value: 
+      objectReference: {fileID: 6781525135500295812, guid: 73412af45b8ab1c43bc8782646eee4ff, type: 3}
     - target: {fileID: 903799021819341969, guid: 046cc0df13cc8ab48a9ccd33028bb37a, type: 3}
       propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
