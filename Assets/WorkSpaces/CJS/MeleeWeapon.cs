@@ -25,5 +25,18 @@ public class MeleeWeapon : GunBase
 
         // 발사 이펙트 재생 시작
         StartEffect(hitPosition);
+
+        // 탄창 크기가 음수(무한 탄창)이라면 잔탄 검사 생략
+        if (MagazineCapacity < 0)
+            return;
+
+        // 탄창 처리
+        MagazineRemain--;
+        if (MagazineRemain <= 0)
+        {
+            CurrentState = State.Empty;
+        }
+
+        Debug.Log($"잔탄 {MagazineRemain}");
     }
 }
