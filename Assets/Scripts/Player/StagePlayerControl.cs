@@ -21,6 +21,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
     [Space(5)]
     [SerializeField] Transform rightHandPose;
+    [SerializeField] Transform weaponCamera;
 
     [Space(5)]
     [SerializeField] StatusDebuff hurtDebuffAsset;
@@ -82,7 +83,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     {
         if (sampleGun != null)
         {
-            Destroy(sampleGun);
+            Destroy(sampleGun.gameObject);
             sampleGun = null;
         }
 
@@ -98,6 +99,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
             quickSlot[index] = quickSlotGun[index];
 
+            quickSlotGun[index].WeaponCamera = weaponCamera;
             quickSlotGun[index].OnShot += InvokeAttack;
             quickSlotGun[index].transform.SetParent(rightHandPose, false);
         }
@@ -196,6 +198,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
     private void Reload(InputAction.CallbackContext _)
     {
+        Debug.Log("리로드 키 입력");
         if (quickSlotGun[curSlotIndex] != null)
         {
             quickSlotGun[curSlotIndex].Reload();
@@ -206,7 +209,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     {
         if (fireAction.inProgress)
         {
-            Debug.Log("클릭 중인 상태로 교체 시도될 경우의 처리 필요");
+            Debug.Log("클릭 중인 상태로 교체 시도됨");
             return;
         }
 

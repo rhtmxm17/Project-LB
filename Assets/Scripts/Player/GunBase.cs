@@ -16,16 +16,16 @@ public class GunBase : MonoBehaviour, IUseable
     public State CurrentState { get; private set; } // 현재 총의 상태
 
     [SerializeField] Transform muzzleTransform;
-    [SerializeField] Transform weaponCamera;
+    [field: SerializeField] public Transform WeaponCamera { get; set; }
 
     public Vector3 ShotPosition
     {
         get
         {
-            if (weaponCamera == null)
+            if (WeaponCamera == null)
                 return muzzleTransform.position;
             else
-                return Camera.main.transform.TransformPoint(weaponCamera.InverseTransformPoint(muzzleTransform.position));
+                return Camera.main.transform.TransformPoint(WeaponCamera.InverseTransformPoint(muzzleTransform.position));
         }
     }
 
@@ -33,10 +33,10 @@ public class GunBase : MonoBehaviour, IUseable
     {
         get
         {
-            if (weaponCamera == null)
+            if (WeaponCamera == null)
                 return muzzleTransform.forward;
             else
-                return Camera.main.transform.TransformDirection(weaponCamera.InverseTransformDirection(muzzleTransform.forward));
+                return Camera.main.transform.forward;
         }
     }
 

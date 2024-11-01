@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 439708132871217915}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2086823142282426822}
   - component: {fileID: 3157786556312501473}
   - component: {fileID: -960149293685007313}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Weapon Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3336782497488468925}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

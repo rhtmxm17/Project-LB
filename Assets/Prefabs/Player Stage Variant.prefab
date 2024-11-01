@@ -71,8 +71,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6670160987631193341}
-  m_LocalRotation: {x: 0.49999994, y: -0.5, z: -0.5000001, w: 0.49999988}
-  m_LocalPosition: {x: -0.097000785, y: 0.12979855, z: 0.30979922}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5000001, w: 0.49999988}
+  m_LocalPosition: {x: -0.0970009, y: 0.12979864, z: 0.3097994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -88,7 +88,7 @@ Camera:
   m_GameObject: {fileID: 6670160987631193341}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -102,12 +102,12 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 2
+  near clip plane: 0.01
+  far clip plane: 5
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -223,6 +223,7 @@ MonoBehaviour:
   sampleGun: {fileID: 5071554714509711474}
   grenadeThrow: {fileID: 3941861055701554458}
   rightHandPose: {fileID: 9048276983104403327}
+  weaponCamera: {fileID: 0}
   hurtDebuffAsset: {fileID: 11400000, guid: 29b338d0001195f42a0a0e4428a9fc58, type: 2}
   hurtReferenceValue: 0.4
   OnMagazineUpdated:
