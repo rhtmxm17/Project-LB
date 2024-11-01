@@ -532,6 +532,7 @@ MonoBehaviour:
   idx: 0
   inven: {fileID: 2071231968}
   upgradeSystem: {fileID: 263497900}
+  exchangeSystem: {fileID: 0}
   foodAmount: 20
 --- !u!1001 &263497898
 PrefabInstance:
@@ -607,6 +608,10 @@ PrefabInstance:
     - target: {fileID: 1108609431157971990, guid: 5e5da85ee9c0c274db82e5dd94e541a7, type: 3}
       propertyPath: m_Name
       value: KMT_BunkerWeaponUpgradeWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1108609431157971990, guid: 5e5da85ee9c0c274db82e5dd94e541a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1108609431157972010, guid: 5e5da85ee9c0c274db82e5dd94e541a7, type: 3}
       propertyPath: m_Pivot.x
@@ -4501,6 +4506,10 @@ PrefabInstance:
     - target: {fileID: 6466242379424321998, guid: 9b8801c1f9409a34a961c46bd1086606, type: 3}
       propertyPath: m_Name
       value: KMT_InventoryQuickSlotSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466242379424321998, guid: 9b8801c1f9409a34a961c46bd1086606, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6844830106107104087, guid: 9b8801c1f9409a34a961c46bd1086606, type: 3}
       propertyPath: m_AnchorMax.y
