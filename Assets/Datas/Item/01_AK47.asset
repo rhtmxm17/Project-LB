@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 01_AK47
   m_EditorClassIdentifier: 
   <ItemType>k__BackingField: 0
+  <InventoryIdx>k__BackingField: 0
   <ImgSprite>k__BackingField: {fileID: 21300000, guid: e2ad7d1f72c464241a08acd3fa0f7347, type: 3}
   <ItemName>k__BackingField: AK47
   <MaxCnt>k__BackingField: 1
