@@ -82,7 +82,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     {
         if (sampleGun != null)
         {
-            Destroy(sampleGun);
+            Destroy(sampleGun.gameObject);
             sampleGun = null;
         }
 
