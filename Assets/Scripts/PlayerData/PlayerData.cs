@@ -47,6 +47,7 @@ public class PlayerData
     public int MaxHP { get { return maxHP; } private set { } }
     public int Level { get { return level; } private set { } }
     public int Exp { get { return exp; } private set { } }
+    public int[] ReqExpArr { get { return reqExpArr; } private set { } }
     public List<ItemData> InventoryData {  get { return inventoryData; } private set { } }
     public int Food { get { return food; } private set { } }
     public int Gear { get { return gear; } private set { } }
@@ -60,7 +61,7 @@ public class PlayerData
         level = 1;
         exp = 0;
 
-        reqExpArr = new int[] { 50, 100, 150, 200, 300, 300 };
+        reqExpArr = new int[] { 0, 100, 200, 300, 400 };
 
         isStageCleared = false;
         stageClearCntArr = new int[] { 0, 0, 0, 0 };
