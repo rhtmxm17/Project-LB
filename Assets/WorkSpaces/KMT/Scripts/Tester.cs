@@ -43,6 +43,14 @@ public class Tester : MonoBehaviour
         {
             exchangeSystem.OpenWindow();
         }
+
+
+    }
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+
     }
 
     public void RemoveButton()
