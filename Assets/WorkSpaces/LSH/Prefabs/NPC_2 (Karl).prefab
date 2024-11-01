@@ -560,9 +560,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   InteractionButton: {fileID: 5020189485948896731}
-  OnCommunication:
-    m_PersistentCalls:
-      m_Calls: []
   c_Dialogues: {fileID: 11400000, guid: 0eea4593f78a76b44ad49e6fe899148b, type: 2}
 --- !u!1 &866927480182201129
 GameObject:
@@ -2744,7 +2741,7 @@ GameObject:
   - component: {fileID: 2016565545494967304}
   - component: {fileID: 1920316826257985846}
   m_Layer: 5
-  m_Name: T btn
+  m_Name: E btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3656,9 +3653,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   InteractionButton: {fileID: 5020189485948896731}
-  OnCommunication:
-    m_PersistentCalls:
-      m_Calls: []
   c_Dialogues: {fileID: 11400000, guid: 0eea4593f78a76b44ad49e6fe899148b, type: 2}
 --- !u!1 &6334879143169490234
 GameObject:
@@ -3672,7 +3666,7 @@ GameObject:
   - component: {fileID: 7549824980748193922}
   - component: {fileID: 8771445648301757261}
   m_Layer: 5
-  m_Name: T (TMP)
+  m_Name: E (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3726,7 +3720,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: T
+  m_text: E
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

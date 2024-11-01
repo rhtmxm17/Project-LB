@@ -11,7 +11,6 @@ public class InteractableNpc : NormalNpc　, IInteractable
 
 
     [SerializeField] GameObject InteractionButton;
-    public UnityEvent OnCommunication;
 
 
 
@@ -55,11 +54,7 @@ public class InteractableNpc : NormalNpc　, IInteractable
 
         //LSH: 플레이어 인식때 실행될 코드 (E 버튼 이미지 On, E 버튼 눌러서 상호작용 시도)
         InteractionButton.SetActive(true);
-
-        Debug.Log(1);
-
-        // FIXME : 유아이 열어달라는 이벤트 호출 (BasecampPlayerControl로)
-        OnCommunication?.Invoke();
+                
 
     }
 
