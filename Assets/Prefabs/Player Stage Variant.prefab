@@ -185,6 +185,10 @@ PrefabInstance:
       propertyPath: weaponCamera
       value: 
       objectReference: {fileID: 1517707064326819839}
+    - target: {fileID: 9188252349382318782, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
+      propertyPath: <WeaponCamera>k__BackingField
+      value: 
+      objectReference: {fileID: 1517707064326819839}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88eaec522f9deee4f95b5d280cc331b6, type: 3}
 --- !u!114 &5071554714509711474 stripped

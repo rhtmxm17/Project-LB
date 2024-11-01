@@ -101,6 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactPose: {fileID: 0}
   interactRadius: 3
+  npcInfo: {fileID: 0}
+  foodExchange: {fileID: 0}
+  weaponUpgrade: {fileID: 0}
 --- !u!54 &6907338289782665454
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -550,31 +553,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2498833298624218888, guid: 50c1cb841a13ad24bab105be23725d34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.361
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2498833298624218888, guid: 50c1cb841a13ad24bab105be23725d34, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.029
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2498833298624218888, guid: 50c1cb841a13ad24bab105be23725d34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.103
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2498833298624218888, guid: 50c1cb841a13ad24bab105be23725d34, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2498833298624218888, guid: 50c1cb841a13ad24bab105be23725d34, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2498833298624218888, guid: 50c1cb841a13ad24bab105be23725d34, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2498833298624218888, guid: 50c1cb841a13ad24bab105be23725d34, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2498833298624218888, guid: 50c1cb841a13ad24bab105be23725d34, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
