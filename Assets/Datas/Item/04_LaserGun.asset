@@ -24,15 +24,13 @@ MonoBehaviour:
   <AdditiveAttackPoint>k__BackingField: 0
   <MaxUpgradeLevel>k__BackingField: 0
   <UpgradeReqGears>k__BackingField: 
-  gunPrefab: {fileID: 3157786556312501473, guid: 8b5850a5d37470a4bbfa0854e5ba0c8c, type: 3}
+  gunPrefab: {fileID: 1272354658716746207, guid: 50556e4990b010c47a867aa4b3afebd5, type: 3}
   shotClip: {fileID: 0}
   reloadClip: {fileID: 0}
-  damage: 50
-  damageGrowth: 20
   magCapacity: 25
-  timeBetFire: 0.12
-  reloadTime: 1.8
-  range: 10
+  timeBetFire: 0.1
+  ReloadTime: 1.8
+  Range: 10
   layerMask:
     serializedVersion: 2
     m_Bits: 129

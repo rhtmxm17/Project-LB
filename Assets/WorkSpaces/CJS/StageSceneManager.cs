@@ -45,7 +45,7 @@ public class StageSceneManager : MonoBehaviour
         }
     }
 
-    public readonly ItemType[] weaponEquip = new ItemType[3] { ItemType.AK47, ItemType.KNIFE, ItemType.SP_WEAPON1 };
+    public readonly ItemType[] weaponEquip = new ItemType[3] { ItemType.AK47, ItemType.KNIFE, ItemType.NONE };
 
     public bool HasJournal { get; private set; }
 
@@ -202,6 +202,9 @@ public class StageSceneManager : MonoBehaviour
 
     private GunBase InitWeapon(ItemType type)
     {
+        if (type == ItemType.NONE)
+            return null;
+
         InventoryEquableItemSO gunTable = (InventoryEquableItemSO)GameManager.Instance.GetItemDataTable().GetItemDataSO(type);
         GunBase weapon = Instantiate(gunTable.GunPrefab);
         weapon.DataTable = gunTable;
