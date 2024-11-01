@@ -8,6 +8,14 @@ public class WaveManager : MonoBehaviour
     [SerializeField]
     GameObject[] walls;
 
+    private void Start()
+    {
+        foreach (GameObject wall in walls)
+        { 
+            wall.SetActive(false);
+        }
+    }
+
     /// <summary>
     /// 트리거에 연결하여 웨이브가 시작함을 알림
     /// </summary>
@@ -21,8 +29,11 @@ public class WaveManager : MonoBehaviour
 
     public void CheckWaveIsClear()
     {
+
         if (transform.childCount <= 0)
         {
+            Debug.LogWarning("웨이브 종료");
+
             //todo : wave 종료
             foreach (GameObject wall in walls)
             {
