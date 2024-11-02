@@ -31,8 +31,14 @@ public class InventoryEquableItemSO : InventoryInfoItemSO
     public AudioClip ShotClip => shotClip; // 발사 소리
     [SerializeField] AudioClip shotClip;
 
+    public float ShotVolumeScale => shotVolumeScale;
+    [SerializeField] float shotVolumeScale =1f;
+
     public AudioClip ReloadClip => reloadClip; // 재장전 소리
     [SerializeField] AudioClip reloadClip;
+
+    public float ReloadVolumeScale => reloadVolumeScale;
+    [SerializeField] float reloadVolumeScale = 1f;
 
     public int MagCapacity => magCapacity; // 탄창용량
     [SerializeField, Tooltip("재장전 한번에 채워지는 최대 탄창수, 음수라면 탄창과 무관한 무기(예: 단검)")] int magCapacity = 25;
