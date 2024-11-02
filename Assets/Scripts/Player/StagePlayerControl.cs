@@ -15,6 +15,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 {
     [Header("테스트 필드")]
     [SerializeField] GunBase sampleGun;
+    [SerializeField] GunBase sampleKnife;
 
     [Header("고정 사용 아이템")]
     [SerializeField] GrenadeThrower grenadeThrow; // 3번 키, 수류탄 투척
@@ -162,12 +163,26 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         quickSlot[GreanadeSlot] = grenadeThrow;
         grenadeThrow.OnThrow += NotifyMagazineUpdated;
 
-        // 테스트용 무기
+        InitTesterWeapon();
+    }
+
+    private void InitTesterWeapon()
+    {
+        // 테스트용 무기 셋팅
         quickSlot[MainWeaponSlot] = sampleGun;
         quickSlotGun[MainWeaponSlot] = sampleGun;
         quickSlotGun[MainWeaponSlot]?.ShowAnimation(true);
+
         sampleGun.OnShot += InvokeAttack;
         sampleGun.OnShot += NotifyMagazineUpdated;
+
+        quickSlot[MeleeWeaponSlot] = sampleKnife;
+        quickSlotGun[MeleeWeaponSlot] = sampleKnife;
+        quickSlotGun[MeleeWeaponSlot]?.ShowAnimation(false);
+
+        sampleKnife.OnShot += InvokeAttack;
+        sampleKnife.OnShot += NotifyMagazineUpdated;
+        sampleKnife.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -296,7 +311,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
         model.Hp -= damage;
 
-        if (model.Hp < 0)
+        if (model.Hp <= 0)
         {
             OnDead?.Invoke();
         }
