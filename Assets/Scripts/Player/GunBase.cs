@@ -56,8 +56,21 @@ public class GunBase : MonoBehaviour, IUseable
     public event UnityAction OnShot;
     [field: SerializeField] public int GunLevel { get; set; } = 0;
 
+    /// <summary>
+    /// 탄창의 크기
+    /// </summary>
     public int MagazineCapacity => DataTable.MagCapacity;
+
+    /// <summary>
+    /// 탄창에 남아있는 탄약
+    /// </summary>
     public int MagazineRemain { get => magazineRemain; protected set => magazineRemain = value; }
+
+    /// <summary>
+    /// 재장전시 소비되는 남은 소지 탄약
+    /// </summary>
+    public int BulletStock { get => bulletStock; } 
+
 
     private int magazineRemain; // 장전된 탄약, 발사시 소비
     private int bulletStock; // 남은 소지 탄약, 재장전시 소비

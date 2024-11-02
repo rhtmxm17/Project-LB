@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GrenadeThrower : MonoBehaviour, IUseable
 {
@@ -10,6 +11,9 @@ public class GrenadeThrower : MonoBehaviour, IUseable
     [SerializeField] GrenadeData data;
 
     [field: SerializeField, Tooltip("사용 가능 횟수")] public int Usage { get; set; } = 5;
+
+    public event UnityAction OnThrow;
+    
     public GrenadeData Data
     {
         get => data;
@@ -61,5 +65,7 @@ public class GrenadeThrower : MonoBehaviour, IUseable
         instance.StartCoroutine(instance.ReadyExplosion(explosinTimer));
 
         instance.GetComponent<Rigidbody>().AddForce(this.transform.forward * throwForce, ForceMode.Impulse);
+
+        OnThrow?.Invoke();
     }
 }

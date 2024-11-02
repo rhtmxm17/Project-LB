@@ -30,7 +30,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     private bool isHurt = false;
 
     [Header("Events")]
-    public UnityEvent<int> OnMagazineUpdated; // 내용물 미구현
+    public UnityEvent<int, int> OnMagazineUpdated; // 내용물 미구현
     public UnityEvent<int> OnSlotSeleted;
     public UnityEvent OnDead;
 
@@ -48,9 +48,19 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
     public const int MainWeaponSlot = 0;
     public const int MeleeWeaponSlot = 1;
+    public const int GreanadeSlot = 2;
+    public const int HealthPackSlot = 2;
     public const int SpecialWeaponSlot = 4;
 
-    public int GrenadeUsage { get => grenadeThrow.Usage; set => grenadeThrow.Usage = value; }
+    public int GrenadeUsage
+    {
+        get => grenadeThrow.Usage;
+        set
+        {
+            grenadeThrow.Usage = value;
+            NotifyMagazineUpdated();
+        }
+    }
 
     private readonly int[] WeaponSlots = new int[3] { MainWeaponSlot, MeleeWeaponSlot, SpecialWeaponSlot };
 
@@ -103,6 +113,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
             quickSlotGun[index].WeaponCamera = weaponCamera;
             quickSlotGun[index].OnShot += InvokeAttack;
+            quickSlotGun[index].OnShot += NotifyMagazineUpdated;
             quickSlotGun[index].transform.SetParent(rightHandPose, false);
         }
 
@@ -122,6 +133,8 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         {
             quickSlotGun[curSlotIndex].ShowAnimation(true);
         }
+
+        NotifyMagazineUpdated();
     }
 
     private void Awake()
@@ -146,13 +159,15 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
         invHurtReference = 1f / hurtReferenceValue;
 
-        quickSlot[2] = grenadeThrow;
+        quickSlot[GreanadeSlot] = grenadeThrow;
+        grenadeThrow.OnThrow += NotifyMagazineUpdated;
 
-        // 테스트 코드
-        quickSlot[0] = sampleGun;
-        quickSlotGun[0] = sampleGun;
-        quickSlotGun[0]?.ShowAnimation(true);
+        // 테스트용 무기
+        quickSlot[MainWeaponSlot] = sampleGun;
+        quickSlotGun[MainWeaponSlot] = sampleGun;
+        quickSlotGun[MainWeaponSlot]?.ShowAnimation(true);
         sampleGun.OnShot += InvokeAttack;
+        sampleGun.OnShot += NotifyMagazineUpdated;
     }
 
     private void OnEnable()
@@ -224,7 +239,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         swapEquipRoutine = StartCoroutine(SwapEquipAnimation(curSlotIndex, index));
 
         curSlotIndex = index;
-
+        NotifyMagazineUpdated();
     }
 
     private IEnumerator SwapEquipAnimation(int indexFrom, int indexTo)
@@ -244,6 +259,33 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     }
 
     private void InvokeAttack() => OnAttack?.Invoke();
+
+    private void NotifyMagazineUpdated()
+    {
+        if (curSlotIndex == GreanadeSlot)
+        {
+            OnMagazineUpdated.Invoke(GrenadeUsage, 0);
+            return;
+        }
+
+        // TODO: 힐팩 개수
+        if (curSlotIndex == HealthPackSlot)
+        {
+            OnMagazineUpdated.Invoke(0, 0);
+            return;
+        }
+
+
+        GunBase curGun = quickSlotGun[curSlotIndex];
+        if (curGun != null)
+        {
+            OnMagazineUpdated.Invoke(curGun.MagazineRemain, curGun.BulletStock);
+        }
+        else
+        {
+            OnMagazineUpdated.Invoke(0, 0);
+        }
+    }
 
     public void Damaged(int damage, DamageType type = 0)
     {

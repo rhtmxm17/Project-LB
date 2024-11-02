@@ -52,16 +52,28 @@ public class InGameUiManager : MonoBehaviour
     ///----------------------------------------------------
     ///----------------------------------------------------
 
-    
+
 
     /// <summary>
     /// 총알 갯수가 바뀔때마다 호출될 함수입니다. 남은 총알 수를 파라미터로 받습니다.
     /// </summary>
-    /// /// <param name="remainedBullet"> 잔탄 수를 의미합니다. </param>  
-    public void ChangeNumOfBullet(int remainedBullet)
+    /// /// <param name="remainedBulletMagazine"> 탄창의 잔탄 수를 의미합니다. </param>  
+    /// /// <param name="remainedBulletStock"> 재장전에 쓰일 잔탄 수를 의미합니다. </param>  
+    public void ChangeNumOfBullet(int remainedBulletMagazine, int remainedBulletStock)
     {
-        remainBullet.text = $"{remainedBullet} / 999"; 
-        // remainedBullet은 한 탄창에서 1발씩 없어지는 모습이 출력되고, 999는 보유한 전체 총알수를 출력할 의도입니다.
+        if (remainedBulletMagazine < 0)
+        {
+            remainBullet.text = "∞";
+        }
+        else if (remainedBulletStock < 0)
+        {
+            remainBullet.text = $"{remainedBulletMagazine} / ∞"; 
+        }
+        else
+        {
+            remainBullet.text = $"{remainedBulletMagazine} / {remainedBulletStock}";
+        }
+        // remainedBullet은 한 탄창에서 1발씩 없어지는 모습이 출력되고, remainedBulletStock은 보유한 전체 총알수를 출력할 의도입니다.
 
     }
 
