@@ -8,22 +8,12 @@ using UnityEngine;
 /// </summary>
 public class Diary : Collection
 {
-
     // 아이디
     [SerializeField] private int itemID;
 
-
-
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other.tag == "Player")
-        {
-            PickupSound();
-
-            PaPer();
-        }
-
+        GameManager.Instance.GetStageSceneManager().InitJournal(this);
     }
-
 
 }

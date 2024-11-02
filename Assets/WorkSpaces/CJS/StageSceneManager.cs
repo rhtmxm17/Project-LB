@@ -149,44 +149,6 @@ public class StageSceneManager : MonoBehaviour
 
         playerControl.StageInit(playerInitAttr);
 
-
-        // 설계도와 저널 아이템을 찾아서 이미 획득했다면 삭제, 획득 못했다면 구독
-        Collection jounal = GameObject.FindWithTag("Journal")?.GetComponent<Collection>();
-        if (jounal == null)
-        {
-            Debug.Log("스테이지에 저널이 존재하지 않음");
-        }
-        else
-        {
-            // 플레이어가 해당 저널을 소지중인지 검사
-            if (0 < playerData.GetItemData(StageDataTable.Journal).count)
-            {
-                Destroy(jounal.gameObject);
-            }
-            else
-            {
-                jounal.OnPickup.AddListener(() => { HasJournal = true; });
-            }
-        }
-
-        Collection blueprint = GameObject.FindWithTag("Blueprint")?.GetComponent<Collection>();
-        if (blueprint == null)
-        {
-            Debug.Log("스테이지에 설계도가 존재하지 않음");
-        }
-        else
-        {
-            // 플레이어가 해당 설계도를 소지중인지 검사
-            if (0 < playerData.GetItemData(StageDataTable.BluePrint).count)
-            {
-                Destroy(blueprint.gameObject);
-            }
-            else
-            {
-                blueprint.OnPickup.AddListener(() => { HasBlueprint = true; });
-            }
-        }
-
         // 클리어 이벤트를 찾아서 StageCleared 구독
         TriggerArea ClearTrigger = GameObject.FindWithTag("ClearTrigger")?.GetComponent<TriggerArea>();
         if (ClearTrigger == null)
@@ -212,5 +174,31 @@ public class StageSceneManager : MonoBehaviour
         weapon.DataTable = gunTable;
         weapon.GunLevel = GameManager.Instance.GetPlayerData().GetItemData(type).WeaponLevel;
         return weapon;
+    }
+
+    public void InitBluePrint(Collection collecterItem)
+    {
+        // 플레이어가 해당 설계도를 소지중인지 검사
+        if (0 < GameManager.Instance.GetPlayerData().GetItemData(StageDataTable.BluePrint).count)
+        {
+            Destroy(collecterItem.gameObject);
+        }
+        else
+        {
+            collecterItem.OnPickup.AddListener(() => { HasBlueprint = true; });
+        }
+    }
+
+    public void InitJournal(Collection collecterItem)
+    {
+        // 플레이어가 해당 저널을 소지중인지 검사
+        if (0 < GameManager.Instance.GetPlayerData().GetItemData(StageDataTable.Journal).count)
+        {
+            Destroy(collecterItem.gameObject);
+        }
+        else
+        {
+            collecterItem.OnPickup.AddListener(() => { HasJournal = true; });
+        }
     }
 }

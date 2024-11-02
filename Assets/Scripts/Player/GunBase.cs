@@ -56,8 +56,21 @@ public class GunBase : MonoBehaviour, IUseable
     public event UnityAction OnShot;
     [field: SerializeField] public int GunLevel { get; set; } = 0;
 
+    /// <summary>
+    /// 탄창의 크기
+    /// </summary>
     public int MagazineCapacity => DataTable.MagCapacity;
+
+    /// <summary>
+    /// 탄창에 남아있는 탄약
+    /// </summary>
     public int MagazineRemain { get => magazineRemain; protected set => magazineRemain = value; }
+
+    /// <summary>
+    /// 재장전시 소비되는 남은 소지 탄약
+    /// </summary>
+    public int BulletStock { get => bulletStock; } 
+
 
     private int magazineRemain; // 장전된 탄약, 발사시 소비
     private int bulletStock; // 남은 소지 탄약, 재장전시 소비
@@ -68,6 +81,8 @@ public class GunBase : MonoBehaviour, IUseable
 
     private Animator animator;
     private int hashShow;
+
+    private AudioSource audioSource;
 
     // 총알이 마지막으로 발사된 시간을 기록한다(연타 가속 방지)
     private float lastFireTime;
@@ -106,6 +121,7 @@ public class GunBase : MonoBehaviour, IUseable
     {
         animator = GetComponent<Animator>();
         hashShow = Animator.StringToHash("Show");
+        audioSource = GetComponent<AudioSource>();
 
         InitTableData();
     }
@@ -184,6 +200,8 @@ public class GunBase : MonoBehaviour, IUseable
 
     private IEnumerator ShotEffect(Vector3 hitPosition)
     {
+        audioSource.PlayOneShot(DataTable.ShotClip, DataTable.ShotVolumeScale);
+
         // TODO: 이펙트 처리
 
         Debug.Log("발사 이펙트 출력 필요");
@@ -200,7 +218,7 @@ public class GunBase : MonoBehaviour, IUseable
         if (DataTable.MagCapacity <= 0
             || CurrentState == State.Reloading
             || magazineRemain >= DataTable.MagCapacity
-            || bulletStock <= 0)
+            || bulletStock == 0)
         {
             // 탄창 크기 제한이 없거나
             // 이미 재장전 중이거나 남은 탄알이 없거나
@@ -218,10 +236,8 @@ public class GunBase : MonoBehaviour, IUseable
         // 현재 상태를 재장전 중 장태로 전환
         CurrentState = State.Reloading;
 
+        audioSource.PlayOneShot(DataTable.ReloadClip, DataTable.ReloadVolumeScale);
         ShowAnimation(false);
-
-        // TODO: 재장전 소리 재생
-        Debug.Log("재장전 사운드 출력 필요");
 
         // 재장전 소요 시간만큼 처리 쉬기
         yield return new WaitForSeconds(DataTable.ReloadTime);
