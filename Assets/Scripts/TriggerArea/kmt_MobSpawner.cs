@@ -43,7 +43,7 @@ public class kmt_MobSpawner : MonoBehaviour
 
         if(waveMonsterParent == null)
         {
-            Debug.LogError("웨이브 매니져가 연결되어있지 않습니다.");
+            Debug.LogWarning("웨이브 매니져가 연결되어있지 않습니다.");
             return;
         }
 

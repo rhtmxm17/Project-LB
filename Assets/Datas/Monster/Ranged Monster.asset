@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055b42f616debc243b36d7eb587411bc, type: 3}
   m_Name: Ranged Monster
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 0}
+  monsterPrefab: {fileID: 2402829140540979405, guid: 838b8dbde682b814dabdbb263ab0bb16, type: 3}
   attackRange: 4
   attackDamage: 15
   maxHp: 230
