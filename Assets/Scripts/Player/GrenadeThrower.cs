@@ -48,7 +48,7 @@ public class GrenadeThrower : MonoBehaviour, IUseable
 
         Grenade instance = Instantiate(Prefab, this.transform.position, this.transform.rotation);
         instance.Data = this.Data;
-        StartCoroutine(instance.ReadyExplosion(explosinTimer));
+        instance.StartCoroutine(instance.ReadyExplosion(explosinTimer));
 
         instance.GetComponent<Rigidbody>().AddForce(this.transform.forward * throwForce, ForceMode.Impulse);
     }

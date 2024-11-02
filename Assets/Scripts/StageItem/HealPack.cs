@@ -34,8 +34,6 @@ public class HealPack : Collection
             if(player.Hp != player.MaxHp)
                 PickupSound();
 
-            Heal();
-
             /* Test - 체력상승 테스트를 위해 일단 줍자마자 사용됨 */ 
             UseItem();
 
