@@ -15,7 +15,7 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
     public Action OnDeadEvent = null;
         
 
-    private void Awake()
+    protected virtual void Awake()
     {
         monsterModel = GetComponent<MonsterModel>();
         rigid = GetComponent<Rigidbody>();
@@ -28,7 +28,7 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
     }
 
 
-    public void Damaged(int damage, DamageType type)
+    public virtual void Damaged(int damage, DamageType type)
     {
         monsterAni.SetTrigger("TakenDamaged");
         // 몬스터 HP가 damage만큼 감소
