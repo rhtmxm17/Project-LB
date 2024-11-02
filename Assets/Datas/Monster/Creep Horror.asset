@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055b42f616debc243b36d7eb587411bc, type: 3}
   m_Name: Creep Horror
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 2402829140540979405, guid: 3573384d065e67e4fa827c9d30bda218, type: 3}
+  monsterPrefab: {fileID: 2402829140540979405, guid: 85b489af7e30d3c49b64dcc7fd86b033, type: 3}
   attackRange: 1
   attackDamage: 20
   maxHp: 500
