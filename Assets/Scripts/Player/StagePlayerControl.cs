@@ -50,6 +50,8 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     public const int MeleeWeaponSlot = 1;
     public const int SpecialWeaponSlot = 4;
 
+    public int GrenadeUsage { get => grenadeThrow.Usage; set => grenadeThrow.Usage = value; }
+
     private readonly int[] WeaponSlots = new int[3] { MainWeaponSlot, MeleeWeaponSlot, SpecialWeaponSlot };
 
     private IUseable[] quickSlot = new IUseable[MaxSlot];

@@ -33,6 +33,9 @@ public class Collection : Item, IInteractable
         Debug.Log($"아이템 획득 SF 출력");
     }
 
-    protected virtual void Pickup() { }
+    protected virtual void Pickup()
+    {
+        gameObject.SetActive(false);
+    }
 
 }

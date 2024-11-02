@@ -8,6 +8,8 @@ public class GrenadeThrower : MonoBehaviour, IUseable
     [SerializeField] float explosinTimer = 2.5f;
 
     [SerializeField] GrenadeData data;
+
+    [field: SerializeField, Tooltip("사용 가능 횟수")] public int Usage { get; set; } = 5;
     public GrenadeData Data
     {
         get => data;
@@ -38,6 +40,14 @@ public class GrenadeThrower : MonoBehaviour, IUseable
 
     public void UseEnd()
     {
+        if (Usage <= 0)
+        {
+            Debug.Log("수류탄 소진");
+            return;
+        }
+
+        Usage--;
+
         // 누르고 있던 시간
         float chargedTime = Time.time - chargeBeginTime;
         if (chargedTime > Data.MaxChargeTime)
