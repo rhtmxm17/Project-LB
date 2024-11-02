@@ -15,7 +15,8 @@ public class GunBase : MonoBehaviour, IUseable
 
     public State CurrentState { get; protected set; } // 현재 총의 상태
 
-    [SerializeField] Transform muzzleTransform;
+    [SerializeField, Tooltip("공격 판정에 사용될 기점 위치")] Transform muzzleTransform;
+    [SerializeField, Tooltip("총구 이펙트")] ParticleSystem muzzleParticle;
     [field: SerializeField] public Transform WeaponCamera { get; set; }
 
     public Vector3 ShotPosition
@@ -201,6 +202,10 @@ public class GunBase : MonoBehaviour, IUseable
     private IEnumerator ShotEffect(Vector3 hitPosition)
     {
         audioSource.PlayOneShot(DataTable.ShotClip, DataTable.ShotVolumeScale);
+        if (muzzleParticle != null)
+        {
+            muzzleParticle.Play();
+        }
 
         // TODO: 이펙트 처리
 
