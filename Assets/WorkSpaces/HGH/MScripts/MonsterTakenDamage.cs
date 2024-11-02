@@ -30,6 +30,9 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
 
     public void Damaged(int damage, DamageType type)
     {
+        if (monsterModel.MonsterCurHP <= 0)
+            return;
+
         monsterAni.SetTrigger("TakenDamaged");
         // 몬스터 HP가 damage만큼 감소
         monsterModel.MonsterCurHP -= damage;
