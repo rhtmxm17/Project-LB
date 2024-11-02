@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BossMonsterDamaged : MonsterTakenDamage
 {
@@ -11,6 +12,10 @@ public class BossMonsterDamaged : MonsterTakenDamage
 
     int[] waveHpArr;
     Action[] waveActionArr;
+    NavMeshAgent nav;
+
+    [SerializeField]
+    BossMonsterRangeAttack rangeAttack;
 
     [Header("Minion Monsters Info")]
     [SerializeField]
@@ -39,6 +44,9 @@ public class BossMonsterDamaged : MonsterTakenDamage
         };
 
         curWaveHP = waveHpArr[waveIdx];
+
+        nav = GetComponent<NavMeshAgent>();
+
     }
 
     public override void Damaged(int damage, DamageType type)
@@ -53,6 +61,8 @@ public class BossMonsterDamaged : MonsterTakenDamage
 
         if (waveIdx < waveHpArr.Length && monsterModel.MonsterCurHP <= curWaveHP)
         {
+            StartCoroutine(Crying());
+            monsterAni.Play("Standing Taunt Battlecry");
             waveActionArr[waveIdx]?.Invoke();
             waveIdx++;
             if(waveIdx < waveHpArr.Length)
@@ -60,6 +70,34 @@ public class BossMonsterDamaged : MonsterTakenDamage
         }
         
         MonsterDead();
+    }
+
+    bool isDead = false;
+
+    protected override void MonsterDead()
+    {
+        if(isDead) return;
+
+        if (monsterModel.MonsterCurHP <= 0)
+        {
+            isDead = true;
+            rangeAttack.IsCring = true;
+            nav.speed = 0;
+
+            monsterAni.SetTrigger("DeadTrigger");
+            // 몬스터 사망시
+            transform.SetParent(null);
+            OnDeadEvent?.Invoke();
+            Destroy(gameObject, 4f);
+        }
+    }
+
+
+    IEnumerator Crying()
+    {
+        rangeAttack.IsCring = true;
+        yield return new WaitForSeconds(2.8f);
+        rangeAttack.IsCring = false;
     }
 
     void Wave1()

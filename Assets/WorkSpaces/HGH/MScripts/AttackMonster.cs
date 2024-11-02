@@ -6,9 +6,9 @@ using UnityEngine.AI;
 public class AttackMonster : MonoBehaviour
 {
     [Header("Model")]
-    [SerializeField] PlayerModel playerModel;
-    [SerializeField] MonsterModel monsterModel;
-    [SerializeField] Animator monsterAni;
+    [SerializeField] protected PlayerModel playerModel;
+    [SerializeField] protected MonsterModel monsterModel;
+    [SerializeField] protected Animator monsterAni;
 
     [Header("Property")]
     [SerializeField] float rayDistance;
@@ -26,7 +26,7 @@ public class AttackMonster : MonoBehaviour
         }
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         playerModel = GameManager.Instance.GetPlayerModel();
         monsterModel.OnInit += Init;
@@ -74,7 +74,7 @@ public class AttackMonster : MonoBehaviour
         }
     }
 
-    public void AttackToPlayer()
+    public virtual void AttackToPlayer()
     {
         // 몬스터 애니메이션에서 공격모션 재생 트리거
         monsterAni.SetTrigger("StartAttack");
@@ -92,19 +92,20 @@ public class AttackMonster : MonoBehaviour
         Debug.Log($"플레이어는 {playerModel.Hp}만큼 HP가 남았다");
     }
 
-    Coroutine startMonsterAttackRoutine;
+    protected Coroutine startMonsterAttackRoutine;
 
-    IEnumerator MonsterAutoAttack()
+    protected virtual IEnumerator MonsterAutoAttack()
     {
         WaitForSeconds period = new WaitForSeconds(monsterModel.DataTable.AttackPeriod);
         while (true)
         {
-            // 몬스터 공격 딜레이 1초 -> 테이블에서 가져오기
-            yield return period;
+/*            // 몬스터 공격 딜레이 1초 -> 테이블에서 가져오기
+            yield return period;*/
             
             // 몬스터 공격시작
             AttackToPlayer();
-            
+            // 몬스터 공격 딜레이 1초 -> 테이블에서 가져오기
+            yield return period;
         }
     }
 }
