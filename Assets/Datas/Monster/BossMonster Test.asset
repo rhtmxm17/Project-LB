@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055b42f616debc243b36d7eb587411bc, type: 3}
   m_Name: BossMonster Test
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 0}
+  monsterPrefab: {fileID: 8267884567876114207, guid: 81385917412a7244ba8c621d279a2c27, type: 3}
   attackRange: 1
   attackDamage: 10
   maxHp: 15000
-  attckPerSecond: 1
-  moveSpeed: 1
+  attckPerSecond: 0.5
+  moveSpeed: 3
