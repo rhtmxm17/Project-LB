@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 055b42f616debc243b36d7eb587411bc, type: 3}
-  m_Name: Goul Test
+  m_Name: Elite Monster CreepHorror
   m_EditorClassIdentifier: 
-  monsterName: "\uAD6C\uC6B8(\uD14C\uC2A4\uD2B8)"
-  monsterPrefab: {fileID: 8267884567876114207, guid: 034b260b77515d64cb8731a7ecf56235, type: 3}
+  monsterName: "\uD06C\uB9BD\uD640"
+  monsterPrefab: {fileID: 2402829140540979405, guid: 85b489af7e30d3c49b64dcc7fd86b033, type: 3}
   attackRange: 1
-  attackDamage: 10
-  maxHp: 1
+  attackDamage: 20
+  maxHp: 500
   attckPerSecond: 1
-  moveSpeed: 4
+  moveSpeed: 1.1

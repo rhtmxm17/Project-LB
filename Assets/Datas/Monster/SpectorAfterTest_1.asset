@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055b42f616debc243b36d7eb587411bc, type: 3}
   m_Name: SpectorAfterTest_1
   m_EditorClassIdentifier: 
+  monsterName: "\uBD80\uD65C\uD55C \uC2A4\uD399\uD130(\uD14C\uC2A4\uD2B8)"
   monsterPrefab: {fileID: 8267884567876114207, guid: 80607be3e2276104fb1f5695ff46c4c1, type: 3}
   attackRange: 1
   attackDamage: 10

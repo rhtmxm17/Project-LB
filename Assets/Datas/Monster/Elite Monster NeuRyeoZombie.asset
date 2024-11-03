@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 055b42f616debc243b36d7eb587411bc, type: 3}
-  m_Name: Goul Test
+  m_Name: Elite Monster NeuRyeoZombie
   m_EditorClassIdentifier: 
-  monsterName: "\uAD6C\uC6B8(\uD14C\uC2A4\uD2B8)"
-  monsterPrefab: {fileID: 8267884567876114207, guid: 034b260b77515d64cb8731a7ecf56235, type: 3}
-  attackRange: 1
-  attackDamage: 10
-  maxHp: 1
-  attckPerSecond: 1
-  moveSpeed: 4
+  monsterName: "\uB290\uB824\uC838 \uC880\uBE44"
+  monsterPrefab: {fileID: 0}
+  attackRange: 10
+  attackDamage: 20
+  maxHp: 350
+  attckPerSecond: 0.2
+  moveSpeed: 1.1

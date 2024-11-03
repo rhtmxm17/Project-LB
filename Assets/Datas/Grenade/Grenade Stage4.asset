@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 055b42f616debc243b36d7eb587411bc, type: 3}
-  m_Name: Creep Horror
+  m_Script: {fileID: 11500000, guid: 6eb32345e5a8f9a4f83dad0e1660969d, type: 3}
+  m_Name: Grenade Stage4
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 2402829140540979405, guid: 85b489af7e30d3c49b64dcc7fd86b033, type: 3}
-  attackRange: 1
-  attackDamage: 20
-  maxHp: 500
-  attckPerSecond: 1
-  moveSpeed: 1.1
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 192
+  explosionRange: 3
+  damage: 450
+  maxChargeTime: 1
+  minThrowForce: 1
+  maxThrowForce: 15
