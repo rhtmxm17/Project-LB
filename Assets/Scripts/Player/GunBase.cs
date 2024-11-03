@@ -267,5 +267,20 @@ public class GunBase : MonoBehaviour, IUseable
 
         // 총의 현재 상태를 발사 준비된 상태로 변경
         CurrentState = State.Ready;
+
+        reloadRoutine = null;
+    }
+
+    private void OnDisable()
+    {
+        if (reloadRoutine != null)
+        {
+            reloadRoutine = null;
+
+            if (magazineRemain == 0)
+                CurrentState = State.Empty;
+            else
+                CurrentState = State.Ready;
+        }
     }
 }
