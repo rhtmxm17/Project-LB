@@ -82,6 +82,7 @@ public class GunBase : MonoBehaviour, IUseable
 
     private Animator animator;
     private int hashShow;
+    private int hashSwing;
 
     private AudioSource audioSource;
 
@@ -118,10 +119,16 @@ public class GunBase : MonoBehaviour, IUseable
         animator.SetBool(hashShow, show);
     }
 
+    public void SwingAnimation()
+    {
+        animator.SetTrigger(hashSwing);
+    }
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
         hashShow = Animator.StringToHash("Show");
+        hashSwing = Animator.StringToHash("Swing");
         audioSource = GetComponent<AudioSource>();
 
         InitTableData();

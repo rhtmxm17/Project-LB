@@ -239,6 +239,10 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
     private void SelectSlot(int index)
     {
+        // 현재 슬롯으로 변경 시도시 무시
+        if (index == curSlotIndex)
+            return;
+
         if (fireAction.inProgress)
         {
             Debug.Log("클릭 중인 상태로 교체 시도됨");
