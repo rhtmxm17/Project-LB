@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public enum Scenes { BUNCKER, STAGE1, STAGE2, STAGE3, STAGE4, LEVEL1, }
+    public enum Scenes { BUNCKER, STAGE1, STAGE2, STAGE3, STAGE4, LEVEL1, LEVEL2, LEVEL3, LEVEL4, TEST1, TEST2, }
 
     [Header("Panel")]
     [SerializeField]

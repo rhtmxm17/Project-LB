@@ -165,17 +165,27 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   sceneInfoArr:
-  - sceneType: 1
-    sceneName: stage2
-  - sceneType: 5
-    sceneName: Lv2
-  - sceneType: 2
-    sceneName: Stage 1
   - sceneType: 0
     sceneName: KMT_Inventory Sample Scene
+  - sceneType: 1
+    sceneName: StageMap_01_Factory
+  - sceneType: 5
+    sceneName: StageDesign_01_Stage1
+  - sceneType: 2
+    sceneName: StageMap_02_Forest
+  - sceneType: 6
+    sceneName: StageDesign_02_Stage2
+  - sceneType: 3
+    sceneName: StageMap_03_HiddneBunker
+  - sceneType: 7
+    sceneName: StageDesign_03_Stage3
   - sceneType: 4
     sceneName: LoadTestMap
-  - sceneType: 3
+  - sceneType: 8
+    sceneName: LoadTestLevel
+  - sceneType: 9
+    sceneName: LoadTestMap
+  - sceneType: 10
     sceneName: LoadTestLevel
 --- !u!114 &4363799952622237563
 MonoBehaviour:
@@ -220,6 +230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageDataTable: {fileID: 11400000, guid: 8f819a5e3e732474398b3ed4316dd23b, type: 2}
+  OnStageClear:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6345149472558556299
 GameObject:
   m_ObjectHideFlags: 0
