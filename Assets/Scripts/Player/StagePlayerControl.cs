@@ -19,6 +19,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
     [Header("고정 사용 아이템")]
     [SerializeField] GrenadeThrower grenadeThrow; // 3번 키, 수류탄 투척
+    [SerializeField] CastingItem healthPack; // 4번 키, 회복 아이템
 
     [Space(5)]
     [SerializeField] Transform rightHandPose;
@@ -50,7 +51,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     public const int MainWeaponSlot = 0;
     public const int MeleeWeaponSlot = 1;
     public const int GreanadeSlot = 2;
-    public const int HealthPackSlot = 2;
+    public const int HealthPackSlot = 3;
     public const int SpecialWeaponSlot = 4;
 
     public int GrenadeUsage
@@ -59,6 +60,16 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         set
         {
             grenadeThrow.Usage = value;
+            NotifyMagazineUpdated();
+        }
+    }
+
+    public int HealthPackUsage
+    {
+        get => healthPack.Usage;
+        set
+        {
+            healthPack.Usage = value;
             NotifyMagazineUpdated();
         }
     }
@@ -130,9 +141,9 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
         SelectedUseable.gameObject.SetActive(true);
 
-        if (quickSlotGun[curSlotIndex] != null)
+        if (quickSlot[curSlotIndex] != null)
         {
-            quickSlotGun[curSlotIndex].ShowAnimation(true);
+            quickSlot[curSlotIndex].ShowAnimation(true);
         }
 
         NotifyMagazineUpdated();
@@ -163,6 +174,10 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         quickSlot[GreanadeSlot] = grenadeThrow;
         grenadeThrow.OnThrow += NotifyMagazineUpdated;
 
+        quickSlot[HealthPackSlot] = healthPack;
+        healthPack.OnCasted += NotifyMagazineUpdated;
+        healthPack.OnCasted += OnDrinkHelthPack;
+
         InitTesterWeapon();
     }
 
@@ -170,15 +185,15 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     {
         // 테스트용 무기 셋팅
         quickSlot[MainWeaponSlot] = sampleGun;
+        quickSlot[MainWeaponSlot]?.ShowAnimation(true);
         quickSlotGun[MainWeaponSlot] = sampleGun;
-        quickSlotGun[MainWeaponSlot]?.ShowAnimation(true);
 
         sampleGun.OnShot += InvokeAttack;
         sampleGun.OnShot += NotifyMagazineUpdated;
 
         quickSlot[MeleeWeaponSlot] = sampleKnife;
+        quickSlot[MeleeWeaponSlot]?.ShowAnimation(false);
         quickSlotGun[MeleeWeaponSlot] = sampleKnife;
-        quickSlotGun[MeleeWeaponSlot]?.ShowAnimation(false);
 
         sampleKnife.OnShot += InvokeAttack;
         sampleKnife.OnShot += NotifyMagazineUpdated;
@@ -263,12 +278,12 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
     private IEnumerator SwapEquipAnimation(int indexFrom, int indexTo)
     {
-        quickSlotGun[indexFrom]?.ShowAnimation(false);
+        quickSlot[indexFrom]?.ShowAnimation(false);
 
         if (quickSlot[indexTo] != null)
         {
             quickSlot[indexTo].gameObject.SetActive(true);
-            quickSlotGun[indexTo]?.ShowAnimation(true);
+            quickSlot[indexTo]?.ShowAnimation(true);
         }
 
         yield return new WaitForSeconds(0.2f);
@@ -290,7 +305,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         // TODO: 힐팩 개수
         if (curSlotIndex == HealthPackSlot)
         {
-            OnMagazineUpdated.Invoke(0, 0);
+            OnMagazineUpdated.Invoke(HealthPackUsage, 0);
             return;
         }
 
@@ -341,5 +356,11 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
                 model.AddDebuff(hurtDebuffAsset);
             }
         }
+    }
+
+    private void OnDrinkHelthPack()
+    {
+        // 캐스팅 아이템 종류가 늘어난다면 프리펩 분리
+        model.Hp += model.MaxHp >> 2;
     }
 }
