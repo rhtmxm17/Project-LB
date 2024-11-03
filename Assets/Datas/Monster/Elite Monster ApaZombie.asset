@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Elite Monster ApaZombie
   m_EditorClassIdentifier: 
   monsterName: "\uC544\uD30C \uC880\uBE44"
-  monsterPrefab: {fileID: 2402829140540979405, guid: 3573384d065e67e4fa827c9d30bda218, type: 3}
+  monsterPrefab: {fileID: 2402829140540979405, guid: 0a21e2e638bde9441869dde8f52b0545, type: 3}
   attackRange: 1
   attackDamage: 40
   maxHp: 350
