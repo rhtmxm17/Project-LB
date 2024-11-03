@@ -2,12 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Grenade : MonoBehaviour
 {
     [field:SerializeField] public GrenadeData Data { get; set; }
 
+    [field:SerializeField] public GameObject GrenadeModel { get; set; }
+    [field:SerializeField] public ParticleSystem ExplosionEffect { get; set; }
+
     // 현재 최대 적중 가능 개체: 32
     private Collider[] explosionResults = new Collider[32];
+
+    AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     /// <summary>
     /// 지정된 시간 도달 후 폭발 및 소멸 루틴
@@ -42,8 +53,10 @@ public class Grenade : MonoBehaviour
             explosionResults[i].attachedRigidbody.GetComponent<IDamageable>().Damaged(Data.Damage, DamageType.FRENDLY_GROUP_0);
         }
 
-        // TODO: 폭발 이펙트, 사운드 추가
-
-        Destroy(gameObject);
+        audioSource.Play();
+        GrenadeModel.SetActive(false);
+        ExplosionEffect.transform.SetParent(null);
+        ExplosionEffect.Play();
+        Destroy(gameObject, 4.5f);
     }
 }
