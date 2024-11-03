@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223094911e405d041a6f423b5606a243, type: 3}
+  m_Name: NPC_5
+  m_EditorClassIdentifier: 
+  <Texts>k__BackingField:
+  - "\uADF8\uAC70 \uC544\uB098? \n\uC774 \uC138\uACC4\uC5D0\uB294 \uC0DD\uAC01\uC678\uB85C
+    \n\uC0DD\uC874\uC790\uB4E4\uC774 \uB9CE\uC544. \uADF8\uB4E4\uC774 \n\uC774\uACF3
+    \uC800\uACF3\uC5D0 \uB0A8\uAE34 \uAE30\uB85D\uB4E4\uC774 \n\uB3C4\uC6C0\uC774
+    \uB420\uC9C0\uB3C4 \uBAA8\uB978\uB2E4\uB124."
+  - "\uB09C \uC800 \uAC81\uC7C1\uC774 \uB140\uC11D\uACFC\uB294 \uB2EC\uB77C. \n\uB098\uB3C4
+    \uD568\uAED8 \uAC00\uACE0 \uC2F6\uC5B4, \uD558\uC9C0\uB9CC \n\uC815\uB9D0\uB85C
+    \uC800 \uB140\uC11D\uC774 \uBC99\uCEE4\uB97C \n\uC9C0\uD0AC \uC218 \uC788\uC744
+    \uAC70\uB77C\uACE0 \uC0DD\uAC01\uD558\uB098?"
+  - "\uC774 \uBC99\uCEE4\uB97C \uC9C0\uCF1C\uB0BC \uC0AC\uB78C\uC740 \n\uBC14\uB85C
+    \uB098\uC57C. \uB0B4\uAC00 \uC788\uC5B4\uC57C \n\uC6B0\uB9AC\uAC00 \uC548\uC804\uD560
+    \uC218 \uC788\uB2E4\uACE0."

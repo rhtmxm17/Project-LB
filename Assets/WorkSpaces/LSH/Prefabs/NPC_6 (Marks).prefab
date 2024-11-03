@@ -2688,7 +2688,7 @@ Transform:
   m_GameObject: {fileID: 7164532020775091381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.12, y: 0.902, z: 2.5299997}
-  m_LocalScale: {x: 0.8, y: 0.88888896, z: 0.88888896}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7164532020213799435}
@@ -2708,7 +2708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d40dc8264d8034ba8ee435f9b623bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueArr: {fileID: 11400000, guid: 51d79f61bc5e4544cbfcab1e1a001b2c, type: 2}
+  dialogueArr: {fileID: 11400000, guid: b3f860197e0ba6f48af06c6af5265077, type: 2}
   tmp: {fileID: 7164532019647175650}
 --- !u!135 &7164532020775091380
 SphereCollider:
@@ -2749,7 +2749,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7164532021051206533}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0.9961947, z: 0, w: 0.08715588}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2757,11 +2757,11 @@ RectTransform:
   - {fileID: 7164532019647175678}
   m_Father: {fileID: 7164532020213799435}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 170, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.47, y: 0.5164}
-  m_SizeDelta: {x: 1.7897, y: 3.138}
+  m_AnchoredPosition: {x: 1.75, y: 0.5}
+  m_SizeDelta: {x: 2.5, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7164532021051206529
 Canvas:

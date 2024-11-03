@@ -1750,7 +1750,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123248396244910081}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0.9961947, z: 0, w: 0.08715588}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1759,11 +1759,11 @@ RectTransform:
   - {fileID: 1123248397590330152}
   m_Father: {fileID: 1123248395964536192}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 170, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.47, y: 0.5164}
-  m_SizeDelta: {x: 1.7897, y: 3.138}
+  m_AnchoredPosition: {x: 1.5, y: 0.5}
+  m_SizeDelta: {x: 2.25, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1123248396244910085
 Canvas:
@@ -4381,9 +4381,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   InteractionButton: {fileID: 1123248397590330133}
-  OnCommunication:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1123248397134074425
 GameObject:
   m_ObjectHideFlags: 0
