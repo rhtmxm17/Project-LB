@@ -17,7 +17,7 @@ public class MonsterModel : MonoBehaviour
     public UnityAction<int> OnMonsterHPChanged;
 
     /// <summary>
-    /// 몬스터 초기화시 수행할 작업 등록
+    /// 몬스터 초기화시 DataTable 기반으로 수행할 초기화 작업 등록
     /// </summary>
     public UnityAction OnInit;
 

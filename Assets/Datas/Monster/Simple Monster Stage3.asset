@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055b42f616debc243b36d7eb587411bc, type: 3}
   m_Name: Simple Monster Stage3
   m_EditorClassIdentifier: 
+  monsterName: "3\uC2A4\uD14C\uC774\uC9C0 \uC880\uBE44"
   monsterPrefab: {fileID: 2402829140540979405, guid: 3573384d065e67e4fa827c9d30bda218, type: 3}
   attackRange: 1
   attackDamage: 20

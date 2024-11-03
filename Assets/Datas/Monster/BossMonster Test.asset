@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055b42f616debc243b36d7eb587411bc, type: 3}
   m_Name: BossMonster Test
   m_EditorClassIdentifier: 
+  monsterName: "\uAC70\uB300 \uB369\uC5B4\uB9AC(\uD14C\uC2A4\uD2B8)"
   monsterPrefab: {fileID: 8267884567876114207, guid: 81385917412a7244ba8c621d279a2c27, type: 3}
   attackRange: 1
   attackDamage: 10

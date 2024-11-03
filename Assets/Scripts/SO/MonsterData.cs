@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/MonsterData")]
 public class MonsterData : ScriptableObject
 {
+    public string MonsterName => monsterName;
+    [SerializeField] string monsterName;
+
     /// <summary>
     /// 구현된 몬스터 기능
     /// </summary>

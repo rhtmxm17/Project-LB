@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e6e24782a1c51429077ec81eba80fa, type: 3}
+  m_Name: Stage2 Data
+  m_EditorClassIdentifier: 
+  stageName: Stage2
+  BgmClip: {fileID: 0}
+  bgmClip: {fileID: 0}
+  mapScene: 2
+  levelScene: 6
+  stageIndex: 1
+  rewardExp: 100
+  rewardRation: 100
+  journal: 7
+  bluePrint: 15
+  grenadeData: {fileID: 11400000, guid: 04224e0cbe970e244ab3da9f5defafe7, type: 2}
