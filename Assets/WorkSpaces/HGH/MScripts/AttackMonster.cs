@@ -84,10 +84,7 @@ public class AttackMonster : MonoBehaviour
 
         // 개발도중 Debug.Log 확인
         Debug.Log($"{monsterModel.MonsterAP}만큼의 몬스터 공격력으로 플레이어를 공격했다");
-        if (player == null || monsterModel == null)
-        {
-            ;
-        }
+
         // playerModel의 Hp를 monsterModel의 공격력만큼 감소
         player.Damaged(monsterModel.MonsterAP, DamageType.DEFAULT_MELEE_ATTACK);
 

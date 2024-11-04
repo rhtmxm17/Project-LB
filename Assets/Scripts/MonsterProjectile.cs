@@ -44,5 +44,7 @@ public class MonsterProjectile : MonoBehaviour
                 debuffable.AddDebuff(debuff);
             }
         }
+
+        Destroy(gameObject);
     }
 }

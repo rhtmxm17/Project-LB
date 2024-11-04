@@ -6,7 +6,7 @@ using UnityEngine;
 /// 몬스터가 플레이어를 추적한다는 것을 전제로 원거리 공격 기능 구성
 /// 투사체가 가로막히는지 검사하고 공격
 /// </summary>
-public class ProjectileMonsterAttack : MonoBehaviour
+public class ProjectileAttackMonster : MonoBehaviour
 {
     [SerializeField] Animator monsterAni;
     [SerializeField] Transform shotPose;
@@ -14,7 +14,6 @@ public class ProjectileMonsterAttack : MonoBehaviour
     [SerializeField, Tooltip("투사체가 플레이어에 닿는지 확인하는 주기")] float checkFiringLinePeriod = 0.1f; // 사선(射線) 검사 주기
     [SerializeField, Tooltip("투사체 검사에 사용될 반경")] float projectileRadius;
     [SerializeField, Tooltip("공격 선딜레이")] float preDelay;
-    [SerializeField, Tooltip("공격 후딜레이")] float postDelay;
 
     private PlayerModel playerModel;
     private MonsterModel monsterModel;
@@ -39,16 +38,38 @@ public class ProjectileMonsterAttack : MonoBehaviour
         }
         audioSource = GetComponent<AudioSource>();
 
-
         sphereCastPeriod = new WaitForSeconds(checkFiringLinePeriod);
         preDelayWait = new WaitForSeconds(preDelay);
-        postDelayWait = new WaitForSeconds(postDelay);
         castLayer = LayerMask.GetMask("Default", "Player");
     }
+
+
 
     private void Start()
     {
         playerModel = GameManager.Instance.GetPlayerModel();
+        monsterModel.OnInit += Init;
+    }
+
+    private void OnDestroy()
+    {
+        monsterModel.OnInit -= Init;
+
+    }
+
+    private void Init()
+    {
+        postDelayWait = new WaitForSeconds(monsterModel.DataTable.AttackPeriod - preDelay);
+    }
+
+    private void OnEnable()
+    {
+        stateRoutine = StartCoroutine(CheckFiringLine());
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(stateRoutine);
     }
 
     private IEnumerator CheckFiringLine()
@@ -57,9 +78,9 @@ public class ProjectileMonsterAttack : MonoBehaviour
         {
             yield return sphereCastPeriod;
 
+            Vector3 dircetion = (playerModel.transform.position - shotPose.position).normalized;
 
-
-            if (Physics.SphereCast(shotPose.position, projectileRadius, playerModel.transform.position - shotPose.position, out RaycastHit hitInfo, monsterModel.DataTable.AttackRange, castLayer))
+            if (Physics.SphereCast(shotPose.position, projectileRadius, dircetion, out RaycastHit hitInfo, monsterModel.DataTable.AttackRange, castLayer))
             {
                 // TODO: 캐스팅 결과 확인
                 if (hitInfo.collider.CompareTag("PlayerCollider"))
@@ -73,6 +94,8 @@ public class ProjectileMonsterAttack : MonoBehaviour
 
     private IEnumerator ShotProjectile()
     {
+        monsterAni.SetTrigger("StartThrow");
+
         yield return preDelayWait;
 
         if (monsterModel.DataTable.AttackClip != null)
@@ -82,7 +105,7 @@ public class ProjectileMonsterAttack : MonoBehaviour
 
         MonsterProjectile prefabInstance = Instantiate(attackProjectilePrefab, shotPose.position, shotPose.rotation);
         prefabInstance.AttackPoint = monsterModel.DataTable.AttackDamage;
-        prefabInstance.SetDestination(playerModel.transform.position);
+        prefabInstance.SetDestination(playerModel.transform.position + Vector3.up);
 
         yield return postDelayWait;
 
