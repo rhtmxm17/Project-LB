@@ -12,46 +12,30 @@ public class HealPack : Collection
     // 아이디
     [SerializeField] private int itemID;
 
+    [SerializeField, Tooltip("습득시 늘어나는 사용 가능 횟수")] int amount = 1;
 
     // 플레이어에게 영향줄 수 있도록, 플레이어와 연결
-    PlayerModel player;
-    // 체력 상승수치를 직렬화
-    [SerializeField] private int healValue;
+    StagePlayerControl player;
+    //// 체력 상승수치를 직렬화
+    //[SerializeField] private int healValue;
 
     
 
     private void Start()
     {
-        player = GameManager.Instance.GetPlayerModel();
-
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
+        if (!GameManager.Instance.GetPlayerModel().TryGetComponent(out player))
         {
-            if(player.Hp != player.MaxHp)
-                PickupSound();
-
-            /* Test - 체력상승 테스트를 위해 일단 줍자마자 사용됨 */ 
-            UseItem();
-
-
+            Debug.LogWarning("스테이지에 유효한 플레이어가 없거나 스테이지가 아닌 곳에 스테이지용 습득 아이템이 배치됨");
+            return;
         }
-
     }
 
-
-    private void UseItem()
+    protected override void Pickup()
     {
-        if (player.Hp + healValue >= player.MaxHp)
-            player.Hp = player.MaxHp;
-        else
-            player.Hp += healValue;
-        
+        base.Pickup();
+
+        Debug.Log($"회복 아이템 {amount}개 습득");
+
+        player.HealthPackUsage += amount;
     }
-
-
-
 }
