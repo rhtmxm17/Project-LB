@@ -18,6 +18,7 @@ public class BasecampPlayerControl : MonoBehaviour
     //LSH: 교환창, 강화창 켜기 위한 스크립트들
     [SerializeField] UpgradeSystem upgradeSystem;
     [SerializeField] ExchangeSystem exchangeSystem;
+    [SerializeField] StageSelectWindow stageSelectWindow;
     [SerializeField] GameObject stageEnterUI;
     PlayerCharacterControllerControl playerCursor;
 
@@ -104,8 +105,9 @@ public class BasecampPlayerControl : MonoBehaviour
 
         if (name == "NPC_2") //스테이지 진입NPC Karl
         {
-            stageEnterUI.SetActive(true);
-            playerCursor.MouseLock(false);
+            stageSelectWindow.OpenWindow();
+/*            stageEnterUI.SetActive(true);
+            playerCursor.MouseLock(false);*/
         }
         else if (name == "NPC_3") //강화NPC Trump
         {
@@ -121,8 +123,9 @@ public class BasecampPlayerControl : MonoBehaviour
 
     public void CloseNpcUI()
     {
-        stageEnterUI.SetActive(false);
-        playerCursor.MouseLock(true);
+        /*        stageEnterUI.SetActive(false);
+                playerCursor.MouseLock(true);*/
+        stageSelectWindow.CloseWindow();
         upgradeSystem.CloseWindow();
         exchangeSystem.CloseWindow();
 
