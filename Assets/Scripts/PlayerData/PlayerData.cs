@@ -5,6 +5,7 @@ using System;
 using static StageConditionDialogueSO;
 using JetBrains.Annotations;
 using Unity.VisualScripting.FullSerializer;
+using System.Data;
 
 [Serializable]
 public class ItemData 
@@ -73,6 +74,17 @@ public class PlayerData
 
         food = 0;
         gear = 0;
+
+    }
+
+    public void AddItem(ItemType itemType)
+    {
+        if (GetItemData(itemType).count == 0)
+        {
+            GetItemData(itemType).count = 1;
+            GetItemData(itemType).invenIdx = 
+                GameManager.Instance.GetItemDataTable().GetItemDataSO(itemType).InventoryIdx;
+        }
 
     }
 

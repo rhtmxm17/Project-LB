@@ -89,20 +89,21 @@ public class StageSceneManager : MonoBehaviour
     {
         PlayerData playerData = GameManager.Instance.GetPlayerData();
 
-        // 클리어 카운트 증가
+        // 클리어 카운트 증가 및 최근 임무 성공 여부 기록
         playerData.stageClearCntArr[stageDataTable.StageIndex]++;
+        playerData.isStageCleared = true;
 
         // 수집품 획득 처리
         if (HasJournal)
         {
-            ItemData journal = playerData.GetItemData(StageDataTable.Journal);
-            journal.count = 1;
+            //ItemData journal = playerData.GetItemData(StageDataTable.Journal);
+            playerData.AddItem(StageDataTable.Journal);
         }
 
         if (HasBlueprint)
         {
-            ItemData blueprint = playerData.GetItemData(StageDataTable.BluePrint);
-            blueprint.count = 1;
+            //ItemData blueprint = playerData.GetItemData(StageDataTable.BluePrint);
+            playerData.AddItem(StageDataTable.BluePrint);
         }
 
         // 재화 획득 처리
