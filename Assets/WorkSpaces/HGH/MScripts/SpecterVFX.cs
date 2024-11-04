@@ -6,16 +6,18 @@ public class SpecterVFX : MonoBehaviour
 {
     [Header("GameObject")]
     [SerializeField] ParticleSystem specterVFX;
-    [SerializeField] GameObject prefab;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip audioEffect;
+    // [SerializeField] MonsterModel monsterModel;
 
     private void Awake()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
-    private void ReviveVFX()
+    public void ReviveVFX()
     {
         specterVFX.Play();
-
+        audioSource.PlayOneShot(audioEffect);
     }
 }
