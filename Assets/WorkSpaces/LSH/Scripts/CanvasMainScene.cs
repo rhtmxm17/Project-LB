@@ -14,6 +14,8 @@ public class CanvasMainScene : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         MainLogo();
     }
 
@@ -22,7 +24,7 @@ public class CanvasMainScene : MonoBehaviour
     /// </summary>
     public void GamePlay()
     {
-        Debug.Log("벙커씬 연결 부탁드립니다");
+        GameManager.Instance.GetSceneChanger().ChangeScene(SceneChanger.Scenes.BUNCKER);
     }
 
     /// <summary>
@@ -30,7 +32,7 @@ public class CanvasMainScene : MonoBehaviour
     /// </summary>
     public void GameExit()
     {
-        Environment.Exit(0);
+        Application.Quit();
     }
 
     public void MainLogo()
@@ -52,11 +54,10 @@ public class CanvasMainScene : MonoBehaviour
 
     public void MainSetting()
     {
-        Debug.Log("세팅 패널 편집중입니다.");
-        //panelMainLogo.SetActive(false);
-        //panelMainGuide.SetActive(false);
-        //panelMainSetting.SetActive(true);
-        //panelMainExit.SetActive(false);
+        panelMainLogo.SetActive(false);
+        panelMainGuide.SetActive(false);
+        panelMainSetting.SetActive(true);
+        panelMainExit.SetActive(false);
     }
 
 
