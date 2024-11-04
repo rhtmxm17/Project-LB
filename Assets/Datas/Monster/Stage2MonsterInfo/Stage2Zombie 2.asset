@@ -18,4 +18,4 @@ MonoBehaviour:
   attackDamage: 2
   maxHp: 100
   attckPerSecond: 1
-  moveSpeed: 4
+  moveSpeed: 5

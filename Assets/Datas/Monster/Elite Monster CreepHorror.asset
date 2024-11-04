@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: "\uD06C\uB9BD\uD640"
   monsterPrefab: {fileID: 2402829140540979405, guid: 85b489af7e30d3c49b64dcc7fd86b033, type: 3}
-  attackRange: 1
-  attackDamage: 20
-  maxHp: 500
-  attckPerSecond: 1
-  moveSpeed: 1.1
+  attackRange: 2.5
+  attackDamage: 5
+  maxHp: 1500
+  attckPerSecond: 2
+  moveSpeed: 8
