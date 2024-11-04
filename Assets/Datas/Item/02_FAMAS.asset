@@ -17,7 +17,9 @@ MonoBehaviour:
   <ImgSprite>k__BackingField: {fileID: 21300000, guid: 01305d3c868d2e1478605dc6f0d25d73, type: 3}
   <ItemName>k__BackingField: FAMAS
   <MaxCnt>k__BackingField: 1
-  <Description>k__BackingField: "\uD30C\uB9C8\uD30C\uB9C8\uC4F0~~"
+  <Description>k__BackingField: "\uD2B9\uC218 \uBAAC\uC2A4\uD130\uB97C \uC81C\uC555\uD558\uB294
+    \uB370 \uC720\uB9AC\uD558\uC9C0\uB9CC \uC5F0\uC0AC\uB825\uC774 \uB0AE\uB2E4.
+    \uC774\uAC83\uB3C4 \uC5B4\uB514\uC11C \uBCF8 \uB4EF\u2026."
   <DetailInfoSO>k__BackingField: {fileID: 0}
   <equipQuickSlotType>k__BackingField: 0
   <AttackPoint>k__BackingField: 10
@@ -26,7 +28,9 @@ MonoBehaviour:
   <UpgradeReqGears>k__BackingField: 01000000020000000300000004000000050000000600000007000000
   gunPrefab: {fileID: 0}
   shotClip: {fileID: 0}
+  shotVolumeScale: 1
   reloadClip: {fileID: 0}
+  reloadVolumeScale: 1
   magCapacity: 25
   bulletStock: -1
   timeBetFire: 0.12

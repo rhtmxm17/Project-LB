@@ -95,14 +95,14 @@ public class StageSceneManager : MonoBehaviour
         // 수집품 획득 처리
         if (HasJournal)
         {
-            ItemData journal = playerData.GetItemData(StageDataTable.Journal);
-            journal.count = 1;
+            //ItemData journal = playerData.GetItemData(StageDataTable.Journal);
+            playerData.AddItem(StageDataTable.Journal);
         }
 
         if (HasBlueprint)
         {
-            ItemData blueprint = playerData.GetItemData(StageDataTable.BluePrint);
-            blueprint.count = 1;
+            //ItemData blueprint = playerData.GetItemData(StageDataTable.BluePrint);
+            playerData.AddItem(StageDataTable.BluePrint);
         }
 
         // 재화 획득 처리
