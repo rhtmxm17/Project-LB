@@ -42,6 +42,7 @@ public class MonsterTraceToPlayer : MonoBehaviour
         // 몬스터가 플레이어에게 가까이 다가갈때 어느 정도에서 멈출것인가
         monsterAgent.stoppingDistance = distanceStopping;
         maxDistance = 100;
+        monsterAgent.isStopped = false;
     }
 
     private void OnDestroy()
