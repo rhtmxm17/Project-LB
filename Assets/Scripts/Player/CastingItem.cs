@@ -32,8 +32,17 @@ public class CastingItem : MonoBehaviour, IUseable
 
     public void UseBegin()
     {
-        if (isUnlimited || Usage > 0)
+        if (drinkRoutine == null)
+        {
+            Debug.Log("이미 캐스팅중입니다");
+            return;
+        }
+
+        if ((isUnlimited || Usage > 0))
+        {
+
             drinkRoutine = StartCoroutine(Casting());
+        }
     }
 
     public void UseEnd()
