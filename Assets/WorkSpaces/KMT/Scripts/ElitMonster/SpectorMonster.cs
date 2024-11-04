@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SpectorMonster : MonsterTakenDamage
 {
@@ -22,6 +23,7 @@ public class SpectorMonster : MonsterTakenDamage
             chase.ChaseOn();
 
             instance.GetComponent<MonsterTakenDamage>().OnDeadEvent += transform.parent.GetComponent<WaveManager>().CheckWaveIsClear;
+            instance.GetComponent<NavMeshAgent>().acceleration = 9000;
 
             particleSys.Play();
             monsterAni.SetTrigger("DeadTrigger");
