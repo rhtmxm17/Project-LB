@@ -15,6 +15,12 @@ public class SoundManager : MonoBehaviour
         bgmSource.Play();
     }
 
+    public void StopBGM()
+    {
+        bgmSource.Stop();
+    }
+
+
     // 효과음 출력과 동시에 비활성화 또는 소멸하는 오브젝트의 효과음 출력 대행
     public void PlaySFX(AudioClip clip, float volumeScale = 1f) => sfxSource.PlayOneShot(clip, volumeScale);
 }
