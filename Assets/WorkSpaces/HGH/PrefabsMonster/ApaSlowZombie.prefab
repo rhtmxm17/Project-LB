@@ -62,9 +62,9 @@ GameObject:
   - component: {fileID: 869272962932454827}
   - component: {fileID: 2402829140540979405}
   - component: {fileID: 6718467465038737159}
-  - component: {fileID: 5270065431756562885}
   - component: {fileID: 1261936005182774351}
   - component: {fileID: 6478164651878404997}
+  - component: {fileID: 4675027777242156923}
   m_Layer: 2
   m_Name: ApaSlowZombie
   m_TagString: Untagged
@@ -86,6 +86,7 @@ Transform:
   m_Children:
   - {fileID: 1455154384634989674}
   - {fileID: 342720056443709280}
+  - {fileID: 1193953632886672636}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -202,22 +203,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterModel: {fileID: 0}
---- !u!114 &5270065431756562885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8453821858244195410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5edc8441506ae7e4ca667f89b6704b27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerModel: {fileID: 0}
-  monsterModel: {fileID: 0}
-  monsterAni: {fileID: 4018447626219564774}
-  rayDistance: 0
 --- !u!114 &1261936005182774351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +232,55 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0.68, z: 0}
+--- !u!114 &4675027777242156923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8453821858244195410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe94d229008a83641b04d82bf638d072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterAni: {fileID: 4018447626219564774}
+  shotPose: {fileID: 1193953632886672636}
+  attackProjectilePrefab: {fileID: -1390187136342935436, guid: bff8c950af281b3409b21a65416eee3e, type: 3}
+  checkFiringLinePeriod: 0.1
+  projectileRadius: 0.2
+  preDelay: 0.2
+--- !u!1 &9159248330113448998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1193953632886672636}
+  m_Layer: 2
+  m_Name: ThrowPose
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1193953632886672636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159248330113448998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.233, y: 0.69, z: 0.154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8450804305950685866}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &687710850401695751
 PrefabInstance:
   m_ObjectHideFlags: 0

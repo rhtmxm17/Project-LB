@@ -60,6 +60,9 @@ public class StageSceneManager : MonoBehaviour
     [ContextMenu("EnterStage Test")]
     private void EnterStage()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         SceneChanger sceneChanger = GameManager.Instance.GetSceneChanger();
         sceneChanger.OnLoadSceneComplete.AddListener(InitStage);
         sceneChanger.ChangeToMultiScene(StageDataTable.MapScene, StageDataTable.LevelScene);
@@ -143,8 +146,11 @@ public class StageSceneManager : MonoBehaviour
             return;
         }
 
+        player.GetComponent<PlayerCharacterControllerControl>().MouseLock(true);
+
         // 플레이어 초기화
         PlayerData playerData = GameManager.Instance.GetPlayerData();
+        playerData.isStageCleared = false;
 
 
         StagePlayerControl.StageInitAttribute playerInitAttr = new()
@@ -169,8 +175,7 @@ public class StageSceneManager : MonoBehaviour
             ClearTrigger.onTriggerEvent.AddListener(StageCleared);
         }
 
-        // TODO: HUD에 플레이어 정보 등록
-        //  태그 등록 + 인터페이스 구현 또는 TriggerArea 타입 참조 사용
+        Time.timeScale = 1f;
     }
 
     private GunBase InitWeapon(ItemType type)
@@ -215,6 +220,10 @@ public class StageSceneManager : MonoBehaviour
     {
         ui.SetFoodGain($"{stageDataTable.RewardRation}");
         ui.SetGearGain($"{stageDataTable.RewardExp}");
+    }
+
+    public void InitGameOverUI(GameOverUI ui)
+    {
         ui.OnReturnButtonClicked.AddListener(ExitStage);
         // TODO: 재도전 버튼
     }

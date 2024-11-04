@@ -218,6 +218,11 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
     private void OnDisable()
     {
+        DisableInputAction();
+    }
+
+    private void DisableInputAction()
+    {
         fireAction.started -= FireStarted;
         fireAction.canceled -= FireCanceled;
         reloadAction.started -= Reload;
@@ -334,6 +339,8 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
         if (model.Hp <= 0)
         {
+            DisableInputAction();
+
             OnDead?.Invoke();
         }
     }

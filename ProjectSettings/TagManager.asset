@@ -8,6 +8,8 @@ TagManager:
   - PlayerCollider
   - Inventory
   - ClearTrigger
+  - Weapon
+  - Cloth
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Item
   - Interactable
   - FPSView
-  - 
+  - Projctile
   - 
   - 
   - 
