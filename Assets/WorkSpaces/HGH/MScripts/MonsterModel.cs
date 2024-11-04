@@ -29,7 +29,9 @@ public class MonsterModel : MonoBehaviour
     {
         if (DataTable != null)
         {
+            // 몬스터 최대HP
             monsterHp = DataTable.MaxHp;
+            // 몬스터 현재HP
             monsterCurHp = DataTable.MaxHp;
         }
 
