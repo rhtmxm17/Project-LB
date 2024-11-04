@@ -15,8 +15,8 @@ MonoBehaviour:
   stageName: TestStage
   BgmClip: {fileID: 0}
   bgmClip: {fileID: 0}
-  mapScene: 1
-  levelScene: 5
+  mapScene: 9
+  levelScene: 10
   stageIndex: 0
   rewardExp: 50
   rewardRation: 74
