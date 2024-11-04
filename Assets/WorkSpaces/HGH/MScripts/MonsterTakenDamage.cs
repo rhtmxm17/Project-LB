@@ -27,7 +27,6 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
         }
     }
 
-
     public virtual void Damaged(int damage, DamageType type)
     {
         if (monsterModel.MonsterCurHP <= 0)
@@ -43,6 +42,8 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
     {
         if (monsterModel.MonsterCurHP <= 0)
         {
+            // 몬스터 사망 애니메이션 출력
+            monsterAgent.isStopped = true;
             monsterAni.SetTrigger("DeadTrigger");
             // 몬스터 사망시
             transform.SetParent(null);
