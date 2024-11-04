@@ -8,6 +8,9 @@ public class StageConformWindow : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI text;
 
+    [SerializeField]
+    GameObject warnWindow;
+
     StageSceneManager stageSceneManager;
 
     StageData curData = null;
@@ -35,6 +38,11 @@ public class StageConformWindow : MonoBehaviour
         if (slot.Item != null)
         {
             baseWeapon = slot.Item.ItemType;
+        }
+        else
+        {
+            warnWindow.SetActive(true);
+            return;
         }
 
         slot = hotKeySystem.GetHotkeySlot(1);

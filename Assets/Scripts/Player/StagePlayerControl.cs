@@ -105,6 +105,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     public void StageInit(StageInitAttribute attr)
     {
         model.MaxHp = attr.maxHp;
+        model.Hp = model.MaxHp;
 
         if (sampleGun != null)
         {

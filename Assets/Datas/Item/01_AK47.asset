@@ -33,7 +33,7 @@ MonoBehaviour:
   bulletStock: -1
   timeBetFire: 0.12
   ReloadTime: 1.8
-  Range: 10
+  Range: 200
   layerMask:
     serializedVersion: 2
     m_Bits: 129
