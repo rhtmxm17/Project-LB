@@ -112,6 +112,14 @@ public class StageSceneManager : MonoBehaviour
         OnStageClear?.Invoke(isLevelUp);
     }
 
+    private void ExitStage()
+    {
+        Debug.Log($"ExitStage");
+        SceneChanger sceneChanger = GameManager.Instance.GetSceneChanger();
+        sceneChanger.ChangeScene(SceneChanger.Scenes.BUNCKER);
+
+    }
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -200,5 +208,13 @@ public class StageSceneManager : MonoBehaviour
         {
             collecterItem.OnPickup.AddListener(() => { HasJournal = true; });
         }
+    }
+
+    public void InitClearUI(StageClearUI ui)
+    {
+        ui.SetFoodGain($"{stageDataTable.RewardRation}");
+        ui.SetGearGain($"{stageDataTable.RewardExp}");
+        ui.OnReturnButtonClicked.AddListener(ExitStage);
+        // TODO: 재도전 버튼
     }
 }
