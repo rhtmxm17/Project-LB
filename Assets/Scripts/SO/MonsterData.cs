@@ -39,4 +39,16 @@ public class MonsterData : ScriptableObject
     // 생성시 소리... MonsterModel OnEnable()
     // 사망시 소리... MonsterTakenDamage의 실제로 죽는게 확정된 위치 찾아서
     // AttackMonster에 사운드 넣은 것 참고
+
+    public AudioClip SpawnClip => spawnClip; // 스폰 소리
+    [SerializeField] AudioClip spawnClip;
+
+    public float SpawnVolumeScale => spawnVolumeScale;
+    [SerializeField] float spawnVolumeScale = 1f; // 스폰 소리 음량
+
+    public AudioClip DeadClip => deadClip; // 죽는 소리
+    [SerializeField] AudioClip deadClip;
+
+    public float DeadVolumeScale => deadVolumeScale;
+    [SerializeField] float deadVolumeScale = 1f; // 죽는 소리 음량
 }

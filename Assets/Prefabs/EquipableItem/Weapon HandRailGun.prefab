@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 764286353143333127, guid: 8b5850a5d37470a4bbfa0854e5ba0c8c, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2086823142282426822, guid: 8b5850a5d37470a4bbfa0854e5ba0c8c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -59,9 +63,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2857502659476264073, guid: 8b5850a5d37470a4bbfa0854e5ba0c8c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 56c4f84393938f64893b8011fb24298b, type: 3}
     - target: {fileID: 5117163879966866387, guid: 8b5850a5d37470a4bbfa0854e5ba0c8c, type: 3}
       propertyPath: m_Name
-      value: Weapon Base Variant
+      value: Weapon HandRailGun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b5850a5d37470a4bbfa0854e5ba0c8c, type: 3}

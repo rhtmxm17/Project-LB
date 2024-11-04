@@ -11,9 +11,11 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
     [SerializeField] protected Animator monsterAni;
     [SerializeField] Rigidbody rigid;
     [SerializeField] NavMeshAgent monsterAgent;
+    
 
     public Action OnDeadEvent = null;
-        
+    private AudioSource audioSource;
+
 
     protected virtual void Awake()
     {
@@ -25,6 +27,9 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
         {
             monsterAni = GetComponent<Animator>();
         }
+        audioSource = GetComponent<AudioSource>();
+
+
     }
 
 
@@ -44,11 +49,19 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
         if (monsterModel.MonsterCurHP <= 0)
         {
             monsterAni.SetTrigger("DeadTrigger");
+
+            // 몬스터 공격 사운드
+            if (monsterModel.DataTable.DeadClip != null)
+            {
+                audioSource.PlayOneShot(monsterModel.DataTable.DeadClip, monsterModel.DataTable.DeadVolumeScale);
+            }
+
             // 몬스터 사망시
             transform.SetParent(null);
             OnDeadEvent?.Invoke();
             Destroy(gameObject, 1f);
         }
+        
     }
 
     public void MosterTakenKnockBack(Vector3 power)
