@@ -49,6 +49,7 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
         {
             // 몬스터 사망 애니메이션 출력
             monsterAgent.isStopped = true;
+            // 몬스터의 죽는 모션 트리거
             monsterAni.SetTrigger("DeadTrigger");
 
             // 몬스터 공격 사운드
@@ -59,7 +60,9 @@ public class MonsterTakenDamage : MonoBehaviour, IDamageable
 
             // 몬스터 사망시
             transform.SetParent(null);
+            // 이벤트 호출
             OnDeadEvent?.Invoke();
+            // 1초 후 몬스터 삭제
             Destroy(gameObject, 1f);
         }
         

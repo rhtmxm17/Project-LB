@@ -107,6 +107,7 @@ public class PlayerCharacterControllerControl : MonoBehaviour
         while (true)
         {
             Vector2 moveInput = moveAction.ReadValue<Vector2>();
+            Vector3 velocity;
 
             IsMoving = (moveInput != Vector2.zero);
             if (IsMoving)
@@ -125,10 +126,15 @@ public class PlayerCharacterControllerControl : MonoBehaviour
                 float speed = MoveSpeed;
                 if (isRunning)
                     speed *= runPow;
-                Vector3 velocity = speed * (moveAxisX * moveInput.x + moveAxisY * moveInput.y);
+                velocity = speed * (moveAxisX * moveInput.x + moveAxisY * moveInput.y);
 
-                controller.SimpleMove(velocity);
             }
+            else
+            {
+                velocity = Vector3.zero;
+            }
+
+            controller.SimpleMove(velocity);
             yield return null;
         }
     }
