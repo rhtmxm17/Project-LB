@@ -22,21 +22,4 @@ public class MonsterControll : MonoBehaviour
     {
         PlayerModel playerModel = GameManager.Instance.GetPlayerModel();
     }
-
-
-    //private void OnEnable()
-    //{
-    //    monsterModel.OnMonsterHPChanged += UpdateMonsterHP;
-    //}
-    //
-    //private void OnDisable()
-    //{
-    //    monsterModel.OnMonsterHPChanged -= UpdateMonsterHP;
-    //}
-    //
-    //public void UpdateMonsterHP(int monsterHp)
-    //{
-    //
-    //    // UI 부분: 몬스터의 HP체력바의 수치 변경
-    //}
 }
