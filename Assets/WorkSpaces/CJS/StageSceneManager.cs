@@ -89,20 +89,21 @@ public class StageSceneManager : MonoBehaviour
     {
         PlayerData playerData = GameManager.Instance.GetPlayerData();
 
-        // 클리어 카운트 증가
+        // 클리어 카운트 증가 및 최근 임무 성공 여부 기록
         playerData.stageClearCntArr[stageDataTable.StageIndex]++;
+        playerData.isStageCleared = true;
 
         // 수집품 획득 처리
         if (HasJournal)
         {
-            ItemData journal = playerData.GetItemData(StageDataTable.Journal);
-            journal.count = 1;
+            //ItemData journal = playerData.GetItemData(StageDataTable.Journal);
+            playerData.AddItem(StageDataTable.Journal);
         }
 
         if (HasBlueprint)
         {
-            ItemData blueprint = playerData.GetItemData(StageDataTable.BluePrint);
-            blueprint.count = 1;
+            //ItemData blueprint = playerData.GetItemData(StageDataTable.BluePrint);
+            playerData.AddItem(StageDataTable.BluePrint);
         }
 
         // 재화 획득 처리
@@ -110,6 +111,14 @@ public class StageSceneManager : MonoBehaviour
         playerData.AddFood(StageDataTable.RewardRation);
 
         OnStageClear?.Invoke(isLevelUp);
+    }
+
+    private void ExitStage()
+    {
+        Debug.Log($"ExitStage");
+        SceneChanger sceneChanger = GameManager.Instance.GetSceneChanger();
+        sceneChanger.ChangeScene(SceneChanger.Scenes.BUNCKER);
+        Time.timeScale = 1f;
     }
 
     private void Awake()
@@ -171,8 +180,8 @@ public class StageSceneManager : MonoBehaviour
 
         InventoryEquableItemSO gunTable = (InventoryEquableItemSO)GameManager.Instance.GetItemDataTable().GetItemDataSO(type);
         GunBase weapon = Instantiate(gunTable.GunPrefab);
-        weapon.DataTable = gunTable;
         weapon.GunLevel = GameManager.Instance.GetPlayerData().GetItemData(type).WeaponLevel;
+        weapon.DataTable = gunTable;
         return weapon;
     }
 
@@ -200,5 +209,13 @@ public class StageSceneManager : MonoBehaviour
         {
             collecterItem.OnPickup.AddListener(() => { HasJournal = true; });
         }
+    }
+
+    public void InitClearUI(StageClearUI ui)
+    {
+        ui.SetFoodGain($"{stageDataTable.RewardRation}");
+        ui.SetGearGain($"{stageDataTable.RewardExp}");
+        ui.OnReturnButtonClicked.AddListener(ExitStage);
+        // TODO: 재도전 버튼
     }
 }

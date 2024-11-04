@@ -82,6 +82,7 @@ public class GunBase : MonoBehaviour, IUseable
 
     private Animator animator;
     private int hashShow;
+    private int hashSwing;
 
     private AudioSource audioSource;
 
@@ -118,10 +119,16 @@ public class GunBase : MonoBehaviour, IUseable
         animator.SetBool(hashShow, show);
     }
 
+    public void SwingAnimation()
+    {
+        animator.SetTrigger(hashSwing);
+    }
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
         hashShow = Animator.StringToHash("Show");
+        hashSwing = Animator.StringToHash("Swing");
         audioSource = GetComponent<AudioSource>();
 
         InitTableData();
@@ -146,7 +153,7 @@ public class GunBase : MonoBehaviour, IUseable
 
         if (CurrentState == State.Empty)
         {
-            reloadRoutine = StartCoroutine(ReloadRoutine());
+            Reload();
         }
     }
 
@@ -267,5 +274,20 @@ public class GunBase : MonoBehaviour, IUseable
 
         // 총의 현재 상태를 발사 준비된 상태로 변경
         CurrentState = State.Ready;
+
+        reloadRoutine = null;
+    }
+
+    private void OnDisable()
+    {
+        if (reloadRoutine != null)
+        {
+            reloadRoutine = null;
+
+            if (magazineRemain == 0)
+                CurrentState = State.Empty;
+            else
+                CurrentState = State.Ready;
+        }
     }
 }

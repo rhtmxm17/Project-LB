@@ -25,6 +25,7 @@ public class MeleeWeapon : GunBase
 
         // 발사 이펙트 재생 시작
         StartEffect(hitPosition);
+        SwingAnimation();
 
         // 탄창 크기가 음수(무한 탄창)이라면 잔탄 검사 생략
         if (MagazineCapacity < 0)

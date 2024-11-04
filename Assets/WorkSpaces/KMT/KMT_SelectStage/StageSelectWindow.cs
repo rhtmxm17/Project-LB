@@ -18,6 +18,9 @@ public class StageSelectWindow : MonoBehaviour
     [SerializeField]
     Button stage4Btn;
 
+    [SerializeField]
+    PlayerCharacterControllerControl playerCharacterControllerControl;
+
     int[] stageClearArr;
 
     private void Awake()
@@ -45,6 +48,7 @@ public class StageSelectWindow : MonoBehaviour
     public void OpenWindow()
     {
         gameObject.SetActive(true);
+        playerCharacterControllerControl.MouseLock(false);
     }
 
     public void CloseWindow()
@@ -53,6 +57,8 @@ public class StageSelectWindow : MonoBehaviour
         selectConformWindow.SetActive(false);
 
         gameObject.SetActive(false);
+        playerCharacterControllerControl.MouseLock(true);
+
     }
 
 }

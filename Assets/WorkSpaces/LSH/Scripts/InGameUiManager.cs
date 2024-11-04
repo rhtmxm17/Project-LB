@@ -13,7 +13,7 @@ public class InGameUiManager : MonoBehaviour
 
     // 유아이 캔버스
     [SerializeField] GameObject gameOverUI; // 게임오버 UI
-    [SerializeField] GameObject gameClearUI; // 겜클리어 UI
+    [SerializeField] StageClearUI gameClearUI; // 겜클리어 UI
 
     // 버튼, 이미지, 텍스트들
     [SerializeField] Image[] SlotImage; // 퀵슬롯 이미지들
@@ -25,7 +25,7 @@ public class InGameUiManager : MonoBehaviour
     private void Start()
     {
         gameOverUI.SetActive(false);
-        gameClearUI.SetActive(false);
+        gameClearUI.gameObject.SetActive(false);
 
         playerModel = GameManager.Instance.GetPlayerModel();
         var playerStage = playerModel.GetComponent<StagePlayerControl>();
@@ -128,7 +128,7 @@ public class InGameUiManager : MonoBehaviour
     /// </summary>
     public void StageClear(bool levelUp)
     {
-        gameClearUI.SetActive(true);
+        gameClearUI.gameObject.SetActive(true);
         Time.timeScale = 0f;
 
     }

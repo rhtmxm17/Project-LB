@@ -28,6 +28,9 @@ public class InventorySystem : MonoBehaviour
     [SerializeField]
     GameObject DetailInfoWindow;
 
+    [SerializeField]
+    PlayerCharacterControllerControl playerCharacterControllerControl;
+
     PlayerData playerData;
     ItemDataTableSO dataTable;
 
@@ -219,12 +222,16 @@ public class InventorySystem : MonoBehaviour
     public void OpenWindow()
     {
         gameObject.SetActive(true);
+        playerCharacterControllerControl.MouseLock(false);
+
     }
     public void CloseWindow()
     {
         gameObject.SetActive(false);
         InfoWindow.SetActive(false);
         DetailInfoWindow.SetActive(false);
+        playerCharacterControllerControl.MouseLock(true);
+
     }
 
 }

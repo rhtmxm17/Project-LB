@@ -5,6 +5,7 @@ using System;
 using static StageConditionDialogueSO;
 using JetBrains.Annotations;
 using Unity.VisualScripting.FullSerializer;
+using System.Data;
 
 [Serializable]
 public class ItemData 
@@ -44,6 +45,9 @@ public class PlayerData
     [SerializeField] int food;
     [SerializeField] int gear;
 
+    [SerializeField] int mouseSensitive = -1;
+
+
     public int MaxHP { get { return maxHP; } private set { } }
     public int Level { get { return level; } private set { } }
     public int Exp { get { return exp; } private set { } }
@@ -51,6 +55,8 @@ public class PlayerData
     public List<ItemData> InventoryData {  get { return inventoryData; } private set { } }
     public int Food { get { return food; } private set { } }
     public int Gear { get { return gear; } private set { } }
+    public int MouseSensitive { get { return mouseSensitive; } set { mouseSensitive = value; } }
+
 
     //불러올 데이터가 없을 때 또는 새로 데이터를 만들 때 호출
     public PlayerData(ItemDataTableSO dataTable) {
@@ -73,6 +79,17 @@ public class PlayerData
 
         food = 0;
         gear = 0;
+
+    }
+
+    public void AddItem(ItemType itemType)
+    {
+        if (GetItemData(itemType).count == 0)
+        {
+            GetItemData(itemType).count = 1;
+            GetItemData(itemType).invenIdx = 
+                GameManager.Instance.GetItemDataTable().GetItemDataSO(itemType).InventoryIdx;
+        }
 
     }
 
@@ -148,9 +165,9 @@ public class PlayerData
         exp += amount;
 
         //레벨업
-        if (exp >= reqExpArr[level - 1])
+        if (exp >= reqExpArr[level])
         {
-            exp -= reqExpArr[level - 1];
+            exp -= reqExpArr[level];
             level++;
             maxHP += hpIncreaseAmount;
             return true;
