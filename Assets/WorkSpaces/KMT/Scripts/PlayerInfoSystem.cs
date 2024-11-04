@@ -17,6 +17,8 @@ public class PlayerInfoSystem : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI exp;
 
+    [SerializeField]
+    PlayerCharacterControllerControl playerCharacterControllerControl;
 
 
     private void Awake()
@@ -46,11 +48,13 @@ public class PlayerInfoSystem : MonoBehaviour
     public void OpenWindow()
     {
         gameObject.SetActive(true);
+        playerCharacterControllerControl.MouseLock(false);
     }
 
     public void CloseWindow()
     {
         gameObject.SetActive(false);
+        playerCharacterControllerControl.MouseLock(true);
     }
 
 }
