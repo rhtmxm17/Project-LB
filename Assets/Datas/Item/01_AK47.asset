@@ -27,7 +27,7 @@ MonoBehaviour:
   gunPrefab: {fileID: 1552324696654365231, guid: 50c1cb841a13ad24bab105be23725d34, type: 3}
   shotClip: {fileID: 8300000, guid: 4d6281aa604094f04839cffa502096c0, type: 3}
   shotVolumeScale: 0.25
-  reloadClip: {fileID: 8300000, guid: e5198250a6a57408bb36e14bc4a322c4, type: 3}
+  reloadClip: {fileID: 8300000, guid: 5bf7fecb490750146a58616dab624333, type: 3}
   reloadVolumeScale: 0.25
   magCapacity: 25
   bulletStock: -1

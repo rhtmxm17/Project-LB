@@ -15,6 +15,7 @@ public class AttackMonster : MonoBehaviour
 
     public IDamageable player;
     private SphereCollider attackTrigger;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class AttackMonster : MonoBehaviour
         {
             monsterAni = GetComponent<Animator>();
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void Start()
@@ -40,6 +42,7 @@ public class AttackMonster : MonoBehaviour
     private void Init()
     {
         attackTrigger.radius = monsterModel.DataTable.AttackRange;
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -99,8 +102,11 @@ public class AttackMonster : MonoBehaviour
         WaitForSeconds period = new WaitForSeconds(monsterModel.DataTable.AttackPeriod);
         while (true)
         {
-/*            // 몬스터 공격 딜레이 1초 -> 테이블에서 가져오기
-            yield return period;*/
+            // 몬스터 공격 사운드
+            if (monsterModel.DataTable.AttackClip != null)
+            {
+                audioSource.PlayOneShot(monsterModel.DataTable.AttackClip, monsterModel.DataTable.AttackVolumeScale);
+            }
             
             // 몬스터 공격시작
             AttackToPlayer();
