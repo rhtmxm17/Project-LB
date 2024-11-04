@@ -32,6 +32,9 @@ public class MonsterData : ScriptableObject
     public AudioClip AttackClip => attackClip; // 공격 소리
     [SerializeField] AudioClip attackClip;
 
+    public float AttackVolumeScale => attackVolumeScale;
+    [SerializeField] float attackVolumeScale = 1f; // 공격 소리 음량
+
     // TODO:
     // 생성시 소리... MonsterModel OnEnable()
     // 사망시 소리... MonsterTakenDamage의 실제로 죽는게 확정된 위치 찾아서

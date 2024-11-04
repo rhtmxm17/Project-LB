@@ -105,7 +105,7 @@ public class AttackMonster : MonoBehaviour
             // 몬스터 공격 사운드
             if (monsterModel.DataTable.AttackClip != null)
             {
-                audioSource.PlayOneShot(monsterModel.DataTable.AttackClip);
+                audioSource.PlayOneShot(monsterModel.DataTable.AttackClip, monsterModel.DataTable.AttackVolumeScale);
             }
             
             // 몬스터 공격시작

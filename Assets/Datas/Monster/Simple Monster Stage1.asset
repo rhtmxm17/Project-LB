@@ -19,3 +19,5 @@ MonoBehaviour:
   maxHp: 300
   attckPerSecond: 1
   moveSpeed: 1
+  attackClip: {fileID: 8300000, guid: 3920efb3dafa8411d85418a50e03065c, type: 3}
+  attackVolumeScale: 0.5
