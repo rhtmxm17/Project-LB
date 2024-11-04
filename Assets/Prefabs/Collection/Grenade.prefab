@@ -65,6 +65,7 @@ MonoBehaviour:
   OnPickup:
     m_PersistentCalls:
       m_Calls: []
+  audioClip: {fileID: 8300000, guid: 2ea1d84cae78d034db44499e365429e6, type: 3}
   amount: 1
 --- !u!1001 &907682935505274109
 PrefabInstance:

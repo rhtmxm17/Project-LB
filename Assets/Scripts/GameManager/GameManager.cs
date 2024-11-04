@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     PlayerData playerData = null;
     SceneChanger sceneChanger = null;
     StageSceneManager stageSceneManager = null;
+    SoundManager soundManager = null;
 
     PlayerModel playerModel = null;
 
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
             playerData = FileIOSystem.LoadPlayerData();
             sceneChanger = GetComponent<SceneChanger>();
             stageSceneManager = GetComponent<StageSceneManager>();
-
+            soundManager = GetComponent<SoundManager>();
 
             dataTable.InitDataTable();
 
@@ -104,6 +105,8 @@ public class GameManager : MonoBehaviour
     }
 
     public StageSceneManager GetStageSceneManager() => stageSceneManager;
+
+    public SoundManager GetSoundManager() => soundManager;
 
     /// <summary>
     /// 플레이어의 모델 컴포넌트를 가져옴

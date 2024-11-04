@@ -14,6 +14,8 @@ public class Collection : Item, IInteractable
     /// </summary>
     public UnityEvent OnPickup;
 
+    [SerializeField] AudioClip audioClip;
+
     public void OnInteracted()
     {
         // IInteractable 구현입니다
@@ -25,12 +27,14 @@ public class Collection : Item, IInteractable
     }
 
     /// <summary>
-    /// 플레이어가 아이템과 충돌시, 공통적으로 수행될 함수입니다.
+    /// 플레이어가 아이템 습득시, 공통적으로 수행될 함수입니다.
     /// </summary>
     protected void PickupSound()
     {
-        // 충돌시, 효과음이 재생된다.
-        Debug.Log($"아이템 획득 SF 출력");
+        if (audioClip != null)
+        {
+            GameManager.Instance.GetSoundManager().PlaySFX(audioClip);
+        }
     }
 
     protected virtual void Pickup()
