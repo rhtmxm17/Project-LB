@@ -64,7 +64,7 @@ public class AttackMonster : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         // 코루틴이 null 이 아니라면
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("PlayerCollider"))
         {
             if (startMonsterAttackRoutine != null)
             {

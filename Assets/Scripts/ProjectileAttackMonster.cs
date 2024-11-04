@@ -10,7 +10,7 @@ public class ProjectileMonsterAttack : MonoBehaviour
 {
     [SerializeField] Animator monsterAni;
     [SerializeField] Transform shotPose;
-    [SerializeField] Rigidbody attackProjectilePrefab;
+    [SerializeField] MonsterProjectile attackProjectilePrefab;
     [SerializeField, Tooltip("투사체가 플레이어에 닿는지 확인하는 주기")] float checkFiringLinePeriod = 0.1f; // 사선(射線) 검사 주기
     [SerializeField, Tooltip("투사체 검사에 사용될 반경")] float projectileRadius;
     [SerializeField, Tooltip("공격 선딜레이")] float preDelay;
@@ -25,6 +25,8 @@ public class ProjectileMonsterAttack : MonoBehaviour
     private YieldInstruction postDelayWait;
     private LayerMask castLayer;
 
+    private AudioSource audioSource;
+
     private void Awake()
     {
         monsterModel = GetComponent<MonsterModel>();
@@ -35,6 +37,8 @@ public class ProjectileMonsterAttack : MonoBehaviour
                 Debug.LogWarning("몬스터에 Animator가 등록되지 않음");
             }
         }
+        audioSource = GetComponent<AudioSource>();
+
 
         sphereCastPeriod = new WaitForSeconds(checkFiringLinePeriod);
         preDelayWait = new WaitForSeconds(preDelay);
@@ -71,8 +75,14 @@ public class ProjectileMonsterAttack : MonoBehaviour
     {
         yield return preDelayWait;
 
-        Instantiate(attackProjectilePrefab, shotPose.position, shotPose.rotation);
-        // TODO: 투사체 초기화
+        if (monsterModel.DataTable.AttackClip != null)
+        {
+            audioSource.PlayOneShot(monsterModel.DataTable.AttackClip, monsterModel.DataTable.AttackVolumeScale);
+        }
+
+        MonsterProjectile prefabInstance = Instantiate(attackProjectilePrefab, shotPose.position, shotPose.rotation);
+        prefabInstance.AttackPoint = monsterModel.DataTable.AttackDamage;
+        prefabInstance.SetDestination(playerModel.transform.position);
 
         yield return postDelayWait;
 
