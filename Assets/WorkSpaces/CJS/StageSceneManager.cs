@@ -117,7 +117,7 @@ public class StageSceneManager : MonoBehaviour
         Debug.Log($"ExitStage");
         SceneChanger sceneChanger = GameManager.Instance.GetSceneChanger();
         sceneChanger.ChangeScene(SceneChanger.Scenes.BUNCKER);
-
+        Time.timeScale = 1f;
     }
 
     private void Awake()

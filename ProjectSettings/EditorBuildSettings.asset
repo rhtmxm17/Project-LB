@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StageDesign_03_Stage3.unity
     guid: 457f2b66c9053d244ac5b8f572aa2bbd
+  - enabled: 1
+    path: Assets/Scenes/Basecamp.unity
+    guid: 7d34a2b4c82bf3447afc2b5a013ebad8
   m_configObjects: {}
