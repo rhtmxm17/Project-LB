@@ -179,8 +179,8 @@ public class StageSceneManager : MonoBehaviour
 
         InventoryEquableItemSO gunTable = (InventoryEquableItemSO)GameManager.Instance.GetItemDataTable().GetItemDataSO(type);
         GunBase weapon = Instantiate(gunTable.GunPrefab);
-        weapon.DataTable = gunTable;
         weapon.GunLevel = GameManager.Instance.GetPlayerData().GetItemData(type).WeaponLevel;
+        weapon.DataTable = gunTable;
         return weapon;
     }
 
