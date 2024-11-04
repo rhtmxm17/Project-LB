@@ -846,6 +846,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7716931017794385125, guid: 98a6402fbe15d5e49baa72897afa94dc, type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716931017794385125, guid: 98a6402fbe15d5e49baa72897afa94dc, type: 3}
+      propertyPath: specterVFX
+      value: 
+      objectReference: {fileID: 19849872, guid: 00994c3037c3dfa4593b60f900794b00, type: 3}
     - target: {fileID: 8450804305950685866, guid: 98a6402fbe15d5e49baa72897afa94dc, type: 3}
       propertyPath: m_RootOrder
       value: 1
