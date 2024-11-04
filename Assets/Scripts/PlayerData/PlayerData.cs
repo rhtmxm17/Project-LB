@@ -148,9 +148,9 @@ public class PlayerData
         exp += amount;
 
         //레벨업
-        if (exp >= reqExpArr[level - 1])
+        if (exp >= reqExpArr[level])
         {
-            exp -= reqExpArr[level - 1];
+            exp -= reqExpArr[level];
             level++;
             maxHP += hpIncreaseAmount;
             return true;
