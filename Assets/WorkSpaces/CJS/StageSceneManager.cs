@@ -63,6 +63,9 @@ public class StageSceneManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        // 로딩 BGM 필요시 교체
+        GameManager.Instance.GetSoundManager().StopBGM();
+
         SceneChanger sceneChanger = GameManager.Instance.GetSceneChanger();
         sceneChanger.OnLoadSceneComplete.AddListener(InitStage);
         sceneChanger.ChangeToMultiScene(StageDataTable.MapScene, StageDataTable.LevelScene);
@@ -131,7 +134,11 @@ public class StageSceneManager : MonoBehaviour
 
     private void InitStage()
     {
-        // TODO: BGM 재생
+        // BGM 재생
+        if (StageDataTable.BgmClip != null)
+        {
+            GameManager.Instance.GetSoundManager().PlayBGM(StageDataTable.BgmClip);
+        }
 
         PlayerModel player = GameManager.Instance.GetPlayerModel();
         if (player == null)
