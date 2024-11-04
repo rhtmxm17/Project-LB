@@ -6,6 +6,7 @@ public class SpecterVFX : MonoBehaviour
 {
     [Header("GameObject")]
     [SerializeField] ParticleSystem specterVFX;
+    [SerializeField] GameObject prefab;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip audioEffect;
     // [SerializeField] MonsterModel monsterModel;
@@ -17,6 +18,7 @@ public class SpecterVFX : MonoBehaviour
 
     public void ReviveVFX()
     {
+        Instantiate(prefab,transform.position, transform.rotation);
         specterVFX.Play();
         audioSource.PlayOneShot(audioEffect);
     }
