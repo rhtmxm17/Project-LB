@@ -117,7 +117,7 @@ public class InGameUiManager : MonoBehaviour
     public void PlayerDead()
     {
         gameOverUI.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
 
     }
 
@@ -129,7 +129,7 @@ public class InGameUiManager : MonoBehaviour
     public void StageClear(bool levelUp)
     {
         gameClearUI.gameObject.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
 
     }
 
