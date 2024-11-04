@@ -16,25 +16,50 @@ public class kmt_ConditionInteractableNpc : InteractableNpc
     {
 
         base.Awake();
-        //GameData data = DataManager.GetData();
-        //int lastCleared = data.lastClearedStage;
-        //int[] clearArr = data.clearedArr;
+        PlayerData data = GameManager.Instance.GetPlayerData();
+        int[] clearArr = data.stageClearCntArr;
+        bool isStageCleared = data.isStageCleared;
 
-        int[] clearArr = new int[4] { 1, 0, 0, 0 };
-        int lastCleared = 0;
 
-        if (lastCleared < 0 || lastCleared >= clearArr.Length) return;
+        bool clearExist = false;
 
-        //todo : 스테이지는 0, 1, 2, 3으로 관리한다고 가정.
-        if (clearArr[lastCleared] == 1)
+        foreach (int i in clearArr)
+        {
+            if (clearArr[i] != 0) clearExist = true;
+        }
+
+        if (!clearExist)
         {
             foreach (ConditionDialogues dialogue in c_Dialogues.C_Dialogues)
             {
-                if (dialogue.stage == (Stages)lastCleared) {
+                if (dialogue.stage == 0)
+                {
                     conditionText = dialogue.text;
-                    return;
                 }
             }
+
+            return;
+        }
+
+        if (!isStageCleared)
+        {
+            return;
+        }
+
+        for (int i = 0; i < clearArr.Length - 1; i++)
+        {
+            if (clearArr[i] == 1)
+            {
+                foreach (ConditionDialogues dialogue in c_Dialogues.C_Dialogues)
+                {
+                    if (dialogue.stage == (Stages)(i + 1))
+                    {
+                        conditionText = dialogue.text;
+                        return;
+                    }
+                }
+            }
+
         }
 
         conditionText = null;
