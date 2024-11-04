@@ -153,7 +153,7 @@ public class GunBase : MonoBehaviour, IUseable
 
         if (CurrentState == State.Empty)
         {
-            reloadRoutine = StartCoroutine(ReloadRoutine());
+            Reload();
         }
     }
 
