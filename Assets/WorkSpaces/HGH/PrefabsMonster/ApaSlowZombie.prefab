@@ -248,9 +248,8 @@ MonoBehaviour:
   shotPose: {fileID: 1193953632886672636}
   attackProjectilePrefab: {fileID: -1390187136342935436, guid: bff8c950af281b3409b21a65416eee3e, type: 3}
   checkFiringLinePeriod: 0.1
-  projectileRadius: 0.5
+  projectileRadius: 0.2
   preDelay: 0.2
-  postDelay: 0.3
 --- !u!1 &9159248330113448998
 GameObject:
   m_ObjectHideFlags: 0

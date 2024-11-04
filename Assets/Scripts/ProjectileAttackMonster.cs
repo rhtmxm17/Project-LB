@@ -80,10 +80,10 @@ public class ProjectileAttackMonster : MonoBehaviour
 
             Vector3 dircetion = (playerModel.transform.position - shotPose.position).normalized;
 
-            if (Physics.SphereCast(shotPose.position, projectileRadius, dircetion, out RaycastHit hitInfo, monsterModel.DataTable.AttackRange, castLayer))
+            if (Physics.SphereCast(shotPose.position + Vector3.up, projectileRadius, dircetion, out RaycastHit hitInfo, monsterModel.DataTable.AttackRange, castLayer))
             {
                 // TODO: 캐스팅 결과 확인
-                if (hitInfo.collider.CompareTag("PlayerCollider"))
+                if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
                 {
                     StopCoroutine(stateRoutine);
                     stateRoutine = StartCoroutine(ShotProjectile());

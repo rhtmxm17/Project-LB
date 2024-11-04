@@ -14,6 +14,10 @@ public class BossMonsterRangeAttack : AttackMonster
     [SerializeField]
     float distance;
 
+    [SerializeField, Tooltip("공격 선딜레이")] float preDelay;
+    [SerializeField] MonsterProjectile attackProjectilePrefab;
+    [SerializeField] Transform shotPose;
+
     public bool IsCring { get; set; } = false;
 
     NavMeshAgent nav;
@@ -72,10 +76,7 @@ public class BossMonsterRangeAttack : AttackMonster
             Debug.Log("범위에 있어요 공격할게요!");
             // 개발도중 Debug.Log 확인
             Debug.Log($"{monsterModel.MonsterAP}만큼의 몬스터 공격력으로 플레이어를 공격했다");
-            if (player == null || monsterModel == null)
-            {
-                ;
-            }
+
             // playerModel의 Hp를 monsterModel의 공격력만큼 감소
             player.Damaged(monsterModel.MonsterAP, DamageType.DEFAULT_MELEE_ATTACK);
 
@@ -107,7 +108,18 @@ public class BossMonsterRangeAttack : AttackMonster
                 }
                 nav.speed = 0;
                 monsterAni.Play("Casting Spell");
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(preDelay);
+
+                //if (monsterModel.DataTable.AttackClip != null)
+                //{
+                //    audioSource.PlayOneShot(monsterModel.DataTable.AttackClip, monsterModel.DataTable.AttackVolumeScale);
+                //}
+
+                MonsterProjectile prefabInstance = Instantiate(attackProjectilePrefab, shotPose.position, shotPose.rotation);
+                prefabInstance.AttackPoint = monsterModel.DataTable.AttackDamage;
+                prefabInstance.SetDestination(playerModel.transform.position + Vector3.up);
+
+                yield return new WaitForSeconds(2f - preDelay);
                 nav.speed = 3;
                 yield return coolTime;
             }

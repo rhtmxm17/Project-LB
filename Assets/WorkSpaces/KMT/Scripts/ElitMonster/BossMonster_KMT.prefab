@@ -591,6 +591,37 @@ Transform:
   m_Father: {fileID: 7548092421791693794}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2467686066766603475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3781191702188867907}
+  m_Layer: 2
+  m_Name: ThrowPose
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3781191702188867907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2467686066766603475}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.321, y: 1.067, z: 0.366}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2783986355370087800}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2500754487356183056
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +725,7 @@ Transform:
   - {fileID: 5175834821847622584}
   - {fileID: 329696470822774335}
   - {fileID: 5321821035466580627}
+  - {fileID: 3781191702188867907}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -813,6 +845,9 @@ MonoBehaviour:
   startRangeCoolDownSec: 5
   rangeAttackDelay: 8
   distance: 3
+  preDelay: 1
+  attackProjectilePrefab: {fileID: -1390187136342935436, guid: 3bd800b4113ad914b9d196da3f140e78, type: 3}
+  shotPose: {fileID: 3781191702188867907}
 --- !u!135 &721399506505186391
 SphereCollider:
   m_ObjectHideFlags: 0
