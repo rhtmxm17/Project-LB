@@ -45,7 +45,7 @@ public class PlayerData
     [SerializeField] int food;
     [SerializeField] int gear;
 
-    [SerializeField] int mouseSensitive = -1;
+    [SerializeField] int mouseSensitive = 50;
 
 
     public int MaxHP { get { return maxHP; } private set { } }
