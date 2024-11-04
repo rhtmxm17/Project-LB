@@ -54,11 +54,10 @@ public class CanvasMainScene : MonoBehaviour
 
     public void MainSetting()
     {
-        Debug.Log("세팅 패널 편집중입니다.");
-        //panelMainLogo.SetActive(false);
-        //panelMainGuide.SetActive(false);
-        //panelMainSetting.SetActive(true);
-        //panelMainExit.SetActive(false);
+        panelMainLogo.SetActive(false);
+        panelMainGuide.SetActive(false);
+        panelMainSetting.SetActive(true);
+        panelMainExit.SetActive(false);
     }
 
 

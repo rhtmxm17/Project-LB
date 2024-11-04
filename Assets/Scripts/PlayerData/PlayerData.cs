@@ -44,6 +44,9 @@ public class PlayerData
     [SerializeField] int food;
     [SerializeField] int gear;
 
+    [SerializeField] int mouseSensitive = -1;
+
+
     public int MaxHP { get { return maxHP; } private set { } }
     public int Level { get { return level; } private set { } }
     public int Exp { get { return exp; } private set { } }
@@ -51,6 +54,8 @@ public class PlayerData
     public List<ItemData> InventoryData {  get { return inventoryData; } private set { } }
     public int Food { get { return food; } private set { } }
     public int Gear { get { return gear; } private set { } }
+    public int MouseSensitive { get { return mouseSensitive; } set { mouseSensitive = value; } }
+
 
     //불러올 데이터가 없을 때 또는 새로 데이터를 만들 때 호출
     public PlayerData(ItemDataTableSO dataTable) {
