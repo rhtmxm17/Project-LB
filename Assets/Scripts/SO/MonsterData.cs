@@ -28,4 +28,12 @@ public class MonsterData : ScriptableObject
 
     public float MoveSpeed => moveSpeed;
     [SerializeField] float moveSpeed = 1f;
+
+    public AudioClip AttackClip => attackClip; // 공격 소리
+    [SerializeField] AudioClip attackClip;
+
+    // TODO:
+    // 생성시 소리... MonsterModel OnEnable()
+    // 사망시 소리... MonsterTakenDamage의 실제로 죽는게 확정된 위치 찾아서
+    // AttackMonster에 사운드 넣은 것 참고
 }
