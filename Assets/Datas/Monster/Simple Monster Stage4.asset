@@ -19,3 +19,9 @@ MonoBehaviour:
   maxHp: 450
   attckPerSecond: 1
   moveSpeed: 1
+  attackClip: {fileID: 0}
+  attackVolumeScale: 1
+  spawnClip: {fileID: 8300000, guid: ab007f6448a3f44209e55cd185f22e2d, type: 3}
+  spawnVolumeScale: 1
+  deadClip: {fileID: 0}
+  deadVolumeScale: 1
