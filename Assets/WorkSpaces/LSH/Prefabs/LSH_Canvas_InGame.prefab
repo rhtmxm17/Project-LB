@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerModel: {fileID: 0}
   gameOverUI: {fileID: 3958379904774031540}
-  gameClearUI: {fileID: 5983633114594382728}
+  gameClearUI: {fileID: 1275835638552439162}
   SlotImage:
   - {fileID: 4219487470150604850}
   - {fileID: 1248322816685252333}
@@ -668,11 +668,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3c81562d3ded1443b1b0c9379c54934, type: 3}
---- !u!1 &5983633114594382728 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3764263161060491592, guid: c3c81562d3ded1443b1b0c9379c54934, type: 3}
+--- !u!114 &1275835638552439162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8539904868155112378, guid: c3c81562d3ded1443b1b0c9379c54934, type: 3}
   m_PrefabInstance: {fileID: 7437549631244866240}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc1dd934b7d7d94aaaac9b10504b9c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5983633114594382729 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3764263161060491593, guid: c3c81562d3ded1443b1b0c9379c54934, type: 3}
