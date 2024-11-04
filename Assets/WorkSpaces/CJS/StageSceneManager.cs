@@ -5,36 +5,10 @@ using UnityEngine.Events;
 
 /// <summary>
 /// 스테이지 매니저는 StageData를 기반으로 스테이지 씬을 불러오고 초기화합니다<br/>
-/// 일지, 설계도, 클리어 트리거는 태그로 검색해서 초기화합니다...
+/// 클리어 트리거는 태그로 검색해서 초기화합니다...
 /// </summary>
 public class StageSceneManager : MonoBehaviour
 {
-    /*
-     스테이지 매니저에서 처리할 목록
-
-    생성시 필요한 데이터
-        스테이지별 고정된 데이터 (StageData : ScriptableObject)
-            지형 데이터
-            레벨 디자인 데이터
-            보상
-            수류탄 스펙
-        플레이어
-            체력 혹은 레벨
-        선택된 무기 목록
-            기본 무기 레벨
-        
-    UI 띄우기 -> 해당 UI 작업 담당자와 논의 필요
-        클리어 이벤트 구독해서 UI 띄우기
-        플레이어 사망 이벤트 구독해서 게임오버 UI 띄우기
-    스테이지 종료시 데이터 관리자에 결과 통지(획득한 재화 및 경험치, 수집품)
-
-    스테이지 진입 방식
-    벙커 씬에서 StageSceneManager 준비 -> StageData 등록 -> EnterStage 호출
-
-
-
-     */
-
     [SerializeField] StageData stageDataTable;
     public StageData StageDataTable
     {
@@ -48,7 +22,10 @@ public class StageSceneManager : MonoBehaviour
 
     public readonly ItemType[] weaponEquip = new ItemType[3] { ItemType.AK47, ItemType.KNIFE, ItemType.NONE };
 
-    public bool HasJournal { get; private set; }
+    /// <summary>
+    /// 획득한 일지 id를 플래그로 저장
+    /// </summary>
+    private int journalFlag = 0;
 
     public bool HasBlueprint { get; private set; }
 
@@ -100,15 +77,26 @@ public class StageSceneManager : MonoBehaviour
         playerData.isStageCleared = true;
 
         // 수집품 획득 처리
-        if (HasJournal)
+        //if (HasJournal)
+        //{
+        //    playerData.AddItem(StageDataTable.Journal);
+        //}
+
+        // 일지 획득 플래그가 있다면
+        if (journalFlag != 0)
         {
-            //ItemData journal = playerData.GetItemData(StageDataTable.Journal);
-            playerData.AddItem(StageDataTable.Journal);
+            for (int i = (int)ItemType.PAGE1; i <= (int)ItemType.PAGE6; i++)
+            {
+                // 적중한 플래그의 아이템 획득
+                if (0 != (journalFlag & i))
+                {
+                    playerData.AddItem((ItemType)i);
+                }
+            }
         }
 
         if (HasBlueprint)
         {
-            //ItemData blueprint = playerData.GetItemData(StageDataTable.BluePrint);
             playerData.AddItem(StageDataTable.BluePrint);
         }
 
@@ -210,16 +198,16 @@ public class StageSceneManager : MonoBehaviour
         }
     }
 
-    public void InitJournal(Collection collecterItem)
+    public void InitJournal(Diary collecterItem)
     {
         // 플레이어가 해당 저널을 소지중인지 검사
-        if (0 < GameManager.Instance.GetPlayerData().GetItemData(StageDataTable.Journal).count)
+        if (0 < GameManager.Instance.GetPlayerData().GetItemData(collecterItem.ItemID).count)
         {
             Destroy(collecterItem.gameObject);
         }
         else
         {
-            collecterItem.OnPickup.AddListener(() => { HasJournal = true; });
+            collecterItem.OnPickup.AddListener(() => { journalFlag |= (1 << (int)collecterItem.ItemID); });
         }
     }
 

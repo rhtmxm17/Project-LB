@@ -9,7 +9,18 @@ using UnityEngine;
 public class Diary : Collection
 {
     // 아이디
-    [SerializeField] private int itemID;
+    public ItemType ItemID => itemID;
+    [SerializeField] ItemType itemID = ItemType.NONE;
+
+#if UNITY_EDITOR
+    private void Awake()
+    {
+        if (itemID == ItemType.NONE)
+        {
+            Debug.LogWarning("일지 ID 설정 필요");
+        }
+    }
+#endif
 
     private void Start()
     {
