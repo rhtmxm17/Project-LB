@@ -92,7 +92,6 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     public struct StageInitAttribute
     {
         public int maxHp;
-        public int mainWeaponLevel;
         public GunBase mainWeapon;
         public GunBase meleeWeapon;
         public GunBase specialWeapon;
@@ -105,6 +104,8 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
     /// <param name="attr">매개변수 세트</param>
     public void StageInit(StageInitAttribute attr)
     {
+        model.MaxHp = attr.maxHp;
+
         if (sampleGun != null)
         {
             Destroy(sampleGun.gameObject);
