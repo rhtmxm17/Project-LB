@@ -29,6 +29,15 @@ public class PlayerCharacterControllerControl : MonoBehaviour
     private bool isRunning = false;
     private bool rotateLook = true;
 
+
+    private void Start()
+    {
+        //LSH 추가코드
+        cameraSensitivity = Vector2.one * 0.01f * GameManager.Instance.GetPlayerData().MouseSensitive;                
+
+    }
+
+
     /// <summary>
     /// 마우스 잠금 및 카메라 회전 활성 상테를 설정합니다<br/>
     /// </summary>
@@ -142,7 +151,7 @@ public class PlayerCharacterControllerControl : MonoBehaviour
     private void RotatePlayerLook(InputAction.CallbackContext context)
     {
         Vector2 inputValue = context.ReadValue<Vector2>();
-
+                
         // 수평 회전
         transform.Rotate(Vector3.up, inputValue.x * cameraSensitivity.x);
 
