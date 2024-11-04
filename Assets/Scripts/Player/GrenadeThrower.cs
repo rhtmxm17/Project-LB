@@ -68,4 +68,9 @@ public class GrenadeThrower : MonoBehaviour, IUseable
 
         OnThrow?.Invoke();
     }
+
+    public void ShowAnimation(bool show)
+    {
+        // 현재 수류탄은 화면에 출력되는 모델이 없음
+    }
 }

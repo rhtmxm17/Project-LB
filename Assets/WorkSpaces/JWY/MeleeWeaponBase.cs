@@ -137,5 +137,9 @@ public class MeleeWeaponBase : MonoBehaviour, IUseable
         Debug.Log("발사 이펙트 출력 필요");
         yield break;
     }
-    
+
+    public void ShowAnimation(bool show)
+    {
+        throw new NotImplementedException();
+    }
 }
