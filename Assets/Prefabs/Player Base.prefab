@@ -101,9 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactPose: {fileID: 0}
   interactRadius: 3
-  npcInfo: {fileID: 0}
-  foodExchange: {fileID: 0}
-  weaponUpgrade: {fileID: 0}
+  upgradeSystem: {fileID: 0}
+  exchangeSystem: {fileID: 0}
+  stageSelectWindow: {fileID: 0}
+  stageEnterUI: {fileID: 0}
 --- !u!54 &6907338289782665454
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1015
+    m_Bits: 3063
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
