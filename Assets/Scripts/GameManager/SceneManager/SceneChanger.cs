@@ -209,13 +209,13 @@ public class SceneChanger : MonoBehaviour
             }
             else
             {
-
                 //todo : 로딩바 확인용 더미. 나중에 제거 (로딩완료씬 더미딜레이, 제거됨)                 
-                yield return new WaitForSeconds(3f);                
+                yield return new WaitForSeconds(3f);
 
                 //로딩 완료
                 //씬 전환
                 op.allowSceneActivation = true;
+
                 fader.Play("LoadingOut");
 
             }
