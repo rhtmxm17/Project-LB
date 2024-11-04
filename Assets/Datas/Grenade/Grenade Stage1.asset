@@ -15,8 +15,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 192
-  explosionRange: 3
+  explosionRange: 5
   damage: 300
-  maxChargeTime: 1
+  maxChargeTime: 0.8
   minThrowForce: 1
   maxThrowForce: 15
