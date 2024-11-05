@@ -113,6 +113,12 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
             sampleGun = null;
         }
 
+        if (sampleKnife != null)
+        {
+            Destroy(sampleKnife.gameObject);
+            sampleKnife = null;
+        }
+
         quickSlotGun[MainWeaponSlot] = attr.mainWeapon;
         quickSlotGun[MeleeWeaponSlot] = attr.meleeWeapon;
         quickSlotGun[SpecialWeaponSlot] = attr.specialWeapon;
