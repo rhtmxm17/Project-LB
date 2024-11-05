@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1552589003505586893}
   - component: {fileID: 668265809894003122}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ppfxExplosionBig Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1216305103, guid: 1426f13f48cb6504fbb9bb5069d514f2, type: 3}
+    - {fileID: 3905008137949677269, guid: 1426f13f48cb6504fbb9bb5069d514f2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1426f13f48cb6504fbb9bb5069d514f2, type: 3}
 --- !u!198 &3605179127900855146 stripped
 ParticleSystem:
