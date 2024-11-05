@@ -27,15 +27,15 @@ MonoBehaviour:
   <MaxUpgradeLevel>k__BackingField: 5
   <UpgradeReqGears>k__BackingField: 320000006400000096000000c8000000fa000000
   gunPrefab: {fileID: 1552324696654365231, guid: 2af3a7b8ac28c314e92e6423a4f9c7e2, type: 3}
-  shotClip: {fileID: 8300000, guid: 2588dd973adc61248b1a6932bc149f54, type: 3}
+  shotClip: {fileID: 8300000, guid: 3061c7b9b32d894478e4126ccce25ca3, type: 3}
   shotVolumeScale: 1
   reloadClip: {fileID: 8300000, guid: b8c1b581f927ef84e9db76fce47d1b04, type: 3}
   reloadVolumeScale: 1
-  magCapacity: 25
+  magCapacity: 35
   bulletStock: -1
   timeBetFire: 0.12
   ReloadTime: 1.8
-  Range: 10
+  Range: 200
   layerMask:
     serializedVersion: 2
     m_Bits: 129

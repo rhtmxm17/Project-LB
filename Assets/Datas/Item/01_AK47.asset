@@ -33,7 +33,7 @@ MonoBehaviour:
   reloadVolumeScale: 0.25
   magCapacity: 25
   bulletStock: -1
-  timeBetFire: 0.12
+  timeBetFire: 0.21
   ReloadTime: 1.8
   Range: 200
   layerMask:

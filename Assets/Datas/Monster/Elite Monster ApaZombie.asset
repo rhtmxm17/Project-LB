@@ -20,8 +20,8 @@ MonoBehaviour:
   attckPerSecond: 1
   moveSpeed: 1.1
   attackClip: {fileID: 8300000, guid: 32b1cee2e1e16a5498c05d6fed710818, type: 3}
-  attackVolumeScale: 2
+  attackVolumeScale: 0.25
   spawnClip: {fileID: 8300000, guid: 998a8c587e0564f298cc8f796faf538a, type: 3}
-  spawnVolumeScale: 1
+  spawnVolumeScale: 0.25
   deadClip: {fileID: 8300000, guid: 7da0ced4604db4d91abd62bebdf27315, type: 3}
-  deadVolumeScale: 1
+  deadVolumeScale: 0.25

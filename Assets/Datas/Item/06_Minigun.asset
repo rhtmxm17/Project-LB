@@ -28,7 +28,7 @@ MonoBehaviour:
   <MaxUpgradeLevel>k__BackingField: 0
   <UpgradeReqGears>k__BackingField: 
   gunPrefab: {fileID: 1272354658716746207, guid: 260d33678d4766d468808185fff445de, type: 3}
-  shotClip: {fileID: 8300000, guid: 9a05d0b8d01d31f4c96e691e309dfc9d, type: 3}
+  shotClip: {fileID: 8300000, guid: 3061c7b9b32d894478e4126ccce25ca3, type: 3}
   shotVolumeScale: 1
   reloadClip: {fileID: 8300000, guid: 036c6a5947228f24ca46aed1b75e3078, type: 3}
   reloadVolumeScale: 1

@@ -15,13 +15,13 @@ MonoBehaviour:
   monsterName: "\uB290\uB824\uC838 \uC880\uBE44"
   monsterPrefab: {fileID: 2402829140540979405, guid: 92a186b70ef87bf4584c6e115cf49a50, type: 3}
   attackRange: 10
-  attackDamage: 3
+  attackDamage: 5
   maxHp: 350
-  attckPerSecond: 0.2
-  moveSpeed: 1.1
-  attackClip: {fileID: 0}
-  attackVolumeScale: 1
-  spawnClip: {fileID: 0}
-  spawnVolumeScale: 1
-  deadClip: {fileID: 0}
-  deadVolumeScale: 1
+  attckPerSecond: 5
+  moveSpeed: 3
+  attackClip: {fileID: 8300000, guid: a1053d57edce64ba4b700969df0d392e, type: 3}
+  attackVolumeScale: 0.25
+  spawnClip: {fileID: 8300000, guid: e54d302fcf6b94c7a8c317697da3bbfb, type: 3}
+  spawnVolumeScale: 0.25
+  deadClip: {fileID: 8300000, guid: c9c23391dca244f99ac1c6b9dc240b71, type: 3}
+  deadVolumeScale: 0.25
