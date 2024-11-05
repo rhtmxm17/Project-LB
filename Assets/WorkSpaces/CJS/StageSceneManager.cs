@@ -86,7 +86,7 @@ public class StageSceneManager : MonoBehaviour
         // 일지 획득 플래그가 있다면
         if (journalFlag != 0)
         {
-            for (int i = (int)ItemType.PAGE1; i <= (int)ItemType.PAGE6; i++)
+            for (int i = (int)ItemType.PAGE1; i <= (int)ItemType.PAGE8; i++)
             {
                 // 적중한 플래그의 아이템 획득
                 if (0 != (journalFlag & (1 << i)))
