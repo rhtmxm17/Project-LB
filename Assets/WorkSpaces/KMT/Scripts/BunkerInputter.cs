@@ -29,6 +29,12 @@ public class BunkerInputter : MonoBehaviour
         stageSelectWindow.CloseWindow();
     }
 
+    public void Quit()
+    {
+        Debug.Log("quit");
+        Application.Quit();
+    }
+
     private void Start()
     {
         GameManager.Instance.GetSoundManager().StopBGM();
