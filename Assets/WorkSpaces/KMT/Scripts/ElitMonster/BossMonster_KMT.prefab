@@ -879,12 +879,14 @@ MonoBehaviour:
   rigid: {fileID: 0}
   monsterAgent: {fileID: 0}
   rangeAttack: {fileID: 9068413278793580499}
-  normalMonsterData: {fileID: 11400000, guid: c35ac25cfae659848b53338941ea153a, type: 2}
+  normalMonsterData: {fileID: 11400000, guid: 0723c90f2264658489b77b31bdd0d871, type: 2}
   elitMonsterArr:
   - {fileID: 11400000, guid: 61545646e856cd442b7732422667db6a, type: 2}
   - {fileID: 11400000, guid: 46bcd2f361a5dd74fb013b776c6dfda9, type: 2}
   - {fileID: 11400000, guid: 68f98490efbebb046bef7135a94789b5, type: 2}
   - {fileID: 11400000, guid: 4d3b39aff16b154478548d429f905415, type: 2}
+  - {fileID: 11400000, guid: 227efa4f3bd61494a81f571be4a3bcb1, type: 2}
+  - {fileID: 11400000, guid: 3e4f8b3c312f29f498590cf0989d0d79, type: 2}
 --- !u!82 &-8881699338778681158
 AudioSource:
   m_ObjectHideFlags: 0
