@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 /// <summary>
 /// 스테이지 매니저는 StageData를 기반으로 스테이지 씬을 불러오고 초기화합니다<br/>
@@ -221,5 +222,21 @@ public class StageSceneManager : MonoBehaviour
     {
         ui.OnReturnButtonClicked.AddListener(ExitStage);
         // TODO: 재도전 버튼
+    }
+
+    public Sprite InitQuickSlotSprite(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                return GameManager.Instance.GetItemDataTable().GetItemDataSO(weaponEquip[0]).ImgSprite;
+            case 1:
+                return GameManager.Instance.GetItemDataTable().GetItemDataSO(weaponEquip[1]).ImgSprite;
+            case 4:
+                return GameManager.Instance.GetItemDataTable().GetItemDataSO(weaponEquip[2]).ImgSprite;
+            default:
+                Debug.LogWarning("퀵슬롯 번호가 잘못됨");
+                return null;
+        }
     }
 }
