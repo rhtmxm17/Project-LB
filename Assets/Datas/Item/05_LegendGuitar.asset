@@ -21,20 +21,20 @@ MonoBehaviour:
     \uB204\uAC00 \uC9C0\uC5C8\uC9C0\u2026LEE\u2026"
   <DetailInfoSO>k__BackingField: {fileID: 0}
   <equipQuickSlotType>k__BackingField: 4
-  <AttackPoint>k__BackingField: 500
+  <AttackPoint>k__BackingField: 400
   <AdditiveAttackPoint>k__BackingField: 0
   <MaxUpgradeLevel>k__BackingField: 0
   <UpgradeReqGears>k__BackingField: 
   gunPrefab: {fileID: 148676628716282275, guid: c670b52c8829c4f48b7f3ad623a74d1f, type: 3}
-  shotClip: {fileID: 8300000, guid: 6309e5abb0f58394da9c4fa1c9fa3f3b, type: 3}
+  shotClip: {fileID: 8300000, guid: 8456b9ab37570744bb26385f09b47e4d, type: 3}
   shotVolumeScale: 1
   reloadClip: {fileID: 0}
   reloadVolumeScale: 1
   magCapacity: -1
   bulletStock: -1
-  timeBetFire: 1
+  timeBetFire: 2.5
   ReloadTime: 1.8
-  Range: 6
+  Range: 5
   layerMask:
     serializedVersion: 2
     m_Bits: 128

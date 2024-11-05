@@ -23,7 +23,7 @@ MonoBehaviour:
     \uC5C6\uB0D0\u2026"
   <DetailInfoSO>k__BackingField: {fileID: 0}
   <equipQuickSlotType>k__BackingField: 4
-  <AttackPoint>k__BackingField: 1000
+  <AttackPoint>k__BackingField: 500
   <AdditiveAttackPoint>k__BackingField: 0
   <MaxUpgradeLevel>k__BackingField: 0
   <UpgradeReqGears>k__BackingField: 
@@ -36,7 +36,7 @@ MonoBehaviour:
   bulletStock: 300
   timeBetFire: 0.12
   ReloadTime: 1.8
-  Range: 10
+  Range: 300
   layerMask:
     serializedVersion: 2
     m_Bits: 129

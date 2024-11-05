@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: "\uC2A4\uCE90\uBE48\uC800"
   monsterPrefab: {fileID: 2402829140540979405, guid: 838b8dbde682b814dabdbb263ab0bb16, type: 3}
-  attackRange: 2.5
+  attackRange: 3.5
   attackDamage: 5
   maxHp: 200
-  attckPerSecond: 0
+  attckPerSecond: 1
   moveSpeed: 4
+  attackClip: {fileID: 8300000, guid: 0cf0e69df01072046b8facc479328915, type: 3}
+  attackVolumeScale: 0.25
+  spawnClip: {fileID: 8300000, guid: 3910ef58ddd0d43a29b3039f58c19c19, type: 3}
+  spawnVolumeScale: 1
+  deadClip: {fileID: 8300000, guid: 1c8eb2b45ca5d4d70880c83035cd7c27, type: 3}
+  deadVolumeScale: 0.25
