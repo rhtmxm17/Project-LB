@@ -29,6 +29,11 @@ public class BunkerInputter : MonoBehaviour
         stageSelectWindow.CloseWindow();
     }
 
+    private void Start()
+    {
+        GameManager.Instance.GetSoundManager().StopBGM();
+    }
+
     // Update is called once per frame
     void Update()
     {
