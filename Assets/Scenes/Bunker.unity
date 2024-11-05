@@ -5335,7 +5335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1573a6c1b73b02940a23f7a87a6aa14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageData: {fileID: 11400000, guid: 8f819a5e3e732474398b3ed4316dd23b, type: 2}
+  stageData: {fileID: 11400000, guid: 132076ebd1b31454db4739b9ddafc0c9, type: 2}
   conformWindow: {fileID: 635832794}
 --- !u!222 &417832744
 CanvasRenderer:
@@ -8402,7 +8402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1573a6c1b73b02940a23f7a87a6aa14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageData: {fileID: 11400000, guid: 40750c5a2d5342840be1ea48f3fa97c1, type: 2}
+  stageData: {fileID: 11400000, guid: 8ce344f1bad7c9143b2bf77d9e812bf7, type: 2}
   conformWindow: {fileID: 635832794}
 --- !u!114 &637553820
 MonoBehaviour:
@@ -19500,7 +19500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1573a6c1b73b02940a23f7a87a6aa14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageData: {fileID: 11400000, guid: 8f819a5e3e732474398b3ed4316dd23b, type: 2}
+  stageData: {fileID: 11400000, guid: 1469b79fb9e288e4e9a4f51c3933a445, type: 2}
   conformWindow: {fileID: 635832794}
 --- !u!114 &1594642894
 MonoBehaviour:
