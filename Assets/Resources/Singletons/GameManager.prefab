@@ -439,9 +439,9 @@ MonoBehaviour:
   - sceneType: 7
     sceneName: StageDesign_03_Stage3
   - sceneType: 4
-    sceneName: LoadTestMap
+    sceneName: StageMap_04_BossMap
   - sceneType: 8
-    sceneName: LoadTestLevel
+    sceneName: Boss map Dummy
   - sceneType: 9
     sceneName: LoadTestMap
   - sceneType: 10
