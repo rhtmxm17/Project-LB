@@ -22,10 +22,10 @@ MonoBehaviour:
     \uC774\uAC83\uB3C4 \uC5B4\uB514\uC11C \uBCF8 \uB4EF\u2026."
   <DetailInfoSO>k__BackingField: {fileID: 0}
   <equipQuickSlotType>k__BackingField: 0
-  <AttackPoint>k__BackingField: 10
-  <AdditiveAttackPoint>k__BackingField: 10
-  <MaxUpgradeLevel>k__BackingField: 7
-  <UpgradeReqGears>k__BackingField: 01000000020000000300000004000000050000000600000007000000
+  <AttackPoint>k__BackingField: 50
+  <AdditiveAttackPoint>k__BackingField: 25
+  <MaxUpgradeLevel>k__BackingField: 5
+  <UpgradeReqGears>k__BackingField: 320000006400000096000000c8000000fa000000
   gunPrefab: {fileID: 1552324696654365231, guid: 2af3a7b8ac28c314e92e6423a4f9c7e2, type: 3}
   shotClip: {fileID: 8300000, guid: 2588dd973adc61248b1a6932bc149f54, type: 3}
   shotVolumeScale: 1
