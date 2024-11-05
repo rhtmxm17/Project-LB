@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172433927338020151}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -114,7 +114,7 @@ MonoBehaviour:
   spawnDelay: 0.5
   spawnCount: 30
   spawnType:
-  - {fileID: 8091382462958813417, guid: 90aca03a8bfe5c34ebb8690e2228b125, type: 3}
+  - {fileID: 0}
   randomTypeSpawn: 0
   EndSpawnEvent:
     m_PersistentCalls:

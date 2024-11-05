@@ -216,11 +216,14 @@ public class StageSceneManager : MonoBehaviour
     {
         ui.SetFoodGain($"{stageDataTable.RewardRation}");
         ui.SetGearGain($"{stageDataTable.RewardExp}");
+        GameManager.Instance.GetPlayerModel().GetComponent<PlayerCharacterControllerControl>().MouseLock(false);
     }
 
     public void InitGameOverUI(GameOverUI ui)
     {
         ui.OnReturnButtonClicked.AddListener(ExitStage);
+        GameManager.Instance.GetPlayerModel().GetComponent<PlayerCharacterControllerControl>().MouseLock(false);
+
         // TODO: 재도전 버튼
     }
 
