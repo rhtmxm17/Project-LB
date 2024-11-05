@@ -23,7 +23,7 @@ MonoBehaviour:
     \uC5C6\uB0D0\u2026"
   <DetailInfoSO>k__BackingField: {fileID: 0}
   <equipQuickSlotType>k__BackingField: 4
-  <AttackPoint>k__BackingField: 200
+  <AttackPoint>k__BackingField: 1000
   <AdditiveAttackPoint>k__BackingField: 0
   <MaxUpgradeLevel>k__BackingField: 0
   <UpgradeReqGears>k__BackingField: 

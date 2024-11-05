@@ -1234,12 +1234,12 @@ PrefabInstance:
       objectReference: {fileID: 988116462}
     - target: {fileID: 1172433927338020140, guid: baddf887334d4b3409e824f44842bd4b, type: 3}
       propertyPath: spawnType.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1172433927338020140, guid: baddf887334d4b3409e824f44842bd4b, type: 3}
       propertyPath: spawnType.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 439f510352b363e46b78312741c7e0ba, type: 2}
+      objectReference: {fileID: 11400000, guid: 4d3b39aff16b154478548d429f905415, type: 2}
     - target: {fileID: 1172433927338020140, guid: baddf887334d4b3409e824f44842bd4b, type: 3}
       propertyPath: spawnType.Array.data[1]
       value: 
@@ -1423,6 +1423,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3941861055701554458, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
+      propertyPath: <Usage>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7365981767186575905, guid: 6acb1e142daaa854f8432c9e1a1a9626, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2618,15 +2622,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303394140098890144, guid: dfea2de3da4fd324e97e7b6f133dfcda, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.9486327
+      value: 59.64
       objectReference: {fileID: 0}
     - target: {fileID: 303394140098890144, guid: dfea2de3da4fd324e97e7b6f133dfcda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.702
+      value: 3.14
       objectReference: {fileID: 0}
     - target: {fileID: 303394140098890144, guid: dfea2de3da4fd324e97e7b6f133dfcda, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -37.148907
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 303394140098890144, guid: dfea2de3da4fd324e97e7b6f133dfcda, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2847,15 +2851,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3555487911301369841, guid: 3454ff52aa464f542bb9efc9b6391872, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.03
+      value: 56.25
       objectReference: {fileID: 0}
     - target: {fileID: 3555487911301369841, guid: 3454ff52aa464f542bb9efc9b6391872, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.13
+      value: 3.27
       objectReference: {fileID: 0}
     - target: {fileID: 3555487911301369841, guid: 3454ff52aa464f542bb9efc9b6391872, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.01
+      value: -33
       objectReference: {fileID: 0}
     - target: {fileID: 3555487911301369841, guid: 3454ff52aa464f542bb9efc9b6391872, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2885,6 +2889,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3555487911301369843, guid: 3454ff52aa464f542bb9efc9b6391872, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3555487911301369844, guid: 3454ff52aa464f542bb9efc9b6391872, type: 3}
       propertyPath: m_Name
       value: TriggerArea StageClear
@@ -2912,12 +2920,12 @@ PrefabInstance:
       objectReference: {fileID: 988116462}
     - target: {fileID: 1172433927338020140, guid: baddf887334d4b3409e824f44842bd4b, type: 3}
       propertyPath: spawnType.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1172433927338020140, guid: baddf887334d4b3409e824f44842bd4b, type: 3}
       propertyPath: spawnType.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 439f510352b363e46b78312741c7e0ba, type: 2}
+      objectReference: {fileID: 11400000, guid: 227efa4f3bd61494a81f571be4a3bcb1, type: 2}
     - target: {fileID: 1172433927338020140, guid: baddf887334d4b3409e824f44842bd4b, type: 3}
       propertyPath: spawnType.Array.data[1]
       value: 
@@ -3202,15 +3210,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303394140098890144, guid: 528a5235c1e7f42458402df3836048bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.525986
+      value: 59.268
       objectReference: {fileID: 0}
     - target: {fileID: 303394140098890144, guid: 528a5235c1e7f42458402df3836048bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.157
+      value: 3.34
       objectReference: {fileID: 0}
     - target: {fileID: 303394140098890144, guid: 528a5235c1e7f42458402df3836048bd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.039476
+      value: -39.47
       objectReference: {fileID: 0}
     - target: {fileID: 303394140098890144, guid: 528a5235c1e7f42458402df3836048bd, type: 3}
       propertyPath: m_LocalRotation.w
