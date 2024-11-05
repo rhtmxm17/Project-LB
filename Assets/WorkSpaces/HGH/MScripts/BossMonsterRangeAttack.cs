@@ -88,7 +88,7 @@ public class BossMonsterRangeAttack : AttackMonster
 
 
         yield return new WaitForSeconds(2f);
-        nav.speed = 3;
+        nav.speed = 7;
     }
 
 
@@ -120,7 +120,7 @@ public class BossMonsterRangeAttack : AttackMonster
                 prefabInstance.SetDestination(playerModel.transform.position + Vector3.up);
 
                 yield return new WaitForSeconds(2f - preDelay);
-                nav.speed = 3;
+                nav.speed = 7;
                 yield return coolTime;
             }
             else

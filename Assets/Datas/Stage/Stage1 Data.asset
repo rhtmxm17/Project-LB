@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Stage1 Data
   m_EditorClassIdentifier: 
   stageName: Stage1
-  BgmClip: {fileID: 0}
-  bgmClip: {fileID: 0}
+  bgmClip: {fileID: 8300000, guid: 2c602950ad522374885ea0d874184ab6, type: 3}
   mapScene: 1
   levelScene: 5
   stageIndex: 0

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Stage4 Data
   m_EditorClassIdentifier: 
   stageName: Boss Stage
-  bgmClip: {fileID: 0}
+  bgmClip: {fileID: 8300000, guid: 5c26e2a0212fb984f80d3263d6cc29aa, type: 3}
   mapScene: 4
   levelScene: 8
   stageIndex: 3
-  rewardExp: 0
-  rewardRation: 0
-  journal: 17
-  bluePrint: 17
+  rewardExp: 999
+  rewardRation: 999
+  journal: 12
+  bluePrint: 13
   grenadeData: {fileID: 11400000, guid: 87298783a67de2d479d36dba1e0ef4f8, type: 2}

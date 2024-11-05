@@ -161,7 +161,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
-  shotForce: 7
+  shotForce: 25
   debuff: {fileID: 0}
 --- !u!1 &5349521496349410654
 GameObject:

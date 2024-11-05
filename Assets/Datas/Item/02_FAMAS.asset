@@ -31,10 +31,10 @@ MonoBehaviour:
   shotVolumeScale: 0.25
   reloadClip: {fileID: 8300000, guid: b8c1b581f927ef84e9db76fce47d1b04, type: 3}
   reloadVolumeScale: 0.25
-  magCapacity: 35
+  magCapacity: 40
   bulletStock: -1
-  timeBetFire: 0.12
-  ReloadTime: 1.8
+  timeBetFire: 0.1
+  ReloadTime: 1.5
   Range: 300
   layerMask:
     serializedVersion: 2
