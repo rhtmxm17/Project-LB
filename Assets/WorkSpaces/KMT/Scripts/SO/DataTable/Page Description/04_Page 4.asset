@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f57dc582b7d9345b87aff8df5bc30a, type: 3}
   m_Name: 04_Page 4
   m_EditorClassIdentifier: 
-  <DetailDescription>k__BackingField: 44
+  <DetailDescription>k__BackingField: "\uD504\uB85C\uC81D\uD2B8\uAC00 \uC2DC\uC791\uB418\uC5C8\uB2E4.
+    \uC778\uB958\uC758 \uC0DD\uC874\uC744 \uC704\uD574 \uBC29\uC0AC\uB2A5\uC5D0 \uB0B4\uC131\uC744
+    \uC9C0\uB2CC \uC720\uC804\uC790\uB97C \r\n\uAC1C\uBC1C\uD560 \uAC83\uC774\uB2E4.
+    \uB098\uC758 \uC5F0\uAD6C\uAC00 \uC778\uB958\uC5D0\uAC8C \uD76C\uB9DD\uC774 \uB420
+    \uAC70\uB77C \uBBFF\uC5B4 \uC758\uC2EC\uCE58 \uC54A\uB294\uB2E4. \r\n\uD798\uC744
+    \uB0B4\uC790. \uC778\uB958\uC758 \uBBF8\uB798\uAC00 \uB2EC\uB824 \uC788\uB2E4."
