@@ -8,6 +8,9 @@ public class WaveManager : MonoBehaviour
     [SerializeField]
     GameObject[] walls;
 
+    [SerializeField]
+    Rigidbody rg = null;
+
     private void Start()
     {
         foreach (GameObject wall in walls)
@@ -38,6 +41,11 @@ public class WaveManager : MonoBehaviour
             foreach (GameObject wall in walls)
             {
                 wall.SetActive(false);
+            }
+
+            if (rg != null)
+            { 
+                rg.useGravity = true;
             }
         }
     }
