@@ -23,10 +23,11 @@ public class kmt_ConditionInteractableNpc : InteractableNpc
 
         bool clearExist = false;
 
-        foreach (int i in clearArr)
+        for (int i = 0; i < clearArr.Length; i++)
         {
             if (clearArr[i] != 0) clearExist = true;
         }
+
 
         if (!clearExist)
         {
