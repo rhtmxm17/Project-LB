@@ -36,7 +36,7 @@ public class StageSceneManager : MonoBehaviour
     /// 해당 스테이지 씬으로 진입
     /// </summary>
     [ContextMenu("EnterStage Test")]
-    private void EnterStage()
+    public void EnterStage()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
