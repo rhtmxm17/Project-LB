@@ -102,42 +102,30 @@ public class BossMonsterDamaged : MonsterTakenDamage
 
     void Wave1()
     {
-        HashSet<int> randSet = new HashSet<int>();
 
         for (int i = 0; i < 20; i++)
         {
             SummonMonster(normalMonsterData);
         }
 
-        while (randSet.Count < 3)
+        foreach (MonsterData data in elitMonsterArr)
         {
-            randSet.Add(UnityEngine.Random.Range(0, elitMonsterArr.Length));
-        }
-
-        foreach (int idx in randSet)
-        { 
-            SummonMonster(elitMonsterArr[idx]);
+            SummonMonster(data);
         }
 
     }
 
     void Wave2()
     {
-        HashSet<int> randSet = new HashSet<int>();
 
         for (int i = 0; i < 25; i++)
         {
             SummonMonster(normalMonsterData);
         }
 
-        while (randSet.Count < 4)
+        foreach (MonsterData data in elitMonsterArr)
         {
-            randSet.Add(UnityEngine.Random.Range(0, elitMonsterArr.Length));
-        }
-
-        foreach (int idx in randSet)
-        {
-            SummonMonster(elitMonsterArr[idx]);
+            SummonMonster(data);
         }
     }
 

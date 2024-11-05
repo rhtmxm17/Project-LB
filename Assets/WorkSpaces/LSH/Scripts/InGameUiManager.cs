@@ -122,6 +122,7 @@ public class InGameUiManager : MonoBehaviour
     public void PlayerDead()
     {
         gameOverUI.SetActive(true);
+        Camera.main.GetComponent<AudioListener>().enabled = false;
         Time.timeScale = 1f;
 
     }
@@ -134,6 +135,7 @@ public class InGameUiManager : MonoBehaviour
     public void StageClear(bool levelUp)
     {
         gameClearUI.gameObject.SetActive(true);
+        Camera.main.GetComponent<AudioListener>().enabled = false;
         Time.timeScale = 1f;
 
     }
