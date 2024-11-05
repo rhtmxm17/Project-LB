@@ -10,12 +10,14 @@ public class CanvasMainScene : MonoBehaviour
     [SerializeField] GameObject panelMainGuide;
     [SerializeField] GameObject panelMainSetting;
     [SerializeField] GameObject panelMainExit;
-
+    [SerializeField] AudioClip mainMenuBgm;
+    [SerializeField, Range(0f, 1f)] float bgmVolumeScale = 1f;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+        GameManager.Instance.GetSoundManager().PlayBGM(mainMenuBgm, bgmVolumeScale);
         MainLogo();
     }
 
