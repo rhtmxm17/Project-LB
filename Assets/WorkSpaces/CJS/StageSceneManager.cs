@@ -89,7 +89,7 @@ public class StageSceneManager : MonoBehaviour
             for (int i = (int)ItemType.PAGE1; i <= (int)ItemType.PAGE6; i++)
             {
                 // 적중한 플래그의 아이템 획득
-                if (0 != (journalFlag & i))
+                if (0 != (journalFlag & (1 << i)))
                 {
                     playerData.AddItem((ItemType)i);
                 }
