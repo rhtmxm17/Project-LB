@@ -41,5 +41,11 @@ public class BunkerInputter : MonoBehaviour
         {
             playerInfoSystem.OpenWindow();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseAllWindow();
+        }
+
     }
 }
