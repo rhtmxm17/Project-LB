@@ -5527,6 +5527,8 @@ MonoBehaviour:
   panelMainGuide: {fileID: 9124143148948032461}
   panelMainSetting: {fileID: 9124143149161871393}
   panelMainExit: {fileID: 951284303986325783}
+  mainMenuBgm: {fileID: 8300000, guid: 360da0993ef8a994fa993b506cddb8ee, type: 3}
+  bgmVolumeScale: 1
 --- !u!1 &9124143149380411404
 GameObject:
   m_ObjectHideFlags: 0
