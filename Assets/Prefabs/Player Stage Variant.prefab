@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosinTimer: 2.5
   data: {fileID: 11400000, guid: 746ad11de71c42147904916de5e4f8aa, type: 2}
-  <Usage>k__BackingField: 5
+  <Usage>k__BackingField: 0
   <Prefab>k__BackingField: {fileID: 5405940737381054613, guid: 5279aec816c182949baa05128a5a1cb7, type: 3}
 --- !u!1 &6670160987631193341
 GameObject:
@@ -133,6 +133,10 @@ PrefabInstance:
     - target: {fileID: 3836709877937472911, guid: 8660bf6e17e2887438f4f896a8b861e8, type: 3}
       propertyPath: m_Name
       value: Casting Health Pack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612719716666967486, guid: 8660bf6e17e2887438f4f896a8b861e8, type: 3}
+      propertyPath: <Usage>k__BackingField
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8666323661311214383, guid: 8660bf6e17e2887438f4f896a8b861e8, type: 3}
       propertyPath: m_RootOrder

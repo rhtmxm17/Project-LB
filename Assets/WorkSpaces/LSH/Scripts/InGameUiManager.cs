@@ -43,6 +43,11 @@ public class InGameUiManager : MonoBehaviour
         StageSceneManager stageManager = GameManager.Instance.GetStageSceneManager();
         stageManager.OnStageClear.AddListener(StageClear);
 
+        // 선택된 무기 스프라이트 이미지 가져오기
+        SlotImage[0].sprite = stageManager.InitQuickSlotSprite(0);
+        SlotImage[1].sprite = stageManager.InitQuickSlotSprite(1);
+        SlotImage[4].sprite = stageManager.InitQuickSlotSprite(4);
+
         //강조 이미지를 퀵슬롯 1번칸 위치로 초기화
         SetChoiceSlot(0);
     }
