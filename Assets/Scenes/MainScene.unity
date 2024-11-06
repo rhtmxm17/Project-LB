@@ -649,6 +649,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9124143149350370129, guid: aaa095eef805cd949a8d199ceba9780f, type: 3}
+      propertyPath: bgmVolumeScale
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 9124143149509185822, guid: aaa095eef805cd949a8d199ceba9780f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

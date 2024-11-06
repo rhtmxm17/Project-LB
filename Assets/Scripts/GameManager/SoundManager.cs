@@ -9,9 +9,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private AudioSource sfxSource;
 
-    public void PlayBGM(AudioClip clip)
+    public void PlayBGM(AudioClip clip, float volumeScale = 1f)
     {
         bgmSource.clip = clip;
+        bgmSource.volume = volumeScale;
         bgmSource.Play();
     }
 
