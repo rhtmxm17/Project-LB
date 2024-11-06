@@ -1549,6 +1549,7 @@ MonoBehaviour:
   mainWindow: {fileID: 832521766}
   saveWindow: {fileID: 1740553724}
   selectConformWindow: {fileID: 635832793}
+  quitWindow: {fileID: 865014669}
   stage4Img: {fileID: 779406618}
   stage4Btn: {fileID: 417832741}
   playerCharacterControllerControl: {fileID: 964656530}

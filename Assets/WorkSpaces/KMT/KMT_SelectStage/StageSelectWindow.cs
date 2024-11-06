@@ -11,7 +11,9 @@ public class StageSelectWindow : MonoBehaviour
     [SerializeField]
     GameObject saveWindow;
     [SerializeField]
-    GameObject selectConformWindow;
+    GameObject selectConformWindow; 
+    [SerializeField]
+    GameObject quitWindow;
 
     [SerializeField]
     Image stage4Img;
@@ -55,6 +57,7 @@ public class StageSelectWindow : MonoBehaviour
     {
         saveWindow.SetActive(false);
         selectConformWindow.SetActive(false);
+        quitWindow.SetActive(false);
 
         gameObject.SetActive(false);
         playerCharacterControllerControl.MouseLock(true);
