@@ -18,7 +18,7 @@ MonoBehaviour:
   attackDamage: 10
   maxHp: 15000
   attckPerSecond: 0.5
-  moveSpeed: 7
+  moveSpeed: 8
   attackClip: {fileID: 8300000, guid: 87d2a3ca20e6ce54e9f5ce0771013c13, type: 3}
   attackVolumeScale: 2
   spawnClip: {fileID: 8300000, guid: 935e09104521d4ac98476aaad0076aaa, type: 3}
