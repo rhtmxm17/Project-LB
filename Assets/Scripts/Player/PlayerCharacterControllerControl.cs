@@ -81,8 +81,6 @@ public class PlayerCharacterControllerControl : MonoBehaviour
     private void OnEnable()
     {
         moveRoutine = StartCoroutine(MovementRoutine());
-        //moveAction.started += MoveActionStarted;
-        //moveAction.canceled += MoveActionCanceled;
         lookAction.performed += RotatePlayerLook;
         runAction.started += RunActionUpdate;
         runAction.canceled += RunActionUpdate;
@@ -92,12 +90,21 @@ public class PlayerCharacterControllerControl : MonoBehaviour
     private void OnDisable()
     {
         StopCoroutine(moveRoutine);
-        //moveAction.started -= MoveActionStarted;
-        //moveAction.canceled -= MoveActionCanceled;
         lookAction.performed -= RotatePlayerLook;
         runAction.started -= RunActionUpdate;
         runAction.canceled -= RunActionUpdate;
         cursorAction.started -= ToggleActiveCursor;
+    }
+
+    /// <summary>
+    /// 플레이어의 이동 입력을 캐릭터가 더이상 받지 않습니다
+    /// </summary>
+    public void DisableInput()
+    {
+        StopCoroutine(moveRoutine);
+        lookAction.performed -= RotatePlayerLook;
+        runAction.started -= RunActionUpdate;
+        runAction.canceled -= RunActionUpdate;
     }
 
     private void RunActionUpdate(InputAction.CallbackContext context)

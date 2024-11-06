@@ -340,6 +340,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
         if (model.Hp <= 0)
         {
             DisableInputAction();
+            GetComponent<PlayerCharacterControllerControl>()?.DisableInput();
 
             OnDead?.Invoke();
         }
