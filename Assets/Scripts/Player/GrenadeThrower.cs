@@ -28,6 +28,7 @@ public class GrenadeThrower : MonoBehaviour, IUseable
 
     private float chargeBeginTime;
     private float invMaxChargeTime;
+    private bool isCharging;
 
     private void Awake()
     {
@@ -37,13 +38,24 @@ public class GrenadeThrower : MonoBehaviour, IUseable
         }
     }
 
+    private void OnDisable()
+    {
+        isCharging = false;
+    }
+
     public void UseBegin()
     {
         chargeBeginTime = Time.time;
+        isCharging = true;
     }
 
     public void UseEnd()
     {
+        if (! isCharging)
+            return;
+
+        isCharging = false;
+
         if (Usage <= 0)
         {
             Debug.Log("수류탄 소진");
