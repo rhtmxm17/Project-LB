@@ -339,6 +339,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
         if (model.Hp <= 0)
         {
+            SelectedUseable.UseEnd();
             DisableInputAction();
             GetComponent<PlayerCharacterControllerControl>()?.DisableInput();
 
