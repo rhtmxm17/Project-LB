@@ -55,6 +55,8 @@ public class GunBase : MonoBehaviour, IUseable
     [SerializeField] InventoryEquableItemSO dataTable;
 
     public event UnityAction OnShot;
+    public event UnityAction OnReloadCompleted;
+
     [field: SerializeField] public int GunLevel { get; set; } = 0;
 
     /// <summary>
@@ -274,7 +276,7 @@ public class GunBase : MonoBehaviour, IUseable
 
         // 총의 현재 상태를 발사 준비된 상태로 변경
         CurrentState = State.Ready;
-
+        OnReloadCompleted?.Invoke();
         reloadRoutine = null;
     }
 
