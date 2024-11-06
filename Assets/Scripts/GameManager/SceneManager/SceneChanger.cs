@@ -108,6 +108,7 @@ public class SceneChanger : MonoBehaviour
     {
         OnLoadSceneComplete?.Invoke();
         OnLoadSceneComplete.RemoveAllListeners();
+        AudioListener.volume = 1;
         SceneManager.sceneLoaded -= EndLoadScene;
     }
 
@@ -217,6 +218,8 @@ public class SceneChanger : MonoBehaviour
                 op.allowSceneActivation = true;
 
                 fader.Play("LoadingOut");
+                SceneManager.sceneLoaded += EndLoadScene;
+
 
             }
 
