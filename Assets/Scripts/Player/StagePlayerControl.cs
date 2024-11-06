@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -128,6 +129,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
             quickSlotGun[index].WeaponCamera = weaponCamera;
             quickSlotGun[index].OnShot += InvokeAttack;
             quickSlotGun[index].OnShot += NotifyMagazineUpdated;
+            quickSlotGun[index].OnReloadCompleted += NotifyMagazineUpdated;
             quickSlotGun[index].transform.SetParent(rightHandPose, false);
         }
 
@@ -192,6 +194,7 @@ public class StagePlayerControl : MonoBehaviour, IDamageable
 
         sampleGun.OnShot += InvokeAttack;
         sampleGun.OnShot += NotifyMagazineUpdated;
+        sampleGun.OnReloadCompleted += NotifyMagazineUpdated;
 
         quickSlot[MeleeWeaponSlot] = sampleKnife;
         quickSlot[MeleeWeaponSlot]?.ShowAnimation(false);
