@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f57dc582b7d9345b87aff8df5bc30a, type: 3}
+  m_Name: 07_Page 7
+  m_EditorClassIdentifier: 
+  <DetailDescription>k__BackingField: "\uBCF8\uBD80\uC5D0\uC11C \uD504\uB85C\uC81D\uD2B8\uB97C
+    \uC911\uB2E8\uD558\uB77C\uACE0 \uC9C0\uC2DC\uD588\uB2E4. \r\n\uC5F0\uAD6C\uC18C\uB294
+    \uD3D0\uC1C4\uB418\uACE0, \uBAA8\uB4E0 \uC790\uB8CC\uAC00 \uD3D0\uAE30\uB420
+    \uAC83\uC774\uB2E4. \r\n\uBC1B\uC544\uB4E4\uC77C \uC218 \uC5C6\uB2E4. \uC774
+    \uC5F0\uAD6C\uB294 \uC778\uB958\uAC00 \uC0B4\uC544\uB0A8\uAE30 \uC704\uD574 \uD544\uC694\uD558\uB2E4!
+    \r\n\uACB0\uCF54 \uC774\uB300\uB85C \uD3EC\uAE30\uD560 \uC218 \uC5C6\uB2E4. \uC2DC\uAC04\uC774
+    \uC5BC\uB9C8 \uB0A8\uC9C0 \uC54A\uC558\uC74C\uC744 \uC54C\uACE0 \uC788\uB2E4.
+    \r\n\uB0B4\uAC00 \uC120\uD0DD\uD55C \uAE38\uC774 \uC633\uC74C\uC744 \uC99D\uBA85\uD574
+    \uBCF4\uC774\uACA0\uB2E4. \uB3D9\uB8CC\uB4E4\uC744 \uC124\uB4DD\uD560 \uC2DC\uAC04\uC774
+    \uD544\uC694\uD558\uB2E4. \r\n\uC950\uB4E4\uC774 \uBD80\uC871\uD558\uB2E4. \uD544\uC694\uD558\uB2E4\uBA74
+    \uB0B4 \uBAB8\uC5D0 \uC8FC\uC0BF\uBC14\uB298\uC774\uB77C\uB3C4 \uAF42\uB294 \uC218\uBC16\uC5D0
+    \uC5C6\uB2E4."

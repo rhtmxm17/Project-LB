@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055b42f616debc243b36d7eb587411bc, type: 3}
+  m_Name: SpectorAfterTest_1
+  m_EditorClassIdentifier: 
+  monsterName: "\uBD80\uD65C\uD55C \uC2A4\uD399\uD130(\uD14C\uC2A4\uD2B8)"
+  monsterPrefab: {fileID: 8267884567876114207, guid: 80607be3e2276104fb1f5695ff46c4c1, type: 3}
+  attackRange: 1
+  attackDamage: 10
+  maxHp: 300
+  attckPerSecond: 1
+  moveSpeed: 8
+  attackClip: {fileID: 8300000, guid: 07f548bda070846059915a4e26a817c2, type: 3}
+  attackVolumeScale: 0.25
+  spawnClip: {fileID: 8300000, guid: 5f002b0325a2d4b44830196846c82968, type: 3}
+  spawnVolumeScale: 1
+  deadClip: {fileID: 8300000, guid: 4829c65095f4345058229b82a4ccdab1, type: 3}
+  deadVolumeScale: 0.25

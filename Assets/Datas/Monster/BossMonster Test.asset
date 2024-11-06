@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055b42f616debc243b36d7eb587411bc, type: 3}
+  m_Name: BossMonster Test
+  m_EditorClassIdentifier: 
+  monsterName: "\uAC70\uB300 \uB369\uC5B4\uB9AC(\uD14C\uC2A4\uD2B8)"
+  monsterPrefab: {fileID: 8267884567876114207, guid: 81385917412a7244ba8c621d279a2c27, type: 3}
+  attackRange: 1
+  attackDamage: 10
+  maxHp: 15000
+  attckPerSecond: 0.5
+  moveSpeed: 8
+  attackClip: {fileID: 8300000, guid: 87d2a3ca20e6ce54e9f5ce0771013c13, type: 3}
+  attackVolumeScale: 2
+  spawnClip: {fileID: 8300000, guid: 935e09104521d4ac98476aaad0076aaa, type: 3}
+  spawnVolumeScale: 1
+  deadClip: {fileID: 8300000, guid: 0f03505337e844595a1fe7b9966df8f5, type: 3}
+  deadVolumeScale: 1

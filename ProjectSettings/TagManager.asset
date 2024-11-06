@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - QuickSlot
+  - PlayerCollider
+  - Inventory
+  - ClearTrigger
+  - Weapon
+  - Cloth
   layers:
   - Default
   - TransparentFX
@@ -14,10 +20,10 @@ TagManager:
   - Player
   - Monster
   - Item
-  - 
-  - 
-  - 
-  - 
+  - Interactable
+  - FPSView
+  - Projctile
+  - PlayerProjectile
   - 
   - 
   - 

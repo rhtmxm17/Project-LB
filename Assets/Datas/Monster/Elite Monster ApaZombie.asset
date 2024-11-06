@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055b42f616debc243b36d7eb587411bc, type: 3}
+  m_Name: Elite Monster ApaZombie
+  m_EditorClassIdentifier: 
+  monsterName: "\uC544\uD30C \uC880\uBE44"
+  monsterPrefab: {fileID: 2402829140540979405, guid: 0a21e2e638bde9441869dde8f52b0545, type: 3}
+  attackRange: 1
+  attackDamage: 40
+  maxHp: 350
+  attckPerSecond: 1
+  moveSpeed: 1.1
+  attackClip: {fileID: 8300000, guid: 32b1cee2e1e16a5498c05d6fed710818, type: 3}
+  attackVolumeScale: 0.25
+  spawnClip: {fileID: 8300000, guid: 998a8c587e0564f298cc8f796faf538a, type: 3}
+  spawnVolumeScale: 1
+  deadClip: {fileID: 8300000, guid: 7da0ced4604db4d91abd62bebdf27315, type: 3}
+  deadVolumeScale: 0.25
